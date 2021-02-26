@@ -26,8 +26,8 @@
 
 \newcommand{\ARBETE}{ %välj arbetsbenämning här, notera att båda kan användas samtidigt
  \newline \noindent Examensarbete för kandidatexamen i matematik vid Göteborgs universitet % om någon i gruppen läser på GU
- \medskip
- \newline \noindent Kandidatarbete inom civilingenjörsutbildningen vid Chalmers % om någon läser på Chalmers
+% \medskip
+% \newline \noindent Kandidatarbete inom civilingenjörsutbildningen vid Chalmers % om någon läser på Chalmers
  \medskip
 }
 
@@ -38,12 +38,10 @@
 
 
 \newcommand{\namn}{ %Skriv in medlemmarnas namn i bokstavsordning.
-  förnamn efternamn 1 \\
-  förnamn efternamn 2  \\
-%  förnamn efternamn 3 \\
-%  förnamn efternamn 4
-%  förnamn efternamn 5 \\
-%  förnamn efternamn 6 %
+    Kawthar Abdalla \\
+    Nils Alexandersson \\
+    Erik Dagobert \\
+    Coën Lorcan Olofsson
 }
 
 \newcommand{\examina}{ % här skall gruppens medlemmar skrivas in vid önskad examen. Aktivera aktuella examina, inte kurskoder. Vid fyra med samma examen blir det snyggast om man gör en tabell.
@@ -58,20 +56,27 @@
 %
 %
 %%%%%%%%%%%%%%%%%% Kurs MMG900 %%%%%%%%%%%%%%%%
- \newline \noindent {\it Examensarbete för kandidatexamen i matematik vid Göteborgs universitet} \smallskip
- \newline \noindent förnamn efternamn 1
+% \newline \noindent {\it Examensarbete för kandidatexamen i matematik vid Göteborgs universitet} \smallskip
+% \newline \noindent förnamn efternamn 1
 % \quad förnamn efternamn 2
 % \quad förnamn efternamn 3
 % \quad förnamn efternamn 4
- \bigskip
+% \bigskip
 %%%%%%%%%%%%%%%%%% Kurs MMG910  %%%%%%%%%%%%%%%%
- \newline \noindent{ \it  Examensarbete för kandidatexamen i matematik inom Matematikprogrammet vid Göteborgs universitet} \smallskip
- \newline \noindent förnamn efternamn 1
+\newline \noindent{ \it  Examensarbete för kandidatexamen i matematik inom Matematikprogrammet vid Göteborgs universitet} \smallskip
+% \newline \noindent förnamn efternamn 1
 % \quad förnamn efternamn 2
 % \quad förnamn efternamn 3
 % \quad förnamn efternamn 4
- \bigskip
- %
+% \bigskip
+%
+\newline \noindent \begin{tabular}{@{}ll}
+    Kawthar Abdalla &
+    Nils Alexandersson \\
+    Erik Dagobert &
+    Coën Lorcan Olofsson
+\end{tabular}
+\bigskip
 %%%%%%%%%%%%%%%%%% Kurs MMG920  %%%%%%%%%%%%%%%%%
 %  \newline \noindent {\it Examensarbete för kandidatexamen i matematik inom Matematikprogrammet, inriktning Tillämpad matematik, vid Göteborgs universitet} \smallskip
 %  \newline \noindent förnamn efternamn 1
@@ -98,8 +103,8 @@
 % \bigskip
 %
 %%%%%%%%%%%%%%%%%%% Kurs MVEX01  %%%%%%%%%%%%%%%%%
- \newline \noindent {\it Kandidatarbete i matematik inom civilingenjörsprogrammet Automation och mekatronik vid Chalmers} \smallskip
- \newline \noindent förnamn efternamn 1
+% \newline \noindent {\it Kandidatarbete i matematik inom civilingenjörsprogrammet Automation och mekatronik vid Chalmers} \smallskip
+% \newline \noindent förnamn efternamn 1
 % \quad förnamn efternamn 2
 % \quad förnamn efternamn 3
 % \quad förnamn efternamn 4
@@ -140,7 +145,9 @@
 
 
 \newcommand{\handledare}{% om samtliga handledare är från MV lämnas fältet inst tomt
-namn 1& inst \\
+Lucile Devin \\
+& Anders Södergren
+%  namn 1& inst \\
 %  & namn 2 & inst \\
 %  & namn 3 & inst \\
 }
@@ -233,14 +240,14 @@ Göteborg, Sverige 2020 }
 
 
 
- \newpage
+\newpage
 \thispagestyle{fancy}
 \fancyhf{}
 \newgeometry{top=3cm, bottom=3cm,left=3 cm,right=3cm}
 \mbox{}
 \vfill
 
- \setcounter{page}{0}
+\setcounter{page}{0}
 \newpage }
 
 
