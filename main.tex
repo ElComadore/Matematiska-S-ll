@@ -1,6 +1,13 @@
 \documentclass[a4paper]{article}
 \usepackage{graphicx}
 \usepackage{amsmath, amssymb}
+\usepackage{csquotes}
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+\addbibresource{bibliografi.bib}
 
 % Egna kommandon:
 % Delar-operator:
@@ -310,7 +317,7 @@ Här skriver man populärvetenskaplig presentation
 \newpage
 \pagenumbering{arabic}
 \section{Inledning}
-\input{inledning.tex}
+\input{coen/inledning.tex}
 
 \section{Förkunskaper}
 \input{erik/forkunskaper}
@@ -321,8 +328,12 @@ Här skriver man populärvetenskaplig presentation
 \section{Bruns såll}
 \input{nils/brun}
 
-\begin{thebibliography}{FFF}
-\bibitem[UR]{rapp} Utformning av rapporter och kandidatarbetens skriftliga presentation för Civilingenjörsprogrammen vid Chalmers tekniska högskola. 2008. Göteborg: Chalmers Tekniska Högskola
-\end{thebibliography}
+%\begin{thebibliography}{FFF}
+%\bibitem[UR]{rapp} Utformning av rapporter och kandidatarbetens skriftliga presentation för Civilingenjörsprogrammen vid Chalmers tekniska högskola. 2008. Göteborg: Chalmers Tekniska Högskola
+
+%\end{thebibliography}
+\medskip
+
+\printbibliography
 
 \end{document}                 % The input file ends with this command.
