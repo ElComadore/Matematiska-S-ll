@@ -1,0 +1,164 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+%\usepackage{stmaryrd}
+%\usepackage{longdivision}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage[fleqn]{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+%\usepackage{accents}
+\usepackage{multicol}
+%\usepackage[left=1cm, right=1cm, top=1cm]{geometry}
+\usepackage{tikz}
+\usetikzlibrary{patterns,angles,calc,arrows.meta,decorations.markings,arrows,intersections,shapes}
+\usepackage{pgf,pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs,subcaption,rotating}
+
+
+%\newcommand\Mydiv[2]{%
+%$\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
+%\overline{\enspace\strut#2}$}
+
+%\theoremstyle{plain}
+%\newtheorem{theorem}{Theorem}
+%\newtheorem{theorem}{Theorem}[chapter] % reset theorem numbering for each chapter
+
+
+% Theorem Styles
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}[theorem]{Definition}
+
+% Definition Styles
+\theoremstyle{definition}
+\newtheorem*{note}{Note}
+%\newtheorem*{question}{Question}%[section]
+
+%\usepackage{mathtools}
+%\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+\begin{document}
+
+
+
+%\section{Introduction}
+
+The Sieve of Eratosthenes is an ancient algorithm to find prime numbers from a list of consecutive integers. It is as follows:
+
+\begin{enumerate}
+    \item Take a list of consecutive integers from 2 through n: (2, 3, 4, ..., n).
+    \item Initially, let p equal 2, the smallest prime number.
+    \item Cross out, from the list, all multiples of p except p itself. Do this until the end of the list.
+    \item Assign the value of p to the next prime. The next prime is the smallest number in the list greater than p (in the previous step) that is not marked. If there was no such number, then stop. 
+    \item If $p < \sqrt{n}$, repeat step 3.
+\end{enumerate}
+
+At the termination of the algorithm, all the numbers which are crossed out are composite numbers. The unmarked numbers are the primes in the list. Just like a sieve being used to filter out particulates in a liquid, Erathosthenes' sieve filters out the composite numbers to come up with a list of primes up to a prescribed numerical upper bound.\cite{Mollin} 
+
+In 1808, Legendre extended Erathosthenes' sieve to estimate an upper bound $\pi(x)$, the number of primes up to $x$. Using the inclusion-exclusion principle to compute the number of elements of a set $A \subset \mathbb{Z}_+$ that have no prime factors below, we take delete from the set all the even ones, subtract the number of multiples of 3, subtract the number of multiples of 5, add the number of multiples of 6 (they were discarded twice from the multiples of 2 and 3), and so on. As such, the formula Legendre produced needed a whole string of multiple sums that increase in number with $x$. To keep track of the number of times a number is crossed-out by inclusion-exclusion, the Mobius function as defined below is used.
+
+\begin{definition}
+Let $\omega(n)$ denote the number of distinct prime factors of $n,$ and define the Möbius function
+$$
+\mu(n):=\left\{\begin{array}{ll}
+0 & \text { if } n \text { has a non-trivial square divisor } \\
+(-1)^{\omega(n)} & \text { if } n \text { is squarefree. }
+\end{array}\right.
+$$
+\end{definition}
+
+
+We then obtain
+
+\begin{theorem}[Sieve of Eratosthenes-Legendre, Basic Version] For any $2 \leq y \leq x$ we have
+$$
+\#\{n \leq x: p \mid n \Rightarrow p>y\}=\sum_{d \leq x, \atop p \mid d \Rightarrow p \leq y} \mu(d)\left\lfloor\frac{x}{d}\right\rfloor
+$$
+where $\lfloor.\rfloor$ denotes integer part.
+In particular, we have
+$$
+\pi(x)-\pi(\sqrt{x})+1=\sum_{d \leq \sqrt{x}} \mu(d)\left\lfloor\frac{x}{d}\right\rfloor
+$$
+and for any $2 \leq y \leq x$ we have
+$$
+\pi(x) \leq \pi(y)-1+\sum_{d \leq x, \atop p \mid d \Longrightarrow p \leq y} \mu(d)\left\lfloor\frac{x}{d}\right\rfloor=x \prod_{p \leq y}\left(1-\frac{1}{p}\right)+O\left(2^{\pi(y)}\right)
+$$
+\end{theorem}
+
+Let $A$ be a set of natural numbers, and let $P$ be a set of primes; also set
+$$
+P(z)=\prod_{p \in P, p \leq z} p
+$$
+For each $p \in P,$ choose a set $R_{p}$ consisting of some number $\omega(p)$ of residue classes modulo $p,$ and let $A_{p}$ be the subset of $A$ whose elements belong to the chosen residue classes. Put
+$$
+W(z)=\prod_{p \mid P(z)}\left(1-\frac{\omega(p)}{p}\right)
+$$
+For $d$ squarefree with all prime factors in $P,$ put $\omega(d)=\prod_{p \mid d} \omega(p)$ and $A_{d}=\cap_{p \mid d} A_{p}$.
+
+To estimate $S(A, P, z),$ the number of elements of $A$ not belonging to $A_{p}$ for any $p \leq z$, we assume some properties about the chosen residue classes. First, for some $\kappa>0$.
+\begin{equation}
+\sum_{p \leq z, p \in P} \frac{\omega(p) \log p}{p} \leq \kappa \log z+O(1)    
+\end{equation}
+
+where the big-O bound is for $z \rightarrow \infty$ and the constant depends on $P, R_{p}, \kappa$.
+
+\begin{lemma}
+\begin{enumerate}
+    \item Assuming (1), we have
+$$
+\sum_{d<t, d \mid P(z)} \omega(d)=O\left(t(\log z)^{\kappa} \exp \left(-\frac{\log t}{\log z}\right)\right)
+$$
+where the big-O bound is for $z \rightarrow \infty$ and the constant depends on $P, R_{p}, \kappa$.
+    \item Fix $C>0 .$ Assuming (1), we have
+$$
+\sum_{d>C x, d \mid P(z)} \frac{\omega(d)}{d}=O\left((\log z)^{\kappa+1} \exp \left(-\frac{\log x}{\log z}\right)\right)
+$$
+where the big- $O$ bound is for $z \rightarrow \infty$ and the constant depends on $P, R_{p}, \kappa, C .$
+\end{enumerate}
+ 
+\end{lemma}
+
+The above lemmas lead to a general version of the  Erathosthenes-Legendre sieve:
+
+\begin{theorem}[]
+Fix $P, R_{p}, \kappa$ satisfying (1) , and also fix $C, c>0$. Then for any set $A$ and any $X, x>0$ such that
+$$
+\left|\# A_{d}-\frac{\omega(d)}{d} X\right| \leq c \omega(d)
+$$
+and $\# A_{d}=0$ for $d>C x,$ we have
+$$
+S(A, P, z)=X W(z)+O\left(x \log ^{\kappa+1} z \exp \left(-\frac{\log x}{\log z}\right)\right)
+$$
+where the big- $O$ bound is for $z \rightarrow \infty$, uniformly in $A, x, X$.
+\end{theorem}
+
+One can use the sieve to show that 
+$$
+\pi(N) \ll \frac{N}{\log \log N}.
+$$
+
+The Eratosthenes–Legendre sieve is, in a way, more general than Chebychev’s bounds. Combining the Erathosthenes-Legendre sieve with Rankin's trick allows one to obtain the number of primes $p$ less than $x$ such that $p+2$ is also prime. This leads to the Brun's result that $\sum_{p,p+2\ prime}\frac{1}{p}$ converges.\cite{cojocarumurty}\cite{kedlaya}
+
+We see that improving the Eratosthenes–Legendre sieve is a motivating problem of sieve theory, where sharper bounds are sought. Many more sieves have been defined and used but the features of the Eratosthenes–Legendre sieve is relevant in further results to this end.
+
+\printbibliography
+\end{document}
+
+\begin{theorem}[Brun's pure sieve]
+Let $k$ be a nonnegative integer and define
+$$
+\lambda_{d}=\left\{\begin{array}{ll}
+\mu(d) & \text { if } \omega(d) \leqslant k \\
+0 & \text { otherwise }
+\end{array}\right.
+$$
+Then $\boldsymbol{\lambda}$ satisfies $\left(\lambda^{+}\right)$ if $k$ is even and $\left(\lambda^{-}\right)$ if $k$ is odd. Thus, if $k_{e}$ is even and $k_{o}$ is odd, then for any sieve
+problem $\mathcal{A}$ and any $z \geqslant 2$ we have
+(1.11)
+$$
+\sum_{d \in \mathscr{P}(z)} \mu(d) A_{d} \leqslant S(\mathcal{A}, z) \leqslant \sum_{d \in \mathscr{P}(z) \atop \omega(d) \leqslant k_{e}} \mu(d) A_{d}
+$$
+\end{theorem}
