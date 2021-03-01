@@ -2,12 +2,45 @@
 
 %\subsection{O-notation}
 
-%\subsection{Det allmänna sållproblemet}
+\subsection{Det allmänna sållproblemet}
 % Kanske kan koppla till inklusions-exklusionsprincipen. 
+Det generella fallet i sållteori är att vi har en mängd heltal \(\A\), en mängd primtal \(\P\) samt delmängder \(\A_p, \forall p \in \P\) och är intresserade av att sålla fram delmängden \(\mathcal{S}(\A, \P) := \A \setminus \cup_{p \in \P} \A_p\) eller, vanligare, kardinaliteten av dito. För \(d\), en kvadratfri produkt (dvs. utan delare \(p^\alpha\) för \(\alpha > 1\)) av element \(p \in \P\) definierar vi \(\A_d = \cap_{p \divides d} \A_p\). Om \(P(z) = \prod_{\substack{p\in \mathcal{P} \\ p < z}} p\) så betecknar vi kardinaliteten av den sållade mängden som
+\begin{align*}
+    \S{A}{P}{z} = \card{(\A \setminus \cup_{p \divides P(z)} \A_p)} .
+\end{align*}
+
 
 %\subsection{O-notation}
 % Intresserade av en övre asymptotisk gräns --> förklara Ordonotation. 
 
-%\subsection{Möbiusfunktionen}
+\subsection{Möbiusfunktionen}
+En användbar funktion i sållteori är möbiusfunktionen,
+\begin{equation*}
+    \mu(n) = 
+    \begin{cases}
+        1, & \text{om}\ n \text{ är ett kvadratfritt, naturligt tal med jämnt antal primdelare}\\
+        -1, & \text{om}\ n \text{ är ett kvadratfritt, naturligt tal med udda antal primdelare}\\
+        0, & \text{om}\ n \text{ inte är kvadratfri}
+    \end{cases}
+\end{equation*}
+som bland annat förenklar inklusion-exklusionsprincipen så att, för scenariot ovan,
+\begin{align*}
+    \S{A}{P}{z} = \sum_{\substack{d \divides P(z) \\ d \leq z}} \card{\A_d} . %Mobius?
+\end{align*} % sida 72
+
+Två andra viktiga egenskaper hos möbiusfunktionen är den så kallade fundamentala egenskapen,
+\begin{equation*}
+    \sum_{d \divides n} \mu(d) =
+    \begin{cases}
+        1, & \text{if}\ n = 1 \\
+        0, & \text{if}\ n > 0
+    \end{cases}
+\end{equation*}
+och Möbius inverteringsformel som säger
+\begin{equation*}
+    f(n) = \sum_{d \divides n} g(d) \implies g(n) = \sum_{d \divides n} \mu(d) f(n/d)
+\end{equation*}
+om \(f, g : \mathbb{N} \to \mathbb{C}\)
+
 
 %\subsection{Abels summationsformel}
