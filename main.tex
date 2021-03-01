@@ -18,20 +18,6 @@ sorting=ynt
 ]{biblatex}
 \addbibresource{bibliografi.bib}
 
-% Egna kommandon:
-% Delar-operator:
-\newcommand{\divides}{\mid}
-\newcommand{\notdivides}{\nmid}
-% Största gemensamma delare
-\renewcommand{\gcd}[1]{(#1)}
-% Kardinalitet
-\newcommand{\card}[1]{\# #1}
-% Heltalsmängd:
-\newcommand{\A}{\mathcal{A}}
-% Primtalsmängd:
-\renewcommand{\P}{\mathcal{P}}
-% Sållad mängd:
-\renewcommand{\S}[3]{S(\mathcal{#1}, \mathcal{#2}, #3)}
 
 %\usepackage{epsfig}
 \usepackage{floatflt} %för inkapslade bilder.
@@ -286,7 +272,7 @@ Göteborg, Sverige 2020 }
 
 \usepackage[T1]{fontenc}                % För svenska bokstäver
 \usepackage[swedish,english]{babel}             % För svensk avstavning och svenska rubriker (t ex "Innehållsförteckning")
-
+\input{commands-math}
 
 \begin{document}
 \selectlanguage{swedish}
