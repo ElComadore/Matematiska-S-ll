@@ -1,4 +1,12 @@
 % Skrivet av Nils
 
+% Inledning
 År 1915 presenterade norrmanen Viggo Brun (1885-1978) ett såll som senare fått namnet Bruns såll. Brun hade inspirerats av publikationer av Jacques Hadamard som handlade om de framsteg som Jean Merlin gjort i att utöka Eratosthenes teori. Sållet blev inte uppmärksammat direkt, istället tog det ca 30 år innan andra matematiker började intressera sig för det. En anledning till dröjsmålet kan vara att Bruns skrivsätt och val av notation gjorde materialet onödigt svårläst. Sedan den ursprungliga publikationen har det gjorts flera insatser för att förkorta och förenkla läsningen men trots detta är Bruns såll och dess bevis krävande för läsaren, med detta i åtanke har vi valt att korta ned beviset avsevärt i förhoppningen om att stycket ska upplevas som överkomligt.
 
+\bigskip\noindent
+Bruns idé var att välja funktionerna $f(n)$ och $g(n)$ med $f(n) = \sum_{d\mid n} \mu(d) g(d)$. Genom att använda Möbius inverteringsformel finner vi att
+\begin{align*}
+    \sum_{d\mid P(z)} \mu(d) g(d) \card\A_d 
+    &= \sum_{\delta\mid P(z)} f(\delta) \sum_{d\mid \frac{P(z)}{\delta}} \mu(d) \card\A_d \\
+    &= \S{\A}{\P}{z} + \sum_{\substack{\delta\mid P(z) \\ \delta>1}} f(\delta) \S{\A_\delta}{\P^{(\delta)}}{z}.
+\end{align*}
