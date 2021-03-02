@@ -3,12 +3,36 @@
 % Inledning
 År 1915 presenterade norrmanen Viggo Brun (1885-1978) ett såll som senare fått namnet Bruns såll. Brun hade inspirerats av publikationer av Jacques Hadamard som handlade om de framsteg som Jean Merlin gjort i att utöka Eratosthenes teori. Sållet blev inte uppmärksammat direkt, istället tog det ca 30 år innan andra matematiker började intressera sig för det. En anledning till dröjsmålet kan vara att Bruns skrivsätt och val av notation gjorde materialet onödigt svårläst. Sedan den ursprungliga publikationen har det gjorts flera insatser för att förkorta och förenkla läsningen men trots detta är Bruns såll och dess bevis krävande för läsaren, med detta i åtanke har vi valt att korta ned beviset avsevärt i förhoppningen om att stycket ska upplevas som överkomligt.
 
+
 \bigskip\noindent
-Vi börjar med att välja funktionerna $f(n)$ och $g(n)$ med $f(n) = \sum_{d\mid n} \mu(d) g(d)$. Genom Möbius inverteringsformel finner vi att
+Vi börjar med att välja två funktioner $f(n)$ och $g(n)$ med $f(n) = \sum_{d\mid n} \mu(d) g(d)$. Låt $\P^{(\delta)}$ beteckna $\{ p\in\P;p \nmid \delta\}$,  genom Möbius inverteringsformel finner vi då att
 \begin{align*}
     \sum_{d\mid P(z)} \mu(d) g(d) \card\A_d 
-    &= \sum_{\delta\mid P(z)} f(\delta) \sum_{d\mid \frac{P(z)}{\delta}} \mu(d) \card\A_d \\
-    &= \S{A}{P}{z} + \sum_{\substack{\delta\mid P(z) \\ \delta>1}} f(\delta) \S{A_\delta}{P^{(\delta)}}{z}.
+    = \sum_{\delta\mid P(z)} f(\delta) \sum_{d\mid \frac{P(z)}{\delta}} \mu(d) \card\A_d 
+    = \S{A}{P}{z} + \sum_{\substack{\delta\mid P(z) \\ \delta>1}} f(\delta) \S{A_\delta}{P^{(\delta)}}{z},
 \end{align*}
+Vi är intresserade av att uppskatta den sista summan. Låt nu $q(\delta)$ beteckna det minsta primtalet som delar $\delta$. Detta ger oss, efter flera omskrivningar:
 
-Vi är intresserade av att uppskatta den senare termen.
+
+\begin{theorem}
+Med ovan nämnda antaganden tillsammans med att $g(1)=1$, gäller 
+\begin{equation*}
+    \S{A}{P}{z} 
+    = \sum_{d \mid P(z)} \mu(d) g(d) \card\A_d 
+    - \sum_{d \mid P(z)} \sum_{\substack{p \mid P(z) \\ p<q(d)}} \mu(d) (g(d)-g(pd))
+    S(\A_{pd},\P^{(pd)},z).      % Undantag i användning av \S-kommandot
+\end{equation*}
+\end{theorem}
+
+
+Vidare får vi också:
+\begin{theorem}
+Behåll notation och antaganden från ovan. Låt $g_U$ och $g_L$ vara två funktioner där $g_U(1)=g_L(1)=1$ med $\mu(d)(g_U(d)-g_U(pd)) \geq 0$ och $\mu(d)(g_L(d)-g_L(pd)) \leq 0$, för alla $d \mid P(z), p < q(d)$. Då gäller
+\begin{equation*}
+    \sum_{d \mid P(z)} \mu(d) g_L(d) \card\A_d 
+    \leq \S{A}{P}{z} 
+    \leq \sum_{d \mid P(z)} \mu(d) g_U(d) \card\A_d.
+\end{equation*}
+\end{theorem}
+
+Detta var Bruns huvudidé, genom att hitta funktionerna $g_U$ och $g_L$ är det alltså möjligt att uppskatta $\S{A}{P}{z}$ både ovan och underifrån.
