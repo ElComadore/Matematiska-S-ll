@@ -1,13 +1,15 @@
 % Skrivet av Erik
 
+I den här texten kommer vi att låna större delen notationen från \cite{cojocarumurty}, exempelvis skriver vi \(p, q, l\) menas primtal, \(n, d, k\) naturliga tal och \(x, y, z \in \mathbb{R}_+\). Den största gemensamma delaren noteras \(\gcd{d, k}\) och funktionen \(\nu(d)\) beskriver antalet distinkta primtalsdelare av \(d\). Nedanstående sektioner syftar till att etablera mer notation och tekniker som är vanligt förekommande i sållteori med utgångspunkt i Cojocarus och Murtys bok.
+
 %\subsection{O-notation}
 
 \subsection{Det allmänna sållproblemet}
-% Kanske kan koppla till inklusions-exklusionsprincipen. 
 Det generella fallet i sållteori är att vi har en mängd heltal \(\A\), en mängd primtal \(\P\) samt delmängder \(\A_p, \forall p \in \P\) och är intresserade av att sålla fram delmängden \(\mathcal{S}(\A, \P) := \A \setminus \cup_{p \in \P} \A_p\) eller, vanligare, kardinaliteten av dito. För \(d\), en kvadratfri produkt (dvs. utan delare \(p^\alpha\) för \(\alpha > 1\)) av element \(p \in \P\) definierar vi \(\A_d = \cap_{p \divides d} \A_p\). Om \(P(z) = \prod_{\substack{p\in \mathcal{P} \\ p < z}} p\) så betecknar vi kardinaliteten av den sållade mängden som
 \begin{align*}
     \S{A}{P}{z} = \card{(\A \setminus \cup_{p \divides P(z)} \A_p)} .
 \end{align*}
+
 
 
 %\subsection{O-notation}
