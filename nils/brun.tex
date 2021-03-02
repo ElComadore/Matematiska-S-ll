@@ -5,17 +5,17 @@
 
 
 \bigskip\noindent
-Vi börjar med att välja två funktioner $f(n)$ och $g(n)$ med $f(n) = \sum_{d\mid n} \mu(d) g(d)$. Låt $\P^{(\delta)}$ beteckna $\{ p\in\P;p \nmid \delta\}$,  genom Möbius inverteringsformel finner vi då att
+Vi börjar med att välja två funktioner $f$ och $g$ som uppfyller $f(n) = \sum_{d\mid n} \mu(d) g(d)$. Låt $\P^{(\delta)}$ beteckna $\{ p\in\P;p \nmid \delta\}$,  genom Möbius inverteringsformel finner vi då att
 \begin{align*}
     \sum_{d\mid P(z)} \mu(d) g(d) \card\A_d 
     = \sum_{\delta\mid P(z)} f(\delta) \sum_{d\mid \frac{P(z)}{\delta}} \mu(d) \card\A_d 
     = \S{A}{P}{z} + \sum_{\substack{\delta\mid P(z) \\ \delta>1}} f(\delta) \S{A_\delta}{P^{(\delta)}}{z},
 \end{align*}
-Vi är intresserade av att uppskatta den sista summan. Låt nu $q(\delta)$ beteckna det minsta primtalet som delar $\delta$. Detta ger oss, efter flera omskrivningar:
+Vi är intresserade av att uppskatta den sista summan. Låt $q(\delta)$ beteckna det minsta primtalet som delar $\delta$. Detta ger oss, efter flera omskrivningar:
 
 
-\begin{theorem}
-Med ovan nämnda antaganden tillsammans med att $g(1)=1$, gäller 
+\begin{theorem}\label{brun_t1}
+Med ovan nämnda antaganden och att $g(1)=1$, gäller 
 \begin{equation*}
     \S{A}{P}{z} 
     = \sum_{d \mid P(z)} \mu(d) g(d) \card\A_d 
@@ -26,7 +26,7 @@ Med ovan nämnda antaganden tillsammans med att $g(1)=1$, gäller
 
 
 Vidare får vi också:
-\begin{theorem}
+\begin{theorem}\label{brun_t2}
 Behåll notation och antaganden från ovan. Låt $g_U$ och $g_L$ vara två funktioner där $g_U(1)=g_L(1)=1$ med $\mu(d)(g_U(d)-g_U(pd)) \geq 0$ och $\mu(d)(g_L(d)-g_L(pd)) \leq 0$, för alla $d \mid P(z), p < q(d)$. Då gäller
 \begin{equation*}
     \sum_{d \mid P(z)} \mu(d) g_L(d) \card\A_d 
@@ -35,4 +35,25 @@ Behåll notation och antaganden från ovan. Låt $g_U$ och $g_L$ vara två funkt
 \end{equation*}
 \end{theorem}
 
-Detta var Bruns huvudidé, genom att hitta funktionerna $g_U$ och $g_L$ är det alltså möjligt att uppskatta $\S{A}{P}{z}$ både ovan och underifrån.
+
+Detta var Bruns huvudidé, genom att hitta funktionerna $g_U$ och $g_L$ är det alltså möjligt att uppskatta $\S{A}{P}{z}$ både ovan och underifrån. Välj $(z_n)$ för $0 \leq n \leq r$, för något $r$ så att
+\begin{equation*}
+    2 = z_r < z_{r-1} < \cdots < z_1 < z_0 = z
+\end{equation*}
+och definiera produkten $P_{z_n, z} := \prod_{z_n \leq p < z} p$. Låt $b$ vara ett fixt positivt heltal och låt
+\begin{equation*}
+    g_U(d) :=
+    \begin{cases}
+        1, & \text{om}\ \nu(\gcd{d, P_{z_n, z}}) \leq 2b+2n-2,\ \forall n \leq r, \\
+        0, & \text{annars,}
+    \end{cases}
+\end{equation*}
+och
+\begin{equation*}
+    g_L(d) :=
+    \begin{cases}
+        1, & \text{om}\ \nu(\gcd{d, P_{z_n, z}}) \leq 2b+2n-3,\ \forall n \leq r, \\
+        0, & \text{annars.}
+    \end{cases}
+\end{equation*}
+Det gäller nu att $g_U$ och $g_L$ uppfyller antagandena i sats \ref{brun_t2}.
