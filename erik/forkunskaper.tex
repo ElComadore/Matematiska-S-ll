@@ -7,6 +7,8 @@ I den här texten kommer vi att låna större delen notationen från \cite{cojoc
 \subsection{Det allmänna sållproblemet}
 Det generella fallet i sållteori är att vi har en mängd heltal \(\A\), en mängd primtal \(\P\) samt delmängder \(\A_p, \forall p \in \P\) och är intresserade av att sålla fram delmängden \(\mathcal{S}(\A, \P) := \A \setminus \cup_{p \in \P} \A_p\) eller kardinaliteten av dito, \(S(\A, \P) :=\card{(\A \setminus \cup_{p \in \P} \A_p)}\). För \(d\), en kvadratfri produkt (dvs. utan delare \(p^\alpha\) för \(\alpha > 1\)) av element \(p \in \P\) definierar vi \(\A_d = \cap_{p \divides d} \A_p\) och \(\A_1 = \A\). Om \(P(z) = \prod_{\substack{p\in \mathcal{P} \\ p < z}} p\) så betecknar vi kardinaliteten av den sållade mängden som
 \begin{align*}
+    \mathcal{S}(\A, \P, z) := (\A \setminus \cup_{p \divides P(z)} \A_p)
+    \quad \text{och} \quad
     \S{A}{P}{z} := \card{(\A \setminus \cup_{p \divides P(z)} \A_p)} .
 \end{align*}
 
@@ -16,8 +18,6 @@ En gemensam teknik för de matematiska sållen diskuterade nedan är att låta \
 \end{align*}
 där \(\delta_p \in [0, 1)\) kan betraktas som en uppskattning av andelen element i delmängden \(\A_p\) och \(R_p\) som en felterm. För \(p \neq q\) låter vi \(\delta_{pq} = \delta_p \delta_q\) så att \(\card{\A_{pq}} = \delta_p \delta_q X + R_{pq}\). Dessutom används, som en teknisk detalj, att \(R_{p,p} = R_p\).
 
-%\subsection{O-notation}
-% Intresserade av en övre asymptotisk gräns --> förklara Ordonotation. 
 
 \subsection{Möbiusfunktionen}
 En användbar funktion i sållteori är möbiusfunktionen,
@@ -48,5 +48,7 @@ och Möbius inverteringsformel som säger
 \end{equation*}
 om \(f, g : \mathbb{N} \to \mathbb{C}\).
 
+%\subsection{O-notation}
+% Intresserade av en övre asymptotisk gräns --> förklara Ordonotation. 
 
 %\subsection{Abels summationsformel}
