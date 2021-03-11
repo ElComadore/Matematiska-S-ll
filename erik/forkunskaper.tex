@@ -2,6 +2,8 @@
 
 I den här texten kommer vi att låna större delen av vår notation från \cite{cojocarumurty}, exempelvis skriver vi \(p, q, l\) när vi menar primtal, \(n, d, k\) för naturliga tal och \(x, y, z \in \mathbb{R}_+\). Den största gemensamma delaren betecknas \(\gcd{d, k}\) och funktionen \(\nu(d)\) beskriver antalet distinkta primtalsdelare av \(d\). Nedanstående sektioner ämnar till att etablera mer notation och tekniker som är vanligt förekommande i sållteori med utgångspunkt i Cojocarus och Murtys bok.
 
+% Pi-funktionen
+
 \subsection{Det allmänna sållproblemet}
 Det allmänna fallet i sållteori är att vi har en mängd heltal \(\A\), en mängd primtal \(\P\) samt delmängder \(\A_p, \forall p \in \P\) och är intresserade av att sålla fram delmängden \(\mathbb{S}(\A, \P) := \A \setminus \cup_{p \in \P} \A_p\) eller kardinaliteten av dito, \(S(\A, \P) :=\card{(\A \setminus \cup_{p \in \P} \A_p)}\). För \(d\), en kvadratfri produkt (dvs. utan delare \(p^\alpha\) för \(\alpha > 1\)) av element \(p \in \P\) definierar vi \(\A_d = \cap_{p \divides d} \A_p\) och \(\A_1 = \A\). Om \(P(z) = \prod_{\substack{p\in \mathcal{P} \\ p < z}} p\) så låter vi
 \begin{align*}
@@ -41,9 +43,9 @@ Två andra viktiga egenskaper hos möbiusfunktionen är den så kallade fundamen
     \end{cases}
 \end{equation*}
 och Möbius inverteringsformel som säger
-\begin{equation*}
+\begin{equation} \label{mobiusinv}
     f(n) = \sum_{d \divides n} g(d) \implies g(n) = \sum_{d \divides n} \mu(d) f(n/d)
-\end{equation*}
+\end{equation}
 om \(f, g : \mathbb{N} \to \mathbb{C}\).
 
 %\subsection{O-notation}
