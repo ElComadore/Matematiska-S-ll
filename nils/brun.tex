@@ -14,7 +14,7 @@ Vi börjar med att välja två funktioner $f$ och $g$ som uppfyller $f(n) = \sum
 Vi är intresserade av att uppskatta den sista summan. Låt $q(\delta)$ beteckna det minsta primtalet som delar $\delta$. Detta ger oss, efter flera omskrivningar:
 
 
-\begin{theorem}\label{brun_t1}
+\begin{theorem} \label{brun.thm.1}
 Med ovan nämnda antaganden och att $g(1)=1$, gäller 
 \begin{equation*}
     \S{A}{P}{z} 
@@ -24,23 +24,25 @@ Med ovan nämnda antaganden och att $g(1)=1$, gäller
 \end{equation*}
 \end{theorem}
 
+Genom vissa restriktioner på funktionen $g$ går det att tvinga dubbelsumman ovan till att alltid vara $\geq 0$ eller alltid $\leq 0$. Vi har följande:
 
-Vidare får vi också:
-\begin{theorem}\label{brun_t2}
+\begin{theorem} \label{brun.thm.2}
 Behåll notation och antaganden från ovan. Låt $g_U$ och $g_L$ vara två funktioner där $g_U(1)=g_L(1)=1$ med $\mu(d)(g_U(d)-g_U(pd)) \geq 0$ och $\mu(d)(g_L(d)-g_L(pd)) \leq 0$, för alla $d \mid P(z), p < q(d)$. Då gäller
-\begin{equation*}
+\begin{equation}\label{brun.eq.bound}
     \sum_{d \mid P(z)} \mu(d) g_L(d) \card\A_d 
     \leq \S{A}{P}{z} 
     \leq \sum_{d \mid P(z)} \mu(d) g_U(d) \card\A_d.
-\end{equation*}
+\end{equation}
 \end{theorem}
 
 
-Detta var Bruns huvudidé, genom att hitta funktionerna $g_U$ och $g_L$ är det alltså möjligt att uppskatta $\S{A}{P}{z}$ både ovan och underifrån. Välj $(z_n)$ för $0 \leq n \leq r$, för något $r$ så att
+Detta var Bruns huvudidé, genom att hitta funktionerna $g_U$ och $g_L$ är det alltså möjligt att begränsa $\S{A}{P}{z}$ både ovan och underifrån. Vi ska nu ägna oss åt att välja passande $g_U$ och $g_L$ som uppfyller de önskade kriterierna.
+
+Låt $b$ vara ett fixt positivt heltal och välj $(z_n)$ där $0 \leq n \leq r$, för något $r$ så att
 \begin{equation*}
-    2 = z_r < z_{r-1} < \cdots < z_1 < z_0 = z
+    2 = z_r < z_{r-1} < \cdots < z_1 < z_0 = z.
 \end{equation*}
-och definiera produkten $P_{z_n, z} := \prod_{z_n \leq p < z} p$. Låt $b$ vara ett fixt positivt heltal och låt
+Definiera produkten $P_{z_n, z} := \prod_{z_n \leq p < z} p$ och låt
 \begin{equation*}
     g_U(d) :=
     \begin{cases}
@@ -49,11 +51,42 @@ och definiera produkten $P_{z_n, z} := \prod_{z_n \leq p < z} p$. Låt $b$ vara 
     \end{cases}
 \end{equation*}
 och
-\begin{equation*}
+\begin{equation} \label{brun.eq.gugl}
     g_L(d) :=
     \begin{cases}
         1, & \text{om}\ \nu(\gcd{d, P_{z_n, z}}) \leq 2b+2n-3,\ \forall n \leq r, \\
         0, & \text{annars.}
     \end{cases}
+\end{equation}
+Dessa två funktioner $g_U$ och $g_L$ uppfyller antagandena i sats \ref{brun.thm.2}. Med notation från (JFAEJAEFJ), skriver vi
+\begin{equation*} \label{brun.eq.omega}
+        \card{\A_d} = \delta_d X + R_d = \frac{\omega(d)}{d} X + R_d.
 \end{equation*}
-Dessa två funktioner $g_U$ och $g_L$ uppfyller antagandena i sats \ref{brun_t2}.
+Då är $\omega(d)$ en multiplikativ funktion. Vi kan nu skriva den undre begränsningen i (\ref{brun.eq.bound}) som 
+\begin{equation*}
+    \sum_{d\mid P(z)}\mu(d)g_L(d)\frac{\omega(d)}{d} +
+    \sum_{d \mid P(z)} \mu(d) g_L(d) R_d
+\end{equation*}
+och liknande för den övre begränsningen. Med detta i åtanke formulerar vi:
+
+
+\begin{lemma} \label{brun.lem.1}
+Låt $g_U$ och $g_L$ vara som i (\ref{brun.eq.gugl}), då gäller
+\begin{align*}
+    \sum_{d\mid P(z)}\mu(d)g_U(d)\frac{\omega(d)}{d} =
+    W(z)\left(1 + \sum_{p<z}\frac{\omega(p)W(p)}{pW(z)} \times \sum_{t\mid P_{p^+,z}}\frac{g_U(t)(1-g_U(pt)}{t}\omega(t)\right),
+\end{align*}
+och
+\begin{align*} \label{brun.eq.sum}
+    \sum_{d\mid P(z)}\mu(d)g_L(d)\frac{\omega(d)}{d} =
+    W(z)\left(1 + \sum_{p<z}\frac{\omega(p)W(p)}{pW(z)} \times \sum_{t\mid P_{p^+,z}}\frac{g_L(t)(1-g_L(pt)}{t}\omega(t)\right),
+\end{align*}
+där $p^+$ betecknar det minsta primtal i $\P$ större än $p$ och
+\begin{equation*}
+    W(z) := \prod_{p\mid P(z)}\left(1 - \frac{\omega(p)}{p} \right).
+\end{equation*}
+
+
+\end{lemma}
+
+
