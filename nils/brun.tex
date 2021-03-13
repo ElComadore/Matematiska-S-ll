@@ -58,7 +58,7 @@ och
         0, & \text{annars.}
     \end{cases}
 \end{equation}
-Dessa två funktioner $g_U$ och $g_L$ uppfyller antagandena i sats \ref{brun.thm.2}. Med notation från (JFAEJAEFJ), skriver vi
+Dessa två funktioner $g_U$ och $g_L$ uppfyller antagandena i sats \ref{brun.thm.2}. Med notation från (\ref{deltaX}), skriver vi
 \begin{equation*} \label{brun.eq.omega}
         \card{\A_d} = \delta_d X + R_d = \frac{\omega(d)}{d} X + R_d.
 \end{equation*}
@@ -85,8 +85,60 @@ där $p^+$ betecknar det minsta primtal i $\P$ större än $p$ och
 \begin{equation*}
     W(z) := \prod_{p\mid P(z)}\left(1 - \frac{\omega(p)}{p} \right).
 \end{equation*}
+\end{lemma}
+%Högerleden till ekvationerna i lemmat ovan går att uppskatta.
 
+\comment{
+\begin{lemma}
+Med notation definierad tidigare i kapitlet gäller det att
+\begin{equation*}
+    \sum_{d\mid P(z)}\mu(d)g_U(d)\frac{\omega(d)}{d} \leq
+    W(z)\left(1+ \frac{2}{} \right)
+\end{equation*}
 
 \end{lemma}
+}
+
+
+\begin{theorem}[Bruns såll] \label{brun.thm.brun}
+Behåll notation från tidigare i kapitlet. Låt $b$ vara ett positivt heltal och $\lambda$, ett reellt tal som uppfyller $0<\lambda e^{1+\lambda}<1$.
+Gör följande tre antaganden:
+
+\bigskip\noindent
+1. $\left|R_d\right| \leq \omega(d)$ där $d\mid \prod_{p\in\P}p$. \\
+2. Det finns en konstant $A_1\geq1$ så att $\omega(p)/p \leq 1-1/A_1$, för alla $p\in\P$\\
+3. Det finns konstanter $\kappa>0$ och $A_2\geq 1$ så att
+\begin{equation*}
+    \sum_{w\leq p<z} \frac{\omega(p)\log p}{p} \leq \kappa\log(z/w) + A_2,\ \text{ för }\ 2\leq w\leq z.
+\end{equation*}
+
+\bigskip\noindent
+Då begränsas $\S{A}{P}{z}$ ovanifrån av
+\begin{align*}
+    XW(z)\left(
+    1 + \lambda\frac{ 2\lambda^{2b}e^{2\lambda} }{ 1 - \lambda^2e^{2+2\lambda} }
+    \exp\left( c_1\frac{2b+3}{\lambda\log z}
+    \right)\right)
+    + O\left(z^{2b+\frac{2.01}{e^{2\lambda/\kappa} - 1}}\right)
+\end{align*}
+och underifrån av
+\begin{align*}
+    XW(z)\left(
+    1 - \frac{ 2\lambda^{2b}e^{2\lambda} }{ 1 - \lambda^2e^{2+2\lambda} }
+    \exp\left( c_1\frac{2b+2}{\lambda\log z}
+    \right)\right)
+    + O\left(z^{2b+\frac{2.01}{e^{2\lambda/\kappa} - 1} - 1}\right),
+\end{align*}
+där 
+\begin{equation*}
+    c_1 := \frac{A_2}{2}\left(1+A_1\left(\kappa+\frac{A_2}{\log 2}\right)\right).
+\end{equation*}
+
+
+
+
+\end{theorem}
+
+
 
 
