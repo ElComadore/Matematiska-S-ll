@@ -1,43 +1,4 @@
-\documentclass[12pt,a4paper]{article}
-\usepackage[utf8]{inputenc}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{graphicx}
-\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
 
-
-
-%\usepackage{amsthm}
-\usepackage{hyperref}
-\usepackage[backend=bibtex]{biblatex}
-\addbibresource{References.bib}
-
-
-% Delar-operator:
-\newcommand{\divides}{\mid}
-\newcommand{\notdivides}{\nmid}
-% Största gemensamma delare
-\renewcommand{\gcd}[1]{(#1)}
-% Kardinalitet
-\newcommand{\card}[1]{#1}
-% Heltalsmängd:
-\newcommand{\A}{\mathcal{A}}
-% Primtalsmängd:
-\renewcommand{\P}{\mathcal{P}}
-% Sållad mängd:
-\renewcommand{\S}[3]{S(\mathcal{#1}, \mathcal{#2}, #3)}
-
-% Satser etc. mer info hittas på https://www.overleaf.com/learn/latex/theorems_and_proofs
-\newtheorem{theorem}{Sats}[section]
-\newtheorem{corollary}{Korollarium}[theorem]
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{proof}{Bevis}
-\newtheorem{proposition}{Förslag}
-
-% Block-kommentar
-\newcommand{\comment}[1]{}
 
 
 
@@ -56,7 +17,7 @@
 \begin{document}
 
 
-\section{Eratosthenes–Legendre Såll}
+\subsection{Eratosthenes–Legendre Såll}
 \hspace{0.3cm} Den gregiska matematikern, astronomen och poeten Eratosthenes från Cypern (can276 f.ka – ca 194 f.kr), var en av de tidigaste matematikerna som arbetade med primtal. I en av hans stora presentationer inom matematik introducerade han ”Eratosthenes såll”, vilket är ett effektivt sätt att identifiera primtal upp till en viss gräns, som senare blev grunden för sållteorin.
 År 1808 introducerade den franska matematikern Adrien-Marie Legendre (1752-1833) den Legendre Såll i sin bok "Théorie des nombres", som är en formulering av Eratosthenes-metoden, som heter "Eratosthenes-Legendre såll" eftersom den byggs på Eratosthenes algoritm.\\
 
@@ -99,7 +60,7 @@ och med ersättning med den nya faktoriserad termen, vi får
 
 
 
-\section{Eratosthenes Generella Såll}
+\subsection{Eratosthenes Generella Såll}
 Efter vi såg den grundläggande såll, vi realiserar att den ger inte en nyttig uppskattning av $ S(\A, P(z)) $ på grund av dess stora feltermen. Den grundläggande metod av Eratosthenes-Legendre såll kan generaliseras, vi kan anpassa den för att den kan användas med andra talföljd av siffror som kvadratfria heltal. En kvadratfir heltal är en heltalsom är en produkt av åtskilda primtal. Dess mer generella såll kommer att vara mycket bättre och effektivare med de kvadratfria tal i grunden eftersom de är tätare än primtal, detta kommer att hjälpa oss att hitta intressanta gränser för dessa kvadratfria siffror.
 
 Den generalla aåll kan användas för att demonstrera många intressanta resultater. I denna del kommer vi att introducera Eratosthenes generella såll och dess bevis.
