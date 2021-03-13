@@ -1,140 +1,251 @@
-%\newcommand\Mydiv[2]{%
-%$\strut#1$\kern.25em\smash{\raise.3ex\hbox{$\big)$}}$\mkern-8mu
-%\overline{\enspace\strut#2}$}
-
-%\theoremstyle{plain}
-%\newtheorem{theorem}{Theorem}
-%\newtheorem{theorem}{Theorem}[chapter] % reset theorem numbering for each chapter
-
-
-% Theorem Styles
-%\newtheorem{theorem}{Theorem}[section]
-%\newtheorem{lemma}[theorem]{Lemma}
-%\newtheorem{definition}[theorem]{Definition}
-
-% Definition Styles
-
-%\newtheorem*{question}{Question}%[section]
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
 
 
 
+%\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage[backend=bibtex]{biblatex}
+\addbibresource{References.bib}
 
 
-%\section{Introduction}
+% Delar-operator:
+\newcommand{\divides}{\mid}
+\newcommand{\notdivides}{\nmid}
+% Största gemensamma delare
+\renewcommand{\gcd}[1]{(#1)}
+% Kardinalitet
+\newcommand{\card}[1]{#1}
+% Heltalsmängd:
+\newcommand{\A}{\mathcal{A}}
+% Primtalsmängd:
+\renewcommand{\P}{\mathcal{P}}
+% Sållad mängd:
+\renewcommand{\S}[3]{S(\mathcal{#1}, \mathcal{#2}, #3)}
 
-The Sieve of Eratosthenes is an ancient algorithm to find prime numbers from a list of consecutive integers. It is as follows:
+% Satser etc. mer info hittas på https://www.overleaf.com/learn/latex/theorems_and_proofs
+\newtheorem{theorem}{Sats}[section]
+\newtheorem{corollary}{Korollarium}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{proof}{Bevis}
+\newtheorem{proposition}{Förslag}
 
-\begin{enumerate}
-    \item Take a list of consecutive integers from 2 through n: (2, 3, 4, ..., n).
-    \item Initially, let p equal 2, the smallest prime number.
-    \item Cross out, from the list, all multiples of p except p itself. Do this until the end of the list.
-    \item Assign the value of p to the next prime. The next prime is the smallest number in the list greater than p (in the previous step) that is not marked. If there was no such number, then stop. 
-    \item If $p < \sqrt{n}$, repeat step 3.
-\end{enumerate}
-
-At the termination of the algorithm, all the numbers which are crossed out are composite numbers. The unmarked numbers are the primes in the list. Just like a sieve being used to filter out particulates in a liquid, Erathosthenes' sieve filters out the composite numbers to come up with a list of primes up to a prescribed numerical upper bound.\cite{Mollin} 
-
-In 1808, Legendre extended Erathosthenes' sieve to estimate an upper bound $\pi(x)$, the number of primes up to $x$. Using the inclusion-exclusion principle to compute the number of elements of a set $A \subset \mathbb{Z}_+$ that have no prime factors below, we take delete from the set all the even ones, subtract the number of multiples of 3, subtract the number of multiples of 5, add the number of multiples of 6 (they were discarded twice from the multiples of 2 and 3), and so on. As such, the formula Legendre produced needed a whole string of multiple sums that increase in number with $x$. To keep track of the number of times a number is crossed-out by inclusion-exclusion, the Mobius function as defined below is used.
-
-\begin{definition}
-Let $\omega(n)$ denote the number of distinct prime factors of $n,$ and define the Möbius function
-$$
-\mu(n):=\left\{\begin{array}{ll}
-0 & \text { if } n \text { has a non-trivial square divisor } \\
-(-1)^{\omega(n)} & \text { if } n \text { is squarefree. }
-\end{array}\right.
-$$
-\end{definition}
+% Block-kommentar
+\newcommand{\comment}[1]{}
 
 
-We then obtain
 
-\begin{theorem}[Sieve of Eratosthenes-Legendre, Basic Version] For any $2 \leq y \leq x$ we have
-$$
-\#\{n \leq x: p \mid n \Rightarrow p>y\}=\sum_{d \leq x, \atop p \mid d \Rightarrow p \leq y} \mu(d)\left\lfloor\frac{x}{d}\right\rfloor
-$$
-where $\lfloor.\rfloor$ denotes integer part.
-In particular, we have
-$$
-\pi(x)-\pi(\sqrt{x})+1=\sum_{d \leq \sqrt{x}} \mu(d)\left\lfloor\frac{x}{d}\right\rfloor
-$$
-and for any $2 \leq y \leq x$ we have
-$$
-\pi(x) \leq \pi(y)-1+\sum_{d \leq x, \atop p \mid d \Longrightarrow p \leq y} \mu(d)\left\lfloor\frac{x}{d}\right\rfloor=x \prod_{p \leq y}\left(1-\frac{1}{p}\right)+O\left(2^{\pi(y)}\right)
-$$
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{document}
+
+
+\section{Eratosthenes–Legendre Såll}
+\hspace{0.3cm} Den gregiska matematikern, astronomen och poeten Eratosthenes från Cypern (can276 f.ka – ca 194 f.kr), var en av de tidigaste matematikerna som arbetade med primtal. I en av hans stora presentationer inom matematik introducerade han ”Eratosthenes såll”, vilket är ett effektivt sätt att identifiera primtal upp till en viss gräns, som senare blev grunden för sållteorin.
+År 1808 introducerade den franska matematikern Adrien-Marie Legendre (1752-1833) den Legendre Såll i sin bok "Théorie des nombres", som är en formulering av Eratosthenes-metoden, som heter "Eratosthenes-Legendre såll" eftersom den byggs på Eratosthenes algoritm.\\
+
+
+ Hur har den här sållen startat den moderna såll? och vilka upptäckter gjordes med hjälp av Eratosthenes-Legendre såll?\\
+
+
+
+ Legendre formaliserade matematiken bakom Eratosthenes algoritmen genom att använda den inklusiv-exklusivprincipen för att beräkna antal elementer i en given mängd av naturliga tal  $ A\subset Z_{+} $ som inte har några primtalsfaktorer nedan $ z $. Med $  \#A=x $, tar vi alla $ x $ tal, och vi substraherar antalet multiplar av 2, även vi substraherar antalet multiplar av 3, samma sak med multiplar av 5, sen lägger vi till antalet av multiplar $ 2\times3 $ (eftersom multipler av 6 substraherades två gånger, en gång med multiplarna av 2 och den andra med dem av 3); och vi fortsätter på detta sätt genom alla värden på  $ d $ som delar produkten av primtal upp till  $ z $. \\
+ 
+Låt $ \A $ beteckna vilken mängd som helst av positiva heltal. $ \P $ betecknar en mängd av primtal\\
+
+Legendre-identiteten uttrycks av: 
+
+\begin{theorem}[Legendre identitet \cite{Terence}] kan uttryckas genom:
+\[S(\A, P(z))=\sum_{d\divides P(z)}\mu(d)\sum_{\substack{n\leq x;\\d\divides n}}1. \]
+Där  $ S(\A, P(z)) $ räknar antalet naturliga tal $ n\leq x $ i $ A $ coprime to $ P(z) $.
 \end{theorem}
+Vi kommer att använda denna sats för att komma till en allmän övre gräns för $ S(\A, P(z)) $\\
+Vi har
+\begin{align*}
+S(\A, P(z)) & =\sum_{d\divides P(z)}\mu(d)\Bigl\lfloor \frac{x}{d}\Bigr\rfloor\\
+ &  =\sum_{d\divides P(z)}\mu(d) \left( \frac{x}{d}+ \Bigl\lfloor \frac{x}{d} \Bigr\rfloor - \frac{x}{d} \right)\\
+ & =\sum_{d\divides P(z)}\mu(d)\frac{x}{d} \left(\Bigl\lfloor\frac{x}{d}\Bigr\rfloor-\frac{x}{d}\right)\\
+ & =\sum_{d\divides P(z)}\mu(d)\frac{x}{d}+\sum_{d\divides P(z)}\mathcal{O}(1)\\
+ & =\sum_{d\divides P(z)}\mu(d)\frac{x}{d}+ \mathcal{O}\left(\sum_{d\divides P(z)}1\right)
+\end{align*}
 
-Let $A$ be a set of natural numbers, and let $P$ be a set of primes; also set
-$$
-P(z)=\prod_{p \in P, p \leq z} p
-$$
-For each $p \in P,$ choose a set $R_{p}$ consisting of some number $\omega(p)$ of residue classes modulo $p,$ and let $A_{p}$ be the subset of $A$ whose elements belong to the chosen residue classes. Put
-$$
-W(z)=\prod_{p \mid P(z)}\left(1-\frac{\omega(p)}{p}\right)
-$$
-For $d$ squarefree with all prime factors in $P,$ put $\omega(d)=\prod_{p \mid d} \omega(p)$ and $A_{d}=\cap_{p \mid d} A_{p}$.
+Så vi kan hitta en uppskattning för den inre summan i Legendre identitet som följande:
+\[\sum_{n\leq x;d\divides n}1=\frac{x}{d}+\mathcal{O}(1); \]
+Vi vet att antalet åtskilda faktorer som $ P(z) $ har är $ 2^{\pi(z)} $ vi härleda
+\[S(\A, P(z))=\sum_{d\divides P(z)}\mu(d)\frac{x}{d}+ \mathcal{O}(2^{\pi(z)}) \]
+Låt $ \omega(p) $ betekna den särskilja residualklasser modulo $ p $  för varje primtal i $ \P $, vi definerar $ W(z) $ som
+\[W(z)=\prod_{\substack{p\in \P\\p<z}}\left( 1-\frac{\omega(p)}{p}\right)\]
+Genom att faktorisera den första termen av summan 
+\[\sum_{d\divides P(z)}\mu(d)\frac{x}{d}= x\prod_{p\leq z}\left( 1-\frac{1}{p} \right) \]
+och med ersättning med den nya faktoriserad termen, vi får
+\[S(\A, P(z))=\left( \prod_{p\leq z}\left( 1-\frac{1}{p} \right)\right) x +\mathcal{O}(2^{\pi(z)}) \]
 
-To estimate $S(A, P, z),$ the number of elements of $A$ not belonging to $A_{p}$ for any $p \leq z$, we assume some properties about the chosen residue classes. First, for some $\kappa>0$.
+
+
+
+\section{Eratosthenes Generella Såll}
+Efter vi såg den grundläggande såll, vi realiserar att den ger inte en nyttig uppskattning av $ S(\A, P(z)) $ på grund av dess stora feltermen. Den grundläggande metod av Eratosthenes-Legendre såll kan generaliseras, vi kan anpassa den för att den kan användas med andra talföljd av siffror som kvadratfria heltal. En kvadratfir heltal är en heltalsom är en produkt av åtskilda primtal. Dess mer generella såll kommer att vara mycket bättre och effektivare med de kvadratfria tal i grunden eftersom de är tätare än primtal, detta kommer att hjälpa oss att hitta intressanta gränser för dessa kvadratfria siffror.
+
+Den generalla aåll kan användas för att demonstrera många intressanta resultater. I denna del kommer vi att introducera Eratosthenes generella såll och dess bevis.
+
+Efter vi har sett Legendre identitet i sats 1 och förutom definitionerna i förgående avsnittet, vi kan skriva om sållen och formulera den som följande:
+
+
+Låt $ P(z) $ vara produkten av alla primtal i $ \P $ mindre än $ z $, d.v.s
+\[P(z)=\prod_{\substack{p \in \P\\ p \leq z}} p \]
+
+Vi definerar $\A_{p}$ som en mängd av elementer av $ \A $ på ett sätt där det tillhör åtminstone en av $\omega(p)$ klasser.
+
+Låt $ d $ vara kvadratfri som är endast sammansättad av primfaktorer i $ \P $, vi sätter $\omega(d)=\prod_{p \divides d} \omega(p)$, also $\A_{1} =\A$ och $A_{d}=\cap_{p \divides d} A_{p}$
+
+Så vi har
+\[\omega(d)=\prod_{p\divides d}\omega(p)\]
+
+
+
+Antar att $ \vert R_{d}\vert=\mathcal{O}(\omega(d))$ och $ \exists\kappa\geq 0 $ så att
 \begin{equation}
-\sum_{p \leq z, p \in P} \frac{\omega(p) \log p}{p} \leq \kappa \log z+O(1)    
-\end{equation}
-
-where the big-O bound is for $z \rightarrow \infty$ and the constant depends on $P, R_{p}, \kappa$.
-
+\sum_{p\divides P(z)}\frac{\omega(p)\log(p)}{p}\leq \kappa \log(z)+\mathcal{O}(1)
+\end{equation}  
+Med partiell summering får vi
+\[\sum_{p\divides P(z)}\frac{\omega(p)}{p}\leq\kappa\log\log z+\mathcal{O}(1)\]
+   Vi har de följande Lemmas som ska användas för att bevisa Eratosthenes generella såll satsen.
 \begin{lemma}
-\begin{enumerate}
-    \item Assuming (1), we have
+     Antar (1) har vi
 $$
-\sum_{d<t, d \mid P(z)} \omega(d)=O\left(t(\log z)^{\kappa} \exp \left(-\frac{\log t}{\log z}\right)\right)
+\sum_{d<t, d \divides P(z)} \omega(d)=\mathcal{O}\left(t(\log z)^{\kappa} \exp \left(-\frac{\log t}{\log z}\right)\right)
 $$
-where the big-O bound is for $z \rightarrow \infty$ and the constant depends on $P, R_{p}, \kappa$.
-    \item Fix $C>0 .$ Assuming (1), we have
+där den stora- $\mathcal{O}$ gräns är för $z \rightarrow \infty$ och konstanten bero på $P, R_{p}, \kappa$.
+\end{lemma}
+\begin{lemma}
+    Fixa $C>0 .$ Antar (1) har vi
 $$
-\sum_{d>C x, d \mid P(z)} \frac{\omega(d)}{d}=O\left((\log z)^{\kappa+1} \exp \left(-\frac{\log x}{\log z}\right)\right)
+\sum_{d>C x, d \divides P(z)} \frac{\omega(d)}{d}=\mathcal{O}\left((\log z)^{\kappa+1} \exp \left(-\frac{\log x}{\log z}\right)\right)
 $$
-where the big- $O$ bound is for $z \rightarrow \infty$ and the constant depends on $P, R_{p}, \kappa, C .$
-\end{enumerate}
+där den stora- $\mathcal{O}$ gräns är för $z \rightarrow \infty$ och konstanten bero på $P, R_{p}, \kappa, C .$
  
 \end{lemma}
 
-The above lemmas lead to a general version of the  Erathosthenes-Legendre sieve:
+Med de förgående inställningar, Eratosthenes generella såll är formulerad som följande\cite{Dalton}
+\begin{theorem}[Eratosthenes Generella Såll]\hfill
 
-\begin{theorem}[]
-Fix $P, R_{p}, \kappa$ satisfying (1) , and also fix $C, c>0$. Then for any set $A$ and any $X, x>0$ such that
-$$
-\left|\# A_{d}-\frac{\omega(d)}{d} X\right| \leq c \omega(d)
-$$
-and $\# A_{d}=0$ for $d>C x,$ we have
-$$
-S(A, P, z)=X W(z)+O\left(x \log ^{\kappa+1} z \exp \left(-\frac{\log x}{\log z}\right)\right)
-$$
-where the big- $O$ bound is for $z \rightarrow \infty$, uniformly in $A, x, X$.
+Låt $ S(\A, P(z)) $ betekna antal heltal i $ \A $ som är relativt primtal till $ P(z) $.
+Vi definierar $\S\A\P z =\vert \A \setminus \cup_{p\divides P(z)}\A_{p}\vert$, för en given $ R_{d} $ vi antar $ X $ existerar, verifierar
+\[\vert\A_{d}\vert =\frac{\omega(d)}{d}X +R_{d} \]
+
+Låt oss anta $ \exists \kappa\geq 0 $ och $ \vert R_{d}\vert = \mathcal{O}(\omega(d))$ på ett sätt så att
+
+\[\sum_{p\divides P(z)}\frac{\omega(p)\log(p)}{p}\leq \kappa \log(z)+\mathcal{O}(1)\]
+
+
+Med (1) och genom att anta $ \exists y\in \mathbb{R}^{+} $ som verifierar $ \forall d>y, \vert A_{d}\vert=0 $.
+
+Vi får
+\begin{equation}
+S(\A, P(z))= XW(z)+\mathcal{O}\left( \left( X+\frac{y}{\log(z)} \right)(\log(z))^{\kappa+1}\exp \left( -\frac{\log(y)}{\log(z)} \right) \right)
+\end{equation}
 \end{theorem}
+\begin{proof}
+Med de hypoteser som används för Eratosthenes generella sållteorin och den inklusion-exklusionprincipen, får vi
+\begin{align*}
+S(\A, P(z))&=\sum_{\substack{d\divides P(z)\\d\leq y}}\mu(d)\#\A_{d} =\sum_{\substack{d\divides P(z)\\d\leq y}}\mu(d)\frac{X\omega(d)}{d}+\mathcal{O}(\sum_{\substack{d<y,\\ d \divides P(z)}} \omega(d)).
+\end{align*}
+Så genom att ersätta med de förgående två Lemmor, får vi (2)
+\end{proof}
+Notera att sållens allmänna uttryck används i många fall, och för det ska vara tillräckligt allmännt för användningar i olika fall, anser vi $ X $ som en multiplikativ funktion av $ x $, in other words $ X(x) $ är lika med $ x $. 
 
-One can use the sieve to show that 
-$$
-\pi(N) \ll \frac{N}{\log \log N}.
-$$
+\subsection{Applikationer och begränsningar}
 
-The Eratosthenes–Legendre sieve is, in a way, more general than Chebychev’s bounds. Combining the Erathosthenes-Legendre sieve with Rankin's trick allows one to obtain the number of primes $p$ less than $x$ such that $p+2$ is also prime. This leads to the Brun's result that $\sum_{p,p+2\ prime}\frac{1}{p}$ converges.\cite{cojocarumurty}\cite{kedlaya}
+En huvudapplikation, är att finna en övre gräns för $ \pi(x) $, mycket gjordes för att förbättra resultatet. Här är några:
+\begin{proposition}
+Genom att använda Eratosthenes–Legendre såll, ser vi att den övre gränsen av antalet primtal upp till $ x $ är given av
+\[S(\A, P(z))\ll\frac{x}{\log(\log(x))}\]
+\end{proposition}
+\begin{proof}
+Vi har från sats 1
+\[S(\A, P(z))=x \prod_{p\leq z}\left( 1-\frac{1}{p} \right) +\mathcal{O}(2^{\pi(z)})\]
+För att få en övre gräns för $ S(\A, P(z)) $ vi får en nedre gräns för den reciproka värdet av den första termen, 
 
-We see that improving the Eratosthenes–Legendre sieve is a motivating problem of sieve theory, where sharper bounds are sought. Many more sieves have been defined and used but the features of the Eratosthenes–Legendre sieve is relevant in further results to this end.
+Genom att använda de geometriska serier, får vi
+\[\prod_{p\leq z}\left( 1-\frac{1}{p} \right)^{-1}=\prod_{p\leq z}\sum_{r=0}^{\infty}\frac{1}{p^{r}}\]
+Så har vi
+\[\prod_{p\leq z}\sum_{r=0}^{\infty}\frac{1}{p^{r}}>\sum_{n<z}\frac{1}{n}\]
+För att termen på höger sidan är en delmängd av dem som är på vänster sidan.
 
-% What is this doing here? /Nils
-\comment{
-\begin{theorem}[Brun's pure sieve]
-Let $k$ be a nonnegative integer and define
-$$
-\lambda_{d}=\left\{\begin{array}{ll}
-\mu(d) & \text { if } \omega(d) \leqslant k \\
-0 & \text { otherwise }
-\end{array}\right.
-$$
-Then $\boldsymbol{\lambda}$ satisfies $\left(\lambda^{+}\right)$ if $k$ is even and $\left(\lambda^{-}\right)$ if $k$ is odd. Thus, if $k_{e}$ is even and $k_{o}$ is odd, then for any sieve
-problem $\mathcal{A}$ and any $z \geqslant 2$ we have
-(1.11)
-$$
-\sum_{d \in \mathscr{P}(z)} \mu(d) A_{d} \leqslant S(\mathcal{A}, z) \leqslant \sum_{d \in \mathscr{P}(z) \atop \omega(d) \leqslant k_{e}} \mu(d) A_{d}
-$$
+Genom att genomföra med $ \int_{1}^{z}\frac{1}{x}dx $, får vi
+\[\sum_{n<z}\frac{1}{n}>\log(z)\]
+Således
+\[S(\A, P(z))<\frac{x}{\log(z)}+\mathcal{O}(2^{\pi(z)})\]
+För att kontrolera den andra termen (felterm), låt $ z=\log(x)$. Vi vet att $ \pi(z)<z $ så $ 2^{\pi(z)}<2^{z}=2^{\log(x)}=x^{log(2)} $, således får vi
+\[S(\A, P(z))\ll\frac{x}{\log(\log(x))}\]
+\end{proof}
+Efteråt, en förbättring gjordes, vilket gav en bättre övre gräns för antal primtal upp till $ x $, den ges av nästa förslag
+\begin{proposition}
+En annan övre gräns för antal primtal upp till x är given av
+\[S(\A, P(z))\ll\frac{x}{\log(x)}(\log\log x).\]
+\end{proposition}
+
+En annan viktig tillämpning av Eratosthenes–Legendre såll är att hitta en övre gräns för antalet primstvillning upp till $ x $.
+\begin{theorem}[Twin prime upper bound\cite{Aliram}]\hfill
+
+Antal primtal $ p $ with $ p\leq x $ och $ p+2 $ är också en primtal (d.v.s primtalstvillning), är given av
+\[\S\A\P z \ll\frac{x}{\log^{2}(x)}(\log\log x)^{2}\]
 \end{theorem}
-}
+\begin{proof}
+Låt $ \A $ beteckna vilken mängs av positiva heltal, $ \P $ betecknar vilken mängd av primtal. Låt ett reelt tal $ z $ such as $ z=z(x) $. VI skiljer residualklasser 0 och -2 modulo $ p $ för varje primtal $ p<z $ . Given att mängden $ \A $ är nollmängd för $ p>x+2 $, och med användning av Eratosthenes Generella Såll (sats 2) för $ \kappa=2 $ får vi
+\[\S\A\P z = xW(z)+\mathcal{O} \left( x(\log z)^{3} \exp \left( -\frac{\log x}{\log z}\right) \right)\]
+med
+\[W(z)=\prod_{p<z}\left( 1-\frac{2}{p}\right)\]
+Vi kan hitta den övre gränsen för $ W(z) $ som följande
+\[W(z)=\prod_{p<z}\left( 1-\frac{2}{p}\right)\leq\exp \left( -\sum_{p<z}\frac{2}{p} \right)\ll (\log z)^{-2}\]
+Om vi sätter värdet av $ z $ som
+\[\log z = \log x/A\log\log x\]en stor positiv konsonant
+får vi  
+\[\S\A\P z \ll \left( \frac{\log x}{A\log\log x} \right)^{-2}=\left( \frac{A\log\log x}{\log x} \right)^{2}\]
+Därför, sammanfattar vi
+\[\S\A\P z \ll\frac{x}{\log^{2}(x)}(\log\log x)^{2}\]
+\end{proof}
+Notera att denna övre gränsen är inte den bästa. 
+ 
+
+
+Eratosthenes–Legendre Såll, har många tillämplingar i såll och talteorin. Efter dess presentation, många andra sållmetoder definierades som förlängningar av Eratosthenes–Legendre såll som Brun's såll.
+
+\printbibliography
+
+%\begin{thebibliography}{9}
+
+%\bibitem{Terence} 
+%Terence Tao. 
+%Notes 7: Sieving and expanders, 1 March, 2012,\\
+%\url{https://terrytao.wordpress.com/2012/03/01/254b-notes-7-sieving-and-expanders/}
+
+%\bibitem{Dalton} 
+%Jack Robert Dalton. 
+%An Exposition of Selberg’s Sieve,  Master thesis,  University of Vermont, May, 2017, pages: 32-33.
+%\\\url{https://scholarworks.uvm.edu/cgi/viewcontent.cgi?article=1719&context=graddis}
+
+%\bibitem{Aliram}
+%Alina Carmen Cojocaru, M. Ram Murty.
+%An Introduction to Sieve Methods and Their Applications, Cambridge University Press, London Mathematical Society, 2005, page 73.
+
+
+%\end{thebibliography}
+
+\end{document}
