@@ -3,7 +3,9 @@
 % Inledning
 År 1915 presenterade norrmanen Viggo Brun (1885-1978) ett såll som senare fått namnet Bruns såll. Brun hade inspirerats av publikationer av Jacques Hadamard som handlade om de framsteg som Jean Merlin gjort i att utöka Eratosthenes teori. Sållet blev inte uppmärksammat direkt, istället tog det ca 30 år innan andra matematiker började intressera sig för det. En anledning till dröjsmålet kan vara att Bruns skrivsätt och val av notation gjorde materialet onödigt svårläst. Sedan den ursprungliga publikationen har det gjorts flera insatser för att förkorta och förenkla läsningen men trots detta är Bruns såll och dess bevis krävande för läsaren, med detta i åtanke har vi valt att korta ned beviset avsevärt i förhoppningen om att stycket ska upplevas som överkomligt.
 
-\bigskip\noindent
+\todo{Granskning och källhänvisning av ovanstående}
+
+%\bigskip\noindent
 Vi börjar med att välja två funktioner $f$ och $g$ som uppfyller $f(n) = \sum_{d\mid n} \mu(d) g(d)$. Låt $\P^{(\delta)}$ beteckna $\{ p\in\P;p \nmid \delta\}$,  genom Möbius inverteringsformel finner vi då att
 \begin{align*}
     \sum_{d\mid P(z)} \mu(d) g(d) \card\A_d 
@@ -140,3 +142,34 @@ där
 
 \todo{Någon typ av förklaring/förtydligande av satsen ovan}
 
+
+\subsection{En tillämpning av Bruns såll}
+Låt oss uttrycka en mer generell version av primtalstvillingsförmodan på följande vis:\\
+\textit{Det finns oändligt många par av heltal $(n, n+2)$ där båda talen har som mest $r$ primtalsfaktorer.}\\
+Sätter vi $r=1$ får vi exakt primtalstvillingsfömodan som ej är bevisad, däremot kan vi med hjälp av Bruns såll bevisa påståendet för $r=7$. Definiera
+\begin{equation*}
+    \mathcal{T} := \{\textit{$n\leq x$: $n$ och $n+2$ har som mest $7$ primtalsfaktorer}\}.
+\end{equation*}
+Vi vill hitta en undre begränsning till $\card{\mathcal{T}}$ som går mot $\infty$ då $x\to\infty$. Låt
+\begin{equation*}
+    \A := \{n(n+2): n\leq x\}
+\end{equation*}
+Från denna mängden vill vi sålla bort tal som delas av primtal $p<z$ för något $z$. Vi skiljer alltså på två typer av residualklasser och har därmed
+\begin{equation*}
+    \omega(2)=1\ \text{ och }\ \omega(p)=2,\ \text{för}\ p>2.
+\end{equation*}
+Vidare väljer vi
+\begin{equation*}
+    X=x,\ 
+    A_0=\kappa=2,\ 
+    A_1=3\
+    \text{ och }\
+    b=1.
+\end{equation*}
+
+\todo{Visa några steg i uträkningen}
+
+Om det är så att $n$ eller $n+2$ har mer än 7 primtalsfaktorer så måste $p\mid n(n+2)$ för något primtal $p\leq n^{1/u}$, där $u<8$. Vi kan därför uttrycka $\card\mathcal{T}$ som $\S{A}{P}{z}$ genom att sätta $z := x^{1/u}$. Detta ger oss att
+\begin{equation*}
+    \card\mathcal{T} \ll \frac{x}{(\log x)^2}.
+\end{equation*}
