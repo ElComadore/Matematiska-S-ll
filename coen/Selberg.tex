@@ -2,6 +2,19 @@ Kring tjugo år efter utvecklingen av succén som var Bruns såll, uppkom två o
 \begin{equation}
     \sum_{d\divides k} \mu(d) \leq \Bigg(\sum_{d\divides k}\lambda_d\Bigg)^2\label{eq:SelAppr}
 \end{equation}
-där det nu gäller att göra en bra val på \(\lambda_d\) för att minimisera felet med approximationen. 
+där det nu gäller att göra en bra val på \(\lambda_d\) för att minimera felet med approximationen. 
 
-För att se hur \eqref{eq:SelAppr} är användbar låt oss nu vända till formuleringen av \(\S\)
+För att se hur \eqref{eq:SelAppr} är användbar, låt oss nu vända till formuleringen av \(\S{A}{P}{z}\), nämligen
+\begin{align}
+    \S{A}{P}{z} = \sum_{\substack{a\in \mathcal{A}\\a\not\in\mathcal{A}_p,\forall p\divides P(z)}} 1 = \sum_{d\divides P(z)} \mu(d) \sum_{a\in\mathcal{A}_d}1 = \sum_{a\in A} \Bigg(\sum_{\substack{d\divides P(z)\\a\in A_d}}\mu(d)\Bigg).\label{eq:sellMe}
+\end{align}
+Här i \eqref{eq:sellMe} kan vi använda oss av uppskattningen i \eqref{eq:SelAppr} med utvidgningen att \(\lambda_d=0\) då \(d>z\), och då får vi att
+\begin{equation}
+    \eqref{eq:sellMe} \leq \sum_{a\in A}\Bigg(\sum_{\substack{d\divides P(z)\\a\in A_d}}\lambda_d\Bigg)^2 = \sum_{a\in A}\Bigg(\sum_{\substack{d_1,d_2\divides P(z)\\a\in A_{[d_1, d_2]}}}\lambda_{d_1}\lambda_{d_2}\Bigg) =  \sum_{d_1,d_2\leq z}\lambda_{d_1}\lambda_{d_2}\#A_{[d_1, d_2]}\label{eq:2FatLs}
+\end{equation}
+där \([a, b]\) betecknar lägst gemensam multipel av \textit{a} och \textit{b}. Om vi nu skulle använda oss av en sådan relation som \eqref{deltaX}, då har vi att 
+\begin{equation}
+    \S{A}{P}{z} \leq X\sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}\delta_{[d_1, d_2]}\lambda_{d_1}\lambda_{d_2} + O\Bigg(\sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}|\lambda_{d_1}||\lambda_{d_2}||R_{[d_1, d_2]}|\Bigg)\label{eq:SelbergStart}
+\end{equation}
+där första termen anses vara huvud uppskattningen och den andra en felterm. \eqref{eq:SelbergStart} utgör en startpunkt för Selbergs såll, där vi nu måste bestämma en vikt \(\delta_p\) och försök att minimera storleken av \(\lambda_d\).
+\subsection{Huvudtermen}
