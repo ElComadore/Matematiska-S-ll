@@ -18,3 +18,25 @@ där \([a, b]\) betecknar lägst gemensam multipel av \textit{a} och \textit{b}.
 \end{equation}
 där första termen anses vara huvud uppskattningen och den andra en felterm. \eqref{eq:SelbergStart} utgör en startpunkt för Selbergs såll, där vi nu måste bestämma en vikt \(\delta_p\) och försök att minimera storleken av \(\lambda_d\).
 \subsection{Huvudtermen}
+Låt oss börja med att bestämma en form på \(\delta_d\), och med det målet följer vi Selberg och bestämmer \(\delta_d = 1/f(d)\) för någon multiplikativ funktion \textit{f}. För denna funktion gäller det att \(f(n) = \sum_{d\divides n}f_1(d)\) för någon multiplikativ funktion \(f_1\), som är entydigt bestämd av Möbius inverteringsformeln \(f_1(n) = \sum_{d\divides n}\mu(d)f(n/d)\). Det är naturligt att betrakta \(f(d)\) som en typ av utveckling av \(\omega(d)/d\) idén från de tidigare såll som nu försöker att underlätta mer komplexa uppdelningar av mängden än bara att fokusera på särskilda ekvivalensklasser av \(p\).
+
+Med en bestämd \(\delta_d\) och hjälpen av en lemma angående multiplikativa funktioner, se Appendix B, kan vi nu börja hantera huvudtermen. Insättningen av vår ny \(\delta_d\) och användningen av lemman ger att
+\begin{equation}
+    \sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}\frac {\lambda_{d_1}\lambda_{d_2}}{f([d_1, d_2])} = \sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}\frac {\lambda_{d_1}\lambda_{d_2}}{f(d_1)f(d_2)}\sum_{\delta\divides (d_1,d_2)}f_1(\delta)=\sum_{\substack{\delta\leq z\\\delta\divides P(z)}}f_1(\delta)\Bigg(\sum_{\substack{d\leq z\\d\divides P(z)\\\delta \divides d}}\frac{\lambda_d}{f(d)}\Bigg)^2\label{eq:diagMe}
+\end{equation}
+och om vi sätter
+\begin{equation}
+    u_\delta = \sum_{\substack{d\leq z\\d\divides P(z)\\\delta \divides d}}\frac{\lambda_d}{f(d)}\nonumber
+\end{equation}
+då får vi den diagonaliserade kvadratformen
+\begin{equation}
+    \eqref{eq:diagMe} = \sum_{\substack{\delta\leq z\\\delta\divides P(z)}}f_1(\delta) u_\delta^2\label{eq:minimiseMe}
+\end{equation}
+Vi får även från den Möbius dubbla inverteringsformel att
+\begin{equation}
+    \frac{\lambda_\delta}{f(\delta)} = \sum_{\substack{d\divides P(z)\\\delta \divides d}}\mu(\frac{d}{\delta})u_d \implies
+    \begin{cases}
+    u_\delta = 0,\quad\delta \geq z\\
+    \sum_{\substack{d\leq z\\d\divides P(z)}} \mu(d) u_d = 1
+    \end{cases}\nonumber
+\end{equation}
