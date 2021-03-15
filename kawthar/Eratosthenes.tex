@@ -1,147 +1,155 @@
 
+
 \subsection{Eratosthenes–Legendre Såll}
-\hspace{0.3cm} Den gregiska matematikern, astronomen och poeten Eratosthenes från Cypern (can276 f.ka – ca 194 f.kr), var en av de tidigaste matematikerna som arbetade med primtal. I en av hans stora presentationer inom matematik introducerade han ”Eratosthenes såll”, vilket är ett effektivt sätt att identifiera primtal upp till en viss gräns, som senare blev grunden för sållteorin.
-År 1808 introducerade den franska matematikern Adrien-Marie Legendre (1752-1833) den Legendre Såll i sin bok "Théorie des nombres", som är en formulering av Eratosthenes-metoden, som heter "Eratosthenes-Legendre såll" eftersom den byggs på Eratosthenes algoritm.\\
-
-
- Hur har den här sållen startat den moderna såll? och vilka upptäckter gjordes med hjälp av Eratosthenes-Legendre såll?\\
+\hspace{0.3cm} Den gregiska matematikern, astronomen och poeten Eratosthenes från Cypern (can276 f.v.t – ca 194 f.v.t), var en av de tidigaste matematikerna som arbetade med primtal. I en av hans stora presentationer inom matematik introducerade han ”Eratosthenes såll”, vilket är ett effektivt sätt att identifiera primtal upp till en viss gräns, som senare blev grunden för sållteorin.
+År 1808 introducerade den franska matematikern Adrien-Marie Legendre (1752-1833) det som kom att kallas Legendres Såll i sin bok "Théorie des nombres", som är en formulering av Eratosthenes-metoden, som heter "Eratosthenes-Legendre såll" eftersom den bygger på Eratosthenes algoritm. Hur har denna såll startat den moderna sållen och vilka upptäckter gjordes med hjälp av Eratosthenes-Legendre såll?\\
 
 
 
- Legendre formaliserade matematiken bakom Eratosthenes algoritmen genom att använda den inklusiv-exklusivprincipen för att beräkna antal elementer i en given mängd av naturliga tal  $ A\subset Z_{+} $ som inte har några primtalsfaktorer nedan $ z $. Med $  \#A=x $, tar vi alla $ x $ tal, och vi substraherar antalet multiplar av 2, även vi substraherar antalet multiplar av 3, samma sak med multiplar av 5, sen lägger vi till antalet av multiplar $ 2\times3 $ (eftersom multipler av 6 substraherades två gånger, en gång med multiplarna av 2 och den andra med dem av 3); och vi fortsätter på detta sätt genom alla värden på  $ d $ som delar produkten av primtal upp till  $ z $. \\
+ Legendre formaliserade matematiken bakom Eratosthenes algoritmen genom att använda den inklusiv-exklusivprincipen för att beräkna antal elementer i en given mängd av naturliga tal  $ A\subset Z_{+} $ som inte har några primtalsfaktorer nedan $ z $. Med $  \#A=X $, tar vi alla $ x $ tal, och vi substraherar antalet multiplar av 2, även vi substraherar antalet multiplar av 3, samma sak med multiplar av 5, sen lägger vi till antalet av multiplar $ 2\times3 $ (eftersom multipler av 6 substraherades två gånger, en gång med multiplarna av 2 och den andra med dem av 3); och vi fortsätter på detta sätt genom alla värden på  $ d $ som delar produkten av primtal upp till  $ z $. \\
  
-Låt $ \A $ beteckna vilken mängd som helst av positiva heltal. $ \P $ betecknar en mängd av primtal\\
 
-Legendre-identiteten uttrycks av: 
+Låt $ P_z $ vara produkten av all primtal i $ \P $ mindre än $ z $, vi har
+\[P_z:=\prod_{p<z}p\]
+Låt $ S(\A, P) $ beteckna antal heltal i $ \A $ som är relativt prima till $ P_z $, således
+\[S(\A, P)=\vert \lbrace n\in \mathbb{N}:1\leq n\leq x, (n,P_z)=1 \rbrace\vert\]
 
-\begin{theorem}[Legendre identitet \cite{Terence}] kan uttryckas genom:
-\[S(\A, P(z))=\sum_{d\divides P(z)}\mu(d)\sum_{\substack{n\leq x;\\d\divides n}}1. \]
-Där  $ S(\A, P(z)) $ räknar antalet naturliga tal $ n\leq x $ i $ A $ coprime to $ P(z) $.
+
+Legendres identiteten uttrycks av: 
+
+\begin{theorem}[Legendres identitet \cite{Terence}] kan uttryckas genom:
+\[S(\A, P)=\sum_{d\divides P_z}\mu(d)\sum_{\substack{n\leq x;\\d\divides n}}1. \]
+% Where the $ S(\A, P(z)) $ calculate the number of natural numbers $ n\leq x $ in $ A $ coprime to $ P(z) $.
 \end{theorem}
-Vi kommer att använda denna sats för att komma till en allmän övre gräns för $ S(\A, P(z)) $\\
+Vi kommer att använda denna sats för att komma till en allmän övre gräns för $ S(\A, P) $\\
+
 Vi har
 \begin{align*}
-S(\A, P(z)) & =\sum_{d\divides P(z)}\mu(d)\Bigl\lfloor \frac{x}{d}\Bigr\rfloor\\
- &  =\sum_{d\divides P(z)}\mu(d) \left( \frac{x}{d}+ \Bigl\lfloor \frac{x}{d} \Bigr\rfloor - \frac{x}{d} \right)\\
- & =\sum_{d\divides P(z)}\mu(d)\frac{x}{d} \left(\Bigl\lfloor\frac{x}{d}\Bigr\rfloor-\frac{x}{d}\right)\\
- & =\sum_{d\divides P(z)}\mu(d)\frac{x}{d}+\sum_{d\divides P(z)}\mathcal{O}(1)\\
- & =\sum_{d\divides P(z)}\mu(d)\frac{x}{d}+ \mathcal{O}\left(\sum_{d\divides P(z)}1\right)
+S(\A, P) & =\sum_{d\divides P_z}\mu(d)\Bigl\lfloor \frac{x}{d}\Bigr\rfloor\\
+ &  =\sum_{d\divides P_z}\mu(d) \left( \frac{x}{d}+ \Bigl\lfloor \frac{x}{d} \Bigr\rfloor - \frac{x}{d} \right)\\
+ & =\sum_{d\divides P_z}\mu(d)\frac{x}{d}+\sum_{d\divides P_z}O(1)\\
+ & =\sum_{d\divides P_z}\mu(d)\frac{x}{d}+ O\left(\sum_{d\divides P_z}1\right)
 \end{align*}
 
-Så vi kan hitta en uppskattning för den inre summan i Legendre identitet som följande:
-\[\sum_{n\leq x;d\divides n}1=\frac{x}{d}+\mathcal{O}(1); \]
+Så, vi kan hitta en uppskattning för den inre summan i Legendres identitet som följande:
+\[\sum_{n\leq x;d\divides n}1=\frac{x}{d}+O(1); \]
 Vi vet att antalet åtskilda faktorer som $ P(z) $ har är $ 2^{\pi(z)} $ vi härleda
-\[S(\A, P(z))=\sum_{d\divides P(z)}\mu(d)\frac{x}{d}+ \mathcal{O}(2^{\pi(z)}) \]
-Låt $ \omega(p) $ betekna den särskilja residualklasser modulo $ p $  för varje primtal i $ \P $, vi definerar $ W(z) $ som
+\[S(\A, P)=\sum_{d\divides P_z}\mu(d)\frac{x}{d}+ O(2^{\pi(z)}) \]
+För varje $ p $ i $ \P $, vi betecknar $ \omega(p) $ antalet av utvalda restklasser mod $ p $ i mängden $ \lbrace \omega_{1,p},...,\omega_{\omega_{p},p}\rbrace $ för varje primtal i $ \P $, vi definerar $ W(z) $ som
 \[W(z)=\prod_{\substack{p\in \P\\p<z}}\left( 1-\frac{\omega(p)}{p}\right)\]
 Genom att faktorisera den första termen av summan 
-\[\sum_{d\divides P(z)}\mu(d)\frac{x}{d}= x\prod_{p\leq z}\left( 1-\frac{1}{p} \right) \]
+\[\sum_{d\divides P_z}\mu(d)\frac{x}{d}= x\prod_{p< z}\left( 1-\frac{1}{p} \right) \]
 och med ersättning med den nya faktoriserad termen, vi får
-\[S(\A, P(z))=\left( \prod_{p\leq z}\left( 1-\frac{1}{p} \right)\right) x +\mathcal{O}(2^{\pi(z)}) \]
+\[S(\A, P)=\left( \prod_{p< z}\left( 1-\frac{1}{p} \right)\right) x +O(2^{\pi(z)}) \]
 
 
 
 
 \subsection{Eratosthenes Generella Såll}
-Efter vi såg den grundläggande såll, vi realiserar att den ger inte en nyttig uppskattning av $ S(\A, P(z)) $ på grund av dess stora feltermen. Den grundläggande metod av Eratosthenes-Legendre såll kan generaliseras, vi kan anpassa den för att den kan användas med andra talföljd av siffror som kvadratfria heltal. En kvadratfir heltal är en heltalsom är en produkt av åtskilda primtal. Dess mer generella såll kommer att vara mycket bättre och effektivare med de kvadratfria tal i grunden eftersom de är tätare än primtal, detta kommer att hjälpa oss att hitta intressanta gränser för dessa kvadratfria siffror.
+Efter att vi såg den grundläggande sållen, realiserar vi att den inte ger en nyttig uppskattning av $ S(\A, P) $ på grund av dess stora feltermen. Den grundläggande metoden av Eratosthenes-Legendre såll kan generaliseras, vi kan anpassa den för att den kan användas med andra talföljder av siffror som kvadratfria heltal. En kvadratfri heltal är en heltal som är en produkt av åtskilda primtal. Dess mer generella såll kommer att vara mycket bättre och effektivare med de kvadratfria tal i grunden eftersom de är tätare än primtal, detta kommer att hjälpa oss att hitta intressanta gränser för dessa kvadratfria siffror.
 
-Den generalla aåll kan användas för att demonstrera många intressanta resultater. I denna del kommer vi att introducera Eratosthenes generella såll och dess bevis.
+Den generalla såll kan användas för att demonstrera många intressanta resultater. I denna del kommer vi att introducera Eratosthenes generella såll och dess bevis.
 
-Efter vi har sett Legendre identitet i sats 1 och förutom definitionerna i förgående avsnittet, vi kan skriva om sållen och formulera den som följande:
+Efter att vi sett Legendres identitet i sats 3.1 och förutom definitionerna i förgående avsnittet, så kan vi skriva om sållen och formulera den som följande:
 
 
 Låt $ P(z) $ vara produkten av alla primtal i $ \P $ mindre än $ z $, d.v.s
 \[P(z)=\prod_{\substack{p \in \P\\ p \leq z}} p \]
 
-Vi definerar $\A_{p}$ som en mängd av elementer av $ \A $ på ett sätt där det tillhör åtminstone en av $\omega(p)$ klasser.
+Vi definerar $\A_{p}$ som en mängd av elementer av $ \A $ på ett sätt där det tillhör åtminstone en av $\omega(p)$ utvalda restklasser mod p.
 
-Låt $ d $ vara kvadratfri som är endast sammansättad av primfaktorer i $ \P $, vi sätter $\omega(d)=\prod_{p \divides d} \omega(p)$, also $\A_{1} =\A$ och $A_{d}=\cap_{p \divides d} A_{p}$
+Låt $ d $ vara kvadratfri som endast är en produkt av primfaktorer i $ \P $, vi sätter $\omega(d)=\prod_{p \divides d} \omega(p)$
 
 Så vi har
 \[\omega(d)=\prod_{p\divides d}\omega(p)\]
 
+Låt $ R_{d} $ representera feltermen i uppskattningen av antal elementerna av $ \A_{d} $ 
 
 
-Antar att $ \vert R_{d}\vert=\mathcal{O}(\omega(d))$ och $ \exists\kappa\geq 0 $ så att
+Låt $ \kappa $ vara siktdensitetkonstanten, det är ett viktat medelvärdet av antalet restklasser som siktas ut av varje primtal.
+
+
+Antar att $ \vert R_{d}\vert=O(\omega(d))$ and $ \exists\kappa\geq 0 $ så att
 \begin{equation}
-\sum_{p\divides P(z)}\frac{\omega(p)\log(p)}{p}\leq \kappa \log(z)+\mathcal{O}(1)
+\label{equationEL3}
+\sum_{p\divides P(z)}\frac{\omega(p)\log(p)}{p}\leq \kappa \log(z)+O(1)
 \end{equation}  
 Med partiell summering får vi
-\[\sum_{p\divides P(z)}\frac{\omega(p)}{p}\leq\kappa\log\log z+\mathcal{O}(1)\]
-   Vi har de följande Lemmas som ska användas för att bevisa Eratosthenes generella såll satsen.
+\[\sum_{p\divides P(z)}\frac{\omega(p)}{p}\leq\kappa\log\log z+O(1)\]
+   Vi har de följande Lemman som ska användas för att bevisa Eratosthenes generella såll satsen.
 \begin{lemma}
-     Antar (1) har vi
+     Antar \ref{equationEL3} har vi
 $$
-\sum_{d<t, d \divides P(z)} \omega(d)=\mathcal{O}\left(t(\log z)^{\kappa} \exp \left(-\frac{\log t}{\log z}\right)\right)
+\sum_{d<t, d \divides P(z)} \omega(d)=O\left(t(\log z)^{\kappa} \exp \left(-\frac{\log t}{\log z}\right)\right)
 $$
-där den stora- $\mathcal{O}$ gräns är för $z \rightarrow \infty$ och konstanten bero på $P, R_{p}, \kappa$.
+där den stora- $O$ gräns är för $z \rightarrow \infty$ och konstanten bero på $P, R_{p}, \kappa$.
 \end{lemma}
 \begin{lemma}
     Fixa $C>0 .$ Antar (1) har vi
 $$
-\sum_{d>C x, d \divides P(z)} \frac{\omega(d)}{d}=\mathcal{O}\left((\log z)^{\kappa+1} \exp \left(-\frac{\log x}{\log z}\right)\right)
+\sum_{d>C x, d \divides P(z)} \frac{\omega(d)}{d}=O\left((\log z)^{\kappa+1} \exp \left(-\frac{\log x}{\log z}\right)\right)
 $$
-där den stora- $\mathcal{O}$ gräns är för $z \rightarrow \infty$ och konstanten bero på $P, R_{p}, \kappa, C .$
+där den stora- $O$ gräns är för $z \rightarrow \infty$ och konstanten bero på $P, R_{p}, \kappa, C .$
  
 \end{lemma}
 
-Med de förgående inställningar, Eratosthenes generella såll är formulerad som följande\cite{Dalton}
+Med de förgående antagendena, Eratosthenes generella såll är formulerad som följande\cite{Dalton}
 \begin{theorem}[Eratosthenes Generella Såll]\hfill
 
-Låt $ S(\A, P(z)) $ betekna antal heltal i $ \A $ som är relativt primtal till $ P(z) $.
-Vi definierar $\S\A\P z =\vert \A \setminus \cup_{p\divides P(z)}\A_{p}\vert$, för en given $ R_{d} $ vi antar $ X $ existerar, verifierar
+För en given $ R_{d} $ antar vi att $ X $ existerar, som verifierar
 \[\vert\A_{d}\vert =\frac{\omega(d)}{d}X +R_{d} \]
 
-Låt oss anta $ \exists \kappa\geq 0 $ och $ \vert R_{d}\vert = \mathcal{O}(\omega(d))$ på ett sätt så att
+Låt oss anta $ \exists \kappa\geq 0 $ och $ \vert R_{d}\vert = O(\omega(d))$ på ett sätt så att
 
-\[\sum_{p\divides P(z)}\frac{\omega(p)\log(p)}{p}\leq \kappa \log(z)+\mathcal{O}(1)\]
+\[\sum_{p\divides P(z)}\frac{\omega(p)\log(p)}{p}\leq \kappa \log(z)+O(1)\]
 
 
-Med (1) och genom att anta $ \exists y\in \mathbb{R}^{+} $ som verifierar $ \forall d>y, \vert A_{d}\vert=0 $.
+Med (3) och genom att anta $ \exists y\in \mathbb{R}^{+} $ som verifierar $ \forall d>y, \card{\A_d}=0 $.
 
-Vi får
+får vi
 \begin{equation}
-S(\A, P(z))= XW(z)+\mathcal{O}\left( \left( X+\frac{y}{\log(z)} \right)(\log(z))^{\kappa+1}\exp \left( -\frac{\log(y)}{\log(z)} \right) \right)
+\label{equationEL4}
+\S\A\P z= XW(z)+O\left( \left( X+\frac{y}{\log(z)} \right)(\log(z))^{\kappa+1}\exp \left( -\frac{\log(y)}{\log(z)} \right) \right)
 \end{equation}
 \end{theorem}
 \begin{proof}
 Med de hypoteser som används för Eratosthenes generella sållteorin och den inklusion-exklusionprincipen, får vi
 \begin{align*}
-S(\A, P(z))&=\sum_{\substack{d\divides P(z)\\d\leq y}}\mu(d)\#\A_{d} =\sum_{\substack{d\divides P(z)\\d\leq y}}\mu(d)\frac{X\omega(d)}{d}+\mathcal{O}(\sum_{\substack{d<y,\\ d \divides P(z)}} \omega(d)).
+\S\A\P z &=\sum_{\substack{d\divides P(z)\\d\leq y}}\mu(d)\#\A_{d} =\sum_{\substack{d\divides P(z)\\d\leq y}}\mu(d)\frac{X\omega(d)}{d}+O(\sum_{\substack{d\leq y,\\ d \divides P(z)}} \omega(d)).
 \end{align*}
-Så genom att ersätta med de förgående två Lemmor, får vi (2)
+Så genom att ersätta med de förgående två Lemman, får vi (4)
 \end{proof}
-Notera att sållens allmänna uttryck används i många fall, och för det ska vara tillräckligt allmännt för användningar i olika fall, anser vi $ X $ som en multiplikativ funktion av $ x $, in other words $ X(x) $ är lika med $ x $. 
+
 
 \subsection{Applikationer och begränsningar}
 
 En huvudapplikation, är att finna en övre gräns för $ \pi(x) $, mycket gjordes för att förbättra resultatet. Här är några:
 \begin{proposition}
     Genom att använda Eratosthenes–Legendre såll, ser vi att den övre gränsen av antalet primtal upp till $ x $ är given av
-\[S(\A, P(z))\ll\frac{x}{\log(\log(x))}\]
+\[S(\A, P)\ll\frac{x}{\log(\log(x))}\]
 \end{proposition}
 \begin{proof}
-Vi har från sats 1
-\[S(\A, P(z))=x \prod_{p\leq z}\left( 1-\frac{1}{p} \right) +\mathcal{O}(2^{\pi(z)})\]
-För att få en övre gräns för $ S(\A, P(z)) $ vi får en nedre gräns för den reciproka värdet av den första termen, 
+Vi har från sats 3.1
+\[S(\A, P)=x \prod_{p\leq z}\left( 1-\frac{1}{p} \right) +O(2^{\pi(z)})\]
+För att få en övre gräns för $ S(\A, P) $, vi får en nedre gräns för den reciproka värdet av första termen, 
 
 Genom att använda de geometriska serier, får vi
 \[\prod_{p\leq z}\left( 1-\frac{1}{p} \right)^{-1}=\prod_{p\leq z}\sum_{r=0}^{\infty}\frac{1}{p^{r}}\]
 Så har vi
 \[\prod_{p\leq z}\sum_{r=0}^{\infty}\frac{1}{p^{r}}>\sum_{n<z}\frac{1}{n}\]
-För att termen på höger sidan är en delmängd av dem som är på vänster sidan.
+För att termen på höger sidan är en delmängd av dem som är på vänster sidan.\\
 
-Genom att genomföra med $ \int_{1}^{z}\frac{1}{x}dx $, får vi
+Genom att jämföra med $ \int_{1}^{z}\frac{1}{x}dx $, får vi
 \[\sum_{n<z}\frac{1}{n}>\log(z)\]
 Således
-\[S(\A, P(z))<\frac{x}{\log(z)}+\mathcal{O}(2^{\pi(z)})\]
+\[S(\A, P)<\frac{x}{\log(z)}+O(2^{\pi(z)})\]
 För att kontrolera den andra termen (felterm), låt $ z=\log(x)$. Vi vet att $ \pi(z)<z $ så $ 2^{\pi(z)}<2^{z}=2^{\log(x)}=x^{log(2)} $, således får vi
-\[S(\A, P(z))\ll\frac{x}{\log(\log(x))}\]
+\[S(\A, P)\ll\frac{x}{\log(\log(x))}\]
 \end{proof}
 Efteråt, en förbättring gjordes, vilket gav en bättre övre gräns för antal primtal upp till $ x $, den ges av nästa förslag
 \begin{proposition}
 En annan övre gräns för antal primtal upp till x är given av
-\[S(\A, P(z))\ll\frac{x}{\log(x)}(\log\log x).\]
+\[S(\A, P)\ll\frac{x}{\log(x)}(\log\log x).\]
 \end{proposition}
 
 En annan viktig tillämpning av Eratosthenes–Legendre såll är att hitta en övre gräns för antalet primstvillning upp till $ x $.
@@ -151,15 +159,14 @@ Antal primtal $ p $ with $ p\leq x $ och $ p+2 $ är också en primtal (d.v.s pr
 \[\S\A\P z \ll\frac{x}{\log^{2}(x)}(\log\log x)^{2}\]
 \end{theorem}
 \begin{proof}
-Låt $ \A $ beteckna vilken mängs av positiva heltal, $ \P $ betecknar vilken mängd av primtal. Låt ett reelt tal $ z $ such as $ z=z(x) $. VI skiljer residualklasser 0 och -2 modulo $ p $ för varje primtal $ p<z $ . Given att mängden $ \A $ är nollmängd för $ p>x+2 $, och med användning av Eratosthenes Generella Såll (sats 2) för $ \kappa=2 $ får vi
-\[\S\A\P z = xW(z)+\mathcal{O} \left( x(\log z)^{3} \exp \left( -\frac{\log x}{\log z}\right) \right)\]
+Låt $ \A $ beteckna vilken mängs av positiva heltal, $ \P $ betecknar vilken mängd av primtal. Låt ett reelt tal $ z $ such as $ z=z(x) $. Vi skiljer residualklasser 0 och -2 modulo $ p $ för varje primtal $ p<z $ . Given att mängden $ \A_p $ är nollmängd för $ p>x+2 $, och med användning av Eratosthenes Generella Såll (sats 3.4) för $ \kappa=2 $ får vi
+\[\S\A\P z = xW(z)+O \left( x(\log z)^{3} \exp \left( -\frac{\log x}{\log z}\right) \right)\]
 med
 \[W(z)=\prod_{p<z}\left( 1-\frac{2}{p}\right)\]
 Vi kan hitta den övre gränsen för $ W(z) $ som följande
 \[W(z)=\prod_{p<z}\left( 1-\frac{2}{p}\right)\leq\exp \left( -\sum_{p<z}\frac{2}{p} \right)\ll (\log z)^{-2}\]
 Om vi sätter värdet av $ z $ som
-\[\log z = \log x/A\log\log x\]en stor positiv konsonant
-får vi  
+\[\log z = \log x/A\log\log x\] med $ A $ en stor positiv konstant
 \[\S\A\P z \ll \left( \frac{\log x}{A\log\log x} \right)^{-2}=\left( \frac{A\log\log x}{\log x} \right)^{2}\]
 Därför, sammanfattar vi
 \[\S\A\P z \ll\frac{x}{\log^{2}(x)}(\log\log x)^{2}\]
