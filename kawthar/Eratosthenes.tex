@@ -2,48 +2,38 @@
 
 \subsection{Eratosthenes–Legendre Såll}
 \hspace{0.3cm} Den gregiska matematikern, astronomen och poeten Eratosthenes från Cypern (can276 f.v.t – ca 194 f.v.t), var en av de tidigaste matematikerna som arbetade med primtal. I en av hans stora presentationer inom matematik introducerade han ”Eratosthenes såll”, vilket är ett effektivt sätt att identifiera primtal upp till en viss gräns, som senare blev grunden för sållteorin.
-År 1808 introducerade den franska matematikern Adrien-Marie Legendre (1752-1833) det som kom att kallas Legendres Såll i sin bok "Théorie des nombres", som är en formulering av Eratosthenes-metoden, som heter "Eratosthenes-Legendre såll" eftersom den bygger på Eratosthenes algoritm. Hur har denna såll startat den moderna sållen och vilka upptäckter gjordes med hjälp av Eratosthenes-Legendre såll?\\
+År 1808 introducerade den franska matematikern Adrien-Marie Legendre (1752-1833) det som kom att kallas Legendres Såll i sin bok "Théorie des nombres", som är en formulering av Eratosthenes-metoden, som heter "Eratosthenes-Legendre såll" eftersom den bygger på Eratosthenes algoritm. Hur har denna såll startat den moderna sållen och vilka upptäckter gjordes med hjälp av Eratosthenes-Legendre såll?
 
-
-
- Legendre formaliserade matematiken bakom Eratosthenes algoritmen genom att använda den inklusiv-exklusivprincipen för att beräkna antal elementer i en given mängd av naturliga tal  $ A\subset Z_{+} $ som inte har några primtalsfaktorer nedan $ z $. Med $  \#A=X $, tar vi alla $ x $ tal, och vi substraherar antalet multiplar av 2, även vi substraherar antalet multiplar av 3, samma sak med multiplar av 5, sen lägger vi till antalet av multiplar $ 2\times3 $ (eftersom multipler av 6 substraherades två gånger, en gång med multiplarna av 2 och den andra med dem av 3); och vi fortsätter på detta sätt genom alla värden på  $ d $ som delar produkten av primtal upp till  $ z $. \\
+ Legendre formaliserade matematiken bakom Eratosthenes algoritmen genom att använda den inklusiv-exklusivprincipen för att beräkna antal elementer i en given mängd av naturliga tal  $ A\subset Z_{+} $ som inte har några primtalsfaktorer nedan $ z $. Med $  \#A=X $, tar vi alla $ x $ tal, och vi substraherar antalet multiplar av 2, även vi substraherar antalet multiplar av 3, samma sak med multiplar av 5, sen lägger vi till antalet av multiplar $ 2\times3 $ (eftersom multipler av 6 substraherades två gånger, en gång med multiplarna av 2 och den andra med dem av 3); och vi fortsätter på detta sätt genom alla värden på  $ d $ som delar produkten av primtal upp till  $ z $. 
  
-
-Låt $ P_z $ vara produkten av all primtal i $ \P $ mindre än $ z $, vi har
-\[P_z:=\prod_{p<z}p\]
-Låt $ S(\A, P) $ beteckna antal heltal i $ \A $ som är relativt prima till $ P_z $, således
-\[S(\A, P)=\vert \lbrace n\in \mathbb{N}:1\leq n\leq x, (n,P_z)=1 \rbrace\vert\]
-
+Låt $ P(z) $ vara produkten av alla primtal i $ \P $ mindre än $ z $. Låt $ S(\A, P) $ beteckna antal heltal i $ \A $ som är relativt prima till $ P(z) $, således
+\[S(\A, P)=\card{\lbrace n\in \mathbb{N}:1\leq n\leq x, \gcd{n,P(z)}=1 \rbrace}\]
 
 Legendres identiteten uttrycks av: 
-
 \begin{theorem}[Legendres identitet \cite{Terence}] kan uttryckas genom:
-\[S(\A, P)=\sum_{d\divides P_z}\mu(d)\sum_{\substack{n\leq x;\\d\divides n}}1. \]
+\[S(\A, P)=\sum_{d\divides P(z)}\mu(d)\sum_{\substack{n\leq x;\\d\divides n}}1. \]
 % Where the $ S(\A, P(z)) $ calculate the number of natural numbers $ n\leq x $ in $ A $ coprime to $ P(z) $.
 \end{theorem}
-Vi kommer att använda denna sats för att komma till en allmän övre gräns för $ S(\A, P) $\\
+Vi kommer att använda denna sats för att komma till en allmän övre gräns för $ S(\A, P) $
 
 Vi har
 \begin{align*}
-S(\A, P) & =\sum_{d\divides P_z}\mu(d)\Bigl\lfloor \frac{x}{d}\Bigr\rfloor\\
- &  =\sum_{d\divides P_z}\mu(d) \left( \frac{x}{d}+ \Bigl\lfloor \frac{x}{d} \Bigr\rfloor - \frac{x}{d} \right)\\
- & =\sum_{d\divides P_z}\mu(d)\frac{x}{d}+\sum_{d\divides P_z}O(1)\\
- & =\sum_{d\divides P_z}\mu(d)\frac{x}{d}+ O\left(\sum_{d\divides P_z}1\right)
+S(\A, P) & =\sum_{d\divides P(z)}\mu(d)\Bigl\lfloor \frac{x}{d}\Bigr\rfloor\\
+ &  =\sum_{d\divides P(z)}\mu(d) \left( \frac{x}{d}+ \Bigl\lfloor \frac{x}{d} \Bigr\rfloor - \frac{x}{d} \right)\\
+ & =\sum_{d\divides P(z)}\mu(d)\frac{x}{d}+\sum_{d\divides P(z)}O(1)\\
+ & =\sum_{d\divides P(z)}\mu(d)\frac{x}{d}+ O\left(\sum_{d\divides P(z)}1\right)
 \end{align*}
 
 Så, vi kan hitta en uppskattning för den inre summan i Legendres identitet som följande:
 \[\sum_{n\leq x;d\divides n}1=\frac{x}{d}+O(1); \]
 Vi vet att antalet åtskilda faktorer som $ P(z) $ har är $ 2^{\pi(z)} $ vi härleda
-\[S(\A, P)=\sum_{d\divides P_z}\mu(d)\frac{x}{d}+ O(2^{\pi(z)}) \]
+\[S(\A, P)=\sum_{d\divides P(z)}\mu(d)\frac{x}{d}+ O(2^{\pi(z)}) \]
 För varje $ p $ i $ \P $, vi betecknar $ \omega(p) $ antalet av utvalda restklasser mod $ p $ i mängden $ \lbrace \omega_{1,p},...,\omega_{\omega_{p},p}\rbrace $ för varje primtal i $ \P $, vi definerar $ W(z) $ som
 \[W(z)=\prod_{\substack{p\in \P\\p<z}}\left( 1-\frac{\omega(p)}{p}\right)\]
 Genom att faktorisera den första termen av summan 
-\[\sum_{d\divides P_z}\mu(d)\frac{x}{d}= x\prod_{p< z}\left( 1-\frac{1}{p} \right) \]
+\[\sum_{d\divides P(z)}\mu(d)\frac{x}{d}= x\prod_{p< z}\left( 1-\frac{1}{p} \right) \]
 och med ersättning med den nya faktoriserad termen, vi får
 \[S(\A, P)=\left( \prod_{p< z}\left( 1-\frac{1}{p} \right)\right) x +O(2^{\pi(z)}) \]
-
-
-
 
 \subsection{Eratosthenes Generella Såll}
 Efter att vi såg den grundläggande sållen, realiserar vi att den inte ger en nyttig uppskattning av $ S(\A, P) $ på grund av dess stora feltermen. Den grundläggande metoden av Eratosthenes-Legendre såll kan generaliseras, vi kan anpassa den för att den kan användas med andra talföljder av siffror som kvadratfria heltal. En kvadratfri heltal är en heltal som är en produkt av åtskilda primtal. Dess mer generella såll kommer att vara mycket bättre och effektivare med de kvadratfria tal i grunden eftersom de är tätare än primtal, detta kommer att hjälpa oss att hitta intressanta gränser för dessa kvadratfria siffror.
@@ -51,10 +41,6 @@ Efter att vi såg den grundläggande sållen, realiserar vi att den inte ger en 
 Den generalla såll kan användas för att demonstrera många intressanta resultater. I denna del kommer vi att introducera Eratosthenes generella såll och dess bevis.
 
 Efter att vi sett Legendres identitet i sats 3.1 och förutom definitionerna i förgående avsnittet, så kan vi skriva om sållen och formulera den som följande:
-
-
-Låt $ P(z) $ vara produkten av alla primtal i $ \P $ mindre än $ z $, d.v.s
-\[P(z)=\prod_{\substack{p \in \P\\ p \leq z}} p \]
 
 Vi definerar $\A_{p}$ som en mängd av elementer av $ \A $ på ett sätt där det tillhör åtminstone en av $\omega(p)$ utvalda restklasser mod p.
 
@@ -137,7 +123,7 @@ Genom att använda de geometriska serier, får vi
 \[\prod_{p\leq z}\left( 1-\frac{1}{p} \right)^{-1}=\prod_{p\leq z}\sum_{r=0}^{\infty}\frac{1}{p^{r}}\]
 Så har vi
 \[\prod_{p\leq z}\sum_{r=0}^{\infty}\frac{1}{p^{r}}>\sum_{n<z}\frac{1}{n}\]
-För att termen på höger sidan är en delmängd av dem som är på vänster sidan.\\
+För att termen på höger sidan är en delmängd av dem som är på vänster sidan.
 
 Genom att jämföra med $ \int_{1}^{z}\frac{1}{x}dx $, får vi
 \[\sum_{n<z}\frac{1}{n}>\log(z)\]
