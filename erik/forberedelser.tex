@@ -1,0 +1,34 @@
+% Skrivet av Erik
+
+I den här texten kommer vi att låna större delen av vår notation från boken \textit{An Introduction to Sieve Methods and their Applications} \cite{cojocarumurty}, exempelvis skriver vi \(p, q, l\) när vi menar primtal, \(n, d, k\) för naturliga tal och \(x, y, z\) för positivt reella tal. Den största gemensamma delaren betecknas här \(\gcd{d, k}\), funktionen \(\nu(d)\) beskriver antalet distinkta primtalsdelare av \(d\) och \(\pi(z)\) är antalet primtal strikt mindre än \(z\). Nedanstående avsnitt ämnar till att etablera mer notation och tekniker som är vanligt förekommande i sållteori med utgångspunkt i Cojocarus och Murtys bok.
+
+\subsection{Möbiusfunktionen}
+En väsentlig funktion i sållteori är möbiusfunktionen,
+\begin{equation*}
+    \mu(n) = 
+    \begin{cases}
+        1, & \text{om}\ n \text{ är ett kvadratfritt, naturligt tal med jämnt antal primdelare}\\
+        -1, & \text{om}\ n \text{ är ett kvadratfritt, naturligt tal med udda antal primdelare}\\
+        0, & \text{om}\ n \text{ inte är kvadratfri}
+    \end{cases}
+\end{equation*}
+som vi, bland annat, kommer se förenkla inklusion-exklusionsprincipen i nästa kapitel. Två andra viktiga egenskaper hos möbiusfunktionen är den så kallade fundamentala egenskapen,
+\begin{equation*}
+    \sum_{d \divides n} \mu(d) =
+    \begin{cases}
+        1, & \text{if}\ n = 1 \\
+        0, & \text{if}\ n > 0
+    \end{cases}
+\end{equation*}
+och Möbius inverteringsformel som säger
+\begin{equation} \label{mobiusinv}
+    f(n) = \sum_{d \divides n} g(d) \implies g(n) = \sum_{d \divides n} \mu(d) f(n/d)
+\end{equation}
+om \(f, g : \mathbb{N} \to \mathbb{C}\).
+
+%\subsection{O-notation}
+% Intresserade av en övre asymptotisk gräns --> förklara Ordonotation. 
+
+%Matematisk sållteori är en underkategori av analytisk talteori. Ett av våra viktigaste analytiska verktyg i den här uppsatsen är Ordo-notationen. 
+
+%\subsection{Abels summationsformel}
