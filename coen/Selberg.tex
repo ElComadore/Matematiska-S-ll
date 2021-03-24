@@ -1,3 +1,4 @@
+\begin{comment}
 Kring tjugo år efter utvecklingen av succén som var Bruns såll, uppkom två olika såll metoder självständigt av varandra; Linniks Stor Såll och Selbergs Såll. Av dessa har vi valt att fokusera på Selbergs såll, upptäckt av norsk matematiker Atle Selberg, som är av samma kombinatorisk stil som de tidigare såll av Legendre och Brun. Fast till skillnad med de tidigare sållmetoder, valde Selberg att använda sig av en approximation av Möbius funktionen istället för att använda den tidigare funktionen \(W(z)\). Denna approximation tog formen av en kvadratisk form med den centrala idén att for en följd av reella tal \((\lambda_d)\) med \(\lambda_1 = 1\), har vi för alla \textit{k} att 
 \begin{equation}
     \sum_{d\divides k} \mu(d) \leq \Bigg(\sum_{d\divides k}\lambda_d\Bigg)^2.\label{eq:SelAppr}
@@ -40,3 +41,39 @@ Vi får även från den Möbius dubbla inverteringsformel att
     \sum_{\substack{d\leq z\\d\divides P(z)}} \mu(d) u_d = 1
     \end{cases}\nonumber
 \end{equation}
+\end{comment}
+
+En annan perspektiv på sållmetoder gavs av ytligare en till norsk matematiker Atle Selberg, under 1940 talet. Sin metod, av en kombinatorisk stil som liknade de tidigare, använde sig av en ny typ av vikt och en uppskattning en summa av Möbius funktioner för att skapa en ny sållmetod. Dessa nya vikter, vilket motsvarar \(\delta_d^{-1}\) i \eqref{deltaX}, bestod av ett delat med en multiplikativ funktion 
+\begin{equation}
+    f(n) = \sum_{d\divides n}f_1(d)\nonumber
+\end{equation}
+där \(f_1(d)\) är också multiplikativ och är entydigt bestämd av sin Möbiusinvertering. Det också krävs att \(f(p) > 1\) för alla \(p\in\P\). Med en sådan mer allmän vikt hade sållteorin möjligheten att uppskatta nya typer av mängder som kunde inte vara hanterad med hjälp av endast ekvivalensklasser. 
+
+Enligt \cite{cojocarumurty}, bestod uppskattningen huvudsakligen av att för en given reell talföljd, \((\lambda_d)\), med \(\lambda_1 = 1\), har vi att 
+\begin{equation}
+    \sum_{d\divides n}\mu(d) \leq \Bigg(\sum_{d\divides n}\lambda_d\Bigg)^2.\nonumber
+\end{equation}
+Detta betyder att vi kan nu uppskatta \(\S{A}{P}{z}\) med hjälp av \((\lambda_d)\) eftersom
+\begin{equation}
+\S{A}{P}{z} = \sum_{\substack{a\in \mathcal{A}\\a\not\in\mathcal{A}_p,\forall p\divides P(z)}} 1 = \sum_{d\divides P(z)} \mu(d) \sum_{a\in\mathcal{A}_d}1 = \sum_{a\in A} \Bigg(\sum_{\substack{d\divides P(z)\\a\in A_d}}\mu(d)\Bigg)\leq \sum_{a\in A}\Bigg(\sum_{\substack{d\divides P(z)\\a\in A_d}}\lambda_d\Bigg)^2.\label{eq:SelIneq1}
+\end{equation}
+Genom att skriva om kvadraten av summan som en summa över två olika \textit{d} kan vi omvandla \eqref{eq:SelIneq1} till
+\begin{equation}
+    \S{A}{P}{z} \leq \sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}\lambda_{d_1}\lambda_{d_2}\#A_{[d_1, d_2]}\nonumber
+\end{equation}
+där \([a, b]\) betecknar den lägsta gemensamma multipeln av \textit{a} och \textit{b}. Med insättning av \(\delta_d = 1/f(d)\) i \eqref{deltaX} får vi uppskattningen som är grundläggande  till Selbergs såll;
+\begin{equation}
+    \S{A}{P}{z} \leq X\sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}\frac{\lambda_{d_1}\lambda_{d_2}}{f([d_1,d_2])} + O\Bigg(\sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}|\lambda_{d_1}||\lambda_{d_2}||R_{[d_1, d_2]}|\Bigg)\label{eq:SelbergMain}
+\end{equation}
+För att få en form på \eqref{eq:SelbergMain} som vi kan använda som ett såll behöver vi bestämma talföljden \((\lambda_d)\). Om vi följer resonemanget i \cite{cojocarumurty}, då bestämmer vi \(\lambda_d\) genom att först betrakta bara huvudtermem. Genom att använda multiplikativiteten av \(f(d)\) går det att skriva om huvudtermen till en kvadratisk form och sedan hitta sin minimum. Vid detta minimumvärde blir \(|\lambda_d|\leq 1\) vilket då ger oss en omskrivning av feltermen med. Alla dessa omskrivningar härleder följande sats.
+
+\begin{theorem}[Selbergs Såll]\label{thm:SelbergSieve} Behåll notationen från tidigare i kapitlet och bestäm en funktion
+\begin{equation}
+    V(z) = \sum_{\substack{d\leq z\\ d\divides P(z)}}\frac{\mu^2(d)}{f_1(d)}.\nonumber
+\end{equation}
+Då har vi att
+\begin{equation}
+    \S{A}{P}{z} \leq \frac{X}{V(z)} + O\Bigg(\sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}|R_{[d_1, d_2]}|\Bigg)\nonumber
+\end{equation}
+\end{theorem}
+Ovanstående formulering är en kortfattat version av hur satsen redovisas i \cite{cojocarumurty}.
