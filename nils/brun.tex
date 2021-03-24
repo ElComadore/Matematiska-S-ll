@@ -1,149 +1,52 @@
 % Skrivet av Nils
 
-% Inledning
-År 1915 presenterade norrmanen Viggo Brun (1885-1978) ett såll som senare fått namnet Bruns såll. Brun hade inspirerats av publikationer av Jacques Hadamard som handlade om de framsteg som Jean Merlin gjort i att utöka Eratosthenes teori. Sållet blev inte uppmärksammat direkt, istället tog det ca 30 år innan andra matematiker började intressera sig för det. En anledning till dröjsmålet kan vara att Bruns skrivsätt och val av notation gjorde materialet onödigt svårläst. Sedan den ursprungliga publikationen har det gjorts flera insatser för att förkorta och förenkla läsningen men trots detta är Bruns såll och dess bevis krävande för läsaren, med detta i åtanke har vi valt att korta ned beviset avsevärt i förhoppningen om att stycket ska upplevas som överkomligt.
+\subsection{Sållet}
+Bruns såll publicerades 1915 av den norska matematikern Viggo Brun (1881-1978). 
 
-\todo{Granskning och källhänvisning av ovanstående}
+\todo{Hitta källa}
 
-%\bigskip\noindent
-Vi börjar med att välja två funktioner $f$ och $g$ som uppfyller $f(n) = \sum_{d\mid n} \mu(d) g(d)$. Låt $\P^{(\delta)}$ beteckna $\{ p\in\P;p \nmid \delta\}$,  genom Möbius inverteringsformel finner vi då att
-\begin{align*}
-    \sum_{d\mid P(z)} \mu(d) g(d) \card\A_d 
-    = \sum_{\delta\mid P(z)} f(\delta) \sum_{d\mid \frac{P(z)}{\delta}} \mu(d) \card\A_d 
-    = \S{A}{P}{z} + \sum_{\substack{\delta\mid P(z) \\ \delta>1}} f(\delta) \S{A_\delta}{P^{(\delta)}}{z},
-\end{align*}
-Vi är intresserade av att uppskatta den sista summan. Låt $q(\delta)$ beteckna det minsta primtalet som delar $\delta$. Detta ger oss, efter flera omskrivningar:
-
-
-\begin{theorem} \label{brun.thm.1}
-Med ovan nämnda antaganden och att $g(1)=1$, gäller 
-\begin{equation*}
-    \S{A}{P}{z} 
-    = \sum_{d \mid P(z)} \mu(d) g(d) \card\A_d 
-    - \sum_{d \mid P(z)} \sum_{\substack{p \mid P(z) \\ p<q(d)}} \mu(d) (g(d)-g(pd))
-    S(\A_{pd},\P^{(pd)},z).      % Undantag i användning av \S-kommandot
-\end{equation*}
-\end{theorem}
-
-Genom vissa restriktioner på funktionen $g$ går det att tvinga dubbelsumman ovan till att alltid vara $\geq 0$ eller alltid $\leq 0$. Vi har följande:
-
-\begin{theorem} \label{brun.thm.2}
-Behåll notation och antaganden från ovan. Låt $g_U$ och $g_L$ vara två funktioner där $g_U(1)=g_L(1)=1$ med $\mu(d)(g_U(d)-g_U(pd)) \geq 0$ och $\mu(d)(g_L(d)-g_L(pd)) \leq 0$, för alla $d \mid P(z), p < q(d)$. Då gäller
-\begin{equation}\label{brun.eq.bound}
+Den idé som utmärker Bruns såll är konstruktionen av två funktioner, som via Eratosthenes såll ger en övre och undre begränsning till $\S{A}{P}{z}$. 
+Nämligen
+\begin{equation}\label{brun.eq.gugl}
     \sum_{d \mid P(z)} \mu(d) g_L(d) \card\A_d 
     \leq \S{A}{P}{z} 
     \leq \sum_{d \mid P(z)} \mu(d) g_U(d) \card\A_d.
 \end{equation}
-\end{theorem}
 
-
-Detta var Bruns huvudidé, genom att hitta funktionerna $g_U$ och $g_L$ är det alltså möjligt att begränsa $\S{A}{P}{z}$ både ovan och underifrån. Vi ska nu ägna oss åt att välja passande $g_U$ och $g_L$ som uppfyller de önskade kriterierna.
-
-Låt $b$ vara ett fixt positivt heltal och välj $(z_n)$ där $0 \leq n \leq r$, för något $r$ så att
-\begin{equation*}
-    2 = z_r < z_{r-1} < \cdots < z_1 < z_0 = z.
-\end{equation*}
-Definiera produkten $P_{z_n, z} := \prod_{z_n \leq p < z} p$ och låt
-\begin{equation*}
-    g_U(d) :=
-    \begin{cases}
-        1, & \text{om}\ \nu(\gcd{d, P_{z_n, z}}) \leq 2b+2n-2,\ \forall n \leq r, \\
-        0, & \text{annars,}
-    \end{cases}
-\end{equation*}
-och
-\begin{equation} \label{brun.eq.gugl}
-    g_L(d) :=
-    \begin{cases}
-        1, & \text{om}\ \nu(\gcd{d, P_{z_n, z}}) \leq 2b+2n-3,\ \forall n \leq r, \\
-        0, & \text{annars.}
-    \end{cases}
-\end{equation}
-Dessa två funktioner $g_U$ och $g_L$ uppfyller antagandena i sats \ref{brun.thm.2}. Med notation från (\ref{deltaX}), skriver vi
-\begin{equation*} \label{brun.eq.omega}
-        \card{\A_d} = \delta_d X + R_d = \frac{\omega(d)}{d} X + R_d.
-\end{equation*}
-Då är $\omega(d)$ en multiplikativ funktion. Vi kan nu skriva den undre begränsningen i (\ref{brun.eq.bound}) som 
-\begin{equation*}
-    \sum_{d\mid P(z)}\mu(d)g_L(d)\frac{\omega(d)}{d} +
-    \sum_{d \mid P(z)} \mu(d) g_L(d) R_d
-\end{equation*}
-och liknande för den övre begränsningen. Med detta i åtanke formulerar vi:
-
-
-\begin{lemma} \label{brun.lem.1}
-Låt $g_U$ och $g_L$ vara som i (\ref{brun.eq.gugl}), då gäller
-\begin{align*}
-    \sum_{d\mid P(z)}\mu(d)g_U(d)\frac{\omega(d)}{d} =
-    W(z)\left(1 + \sum_{p<z}\frac{\omega(p)W(p)}{pW(z)} \times \sum_{t\mid P_{p^+,z}}\frac{g_U(t)(1-g_U(pt)}{t}\omega(t)\right),
-\end{align*}
-och
-\begin{align*} \label{brun.eq.sum}
-    \sum_{d\mid P(z)}\mu(d)g_L(d)\frac{\omega(d)}{d} =
-    W(z)\left(1 + \sum_{p<z}\frac{\omega(p)W(p)}{pW(z)} \times \sum_{t\mid P_{p^+,z}}\frac{g_L(t)(1-g_L(pt)}{t}\omega(t)\right),
-\end{align*}
-där $p^+$ betecknar det minsta primtal i $\P$ större än $p$ och
-\begin{equation*}
-    W(z) := \prod_{p\mid P(z)}\left(1 - \frac{\omega(p)}{p} \right).
-\end{equation*}
-\end{lemma}
-%Högerleden till ekvationerna i lemmat ovan går att uppskatta.
-
-\begin{comment}
-\begin{lemma}
-Med notation definierad tidigare i kapitlet gäller det att
-\begin{equation*}
-    \sum_{d\mid P(z)}\mu(d)g_U(d)\frac{\omega(d)}{d} \leq
-    W(z)\left(1+ \frac{2}{} \right)
-\end{equation*}
-
-\end{lemma}
-\end{comment}
-
-
-
-\todo{Mer förberedelser och inför Bruns såll}
-
+Brun hittade $g_U$ och $g_L$ så att ovanstående är uppfyllt, dessa funktioner definieras med hjälp av $\P(z)$ och ett positivt heltal $b$ som kan väljas fritt, vilket ger sållet flexibilitet. Genom att skriva $\card\A_d=\frac{\omega(d)}{d}X + R_d$ kunde han hitta en approximation och felterm för begränsningarna i (\ref{brun.eq.gugl}) och på så vis formulera Bruns såll.
 
 \begin{theorem}[Bruns såll] \label{brun.thm.brun}
-Behåll notation från tidigare i kapitlet. Låt $b$ vara ett positivt heltal och $\lambda$, ett reellt tal som uppfyller $0<\lambda e^{1+\lambda}<1$.
-Gör följande tre antaganden:
+Låt $b$ vara ett positivt heltal och $\lambda$, ett reellt tal som uppfyller $0<\lambda e^{1+\lambda}<1$. Antag att det finns en konstant $A_1<1$ så att $0\leq\frac{\omega(p)}{p}\leq A_1$, för varje $p\in\P$. Antag även att $\left|R_p\right| \leq \omega(p)$, för varje $p\in\P$.
 
-\bigskip\noindent
-1. $\left|R_d\right| \leq \omega(d)$ där $d\mid \prod_{p\in\P}p$. \\
-2. Det finns en konstant $A_1\geq1$ så att $\omega(p)/p \leq 1-1/A_1$, för alla $p\in\P$\\
-3. Det finns konstanter $\kappa>0$ och $A_2\geq 1$ så att
+\bigskip%\noindent
+Då begränsas $\S{A}{P}{z}$ ovanifrån av
+\begin{align}
+    & XW(z)\left(1 + \lambda c_1\exp\left(c_2\frac{2b+3}{\lambda\log z}\right)\right) + O\left(z^{c_3}\right), \label{brun.eq.upper}
+    \intertext{och underifrån av}
+    & XW(z)\left(1 - c_1\exp\left(c_2\frac{2b+2}{\lambda\log z}\right)\right) + O\left(z^{c_3 - 1}\right). \label{brun.eq.lower}
+\end{align}
+
+%\bigskip\noindent
+Konstanterna $c_1$, $c_2$ och $c_3$ definieras som
+\begin{equation*}
+    c_1 := \frac{ 2\lambda^{2b}e^{2\lambda} }{ 1 - \lambda^2e^{2+2\lambda} }, \quad
+    c_2 := \frac{A_2}{2}\left(1+\frac{\kappa+\frac{A_2}{\log 2}}{1+A_1}\right)\ \text{och} \quad
+    c_3 := 2b + \frac{2.01}{e^{2\lambda/\kappa} - 1},
+\end{equation*}
+där $\kappa>0$ och $A_2\geq1$ är två konstanter som uppfyller
 \begin{equation*}
     \sum_{w\leq p<z} \frac{\omega(p)\log p}{p} \leq \kappa\log(z/w) + A_2,\ \text{ för }\ 2\leq w\leq z.
 \end{equation*}
-
-\bigskip\noindent
-Då begränsas $\S{A}{P}{z}$ ovanifrån av
-\begin{align*}
-    XW(z)\left(
-    1 + \lambda\frac{ 2\lambda^{2b}e^{2\lambda} }{ 1 - \lambda^2e^{2+2\lambda} }
-    \exp\left( c_1\frac{2b+3}{\lambda\log z}
-    \right)\right)
-    + O\left(z^{2b+\frac{2.01}{e^{2\lambda/\kappa} - 1}}\right)
-\end{align*}
-och underifrån av
-\begin{align*}
-    XW(z)\left(
-    1 - \frac{ 2\lambda^{2b}e^{2\lambda} }{ 1 - \lambda^2e^{2+2\lambda} }
-    \exp\left( c_1\frac{2b+2}{\lambda\log z}
-    \right)\right)
-    + O\left(z^{2b+\frac{2.01}{e^{2\lambda/\kappa} - 1} - 1}\right),
-\end{align*}
-där 
-\begin{equation*}
-    c_1 := \frac{A_2}{2}\left(1+A_1\left(\kappa+\frac{A_2}{\log 2}\right)\right).
-\end{equation*}
 \end{theorem}
 
-\todo{Någon typ av förklaring/förtydligande av satsen ovan}
+\todo{Förtydligande av sållet. Val av konstanter, mängder etc}
+
+\todo{Förklara varför sållet är spännande}
+
+\todo{Förklara vilka problem vi kan lösa m.h.a sållet}
 
 
-\subsection{En tillämpning av Bruns såll}
+\subsection{En tillämpning av Bruns såll EJ OMSKRIVET}
 Låt oss uttrycka en mer generell version av primtalstvillingsförmodan på följande vis:\\
 \textit{Det finns oändligt många par av heltal $(n, n+2)$ där båda talen har som mest $r$ primtalsfaktorer.}\\
 Sätter vi $r=1$ får vi exakt primtalstvillingsfömodan som ej är bevisad, däremot kan vi med hjälp av Bruns såll bevisa påståendet för $r=7$. Definiera
@@ -171,5 +74,26 @@ Vidare väljer vi
 
 Om det är så att $n$ eller $n+2$ har mer än 7 primtalsfaktorer så måste $p\mid n(n+2)$ för något primtal $p\leq n^{1/u}$, där $u<8$. Vi kan därför uttrycka $\card\mathcal{T}$ som $\S{A}{P}{z}$ genom att sätta $z := x^{1/u}$. Detta ger oss att
 \begin{equation*}
-    \card\mathcal{T} \ll \frac{x}{(\log x)^2}.
+    \card\mathcal{T} \gg \frac{x}{(\log x)^2}.
 \end{equation*}
+
+
+
+
+
+
+% Sådant som inte används just nu
+\begin{comment}
+
+två funktioner $g_U$ och $g_L$ som uppfyller 
+\begin{alignat*}{3}
+    g_U(1)&=1,\quad \text{och}&\quad \mu(d)(g_U(d)-g_U(pd)) &\geq 0, \\
+    g_L(1)&=1,\quad \text{och}&\quad \mu(d)(g_L(d)-g_L(pd)) &\leq 0,
+\end{alignat*}
+
+
+
+
+
+
+\end{comment}
