@@ -65,9 +65,9 @@ där \([a, b]\) betecknar den lägsta gemensamma multipeln av \textit{a} och \te
 \begin{equation}
     \S{A}{P}{z} \leq X\sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}\frac{\lambda_{d_1}\lambda_{d_2}}{f([d_1,d_2])} + O\Bigg(\sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}|\lambda_{d_1}||\lambda_{d_2}||R_{[d_1, d_2]}|\Bigg)\label{eq:SelbergMain}
 \end{equation}
-För att få en form på \eqref{eq:SelbergMain} som vi kan använda som ett såll behöver vi bestämma talföljden \((\lambda_d)\). Om vi följer resonemanget i \cite{cojocarumurty}, då bestämmer vi \(\lambda_d\) genom att först betrakta bara huvudtermem. Genom att använda multiplikativiteten av \(f(d)\) går det att skriva om huvudtermen till en kvadratisk form och sedan hitta sin minimum. Vid detta minimumvärde blir \(|\lambda_d|\leq 1\) vilket då ger oss en omskrivning av feltermen med. Alla dessa omskrivningar härleder följande sats.
+För att få en form på \eqref{eq:SelbergMain} som vi kan använda som ett såll behöver vi bestämma talföljden \((\lambda_d)\). Om vi följer resonemanget i \cite{cojocarumurty}, då bestämmer vi \(\lambda_d\) genom att först betrakta bara huvudtermem. Genom att använda multiplikativiteten av \(f(d)\) går det att skriva om huvudtermen till en kvadratisk form och sedan hitta sin minimum. Vid detta minimumvärde blir \(|\lambda_d|\leq 1\) vilket då ger oss en uppskattning av feltermen med. Alla dessa omskrivningar härleder följande sats.
 
-\begin{theorem}[Selbergs Såll]\label{thm:SelbergSieve} Behåll notationen från tidigare i kapitlet och bestäm en funktion
+\begin{theorem}[Selbergs Såll]\label{thm:SelbergSieve} Behåll notationen från tidigare i avsnittet och bestäm en funktion
 \begin{equation}
     V(z) = \sum_{\substack{d\leq z\\ d\divides P(z)}}\frac{\mu^2(d)}{f_1(d)}.\nonumber
 \end{equation}
@@ -76,4 +76,20 @@ Då har vi att
     \S{A}{P}{z} \leq \frac{X}{V(z)} + O\Bigg(\sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}|R_{[d_1, d_2]}|\Bigg)\nonumber
 \end{equation}
 \end{theorem}
-Ovanstående formulering är en kortfattat version av hur satsen redovisas i \cite{cojocarumurty}.
+Ovanstående formulering är en kortfattat version av hur satsen redovisas i \cite{cojocarumurty}. För att underlätta tillämpningen av sållet ger \cite{cojocarumurty} följande uppskattningar av \(V(z)\).
+\begin{lemma}[Uppskattningar av \(V(z)\)]\label{thm:SelVApp}
+Behåll notationen från tidigare i avsnittet och låt \(\Tilde{f}(\cdot)\) vara en fullständig multiplikativ funktion definierad som \(\Tilde{f}(p) = f(p)\) för all primtal \textit{p}. Bestäm också
+\begin{equation}
+    \overline{P}(z) = \prod_{\substack{p\not\in\P\\p<z}} p\nonumber
+\end{equation}
+Då är
+\begin{enumerate}
+    \item \(
+         V(z) \geq \sum_{\substack{\delta\leq z\\p\divides\delta\implies p\divides P(z)}} {\Tilde{f}(\delta)}^{-1}\nonumber\)
+    \item \(
+        f(\overline{P}(z))V(z) \geq f_1(\overline{P}(z))\sum_{\delta \leq z}\frac{1}{\Tilde{f}(\delta)}\nonumber
+    \)
+\end{enumerate}
+\end{lemma}
+För att ha njuta av lemman måste man först kunna bestämma en funktion \(f(\cdot)\). En exempel på hur man kanske skulle göra det redovisas i nästa avsnitt.
+\subsection{En exempel på Selbergs såll}
