@@ -55,7 +55,7 @@ där $\kappa>0$ och $A_2\geq1$ är två konstanter som uppfyller
 \todo{Förklara vilka problem vi kan lösa m.h.a sållet}
 
 
-\subsection{En tillämpning av Bruns såll EJ OMSKRIVET}
+\subsection{En tillämpning av}
 Låt oss uttrycka en mer flexibel version av primtalstvillingsförmodan på följande vis:\\
 \textit{Det finns oändligt många par av heltal $(n, n+2)$ där båda talen har högst $r$ primtalsfaktorer.}\\
 Sätter vi $r=1$ får vi exakt primtalstvillingsfömodan som ej är bevisad, däremot kan vi med hjälp av Bruns såll bevisa påståendet för $r=7$.
@@ -63,29 +63,27 @@ Definiera
 \begin{equation*}
     \mathcal{T} := \{\textit{$n\leq x$: $n$ och $n+2$ har som mest $7$ primtalsfaktorer}\}.
 \end{equation*}
-Vi vill hitta en undre begränsning till $\card{\mathcal{T}}$ som divergerar då $x\to\infty$. Låt $\P$ vara mängden av alla primtal och låt
+Målet är att hitta en undre begränsning till $\card{\mathcal{T}}$ som divergerar då $x\to\infty$. Låt $\P$ vara mängden av alla primtal och låt
 \begin{equation*}
     \A := \{n(n+2): n\leq x\}.
 \end{equation*}
-Från denna mängd vill vi sålla bort tal som delas av primtal $p<z$ för något $z$.
+Storleken på $\A$ är $X=x$ och vi önskar att sålla bort tal i mängden som delas av primtal $p<z$ för något $z$.
 Vi skiljer alltså på två typer av restklasser och har därmed
 \begin{equation*}
     \omega(2)=1\ \text{ och }\ \omega(p)=2,\ \text{för}\ p>2.
 \end{equation*}
-Från detta ser vi att $\frac{\omega(p)}{p}\leq\frac{2}{3}$ med likhet då $p=3$, låt därför $A_1=2/3$.
-
-Storleken på $\A$ är $x$ så vi sätter $X=x$,
-
-
+Detta ger direkt att $\frac{\omega(p)}{p}\leq\frac{2}{3}$ med likhet då $p=3$, låt därför $A_1=2/3$. För att hitta ett passande $\kappa$, behöver vi använda oss av
+\begin{equation}\label{brun.eq.sum_logp_over_p}
+    \sum_{p\leq n}\frac{\log p}{p} = \log n + O(1),
+\end{equation}
+vilket implicerar
 \begin{equation*}
-    X=x,\ 
-    A_0=\kappa=2,\ 
-    A_1=3\
-    \text{ och }\
-    b=1.
+    \sum_{w\leq p<z} \frac{\omega(p)\log p}{p} \leq 2\log\left(z/w\right) + O(1)
 \end{equation*}
+varpå vi ser att $\kappa=2$ är tillräckligt. Slutligen, låt $b=1$ av anledning som kommer att visa sig senare. Vi är nu redo att utnyttja den undre begränsningen i (\ref{brun.thm.brun}). 
 
-\todo{Visa några steg i uträkningen}
+
+\todo{Några steg till här}
 
 Om det är så att $n$ eller $n+2$ har mer än 7 primtalsfaktorer så måste $p\mid n(n+2)$ för något primtal $p\leq n^{1/u}$, där $u<8$.
 Vi kan därför uttrycka $\card\mathcal{T}$ som $\S{A}{P}{z}$ genom att sätta $z := x^{1/u}$. Detta ger oss att
