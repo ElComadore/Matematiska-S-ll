@@ -1,0 +1,27 @@
+% Skrivet av Erik
+
+Det klassiska exemplet på ett matematiskt såll, vilket beskrevs i introduktionen, har tillskrivits den grekiska polyhistorn Eratosthenes (ca. 276 - 194 f.v.t.). Idén var raffinerad av Adrien-Marie Legendre 1808 v.t. med hjälp av inklusion-exklusionsprincipen formulerad på formen från avsnitt \ref{sallproblemet}. Nedan kommer vi se hur \cite{cojocarumurty} utvecklar Eratosthenes såll genom användningen av ett trick uppkallat efter matematikern R. A. Rankin och sedan studera en tillämpning av resultatet. 
+
+\subsection{Legendres såll}
+
+Första steget för att utveckla Eratosthenes såll är att omformulera sållexemplet från introduktionen i de termer vi definierade i föregående avsnittet. I exemplet börjar vi med en lista av alla naturliga tal upp till en övre gräns, säg $x$, vilken vi kan skriva som $\A = \{n \in \mathbb{N} : n \leq x\}$. Låt alla primtal upp till $z$ redan vara inringade och mängderna vi kryssar över vara \(\A_p = \{a \in \A :  a \equiv 0 \pmod{p}\}\). Om vi väljer $z = \sqrt{x}$ så blir, med hjälp av (\ref{inclusionexclusion}),
+\begin{align*}
+    \pi(x) - \pi(\sqrt{x}) + 1 = \sum_{d \divides \P(\sqrt{x})} \mu(d) \left\lfloor \frac{x}{d} \right\rfloor . 
+\end{align*}
+Detta var Legendres idé 1808 när han omformulerad Eratosthenes såll för att räkna primtal. 
+
+Eftersom \(\A_p\) är definierad till att vara en restklass modulo $p$ så säger vi att $\omega(p) = 1$ för alla $p$. 
+
+I original algoritmen ringar vi in primtal allteftersom vi sållar fram dem; utgår vi istället från alla primtal mindre än \(z\) redan inringade och kryssar över alla multipler av dessa. Detta är ekvivalent med att säga att \(\A_p := \{a \in \A : a \equiv 0 \pmod{p}\}\) i den allmänna notationen.
+
+med  så vet vi att sållet kan generera alla primtal upp till \(z^2\).
+
+\begin{theorem}[Eratosthenes generaliserade såll]\label{thm:EratosthenesSieve}
+
+\begin{align*}
+    \S{A}{P}{z} = X W(z) + O\left(\left(X + \frac{y}{\log z} \right) (\log z)^{\kappa + 1} \exp{\left(-\frac{\log y}{\log z}\right)} \right)
+\end{align*}
+
+\end{theorem}
+
+vara alla naturliga tal upp till något tal $x$, $\P = P_z$ 
