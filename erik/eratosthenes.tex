@@ -6,15 +6,19 @@ Det klassiska exemplet på ett matematiskt såll, vilket beskrevs i introduktion
 
 Första steget för att utveckla Eratosthenes såll är att omformulera sållexemplet från introduktionen i de termer vi definierade i föregående avsnittet. I exemplet börjar vi med en lista av alla naturliga tal upp till en övre gräns, säg $x$, vilken vi kan skriva som $\A = \{n \in \mathbb{N} : n \leq x\}$. Låt alla primtal upp till $z$ redan vara inringade och mängderna vi kryssar över vara \(\A_p = \{a \in \A :  a \equiv 0 \pmod{p}\}\). Om vi väljer $z = \sqrt{x}$ så blir, med hjälp av (\ref{inclusionexclusion}),
 \begin{align*}
-    \pi(x) - \pi(\sqrt{x}) + 1 = \sum_{d \divides \P(\sqrt{x})} \mu(d) \left\lfloor \frac{x}{d} \right\rfloor . 
+    \pi(x) - \pi(\sqrt{x}) + 1 = \sum_{d \divides \P(\sqrt{x})} \mu(d) \left\lfloor \frac{x}{d} \right\rfloor  
 \end{align*}
-Detta var Legendres idé 1808 när han omformulerad Eratosthenes såll för att räkna primtal. 
+där \(1\):an på vänstersidan tar i hänsyn att \(1 \in \A\) inte sållas bort på högersidan och \(\pi(\sqrt{x})\) är de inringade primtalen. Detta var Legendres idé 1808 när han omformulerade Eratosthenes såll till att räkna primtal 1808 \cite{opera}. 
 
-Eftersom \(\A_p\) är definierad till att vara en restklass modulo $p$ så säger vi att $\omega(p) = 1$ för alla $p$. 
+Eftersom \(\A_p\), för varje $p$, är definierad som en restklass modulo $p$ så säger vi att antalet utvalda restklasser modulo $p$ är $\omega(p) = 1$ för alla $p$ - vi kallar Eratosthenes för ett endimensionellt eller linjärt såll av den här anledningen. Mer allmänt betecknas dimensionen av ett såll med parametern \(\kappa\) om 
+\begin{align}
+    \sum_{p \divides P(z)} \frac{\omega(p) \log(p)}{p} \leq \kappa \log(z) + O(1)
+\end{align}
+\todo{Alt. mer lös definition: omega(p) genomsnittligt begränsad av kappa \cite{tenenbaum}}. Vi ser således att ett naturligt nästa steg är att generalisera Eratosthenes-Legendres såll för godtyckliga dimensioner. 
 
-I original algoritmen ringar vi in primtal allteftersom vi sållar fram dem; utgår vi istället från alla primtal mindre än \(z\) redan inringade och kryssar över alla multipler av dessa. Detta är ekvivalent med att säga att \(\A_p := \{a \in \A : a \equiv 0 \pmod{p}\}\) i den allmänna notationen.
+\subsection{Eratosthenes generaliserade såll}
 
-med  så vet vi att sållet kan generera alla primtal upp till \(z^2\).
+
 
 \begin{theorem}[Eratosthenes generaliserade såll]\label{thm:EratosthenesSieve}
 
@@ -23,5 +27,3 @@ med  så vet vi att sållet kan generera alla primtal upp till \(z^2\).
 \end{align*}
 
 \end{theorem}
-
-vara alla naturliga tal upp till något tal $x$, $\P = P_z$ 
