@@ -11,14 +11,32 @@ Första steget för att utveckla Eratosthenes såll är att omformulera sållexe
 där \(1\):an på vänstersidan tar i hänsyn att \(1 \in \A\) inte sållas bort på högersidan och \(\pi(\sqrt{x})\) är de inringade primtalen. Detta var Legendres idé 1808 när han omformulerade Eratosthenes såll till att räkna primtal 1808 \cite{opera}. 
 
 Eftersom \(\A_p\), för varje $p$, är definierad som en restklass modulo $p$ så säger vi att antalet utvalda restklasser modulo $p$ är $\omega(p) = 1$ för alla $p$ - vi kallar Eratosthenes för ett endimensionellt eller linjärt såll av den här anledningen. Mer allmänt betecknas dimensionen av ett såll med parametern \(\kappa\) om 
-\begin{align}
+\begin{align} \label{dimension}
     \sum_{p \divides P(z)} \frac{\omega(p) \log(p)}{p} \leq \kappa \log(z) + O(1)
 \end{align}
 \todo{Alt. mer lös definition: omega(p) genomsnittligt begränsad av kappa \cite{tenenbaum}}. Vi ser således att ett naturligt nästa steg är att generalisera Eratosthenes-Legendres såll för godtyckliga dimensioner. 
 
 \subsection{Eratosthenes generaliserade såll}
+% "Effektivt" kräver en förklaring
+Om vi låter $\A_d$, $\P$, $P(z)$ och $\omega(d)$ vara definierade som i avsnitt \ref{sallproblemet} så kan vi, med utgångspunkt i Eratosthenes och Legendres grundtankar, skapa ett mer flexibelt och effektivt såll. Den stora skillnaden mot vad vi gjorde i föregående avsnitt är att vi här tillåter fler restklasser sållas bort per primtal $p$. 
 
-Om vi låter $\A$, $\P$, $P(z)$, $\S{A}{P}{z}$ och $\omega(d)$ vara definierade som i avsnitt \ref{sallproblemet} 
+Utöver vad som står i avsnitt \ref{sallproblemet} kommer vi göra antagandena att \(\card{A_d} = 0\) för alla \(d\) större än något positivt $y$, att $\abs{R_d} = O(\omega(d))$ samt att (\ref{dimension}) håller. Vi kan lätt övertyga oss om att dessa är rimliga antaganden i det klassiska Eratosthenes såll-fallet. ... för y ... summa över $p \leq n$ log p / n $\leq$ log n + O(1) ... och $\abs{R_d} = \abs{ x/d - \lfloor x / d \rfloor} = O(1)$.
+
+Vi börjar återigen med Legendres grundidé, inklusion-exklusionsprincipen, men infogar det mer generella uttrycket för $\card{A_d}$ i formeln,
+\begin{align*}
+    \S{A}{P}{z} = \sum_{d \divides P(z)} \mu(d) \card{A_d} = X \sum_{\substack{d \divides P(z) \\ d \leq y}} \frac{\omega(d)}{d} \mu(d) + \sum_{\substack{d \divides P(z)  \\ d \leq y}} \mu(d) R_d 
+\end{align*}
+där trunkeringen av summan kommer av antagandet \(\A_d = 0, \forall d > y\). 
+
+Studerar vi den första summan ovan ser vi att
+\begin{align*}
+    \sum_{\substack{d \divides P(z) \\ d \leq y}} \frac{\omega(d)}{d} \mu(d) =
+    \sum_{\substack{d \divides P(z)}} \frac{\omega(d)}{d} \mu(d) - \sum_{\substack{d \divides P(z) \\ d > y}} \frac{\omega(d)}{d} \mu(d) .
+\end{align*}
+Observera att \(W(z) := \prod_{p \divides P(z)} (1 - \omega(p)/p) = \sum_{d \divides P(z)} \frac{\mu(d)}{d} \omega(d)\) då \(\frac{\omega(d)}{d}\) är multiplikativ. Således kan vi dela upp den siktade mängden i en huvuddel och en rest på följande vis
+\begin{align*}
+    
+\end{align*}
 
 \begin{theorem}[Eratosthenes generaliserade såll]\label{thm:EratosthenesSieve}
 
