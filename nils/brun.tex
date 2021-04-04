@@ -1,18 +1,20 @@
 % Skrivet av Nils
 
-\subsection{Sållet}
-Bruns såll publicerades 1915 av den norske matematikern Viggo Brun (1881-1978). 
+Bruns såll publicerades 1915 av den norske matematikern Viggo Brun (1881-1978).
+Det som utmärker detta såll är det uppskattar $\S{A}{P}{z}$ både under- och ovanifrån.
 
-\todo{Hitta källa}
+\todo{Hitta källa.}
 
-Brun visade att för varje funktion $g$ som uppfyller $g(1)=1$, så gäller det att
+\subsection{Beskrivning av sållet}
+Brun visade att för varje funktion $g$ som uppfyller $g(1)=1$,
+så gäller det att
 \begin{equation*}
     \S{A}{P}{z} 
     = \sum_{d \mid P(z)} \mu(d) g(d) \card\A_d 
     - f_g,
 \end{equation*} % f_g = \sum_{d \mid P(z)} \sum_{\substack{p \mid P(z) \\ p<q(d)}} \mu(d) (g(d)-g(pd)) S(\A_{pd},\P^{(pd)},p).
 där $f_g$ är en funktion av $\A,\P$ och $z$, definierad med hjälp av $g$. 
-Brun konstruerade sedan två funktioner $g_U$ och $g_L$ så att $f_{g_U}\geq 0$ och $f_{g_L}\leq 0$ alltid gäller. 
+Därefter konstruerade Brun två funktioner $g_U$ och $g_L$ så att $f_{g_U}\geq 0$ och $f_{g_L}\leq 0$ alltid gäller. 
 Således kan en undre och övre begränsning till $\S{A}{P}{z}$ erhållas, nämligen
 \begin{equation}\label{brun.eq.gugl}
     \sum_{d \mid P(z)} \mu(d) g_L(d) \card\A_d 
@@ -23,11 +25,14 @@ Detta var Bruns stora idé.
 Genom att sedan skriva $\card\A_d=\frac{\omega(d)}{d}X + R_d$ kunde han hitta en approximation och felterm för begränsningarna i (\ref{brun.eq.gugl}) och på så vis formulera Bruns såll.
 
 \begin{theorem}[Bruns såll] \label{brun.thm.brun}
-Låt $b$ vara ett positivt heltal och $\lambda$, ett reellt tal som uppfyller $0<\lambda e^{1+\lambda}<1$.
-Antag att det finns en konstant $A_1<1$ så att $0\leq\frac{\omega(p)}{p}\leq A_1$, för varje $p\in\P$.
-Antag även att $\left|R_p\right| \leq \omega(p)$, för varje $p\in\P$.
+Låt $b$ vara ett positivt heltal och $\lambda$,
+ett reellt tal som uppfyller $0<\lambda e^{1+\lambda}<1$.
+Antag att $\left|R_p\right|\leq\omega(p)\leq pA_1$ för varje $p\in\P$ och någon konstant $A_1<1$,
+samt att det finns konstanter $A_2\geq 1$ och $\kappa>0$ som uppfyller
+\begin{align*}
+    \sum_{w\leq p<z} \frac{\omega(p)\log p}{p} \leq \kappa\log(z/w) + A_2,\quad \text{för}\ 2\leq w\leq z.
+\end{align*}
 
-\bigskip%\noindent
 Då begränsas $\S{A}{P}{z}$ ovanifrån av
 \begin{align}
     & XW(z)\left(1 + \lambda c_1\exp\left(c_2\frac{2b+3}{\lambda\log z}\right)\right) + O\left(z^{c_3}\right), \label{brun.eq.upper}
@@ -40,53 +45,62 @@ Konstanterna $c_1$, $c_2$ och $c_3$ definieras som
 \begin{equation*}
     c_1 := \frac{ 2\lambda^{2b}e^{2\lambda} }{ 1 - \lambda^2e^{2+2\lambda} }, \quad
     c_2 := \frac{A_2}{2}\left(1+\frac{\kappa+\frac{A_2}{\log 2}}{1+A_1}\right)\ \text{och} \quad
-    c_3 := 2b + \frac{2.01}{e^{2\lambda/\kappa} - 1},
-\end{equation*}
-där $\kappa>0$ och $A_2\geq1$ är två konstanter som uppfyller
-\begin{equation*}
-    \sum_{w\leq p<z} \frac{\omega(p)\log p}{p} \leq \kappa\log(z/w) + A_2,\ \text{ för }\ 2\leq w\leq z.
+    c_3 := 2b + \frac{2.01}{e^{2\lambda/\kappa} - 1}.
 \end{equation*}
 \end{theorem}
 
-\todo{Förtydligande av sållet. Val av konstanter, mängder etc}
+\todo{Förtydligande av sållet. Val av konstanter, mängder etc.}
 
-\todo{Förklara varför sållet är spännande}
-
-\todo{Förklara vilka problem vi kan lösa m.h.a sållet}
+\todo{Förklara vilka problem som kan lösas m.h.a sållet. Kanske i styckets inledning.}
 
 
 \subsection{En tillämpning av}
-Låt oss uttrycka en mer flexibel version av primtalstvillingsförmodan på följande vis:\\
-\textit{Det finns oändligt många par av heltal $(n, n+2)$ där båda talen har högst $r$ primtalsfaktorer.}\\
-Sätter vi $r=1$ får vi exakt primtalstvillingsfömodan som ej är bevisad, däremot kan vi med hjälp av Bruns såll bevisa påståendet för $r=7$.
+Låt oss uttrycka en modifierad version av primtalstvillingsförmodan på följande vis:\\
+\textit{Det finns oändligt många par av heltal $(n,n+2)$ där båda talen har högst $r$ primtalsfaktorer.}\\
+För valet $r=1$ erhålls exakt primtalstvillingsfömodan, vilken står obevisad.
+Däremot är det möjligt att bevisa påståendet för $r=7$, genom att ta hjälp av Bruns såll.
 Definiera
 \begin{equation*}
     \mathcal{T} := \{\textit{$n\leq x$: $n$ och $n+2$ har som mest $7$ primtalsfaktorer}\}.
 \end{equation*}
-Målet är att hitta en undre begränsning till $\card{\mathcal{T}}$ som divergerar då $x\to\infty$. Låt $\P$ vara mängden av alla primtal och låt
+Målet är att hitta en undre begränsning till $\card{\mathcal{T}}$ som divergerar då $x\to\infty$.
+Låt $\P$ vara mängden av alla primtal och låt
 \begin{equation*}
     \A := \{n(n+2): n\leq x\}.
 \end{equation*}
-Storleken på $\A$ är $X=x$ och vi önskar att sålla bort tal i mängden som delas av primtal $p<z$ för något $z$.
-Vi skiljer alltså på två typer av restklasser och har därmed
+Vi vill uppskatta storleken på $\A$ efter bortsållning av tal delbara med primtal $p<z$ för något $z$.
+För att kunna använda (\ref{brun.thm.brun}) behöver vi se till så att alla antaganden är uppfyllda, vilket vi ska ägna oss åt nu.
+
+
+Vi skiljer på två typer av restklasser; noll och nollskild modulo $p$, och har därmed att
 \begin{equation*}
     \omega(2)=1\ \text{ och }\ \omega(p)=2,\ \text{för}\ p>2.
 \end{equation*}
-Detta ger direkt att $\frac{\omega(p)}{p}\leq\frac{2}{3}$ med likhet då $p=3$, låt därför $A_1=2/3$. För att hitta ett passande $\kappa$, behöver vi använda oss av
+Detta ger direkt att $\frac{\omega(p)}{p}\leq\frac{2}{3}$ med likhet då $p=3$, låt därför $A_1=2/3$.
+För att hitta ett passande $\kappa$, använder vi oss av
 \begin{equation}\label{brun.eq.sum_logp_over_p}
     \sum_{p\leq n}\frac{\log p}{p} = \log n + O(1),
 \end{equation}
+\todo{Referera till boken} \\ \noindent
 vilket implicerar
 \begin{equation*}
     \sum_{w\leq p<z} \frac{\omega(p)\log p}{p} \leq 2\log\left(z/w\right) + O(1)
 \end{equation*}
-varpå vi ser att $\kappa=2$ är tillräckligt. Slutligen, låt $b=1$ av anledning som kommer att visa sig senare. Vi är nu redo att använda den undre begränsningen i (\ref{brun.thm.brun}). 
+varpå vi ser att $\kappa=2$ uppfyller kriterierna och att $A_2$ existerar.
+%Slutligen, är storleken på $\A$ är $x$ så låt $X=x$ och vi sätter $b=1$, av anledning som kommer att visa sig senare.
+Vi är nu redo att använda den undre begränsningen i (\ref{brun.thm.brun}) som ger
+\begin{align*}
+    \S{A}{P}{z} \leq xW(z)\left(1 - c_1\exp\left(c_2\frac{2b+2}{\lambda\log z}\right)\right) + O\left(z^{c_3 - 1}\right).
+\end{align*}
+
 
 
 \todo{Några steg till här}
 
-Om det är så att $n$ eller $n+2$ har mer än 7 primtalsfaktorer så måste $p\mid n(n+2)$ för något primtal $p\leq n^{1/u}$, där $u<8$.
-Vi kan därför uttrycka $\card\mathcal{T}$ som $\S{A}{P}{z}$ genom att sätta $z := x^{1/u}$. Detta ger oss att
+Om det är så att $n$ eller $n+2$ har mer än 7 primtalsfaktorer,
+så måste $p\mid n(n+2)$ för något primtal $p\leq n^{1/u}$, där $u<8$.
+Vi kan därför uttrycka $\card\mathcal{T}$ som $\S{A}{P}{z}$ genom att sätta $z := x^{1/u}$.
+Detta ger oss att
 \begin{equation*}
     \card\mathcal{T} \gg \frac{x}{(\log x)^2}.
 \end{equation*}
