@@ -43,13 +43,16 @@ Vi får även från den Möbius dubbla inverteringsformel att
 \end{equation}
 \end{comment}
 
-En annan perspektiv på sållmetoder gavs av ytligare en till norsk matematiker Atle Selberg, under 1940 talet. Hans metod, av en kombinatorisk stil som liknade de tidigare, använde sig av en ny typ av vikt och en uppskattning en summa av Möbius funktioner för att skapa en ny sållmetod. Dessa nya vikter, vilket motsvarar \(\delta_d^{-1}\) i \eqref{deltaX}, bestod av ett delat med en multiplikativ funktion 
+En annan perspektiv på sållmetoder gavs av ytligare en till norsk matematiker Atle Selberg, under 1940 talet. Sin metod, av en kombinatorisk stil som liknade de tidigare, använde sig av en ny typ av vikt och en uppskattning en summa av Möbius funktioner för att skapa en ny sållmetod.
+
+\subsection{Beskrivning av sållet}
+Selbergs nya vikter, vilkets multiplikativ invers motsvarar \(\delta_d\) i \eqref{deltaX}, bestod av ett delat med en multiplikativ funktion 
 \begin{equation}
     f(n) = \sum_{d\divides n}f_1(d)\nonumber
 \end{equation}
-där \(f_1(d)\) är också multiplikativ och är entydigt bestämd av sin Möbiusinvertering. Det också krävs att \(f(p) > 1\) för alla \(p\in\P\). Med en sådan mer allmän vikt hade sållteorin möjligheten att uppskatta nya typer av mängder som kunde inte vara hanterad med hjälp av endast ekvivalensklasser. 
+där \(f_1(d)\) är också multiplikativ och är entydigt bestämd av sin Möbius inverteringsformel. Det också krävs att \(f(p) > 1\) för alla \(p\in\P\). Med en sådan mer allmän vikt hade sållteorin möjligheten att uppskatta nya typer av mängder som kunde inte vara hanterad med hjälp av endast restklasser modulo primtal. 
 
-Enligt \cite{cojocarumurty}, bestod uppskattningen huvudsakligen av att för en given reell talföljd, \((\lambda_d)\), med \(\lambda_1 = 1\), har vi att 
+Enligt \cite{cojocarumurty}, bestod summans uppskattningen huvudsakligen av att för en given reell talföljd, \((\lambda_d)\), med \(\lambda_1 = 1\), har vi att 
 \begin{equation}
     \sum_{d\divides n}\mu(d) \leq \Bigg(\sum_{d\divides n}\lambda_d\Bigg)^2.\nonumber
 \end{equation}
@@ -65,7 +68,7 @@ där \([a, b]\) betecknar den lägsta gemensamma multipeln av \textit{a} och \te
 \begin{equation}
     \S{A}{P}{z} \leq X\sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}\frac{\lambda_{d_1}\lambda_{d_2}}{f([d_1,d_2])} + O\Bigg(\sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}|\lambda_{d_1}||\lambda_{d_2}||R_{[d_1, d_2]}|\Bigg)\label{eq:SelbergMain}
 \end{equation}
-För att få en form på \eqref{eq:SelbergMain} som vi kan använda som ett såll behöver vi bestämma talföljden \((\lambda_d)\). Om vi följer resonemanget i \cite{cojocarumurty}, då bestämmer vi \(\lambda_d\) genom att först betrakta bara huvudtermem. Genom att använda multiplikativiteten av \(f(d)\) går det att skriva om huvudtermen till en kvadratisk form och sedan hitta sin minimum. Vid detta minimumvärde blir \(|\lambda_d|\leq 1\) vilket då ger oss en uppskattning av feltermen med. Alla dessa omskrivningar härleder följande sats.
+För att få en form på \eqref{eq:SelbergMain} vilket vi kan använda som ett såll behöver vi bestämma talföljden \((\lambda_d)\). Om vi följer resonemanget i \cite{cojocarumurty}, då bestämmer vi \(\lambda_d\) genom att först betrakta bara huvudtermem. Genom att använda multiplikativiteten av \(f(d)\) går det att skriva om huvudtermen till en kvadratisk form och sedan hitta sin minimum. Vid detta minimumvärde blir \(|\lambda_d|\leq 1\) vilket då ger oss en uppskattning av feltermen med. Alla dessa omskrivningar härleder följande sats.
 
 \begin{theorem}[Selbergs Såll]\label{thm:SelbergSieve} Behåll notationen från tidigare i avsnittet och bestäm en funktion
 \begin{equation}
