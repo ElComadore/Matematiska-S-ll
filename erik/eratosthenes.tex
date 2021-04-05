@@ -35,13 +35,35 @@ Studerar vi den första summan ovan ser vi att
 \end{align*}
 Observera att \(W(z) := \prod_{p \divides P(z)} (1 - \omega(p)/p) = \sum_{d \divides P(z)} \frac{\mu(d)}{d} \omega(d)\) då \(\frac{\omega(d)}{d}\) är multiplikativ. Således kan vi dela upp den siktade mängden i en huvuddel och en rest på följande vis
 \begin{align*}
-    
+    \S{A}{P}{z} = \left(X W(z) \right) + \left(- \sum_{\substack{d \divides P(z) \\ d > y}} \frac{\omega(d)}{d} \mu(d) + \sum_{\substack{d \divides P(z)  \\ d \leq y}} \mu(d) R_d \right).
 \end{align*}
 
-\begin{theorem}[Eratosthenes generaliserade såll]\label{thm:EratosthenesSieve}
-
+Vi kan skriva om resttermen, först med hjälp av triangelolikheten och sedan med $\abs{\mu(x)} \leq 1$ och vårt antagande $\abs{R_d} = O(\omega(d))$ så att
 \begin{align*}
-    \S{A}{P}{z} = X W(z) + O\left(\left(X + \frac{y}{\log z} \right) (\log z)^{\kappa + 1} \exp{\left(-\frac{\log y}{\log z}\right)} \right)
+    \sum_{\substack{d \divides P(z) \\ d > y}} \abs{\frac{\omega(d)}{d} \mu(d)} + \sum_{\substack{d \divides P(z)  \\ d \leq y}} \abs{ \mu(d) R_d} \leq 
+    \sum_{\substack{d \divides P(z) \\ d > y}} \abs{\frac{\omega(d)}{d}} + \sum_{\substack{d \divides P(z)  \\ d \leq y}} \abs{R_d} \leq
+    \sum_{\substack{d \divides P(z) \\ d > y}} \frac{\omega(d)}{d} + O\left(\sum_{\substack{d \divides P(z)  \\ d \leq y}} \omega(d)\right).
+\end{align*}
+Summan innanför Ordo-tecknet kan vi förenkla med Rankins trick som säger att indikator funktionen, \(1_{n \leq x} \leq \frac{x}{n}\). Därav skriver vi 
+\begin{align*}
+    \sum_{\substack{d \divides P(z)  \\ d \leq y}} \omega(d) =
+    \sum_{\substack{d \divides P(z)}} \omega(d) (1_{d \leq y})^{\delta} \leq
+    \sum_{\substack{d \divides P(z)}} \omega(d) \left(\frac{y}{d}\right)^{\delta}  =
+    % \exp{\left( \delta \log(y) + \log \left(\sum_{d \divides P(z)} \frac{\omega(d)}{d^\delta}\right) \right)}
+    % \exp{\left( \delta \log(y) + \prod_{p \divides P(z)} \log \left( 1 + \frac{\omega(p)}{p^\delta}\right) \right)}
+\end{align*}
+för alla \(\delta > 0\). Med olikheterna \(\log(1 + x) \leq x\) och \(e^x \leq 1 + x e^x\) för $x \geq 0$, och sist partiell summering av (\ref{dimension}) får vi att
+\begin{align*}
+    \sum_{\substack{d \divides P(z)  \\ d \leq y}} \omega(d) = O\left( \frac{y}{\log(z)} (\log(z))^{\kappa + 1} \exp{\left(- \frac{\log(y)}{\log(z)} \right)} \right).
+\end{align*}
+På ett liknande sätt omvandlar vi den första summan i feltermen med partiell summering av antagandet (\ref{dimension}) och sedan använder resultatet vi fick för den andra summan. 
+
+Sammanställt, huvud- och felterm, få vi följande sats:
+
+\begin{theorem}[Eratosthenes generaliserade såll]\label{thm:EratosthenesSieve}
+Med notationen från avsnitt \ref{sallproblemet} och antagandena nämnda tidigare i detta avsnitt, då gäller att
+\begin{align*}
+    \S{A}{P}{z} = X W(z) + O\left(\left(X + \frac{y}{\log z} \right) (\log z)^{\kappa + 1} \exp{\left(-\frac{\log y}{\log z}\right)} \right). 
 \end{align*}
 
 \end{theorem}
