@@ -54,12 +54,12 @@ Konstanterna $c_1$, $c_2$ och $c_3$ definieras som
 \todo{Förklara vilka problem som kan lösas m.h.a sållet. Kanske i styckets inledning.}
 
 
-\subsection{En tillämpning av}
+\subsection{En tillämpning av Bruns såll}
 Låt oss uttrycka en modifierad version av primtalstvillingsförmodan på följande vis:\\
 \textit{Det finns oändligt många par av heltal $(n,n+2)$ där båda talen har högst $r$ primtalsfaktorer.}\\
 För valet $r=1$ erhålls exakt primtalstvillingsfömodan, vilken står obevisad.
 Däremot är det möjligt att bevisa påståendet för $r=7$, genom att ta hjälp av Bruns såll.
-Definiera
+Definiera mängden
 \begin{equation*}
     \mathcal{T} := \{\textit{$n\leq x$: $n$ och $n+2$ har som mest $7$ primtalsfaktorer}\}.
 \end{equation*}
@@ -79,16 +79,17 @@ Vi skiljer på två typer av restklasser; noll och nollskild modulo $p$, och har
 Detta ger direkt att $\frac{\omega(p)}{p}\leq\frac{2}{3}$ med likhet då $p=3$, låt därför $A_1=2/3$.
 För att hitta ett passande $\kappa$, använder vi oss av
 \begin{equation}\label{brun.eq.sum_logp_over_p}
-    \sum_{p\leq n}\frac{\log p}{p} = \log n + O(1),
+    \sum_{p\leq n}\frac{\log p}{p} = \log n + O(1).
 \end{equation}
-\todo{Referera till boken} \\ \noindent
-vilket implicerar
+\todo{Referera till boken eller appendix} \\ \noindent
+Detta implicerar
 \begin{equation*}
-    \sum_{w\leq p<z} \frac{\omega(p)\log p}{p} \leq 2\log\left(z/w\right) + O(1)
+    \sum_{w\leq p<z} \frac{\omega(p)\log p}{p} \leq 2\log\left(z/w\right) + O(1),
 \end{equation*}
-varpå vi ser att $\kappa=2$ uppfyller kriterierna och att $A_2$ existerar.
+varpå vi ser att $\kappa=2$ uppfyller kriterierna och att $A_2$ existerar,
+något explicit värde på $A_2$ är inte nödvändigt här.
 %Slutligen, är storleken på $\A$ är $x$ så låt $X=x$ och vi sätter $b=1$, av anledning som kommer att visa sig senare.
-Vi är nu redo att använda den undre begränsningen i (\ref{brun.thm.brun}) som ger
+Vi är nu redo att använda den undre begränsningen $\ref{brun.eq.lower}$ som ger
 \begin{align*}
     \S{A}{P}{z} \leq xW(z)\left(1 - c_1\exp\left(c_2\frac{2b+2}{\lambda\log z}\right)\right) + O\left(z^{c_3 - 1}\right).
 \end{align*}
