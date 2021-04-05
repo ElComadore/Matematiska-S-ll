@@ -6,12 +6,12 @@ Det allmänna fallet i sållteori är att vi har en mängd heltal \(\A\), en mä
 \end{align*}
 För \(d\), en kvadratfri produkt (dvs. utan delare \(p^\alpha\) för \(\alpha > 1\)) av element \(p \in \P\) definierar vi \(\A_d = \cap_{p \divides d} \A_p\) och \(\A_1 = \A\). Använder vi oss av inklusion-exklusionsprincipen, formulerad med hjälp av möbiusfunktionen, får vi då
 \begin{align} \label{inclusionexclusion}
-    \S{A}{P}{z} = \sum_{\substack{d \divides P(z) \\ d \leq z}} \mu(d) \card{\A_d} .
+    \S{A}{P}{z} = \sum_{d \divides P(z)} \mu(d) \card{\A_d} .
 \end{align} % sida 72 
 
 Ett gemensamt drag hos de matematiska sållen diskuterade nedan är att låta \(X\) beteckna kardinaliteten av \(\A\) och hitta \(\delta_p\) så att
-\begin{align} 
-    \card{\A_p} = \delta_p X + R_p\label{deltaX}
+\begin{align} \label{deltaX}
+    \card{\A_p} = \delta_p X + R_p
 \end{align}
 där \(\delta_p \in [0, 1)\) kan betraktas som en uppskattning av andelen element i delmängden \(\A_p\) och \(R_p\) som en felterm. För \(p \neq q\) låter vi \(\delta_{pq} = \delta_p \delta_q\) så att \(\card{\A_{pq}} = \delta_p \delta_q X + R_{pq}\) och utvidgat för ett kvadratfritt tal \(d = p_1 \cdot ... \cdot p_n\) låter vi \(\delta_{d} = \delta_{p_1} \cdot ... \cdot \delta_{p_n}\). Dessutom används, som en teknisk detalj, att \(R_{pp} = R_p\). 
 
