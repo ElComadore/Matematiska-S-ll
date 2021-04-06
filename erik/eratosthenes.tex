@@ -1,6 +1,6 @@
 % Skrivet av Erik
 
-Det klassiska exemplet på ett matematiskt såll, vilket beskrevs i introduktionen, har tillskrivits den grekiska polyhistorn Eratosthenes (ca. 276 - 194 f.v.t.). Idén var raffinerad av Adrien-Marie Legendre 1808 v.t. med hjälp av inklusion-exklusionsprincipen formulerad på formen från avsnitt \ref{sallproblemet}. Nedan kommer vi se hur \cite{cojocarumurty} utvecklar Eratosthenes såll genom användningen av ett trick uppkallat efter matematikern R. A. Rankin och sedan studera en tillämpning av resultatet. 
+Även om Eratosthenes såll fortfarande är mest känt som en enkel algoritm som utan större möda kan utföras med papper och penna så har dess idé raffinierats genom historien till att inkorperera mer avancerade teori för att tillämpas på mer komplicerade problem. Adrien-Marie Legendre 1808 v.t. utvecklade sållet med hjälp av inklusion-exklusionsprincipen formulerad på formen från avsnitt \ref{sallproblemet}. Nedan kommer vi gå igenom denna formen av Eratosthenes såll samt, i efterföljande avsnitt, se hur \cite{cojocarumurty} utvidgar sållet till en mer generell form. 
 
 \subsection{Legendres såll}
 
@@ -22,7 +22,7 @@ Eftersom \(\A_p\), för varje $p$, är definierad som en restklass modulo $p$ s�
 % "Effektivt" kräver en förklaring, i kontrast mot exaktheten av Eratosthenes såll?
 Om vi låter $\A_d$, $\P$, $P(z)$ och $\omega(d)$ vara definierade som i avsnitt \ref{sallproblemet} så kan vi, med utgångspunkt i Eratosthenes och Legendres grundtankar, skapa ett mer flexibelt och effektivt såll. Den stora skillnaden mot vad vi gjorde i föregående avsnitt är att vi här tillåter fler restklasser sållas bort per primtal $p$. 
 
-Utöver vad som står i avsnitt \ref{sallproblemet} kommer vi göra antagandena att \(\card{A_d} = 0\) för alla \(d\) större än något positivt $y$, att $\abs{R_d} = O(\omega(d))$ samt att (\ref{dimension}) håller. Vi kan lätt övertyga oss om att dessa är rimliga antaganden i det klassiska Eratosthenes såll-fallet. Eftersom vi utgår från en ändlig mängd $\A$ så håller det första antagandet då \(\card{\A_p} = 0\) för \(p > X\) innebär att, väldigt grovt, \(y \leq P_{X}\). För det andra antagandet räcker det med summa över $p \leq n$ log p / n $\leq$ log n + O(1) ... och $\abs{R_d} = \abs{ x/d - \lfloor x / d \rfloor} = O(1)$.
+Utöver vad som står i avsnitt \ref{sallproblemet} kommer vi göra antagandena att \(\card{A_d} = 0\) för alla \(d\) större än något positivt $y$, att $\abs{R_d} = O(\omega(d))$ samt att (\ref{dimension}) håller. Vi kan lätt övertyga oss om att dessa är rimliga antaganden i det klassiska Eratosthenes såll-fallet. Eftersom vi utgår från en ändlig mängd $\A$ så håller det första antagandet då \(\card{\A_p} = 0\) för \(p > X\) innebär att, väldigt grovt, \(y \leq P_{X}\). Det andra antagandet räcker det med summa över $p \leq n$ log p / n $\leq$ log n + O(1) ... och $\abs{R_d} = \abs{ x/d - \lfloor x / d \rfloor} = O(1)$.
 
 Vi börjar återigen med Legendres grundidé, inklusion-exklusionsprincipen, men infogar det mer generella uttrycket för $\card{A_d}$ i formeln,
 \begin{align*}
@@ -30,12 +30,12 @@ Vi börjar återigen med Legendres grundidé, inklusion-exklusionsprincipen, men
 \end{align*}
 där trunkeringen av summan kommer av antagandet \(\A_d = 0, \forall d > y\). 
 
-Studerar vi den första summan ovan ser vi att
-\begin{align*}
-    \sum_{\substack{d \divides P(z) \\ d \leq y}} \frac{\omega(d)}{d} \mu(d) =
-    \sum_{\substack{d \divides P(z)}} \frac{\omega(d)}{d} \mu(d) - \sum_{\substack{d \divides P(z) \\ d > y}} \frac{\omega(d)}{d} \mu(d) .
-\end{align*}
-Observera att \(W(z) := \prod_{p \divides P(z)} (1 - \omega(p)/p) = \sum_{d \divides P(z)} \frac{\mu(d)}{d} \omega(d)\) då \(\frac{\omega(d)}{d}\) är multiplikativ. Således kan vi dela upp den siktade mängden i en huvuddel och en rest på följande vis
+Studerar vi den första summan ovan ser vi att vi kan skriva om den som summan över alla \(d \divides P(z)\) minus summan över alla \(d \divides P(z)\) så att \(d > y\).
+%\begin{align*}
+%    \sum_{\substack{d \divides P(z) \\ d \leq y}} \frac{\omega(d)}{d} \mu(d) =
+%    \sum_{\substack{d \divides P(z)}} \frac{\omega(d)}{d} \mu(d) - \sum_{\substack{d \divides P(z) \\ d > y}} \frac{\omega(d)}{d} \mu(d) .
+%\end{align*}
+Med observationen att \(W(z) := \prod_{p \divides P(z)} (1 - \omega(p)/p) = \sum_{d \divides P(z)} \frac{\mu(d)}{d} \omega(d)\) då \(\frac{\omega(d)}{d}\) är multiplikativ kan vi således dela upp den siktade mängden i en huvuddel och en rest på följande vis
 \begin{align*}
     \S{A}{P}{z} = \left(X W(z) \right) + \left(- X \sum_{\substack{d \divides P(z) \\ d > y}} \frac{\omega(d)}{d} \mu(d) + \sum_{\substack{d \divides P(z)  \\ d \leq y}} \mu(d) R_d \right).
 \end{align*} % Saknas X
@@ -60,15 +60,22 @@ för alla \(\delta > 0\). Med olikheterna \(\log(1 + x) \leq x\) och \(e^x \leq 
 \end{align*}
 På ett liknande sätt omvandlar vi den första summan i feltermen med partiell summering av antagandet (\ref{dimension}) och sedan använder resultatet vi fick för den andra summan. 
 
-Sammanställt, huvud- och felterm, erhåller vi följande sats:
+Sammanställt, huvud- och felterm, erhåller vi nästa sats.
 
 \begin{theorem}[Eratosthenes generaliserade såll]\label{thm:EratosthenesSieve}
-Med notationen från avsnitt \ref{sallproblemet} och antagandena nämnda tidigare i detta avsnitt, så gäller att
+Med notationen från avsnitt \ref{sallproblemet}, så gäller att
 \begin{align*}
     \S{A}{P}{z} = X W(z) + O\left(\left(X + \frac{y}{\log z} \right) (\log z)^{\kappa + 1} \exp{\left(-\frac{\log y}{\log z}\right)} \right). 
 \end{align*}
+givet att följande antaganden håller
+\begin{enumerate}
+    \item \(\card{\A_d} = 0, \forall d > y\) för något \(y \in \mathbb{R}_+\)
+    \item \(\abs{R_d} = O(\omega(d))\)
+    \item \(\sum_{p \divides P(z)} \frac{\omega(p) \log(p)}{p} \leq \kappa \log(z) + O(1)\).
+\end{enumerate}
+
 \end{theorem}
 
 \subsection{Tillämpningar}
 
-
+\todo{Skriva om en tillämpning på tvillingprimtal}

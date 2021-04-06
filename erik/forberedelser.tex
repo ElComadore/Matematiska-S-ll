@@ -2,8 +2,11 @@
 
 I den här texten kommer vi att låna större delen av vår notation från boken \textit{An Introduction to Sieve Methods and their Applications} \cite{cojocarumurty}, exempelvis skriver vi \(p, q, l\) när vi menar primtal, \(n, d, k\) för naturliga tal och \(x, y, z\) för positivt reella tal. Den största gemensamma delaren betecknas här \(\gcd{d, k}\), funktionen \(\nu(d)\) beskriver antalet distinkta primtalsdelare av \(d\) och \(\pi(z)\) är antalet primtal mindre än eller lika med \(z\). Nedanstående avsnitt ämnar till att etablera mer notation och tekniker som är vanligt förekommande i sållteori med utgångspunkt i \cite{cojocarumurty}.
 
+\subsection{Multiplikativa funktioner} \label{mult}
+En särskilt trevlig delmängd av alla funktioner i talteoretiska sammanhang är de multiplikativa funktionerna. Vi säger att en funktion $f$ är \textit{multiplikativ} om \(f(mn) = f(m)f(n)\) då $\gcd{m,n} = 1$. Om detta håller för alla $m, n$ så kallar vi $f$ för \textit{fullständigt multiplikativ}. 
+
 \subsection{Möbiusfunktionen} \label{Mobius}
-En väsentlig funktion i sållteori är möbiusfunktionen,
+En ytterst väsentlig multiplikativ funktion i sållteori är möbiusfunktionen,
 \begin{equation*}
     \mu(n) = 
     \begin{cases}

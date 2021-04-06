@@ -15,5 +15,8 @@ Ett gemensamt drag hos de matematiska sållen diskuterade nedan är att låta \(
 \end{align}
 där \(\delta_p \in [0, 1)\) kan betraktas som en uppskattning av andelen element i delmängden \(\A_p\) och \(R_p\) som en felterm. För \(p \neq q\) låter vi \(\delta_{pq} = \delta_p \delta_q\) så att \(\card{\A_{pq}} = \delta_p \delta_q X + R_{pq}\) och utvidgat för ett kvadratfritt tal \(d = p_1 \cdot ... \cdot p_n\) låter vi \(\delta_{d} = \delta_{p_1} \cdot ... \cdot \delta_{p_n}\). Dessutom används, som en teknisk detalj, att \(R_{pp} = R_p\). 
 
-I avsnitt \ref{Eratosthenes} om Eratosthenes generaliserade såll och avsnitt \ref{brun} om Bruns såll så kommer vi välja \(\delta_p = \omega(p) / p\) där \(\omega(p)\) betecknar antalet utvalda restklasser modulo \(p\) vi vill sålla bort. Som följd låter vi i dessa fall \(\A_p\) vara alla element som tillhör någon av dessa restklasser modulo $p$ och för kvadratfria $d$ låter vi \(\omega(d) := \prod_{p \divides d} \omega(p)\). % Alt. säga omega(d) helt multiplikativ
-\todo{Skriv mer om omegafunktionen, definiera W(z) och städa upp i texten}
+I avsnitt \ref{Eratosthenes} om Eratosthenes generaliserade såll och avsnitt \ref{brun} om Bruns såll så kommer vi välja \(\delta_p = \omega(p) / p\) där \(\omega(p)\) betecknar antalet utvalda restklasser modulo \(p\) vi vill sålla bort. Som följd låter vi i dessa fall \(\A_p\) vara alla element som tillhör någon av dessa restklasser modulo $p$ och för kvadratfria $d$ låter vi \(\omega(d) := \prod_{p \divides d} \omega(p)\). Därtill definierar vi den användbara funktionen \(W(z) := \prod_{\substack{p \in \P \\ p < z}}(1 - \omega(p) / p)\).
+
+
+
+% Alt. säga omega(d) helt multiplikativ
