@@ -21,11 +21,13 @@ Således kan en undre och övre begränsning till $\S{A}{P}{z}$ erhållas, näml
     \leq \S{A}{P}{z} 
     \leq \sum_{d \mid P(z)} \mu(d) g_U(d) \card\A_d.
 \end{equation}
-Detta var Bruns stora idé.
+Enligt \cite{cojocarumurty} var detta Bruns innoverande idé.
 Genom att sedan skriva $\card\A_d=\frac{\omega(d)}{d}X + R_d$ kunde han hitta en approximation och felterm för begränsningarna i (\ref{brun.eq.gugl}) och på så vis formulera Bruns såll.
 
+\todo{Undersök ytterligare om vi verkligen kan byta ut $R_d$ mot $R_p$ i antagande 1 nedan.}
+
 \begin{theorem}[Bruns såll] \label{brun.thm.brun}
-Låt $b$ vara ett positivt heltal och $\lambda$,
+Med notation från avsnitt \ref{sallproblemet}, låt $b$ vara ett positivt heltal och $\lambda$,
 ett reellt tal som uppfyller $0<\lambda e^{1+\lambda}<1$.
 Antag att $\left|R_p\right|\leq\omega(p)\leq pA_1$ för varje $p\in\P$ och någon konstant $A_1<1$,
 samt att det finns konstanter $A_2\geq 1$ och $\kappa>0$ som uppfyller
@@ -44,7 +46,7 @@ Då begränsas $\S{A}{P}{z}$ ovanifrån av
 Konstanterna $c_1$, $c_2$ och $c_3$ definieras som
 \begin{equation*}
     c_1 := \frac{ 2\lambda^{2b}e^{2\lambda} }{ 1 - \lambda^2e^{2+2\lambda} }, \quad
-    c_2 := \frac{A_2}{2}\left(1+\frac{\kappa+\frac{A_2}{\log 2}}{1+A_1}\right)\ \text{och} \quad
+    c_2 := \frac{A_2}{2}\biggl(1+\frac{\kappa+\frac{A_2}{\log 2}}{1+A_1}\biggr)\ \text{och} \quad
     c_3 := 2b + \frac{2.01}{e^{2\lambda/\kappa} - 1}.
 \end{equation*}
 \end{theorem}
@@ -58,7 +60,7 @@ Konstanterna $c_1$, $c_2$ och $c_3$ definieras som
 Låt oss uttrycka en modifierad version av primtalstvillingsförmodan på följande vis:\\
 \textit{Det finns oändligt många par av heltal $(n,n+2)$ där båda talen har högst $r$ primtalsfaktorer.}\\
 För valet $r=1$ erhålls exakt primtalstvillingsfömodan, vilken står obevisad.
-Däremot är det möjligt att bevisa påståendet för $r=7$, genom att ta hjälp av Bruns såll.
+Däremot kan påståendet bevisas för $r=7$, vilket \cite{cojocarumurty} gör genom att ta hjälp av Bruns såll.
 Definiera mängden
 \begin{equation*}
     \mathcal{T} := \{\textit{$n\leq x$: $n$ och $n+2$ har som mest $7$ primtalsfaktorer}\}.
@@ -68,10 +70,7 @@ Låt $\P$ vara mängden av alla primtal och låt
 \begin{equation*}
     \A := \{n(n+2): n\leq x\}.
 \end{equation*}
-Vi vill uppskatta storleken på $\A$ efter bortsållning av tal delbara med primtal $p<z$ för något $z$.
-För att kunna använda (\ref{brun.thm.brun}) behöver vi se till så att alla antaganden är uppfyllda, vilket vi ska ägna oss åt nu.
-
-
+Med hjälp av (\ref{brun.eq.lower}), vill vi nu uppskatta storleken på $\A$ efter bortsållning av tal delbara med primtal $p<z$ för något $z$.
 Vi skiljer på två typer av restklasser; noll och nollskild modulo $p$, och har därmed att
 \begin{equation*}
     \omega(2)=1\ \text{ och }\ \omega(p)=2,\ \text{för}\ p>2.
@@ -81,27 +80,39 @@ För att hitta ett passande $\kappa$, använder vi oss av
 \begin{equation}\label{brun.eq.sum_logp_over_p}
     \sum_{p\leq n}\frac{\log p}{p} = \log n + O(1).
 \end{equation}
-\todo{Referera till boken eller appendix} \\ \noindent
-Detta implicerar
+\todo{Bör nog presenteras tidigare, eller i appendix} \\ \noindent
+För $\omega(p)\leq2$ implicerar detta att
 \begin{equation*}
     \sum_{w\leq p<z} \frac{\omega(p)\log p}{p} \leq 2\log\left(z/w\right) + O(1),
 \end{equation*}
-varpå vi ser att $\kappa=2$ uppfyller kriterierna och att $A_2$ existerar,
-något explicit värde på $A_2$ är inte nödvändigt här.
-%Slutligen, är storleken på $\A$ är $x$ så låt $X=x$ och vi sätter $b=1$, av anledning som kommer att visa sig senare.
-Betrakta nu huvudtermen i ($\ref{brun.eq.lower}$). Taylorutveckling av exponenten ger
+varpå vi ser att $\kappa=2$ uppfyller kriterierna och att $A_2$ existerar.
+Något explicit värde på $A_2$ är inte nödvändigt, för betrakta exponenten i ($\ref{brun.eq.lower}$). Taylorutveckling av ger
 \begin{align*}
-    \exp\left(c_2\frac{2b+2}{\lambda\log z}\right) = 1 + c_2\frac{2b+2}{\lambda}\log(z)^{-1} + \left(c_2\frac{2b+2}{\lambda}\right)^2\log(z)^{-2} + ...
+    \exp\left(c_2\frac{2b+2}{\lambda\log z}\right) = 1 + c_2\frac{2b+2}{\lambda}(\log z)^{-1} + \left(c_2\frac{2b+2}{\lambda}\right)^2(\log z)^{-2} + ...
 \end{align*}
-För fixerade $b,\lambda$ och $c_2$ får vi att exponenten begränsas av $1+O(log(z)^{-1})$, då $z\to\infty$.
+Fixera $b,\lambda$ och $A_2$ så att även $c_2$ är fixerat, då följer det att exponenten begränsas av $1+O((\log z)^{-1})$, då $z\to\infty$.
+Vidare har vi att 
+\begin{align*}
+    W(z) = \frac{1}{2}\exp\Bigl(\sum_{2<p<z} \log(1-2/p) \Bigr) 
+    > \frac{1}{2}\exp\Bigl(-2\sum_{2<p<z} \frac{1}{p} \Bigr).
+\end{align*}
+Partiell summation av (\ref{brun.eq.sum_logp_over_p}) ger att $\sum_{p\leq n}\frac{1}{p} = \log\log z + O(1)$, så
+\begin{align*}
+    W(z) \gg \exp\Bigl(-2\log\log z\Bigr)
+    = (\log z)^{-2}.
+\end{align*}
+Sats \ref{brun.thm.brun} ger därmed att
+\begin{equation*}
+    \S{A}{P}{z} \gg \frac{x}{(\log z)^2}\bigl(1 - c_1\bigr) + O\left(z^{c_3 - 1}\right).
+\end{equation*}
+Nu vill vi välja $b$ och $\lambda$, så att $c_1<1$ och $c_3$ är litet. 
+Detta uppfylls av $b=1$ samt $\lambda=0.101$ som medför att $c_3-1<8$.
 
-
-\todo{Några steg till här}
+\todo{Krävs nog lite förtydligande här.}
 
 Om det är så att $n$ eller $n+2$ har mer än 7 primtalsfaktorer,
-så måste $p\mid n(n+2)$ för något primtal $p\leq n^{1/u}$, där $u<8$.
-Vi kan därför uttrycka $\card\mathcal{T}$ som $\S{A}{P}{z}$ genom att sätta $z := x^{1/u}$.
-Detta ger oss att
+så måste $p\mid n(n+2)$ för något primtal $p\leq n^{1/u}$ och $u<8$.
+Vi kan därför uttrycka $\card\mathcal{T}$ som $\S{A}{P}{z}$ genom att sätta $z := x^{1/u}$, vilket ger
 \begin{equation*}
     \card\mathcal{T} \gg \frac{x}{(\log x)^2}.
 \end{equation*}
