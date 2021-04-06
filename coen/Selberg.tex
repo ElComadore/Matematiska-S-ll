@@ -43,16 +43,16 @@ Vi får även från den Möbius dubbla inverteringsformel att
 \end{equation}
 \end{comment}
 
-En annan perspektiv på sållmetoder gavs av ytligare en till norsk matematiker Atle Selberg, under 1940 talet. Sin metod, av en kombinatorisk stil som liknade de tidigare, använde sig av en ny typ av vikt och en uppskattning en summa av Möbius funktioner för att skapa en ny sållmetod.
+Ett annat perspektiv på sållmetoder gavs av yttligare en norsk matematiker, Atle Selberg, under 1940 talet. Hans metod, av en kombinatorisk stil som liknade de tidigare, använde sig av en ny typ av vikt och en uppskattning av en summa av Möbius funktioner för att skapa en ny sållmetod.
 
 \subsection{Beskrivning av sållet}
-Selbergs nya vikter, vilkets multiplikativ invers motsvarar \(\delta_d\) i \eqref{deltaX}, bestod av ett delat med en multiplikativ funktion 
+Selbergs nya vikter, vilka motsvarar \(\delta_d\) i \eqref{deltaX}, bestod av ett delat med en multiplikativ funktion 
 \begin{equation}
     f(n) = \sum_{d\divides n}f_1(d)\nonumber
 \end{equation}
-där \(f_1(d)\) är också multiplikativ och är entydigt bestämd av sin Möbius inverteringsformel. Det också krävs att \(f(p) > 1\) för alla \(p\in\P\). Med en sådan mer allmän vikt hade sållteorin möjligheten att uppskatta nya typer av mängder som kunde inte vara hanterad med hjälp av endast restklasser modulo primtal. 
+där \(f_1(d)\) är  multiplikativ också och är entydigt bestämd med hjälp av Möbius inverteringsformel. Det krävs också att \(f(p) > 1\) för alla \(p\in\P\). Med en sådan mer allmän vikt hade sållteorin möjligheten att uppskatta nya typer av mängder som tidigare ej varit möjligt att uttrycka med endast restklasser modulo primtal. 
 
-Enligt \cite{cojocarumurty}, bestod summans uppskattningen huvudsakligen av att för en given reell talföljd, \((\lambda_d)\), med \(\lambda_1 = 1\), har vi att 
+Enligt \cite{cojocarumurty}, bestod summans uppskattning huvudsakligen av att för en given reell talföljd, \((\lambda_d)\), med \(\lambda_1 = 1\), har vi att 
 \begin{equation}
     \sum_{d\divides n}\mu(d) \leq \Bigg(\sum_{d\divides n}\lambda_d\Bigg)^2.\nonumber
 \end{equation}
@@ -64,11 +64,11 @@ Genom att skriva om kvadraten av summan som en summa över två olika \textit{d}
 \begin{equation}
     \S{A}{P}{z} \leq \sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}\lambda_{d_1}\lambda_{d_2}\#A_{[d_1, d_2]}\nonumber
 \end{equation}
-där \([a, b]\) betecknar den lägsta gemensamma multipeln av \textit{a} och \textit{b}. Med insättning av \(\delta_d = 1/f(d)\) i \eqref{deltaX} får vi uppskattningen som är grundläggande  till Selbergs såll;
+där \([a, b]\) betecknar den minsta gemensamma multipeln av \textit{a} och \textit{b}. Med infogande av \(\delta_d = 1/f(d)\) i \eqref{deltaX} får vi uppskattningen som är grundläggande för Selbergs såll;
 \begin{equation}
-    \S{A}{P}{z} \leq X\sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}\frac{\lambda_{d_1}\lambda_{d_2}}{f([d_1,d_2])} + O\Bigg(\sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}|\lambda_{d_1}||\lambda_{d_2}||R_{[d_1, d_2]}|\Bigg)\label{eq:SelbergMain}
+    \S{A}{P}{z} \leq X\sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}\frac{\lambda_{d_1}\lambda_{d_2}}{f([d_1,d_2])} + O\Bigg(\sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}|\lambda_{d_1}||\lambda_{d_2}||R_{[d_1, d_2]}|\Bigg)\label{eq:SelbergMain}.
 \end{equation}
-För att få en form på \eqref{eq:SelbergMain} vilket vi kan använda som ett såll behöver vi bestämma talföljden \((\lambda_d)\). Om vi följer resonemanget i \cite{cojocarumurty}, då bestämmer vi \(\lambda_d\) genom att först betrakta bara huvudtermem. Genom att använda multiplikativiteten av \(f(d)\) går det att skriva om huvudtermen till en kvadratisk form och sedan hitta sin minimum. Vid detta minimumvärde blir \(|\lambda_d|\leq 1\) vilket då ger oss en uppskattning av feltermen med. Alla dessa omskrivningar härleder följande sats.
+För att få en form på \eqref{eq:SelbergMain} vilken vi kan använda som ett såll behöver vi bestämma talföljden \((\lambda_d)\). Om vi följer resonemanget i \cite{cojocarumurty}, så bestämmer vi \(\lambda_d\) genom att först betrakta bara huvudtermem. Genom att använda multiplikativiteten av \(f(d)\) går det att skriva om huvudtermen till en kvadratisk form och sedan hitta dess minimum. Vid detta minimumvärde blir \(|\lambda_d|\leq 1\) vilket då också ger oss en uppskattning av feltermen. Med alla dessa omskrivningar härleder vi följande sats.
 
 \begin{theorem}[Selbergs såll]\label{thm:SelbergSieve} Behåll notationen från tidigare i avsnittet och rapporten. Bestäm en funktion
 \begin{equation}
@@ -76,14 +76,14 @@ För att få en form på \eqref{eq:SelbergMain} vilket vi kan använda som ett s
 \end{equation}
 Då har vi att
 \begin{equation}
-    \S{A}{P}{z} \leq \frac{X}{V(z)} + O\Bigg(\sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}|R_{[d_1, d_2]}|\Bigg)\nonumber
+    \S{A}{P}{z} \leq \frac{X}{V(z)} + O\Bigg(\sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}|R_{[d_1, d_2]}|\Bigg).\nonumber
 \end{equation}
 \end{theorem}
-Ovanstående formulering är en kortfattat version av hur satsen redovisas i \cite{cojocarumurty}. För att underlätta tillämpningen av sållet ger \cite{cojocarumurty} följande uppskattningar av \(V(z)\).
+Ovanstående formulering är en kortfattad version av hur satsen redovisas i \cite{cojocarumurty}. För att underlätta tillämpningen av sållet ger \cite{cojocarumurty} följande uppskattningar av \(V(z)\).
 \begin{lemma}[Uppskattningar av \(V(z)\)]\label{thm:SelVApp}
-Behåll notationen från tidigare i avsnittet och låt \(\Tilde{f}(\cdot)\) vara en fullständig multiplikativ funktion definierad som \(\Tilde{f}(p) = f(p)\) för all primtal \textit{p}. Bestäm också
+Behåll notationen från tidigare i avsnittet och låt \(\Tilde{f}(\cdot)\) vara en fullständigt multiplikativ funktion definierad som \(\Tilde{f}(p) = f(p)\) för alla primtal \textit{p}. Bestäm också
 \begin{equation}
-    \overline{P}(z) = \prod_{\substack{p\not\in\P\\p<z}} p\nonumber
+    \overline{P}(z) = \prod_{\substack{p\not\in\P\\p<z}} p.\nonumber
 \end{equation}
 Då är
 \begin{enumerate}
@@ -94,5 +94,5 @@ Då är
     \)
 \end{enumerate}
 \end{lemma}
-För att ha njuta av lemman måste man först kunna bestämma en funktion \(f(\cdot)\). En exempel på hur man kanske skulle göra det redovisas i nästa avsnitt.
-\subsection{Selbergs såll och primtal i aritmetiska talfölder}
+För att ha nytta av lemman måste vi först kunna bestämma en funktion \(f(\cdot)\). Ett exempel på hur vi skulle kunna göra redovisas i nästa avsnitt.
+\subsection{Selbergs såll och primtal i aritmetiska talföljder}
