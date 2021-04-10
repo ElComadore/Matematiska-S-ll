@@ -1,6 +1,6 @@
 % Skrivet av Erik
 
-Även om Eratosthenes såll fortfarande är mest känt som en enkel algoritm som utan större möda kan utföras med papper och penna så har dess idé raffinerats genom historien till att inkorperera mer avancerad teori för att tillämpas på nya sätt. Adrien-Marie Legendre 1808 v.t. utvecklade sållet med hjälp av inklusion-exklusionsprincipen formulerad på formen från avsnitt \ref{sallproblemet}. Nedan kommer vi gå igenom denna formen av Eratosthenes såll samt, i efterföljande avsnitt, se hur \cite{cojocarumurty} utvidgar sållet till en mer generell form. 
+Även om Eratosthenes såll fortfarande är mest känt som en enkel algoritm som utan större möda kan utföras med papper och penna så har dess idé raffinerats genom historien till att inkorperera mer avancerad teori för att tillämpas på nya sätt. Adrien-Marie Legendre (1808 v.t.) utvecklade sållet med hjälp av inklusion-exklusionsprincipen formulerad på formen från avsnitt \ref{sallproblemet}. Nedan kommer vi gå igenom denna form av Eratosthenes såll samt, i efterföljande avsnitt, se hur \cite{cojocarumurty} utvidgar sållet till en mer generell form. 
 
 \subsection{Legendres såll}
 
@@ -10,7 +10,7 @@ Första steget för att utveckla Eratosthenes såll är att omformulera sållexe
 \end{align*}
 där \(1\):an på vänstersidan tar i hänsyn att \(1 \in \A\) inte sållas bort på högersidan och \(\pi(\sqrt{x})\) är de inringade primtalen. Detta var Legendres idé 1808 när han omformulerade Eratosthenes såll till att räkna primtal 1808 \cite{opera}. 
 
-Legendres formel är bra för att räkna primtal exakt men är långsam och golvfunktionen kan vara svårhanterlig. Vi kan underlätta för oss genom att ersätta golvfunktionen med $x/d$ och dess bråkdel, \(\{x/d\} = O(1)\), som restterm vilket leder till \(\card{\A_d} = x/d + O(1)\). Dessvärre resulterar det här i en väldigt stor felterm då restermerna ackumulerar, så att \(\pi(x) - \pi(\sqrt{x}) + 1 = x \sum_{d \divides P(z)}\frac{\mu(d)}{d} + O(2^{\pi(\sqrt{x})}) \).
+Legendres formel är bra för att räkna primtal exakt men är långsam och golvfunktionen kan vara svårhanterlig. Vi kan underlätta för oss genom att ersätta golvfunktionen med $x/d$ och dess bråkdel, \(\{x/d\} = O(1)\), som restterm vilket leder till \(\card{\A_d} = x/d + O(1)\). Dessvärre resulterar det här i en väldigt stor felterm då restermerna ackumulerar, så att \(\pi(x) - \pi(\sqrt{x}) + 1 = x \sum_{d \divides P(\sqrt{x})}\frac{\mu(d)}{d} + O(2^{\pi(\sqrt{x})}) \).
 
 Eftersom \(\A_p\), för varje $p$, är definierad som en restklass modulo $p$ så säger vi att antalet utvalda restklasser modulo $p$ är $\omega(p) = 1$ för alla $p$ - vi kallar Eratosthenes för ett endimensionellt eller linjärt såll av den här anledningen. Mer allmänt betecknas dimensionen av ett såll med parametern \(\kappa\) om 
 \begin{align} \label{dimension}
@@ -22,7 +22,7 @@ Eftersom \(\A_p\), för varje $p$, är definierad som en restklass modulo $p$ s�
 % "Effektivt" kräver en förklaring, i kontrast mot exaktheten av Eratosthenes såll?
 Om vi låter $\A_d$, $\P$, $P(z)$ och $\omega(d)$ vara definierade som i avsnitt \ref{sallproblemet} så kan vi, med utgångspunkt i Eratosthenes och Legendres grundtankar, skapa ett mer flexibelt och effektivt såll. Den stora skillnaden mot vad vi gjorde i föregående avsnitt är att vi här tillåter fler restklasser sållas bort per primtal $p$. 
 
-Utöver vad som står i avsnitt \ref{sallproblemet} kommer vi göra antagandena att \(\card{A_d} = 0\) för alla \(d\) större än något positivt $y$, att $\abs{R_d} = O(\omega(d))$ samt att (\ref{dimension}) håller. Vi kan lätt övertyga oss om att dessa är rimliga antaganden i det klassiska Eratosthenes såll-fallet. Eftersom vi utgår från en ändlig mängd $\A$ så håller det första antagandet då \(\card{\A_p} = 0\) för \(p > X\) innebär att, väldigt grovt, \(y \leq P_{X}\). Att det andra antagandet gäller såg vi i föregående avsnitt ty \(\{x/d\} \leq omega(p) = 1\). Sist så ser vi att (\ref{dimension}) håller genom att sätta in \(\omega(p) = 1\) och utnyttja att \(\sum_{p\leq n}\frac{\log p}{p} = \log n + O(1)\).
+Utöver vad som står i avsnitt \ref{sallproblemet} kommer vi göra antagandena att \(\card{A_d} = 0\) för alla \(d\) större än något positivt $y$, att \(\abs{R_d} = O(\omega(d))\) samt att (\ref{dimension}) håller. Vi kan lätt övertyga oss om att dessa är rimliga antaganden i det klassiska Eratosthenes såll-fallet. Eftersom vi utgår från en ändlig mängd $\A$ så håller det första antagandet då \(\card{\A_p} = 0\) för \(p > X\) innebär att, väldigt grovt, \(y \leq P_{X}\). Att det andra antagandet gäller såg vi i föregående avsnitt ty \(\{x/d\} \leq omega(p) = 1\). Sist så ser vi att (\ref{dimension}) håller genom att sätta in \(\omega(p) = 1\) och utnyttja att \(\sum_{p\leq n}\frac{\log p}{p} = \log n + O(1)\).
 
 Vi börjar återigen med Legendres grundidé, inklusion-exklusionsprincipen, men infogar det mer generella uttrycket för $\card{A_d}$ i formeln,
 \begin{align*}
