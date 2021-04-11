@@ -95,4 +95,30 @@ Då är
 \end{enumerate}
 \end{lemma}
 För att ha nytta av lemman måste vi först kunna bestämma en funktion \(f(\cdot)\). Ett exempel på hur vi skulle kunna göra redovisas i nästa avsnitt.
+
 \subsection{Selbergs såll och primtal i aritmetiska talföljder}
+
+Med hjälp av Selbergs såll kan vi lätt uppskatta antalet primtal som finns i en aritmetisk talföjld, d.v.s. antalet primtal på formen \(p = a + tk\) där \textit{a}, \textit{k} är bestämd konstanter och \textit{t} är godtyckligt. Det finns också ett krav på \textit{a} och \textit{k}, nämligen att de är relativt prima. Om de saknar den egenskapen då skulle inga primtal finnas i talföjlden. Om vi vill uppskatta antalet primtal av ovanstående form mindre än något \textit{x}, då är det samma som att uppskatta storleken på följande kardinalitet;
+\begin{equation}
+    \pi(x;k,a) = \#\{p\leq x; p \equiv a \bmod{k}\}.\label{sel.apl.arithPrimes}
+\end{equation}
+
+Låt oss nu ta \(z\leq x,\; z \in \mathbb{R}^+\) som vi kommer att bestämma senare. Då kan vi uppskatta \eqref{sel.apl.arithPrimes} genom att dela mängden på följande sätt.
+\begin{align}
+    \pi(x;k,a) &= \pi(z;k,a) + \#\{z<p\leq x; p \equiv a \bmod{k}\} \nonumber\\
+    &\leq z + \#\{n\leq x; n \equiv a \bmod k,\; n \not\equiv 0 \bmod p,\; p\leq z\}.\label{sel.apl.over}
+\end{align}
+Uppskattningen av andra kardinaliteten som utförs i \eqref{sel.apl.over} motsvarar en sållning av alla tal som finns i talföjlden med de primtal mindre än \textit{z}. 
+Det är klart att det är en uppskattning eftersom om det finns ett sammansatt tal i följden som är endast delbar med primtal större än \textit{z} så kommer den så klart inte sållas bort. 
+Dock så behöver vi faktiskt inte sålla med avseende på alla primtal mindre än \textit{z}, bara de som är relativt prima med \textit{k}. Detta är på grund av att om till exempel \(k = 6\) då måste \textit{a} inte vara delbar med antingen 2 eller 3 och därför inte \textit{n} heller. 
+Detta ger oss begränsningen att vi behöver bara de primtal \(\P = \{p: (p, k) = 1\}\). 
+Mängden vi alltså försöker uppskatta är då \(\S{A}{P}{z} = \{n\leq x; n \equiv a \bmod k,\; n \not\equiv 0 \bmod p,\; p\leq z, (p,k) = 1\}\).
+
+Nu för att använda sållet behöver vi bestämma \(\A\), \(\A_d\), \textit{X}, \(f(d)\) samt \(f_1(d)\), och \(R_d\). Det är uppenbart att \(\A = \{n\leq x; n \equiv a \bmod k\}\) och dessutom att \(\A_d = \{n \leq x; n \equiv a \bmod k,\; n \equiv 0 \bmod d\}\). Enligt Kinesiska restsatsen, eftersom \textit{k} och \textit{d} är relativt prima finns det unikt tal modulo \textit{kd} vilket är kongruent med \textit{n}, dvs. \(\{\exists! n_0:\; n \equiv n_0 \bmod kd\}\). Detta då delar upp intervalet \([0, x]\) i \(\lfloor x/{kd}\rfloor\) delintervall där i varje delintervall finns det ett element som ska sållas bort vilket då medför att \(\#\A_d = \frac{x}{kd} + O(1)\). Här har vi nu fått \(f(d) = d\), \(X = \frac{x}{k}\), och \(R_d = O(1)\). För att bestämma \(f_1(d)\) använder vi oss av sin definition, att den kan skrivas som en slags Euler produkt eftersom \textit{f} är multiplikativ, och att varje \textit{d} är kvadratfri. Detta görs på följaden sätt;
+\begin{align}
+    f_1(d) &= \sum_{m\divides d}\mu(m)f(d/m) = \sum_{m\divides p_1...p_j}\mu(m)f((p_1...p_j)/m) = \nonumber\\
+    &=\sum_{b_1 = 0}^1...\sum_{b_j = 0}^1\mu(p_1^{b_1}...p_j^{b_j})f((p_1...p_j)/(p_1^{b_1}...p_j^{b_j})) = \prod_{h = 1}^j\sum_{b_h = 0}^1\mu(p_h^{b_h})f(p_h/p_h^{b_h}) = \nonumber\\
+    &= \prod_{h = 1}^j\Bigg(f(p_h) - 1\Bigg) = \prod_{h = 1}^j p_h\Bigg(1 - \frac{1}{p_h}\Bigg) = d\prod_{h = 1}^j \Bigg(1 - \frac{1}{p_h}\Bigg) = \phi(d).\label{sel.apl.tot}
+\end{align}
+Här i \eqref{sel.apl.tot} ser vi att \(f_1(d) = \phi(d)\) där \(\phi(d)\) är Eulers fi-funktion. Tillsammans ger ovanstående att \(\S{A}{P}{z} \leq x/(kV(z)) + O(z^2)\). Nu behöver vi uppskatta \(1/V(z)\) genom att tillämpa en sats från \cite[Kap. 7]{cojocarumurty} vilket säger att
+
