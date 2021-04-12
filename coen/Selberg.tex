@@ -13,7 +13,10 @@ Enligt \cite{cojocarumurty}, bestod summans uppskattning huvudsakligen av att f�
 \begin{equation}
     \sum_{d\divides n}\mu(d) \leq \Bigg(\sum_{d\divides n}\lambda_d\Bigg)^2.\nonumber
 \end{equation}
-Detta betyder att vi kan nu uppskatta \(\S{A}{P}{z}\) med hjälp av \((\lambda_d)\) eftersom
+För att förstå varför denna uppskattning av Möbiusfunktionens summa fungerar, kom ihåg den första egenskapen som redovisas i \ref{Mobius}. 
+Summan är antingen noll eller ett beroende på om \textit{n} är lika med ett eller inte, och uppskattningen är minimalt 0 då \textit{n} är skild ifrån ett, eftersom det är ett reellt tal i kvadrat.
+Målet då blir att konstruera talföljden så att uppskattningen minimeras, vilket kommer göras senare.
+Med hjälp av talföljden \((\lambda_d)\) kan vi nu uppskatta \(\S{A}{P}{z}\) eftersom
 \begin{equation}
 \S{A}{P}{z} = \sum_{\substack{a\in \mathcal{A}\\a\not\in\mathcal{A}_p,\forall p\divides P(z)}} 1 = \sum_{d\divides P(z)} \mu(d) \sum_{a\in\mathcal{A}_d}1 = \sum_{a\in A} \Bigg(\sum_{\substack{d\divides P(z)\\a\in A_d}}\mu(d)\Bigg)\leq \sum_{a\in A}\Bigg(\sum_{\substack{d\divides P(z)\\a\in A_d}}\lambda_d\Bigg)^2.\label{sel.sieve.ineq1}
 \end{equation}
@@ -26,7 +29,7 @@ Med infogande av \(\delta_d = 1/f(d)\) i \eqref{deltaX} får vi uppskattningen s
 \begin{equation}
     \S{A}{P}{z} \leq X\sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}\frac{\lambda_{d_1}\lambda_{d_2}}{f([d_1,d_2])} + O\Bigg(\sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}|\lambda_{d_1}||\lambda_{d_2}||R_{[d_1, d_2]}|\Bigg)\label{sel.sieve.main}.
 \end{equation}
-För att få en form på \eqref{sel.sieve.main} vilken vi kan använda som ett såll behöver vi bestämma talföljden \((\lambda_d)\). 
+För att få en form på \eqref{sel.sieve.main} vilken vi kan använda som ett såll kommer vi nu bestämma talföljden \((\lambda_d)\). 
 Om vi följer hur resonemanget redovisas i \cite{cojocarumurty}, så bestämmer vi \(\lambda_d\) genom att först betrakta bara huvudtermem. 
 Genom att använda multiplikativiteten av \(f(d)\) går det att skriva om huvudtermen till en kvadratisk form och sedan hitta dess minimum. 
 Vid detta minimumvärde blir \(|\lambda_d|\leq 1\) vilket då också ger oss en uppskattning av feltermen. Med alla dessa omskrivningar härleder vi följande sats.
@@ -111,7 +114,7 @@ Med hjälp av \eqref{sel.apl.vAppr} har vi nu att
      \pi(x;k,a) \leq z + \frac{x}{\phi(k)(\log z + O(1))} + O(z^2) = \frac{x}{\phi(k)(\log z + O(1))} + O(z^2)\nonumber
 \end{equation}
 där likheten gäller eftersom \(z^1\) absorberas av ordo notationen. 
-Genom att sätta både termer lika, för att ge de samma vikt i uppskattningen genom att bestämma en \textit{z}, följer vi \cite{cojocarumurty} förslag och tar \(z = (2x/k)^{\frac{1}{2}-\varepsilon_0}\) för något \(\varepsilon_0\in(0, 1)\). Detta val av \textit{z} ger oss den slutliga uppskattningen
+Genom att sätta både termer lika, för att ge de samma vikt i uppskattningen genom att bestämma en \textit{z}, följer vi förslaget i \cite{cojocarumurty} och tar \(z = (2x/k)^{\frac{1}{2}-\varepsilon_0}\) för något \(\varepsilon_0\in(0, 1)\). Detta val av \textit{z} ger oss den slutliga uppskattningen
 \begin{equation}
     \pi(x;k,a) \leq \frac{(2+\varepsilon)x}{\phi(k)\log(2x/k)}\nonumber
 \end{equation}
