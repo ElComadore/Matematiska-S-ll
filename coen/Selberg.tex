@@ -120,5 +120,22 @@ Nu för att använda sållet behöver vi bestämma \(\A\), \(\A_d\), \textit{X},
     &=\sum_{b_1 = 0}^1...\sum_{b_j = 0}^1\mu(p_1^{b_1}...p_j^{b_j})f((p_1...p_j)/(p_1^{b_1}...p_j^{b_j})) = \prod_{h = 1}^j\sum_{b_h = 0}^1\mu(p_h^{b_h})f(p_h/p_h^{b_h}) = \nonumber\\
     &= \prod_{h = 1}^j\Bigg(f(p_h) - 1\Bigg) = \prod_{h = 1}^j p_h\Bigg(1 - \frac{1}{p_h}\Bigg) = d\prod_{h = 1}^j \Bigg(1 - \frac{1}{p_h}\Bigg) = \phi(d).\label{sel.apl.tot}
 \end{align}
-Här i \eqref{sel.apl.tot} ser vi att \(f_1(d) = \phi(d)\) där \(\phi(d)\) är Eulers fi-funktion. Tillsammans ger ovanstående att \(\S{A}{P}{z} \leq x/(kV(z)) + O(z^2)\). Nu behöver vi uppskatta \(1/V(z)\) genom att tillämpa en sats från \cite[Kap. 7]{cojocarumurty} vilket säger att
+Här i \eqref{sel.apl.tot} ser vi att \(f_1(d) = \phi(d)\) där \(\phi(d)\) är Eulers fi-funktion. Tillsammans ger ovanstående att \(\S{A}{P}{z} \leq x/(kV(z)) + O(z^2)\). 
 
+Nu behöver vi uppskatta \(1/V(z)\) genom att tillämpa en sats från \cite[Kap. 7]{cojocarumurty} vilket säger att
+\begin{equation}
+    f(\overline{P}(z))V(z) \geq f_1(\overline{P}(z))\sum_{\delta \leq z}\frac{1}{\Tilde{f}(\delta)}\label{sel.apl.V}
+\end{equation}
+där \(\overline{P}(z) = \prod_{p\leq z,\; p \not \in \P}p\) och \(\Tilde{f}(d)\) är ett fullständigt multiplikativt funktion med \(\Tilde{f}(p) = f(p)\) för alla primtal \textit{p}. Eftersom de enda primtal som inte är i \(\P\) är de som delar \textit{k} har vi enligt \eqref{sel.apl.V} att 
+\begin{equation}
+    kV(z) \geq \phi(k) \sum_{\delta \leq z}\frac{1}{\delta} = \phi(k)(\log z + O(1)) \iff \frac{1}{V(z)} \leq \frac{k}{\phi(k)(\log z + O(1))}\label{sel.apl.vAppr}
+\end{equation}
+där vi har använt oss av partiell summering vid likhetstecknet. Med hjälp av \eqref{sel.apl.vAppr} har vi nu att
+\begin{equation}
+     \pi(x;k,a) \leq z + \frac{x}{\phi(k)(\log z + O(1))} + O(z^2) = \frac{x}{\phi(k)(\log z + O(1))} + O(z^2)\nonumber
+\end{equation}
+där likheten gäller eftersom \(z^1\) absorberas av ordo notationen. Genom att sätta både termer lika, för att ge de samma vikt i uppskattningen genom att bestämma en \textit{z}, följer vi \cite{cojocarumurty} förslag och tar \(z = (2x/k)^{\frac{1}{2}-\varepsilon_0}\) för något \(\varepsilon_0\in(0, 1)\). Detta val av \textit{z} ger oss den slutliga uppskattningen
+\begin{equation}
+    \pi(x;k,a) \leq \frac{(2+\varepsilon)x}{\phi(k)\log(2x/k)}\nonumber
+\end{equation}
+för alla \(\varepsilon > 0\) och \textit{x} större än något \(x_0(\varepsilon) >0\). Denna resultat är en variant på Brun-Titchmarshsatsen och är ett exempel på hur sållmetoder kan faktiskt ge bättre uppskattningar än vissa analytiska metoder eftersom Brun och Titchmarshs orignal uppskattning var svagare än uppskattningen som kan fås genom att använda Selbergs såll \cite{BrunTitch}.
