@@ -46,7 +46,7 @@ Vi kan skriva om resttermen, först med hjälp av triangelolikheten och sedan me
     \sum_{\substack{d \divides P(z) \\ d > y}} \abs{\frac{\omega(d)}{d}} + \sum_{\substack{d \divides P(z)  \\ d \leq y}} \abs{R_d} \leq
     \sum_{\substack{d \divides P(z) \\ d > y}} \frac{\omega(d)}{d} + O\left(\sum_{\substack{d \divides P(z)  \\ d \leq y}} \omega(d)\right).
 \end{align*}
-Summan innanför Ordo-tecknet kan vi förenkla med Rankins trick som säger att indikator funktionen, \(1_{n \leq x} \leq \frac{x}{n}\). Därav skriver vi 
+Summan innanför Ordo-tecknet kan vi förenkla med Rankins trick som, enligt \cite{Tao}, säger att indikator funktionen, \(1_{n \leq x} \leq \frac{x}{n}\). Därav skriver vi 
 \begin{align*}
     \sum_{\substack{d \divides P(z)  \\ d \leq y}} \omega(d) =
     \sum_{\substack{d \divides P(z)}} \omega(d) (1_{d \leq y})^{\delta} \leq
@@ -63,16 +63,16 @@ På ett liknande sätt omvandlar vi den första summan i feltermen med partiell 
 Sammanställt, huvud- och felterm, erhåller vi nästa sats, \cite[Sats 5.4.1]{cojocarumurty}:
 
 \begin{theorem}[Eratosthenes generaliserade såll]\label{thm:EratosthenesSieve}
-Med notationen från avsnitt \ref{sallproblemet}, så gäller att
-\begin{align*}
-    \S{A}{P}{z} = X W(z) + O\left(\left(X + \frac{y}{\log z} \right) (\log z)^{\kappa + 1} \exp{\left(-\frac{\log y}{\log z}\right)} \right). 
-\end{align*}
-givet att följande antaganden håller
+Med notationen från avsnitt \ref{sallproblemet} och följande tre antaganden 
 \begin{enumerate}
     \item \(\card{\A_d} = 0, \forall d > y\) för något \(y \in \mathbb{R}_+\)
     \item \(\abs{R_d} = O(\omega(d))\)
     \item \(\sum_{p \divides P(z)} \frac{\omega(p) \log(p)}{p} \leq \kappa \log(z) + O(1)\).
 \end{enumerate}
+så gäller att
+\begin{align*}
+    \S{A}{P}{z} = X W(z) + O\left(\left(X + \frac{y}{\log z} \right) (\log z)^{\kappa + 1} \exp{\left(-\frac{\log y}{\log z}\right)} \right). 
+\end{align*}
 
 \end{theorem}
 
