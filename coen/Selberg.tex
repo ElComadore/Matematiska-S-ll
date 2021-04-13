@@ -1,5 +1,5 @@
 Ett annat perspektiv på sållmetoder gavs av yttligare en norsk matematiker, Atle Selberg (1917-2007), under 1940 talet. 
-Hans metod, av en kombinatorisk stil som liknade de tidigare, använde sig av en ny typ av vikt och en uppskattning av en summa av Möbius funktioner för att skapa en ny sållmetod.
+Hans metod, av en kombinatorisk stil som liknade de tidigare, använde sig av en ny typ av vikt och en uppskattning av en summa av Möbius funktioner för att skapa en ny sållmetod. Denna metod kallas för Selbergs såll och är ett typ av viktad såll.
 
 \subsection{Beskrivning av sållet}
 Selbergs nya vikter, vilka motsvarar \(\delta_d\) i \eqref{deltaX}, bestod av ett delat med en multiplikativ funktion 
@@ -45,8 +45,9 @@ Då har vi att
     \S{A}{P}{z} \leq \frac{X}{V(z)} + O\Bigg(\sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}|R_{[d_1, d_2]}|\Bigg).\nonumber
 \end{equation}
 \end{theorem}
-Ovanstående formulering är en kortfattad version av hur satsen redovisas i \cite{cojocarumurty}.
-
+Ovanstående formulering är en kortfattad version av hur satsen redovisas i \cite{cojocarumurty}. För att använda sållet behöver vi bestämma några parametrar. 
+Som i de tidigare såll, hur \(\A\) och \(\A_d\) definieras är avgörande, dock, på grund av Selbergs vikter, har vi nu mycket mer frihet med hur vi definierar dessa mängder. 
+Ett exempel på denna nyfunna flexibilitet redovisas i nästa avsnitt.
 
 \subsection{Selbergs såll och primtal i aritmetiska talföljder}
 
@@ -64,12 +65,14 @@ Låt oss nu ta något \(z\leq x,\; z \in \mathbb{R}^+\) som vi kommer att bestä
 \end{align}
 Uppskattningen av den andra kardinaliteten som utförs i \eqref{sel.apl.over} motsvarar en sållning av alla tal som finns i talföjlden med primtal mindre än \textit{z}. 
 Det är klart att det är en uppskattning eftersom om det finns ett sammansatt tal i följden som endast är delbart med primtal större än \textit{z} så kommer den inte sållas bort. 
-Dock så behöver vi faktiskt inte sålla med avseende på alla primtal mindre än \textit{z}, bara de som är relativt prima med \textit{k}. Om till exempel \(k = 6\) så får \textit{a} inte vara delbar med varken 2 eller 3 och därför inte alla tal i följden heller. 
+Dock så behöver vi faktiskt inte sålla med avseende på alla primtal mindre än \textit{z}, bara de som är relativt prima med \textit{k}. 
+Om till exempel \(k = 6\) så får \textit{a} inte vara delbar med varken 2 eller 3.
+Som konsekvens av det kommer inga element in talföjlden vara delbar med \textit{k}s delare heller.
 Följaktligen ger detta oss att vi bara behöver primtal ur \(\P = \{p: (p, k) = 1\}\) och mängden vi vill uppskatta är då \(\S{A}{P}{z} = \{n\leq x; n \equiv a \bmod k,\; n \not\equiv 0 \bmod p,\; p\leq z, (p,k) = 1\}\).
 
 För att kunna använda sållet så behöver vi bestämma \(\A\), \(\A_d\), \textit{X}, \(f(d)\) samt \(f_1(d)\), och \(R_d\). 
 Det är uppenbart att \(\A = \{n\leq x; n \equiv a \bmod k\}\) och dessutom att \(\A_d = \{n \leq x; n \equiv a \bmod k,\; n \equiv 0 \bmod d\}\). 
-Eftersom \textit{k} och \textit{d} är relativt prima ger Kinesiska restsatsen att det finns ett unikt tal modulo \textit{kd} som är kongruent med \textit{n}, dvs. \(\{\exists! n_0:\; n \equiv n_0 \bmod kd\}\). 
+Eftersom \textit{k} och \textit{d} är relativt prima ger Kinesiska restsatsen att det finns ett unikt tal modulo \textit{kd} som är kongruent med \textit{n}, dvs. \(\exists! n_0:\; n \equiv n_0 \bmod kd\). 
 Detta delar då upp intervalet \([0, x]\) i \(\lfloor x/{kd}\rfloor\) stycken delintervall där det i varje delintervall finns det ett element som ska sållas bort vilket medför att \(\#\A_d = \frac{x}{kd} + O(1)\). 
 Vi erhåller \(X = \frac{x}{k}\), \(f(d) = d\), och \(R_d = O(1)\). 
 För att bestämma \(f_1(d)\) använder vi oss av dess definition, att den kan skrivas som en slags Euler-produkt eftersom \textit{f} är multiplikativ, och att varje \textit{d} är kvadratfri. 
