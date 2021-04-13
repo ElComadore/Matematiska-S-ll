@@ -2,7 +2,7 @@
 
 När den norska matematikern Viggo Brun (1881-1978) publicerade artikeln \textit{Über das Goldbachsche Gesetz und die Anzahl der Primzahlpaare} \cite{BrunOrig} år 1915, var han den första att bygga vidare på Eratosthenes idéer. 
 I artikeln presenterade Brun ett såll som numera kallas Bruns såll och fyra år senare använde han det för att bevisa att summan av reciproker $\frac{1}{p_1}+\frac{1}{p_2}+...$ av primtaltvillingar $p_1,p_2,...$ konvergerar \cite{ViggoBrun}. 
-I detta stycke ges en kortfattad beskrivning av Bruns såll och ett exempel taget ur \cite[Kap 6.2]{cojocarumurty} på hur sållet kan tillämpas för att ge ett resultat som angränsar till primtalstvillingsförmodan.
+I detta stycke ges en kortfattad beskrivning av Bruns såll och ett exempel taget ur \cite{cojocarumurty} på hur sållet kan tillämpas för att ge ett resultat som angränsar till primtalstvillingsförmodan.
 
 
 \subsection{Beskrivning av sållet}
@@ -22,26 +22,23 @@ Således kan en undre och övre begränsning till $\S{A}{P}{z}$ erhållas, näml
     \leq \sum_{d \mid P(z)} \mu(d) g_U(d) \card\A_d.
 \end{equation}
 Enligt \cite{cojocarumurty} var detta Bruns innoverande idé.
-Genom att sedan skriva $\card\A_d=\frac{\omega(d)}{d}X + R_d$ kunde han, efter mycket möda, hitta en approximation och en felterm för begränsningarna i (\ref{brun.eq.gugl}) och på så vis formulera Bruns såll.
+Genom att sedan skriva $\card\A_d=\frac{\omega(d)}{d}X + R_d$ kunde han, efter mycket möda, hitta en approximation och en felterm för begränsningarna i (\ref{brun.eq.gugl}) och på så vis formulera Bruns såll. Följande sats är hämtad ur \cite[Kap. 6.2]{cojocarumurty}.
 
 
 \begin{theorem}[Bruns såll] \label{brun.thm.brun}
 Med notation från avsnitt \ref{sallproblemet}, låt $b$ vara ett positivt heltal och $\lambda$,
 ett reellt tal som uppfyller $0<\lambda e^{1+\lambda}<1$.
-Antag att $\left|R_p\right|\leq\omega(p)\leq pA_1$ för varje $p\in\P$ och någon konstant $A_1<1$,
+Antag att $\left|R_d\right|\leq\omega(d)\leq dA_1$ för varje kvadratfritt tal $d$ med faktorer ur $\P$ och någon konstant $A_1<1$,
 samt att det finns konstanter $A_2\geq 1$ och $\kappa>0$ som uppfyller
 \begin{align*}
     \sum_{w\leq p<z} \frac{\omega(p)\log p}{p} \leq \kappa\log(z/w) + A_2,\quad \text{för}\ 2\leq w\leq z.
 \end{align*}
-
 Då begränsas $\S{A}{P}{z}$ ovanifrån av
 \begin{align}
     & XW(z)\left(1 + \lambda c_1\exp\left(c_2\frac{2b+3}{\lambda\log z}\right)\right) + O\left(z^{c_3}\right), \label{brun.eq.upper}
     \intertext{och underifrån av}
     & XW(z)\left(1 - c_1\exp\left(c_2\frac{2b+2}{\lambda\log z}\right)\right) + O\left(z^{c_3 - 1}\right). \label{brun.eq.lower}
 \end{align}
-
-%\bigskip\noindent
 Konstanterna $c_1$, $c_2$ och $c_3$ definieras som
 \begin{equation*}
     c_1 := \frac{ 2\lambda^{2b}e^{2\lambda} }{ 1 - \lambda^2e^{2+2\lambda} }, \quad
@@ -57,7 +54,7 @@ Konstanterna $c_1$, $c_2$ och $c_3$ definieras som
 Låt oss uttrycka en modifierad version av primtalstvillingsförmodan på följande vis:\\
 \textit{Det finns oändligt många par av heltal $(n,n+2)$ där båda talen har högst $r$ primtalsfaktorer.}\\
 För valet $r=1$ erhålls exakt primtalstvillingsfömodan, vilken står obevisad.
-Däremot kan påståendet bevisas för $r=7$, vilket \cite{cojocarumurty} går genom att ta hjälp av Bruns såll.
+Däremot går det att med hjälp av Bruns såll bevisa påståendet för $r=7$, vi följer samma tillvägagångssätt som i \cite[Kap. 6.2]{cojocarumurty}.
 Definiera mängden
 \begin{equation*}
     \mathcal{T} := \{\textit{$n\leq x$: $n$ och $n+2$ har som mest $7$ primtalsfaktorer}\}.
@@ -91,7 +88,7 @@ Fixera $b,\lambda$ och $A_2$ så att även $c_2$ är fixerat, då följer det at
 Vidare har vi att 
 \begin{align*}
     W(z) = \frac{1}{2}\exp\Bigl(\sum_{2<p<z} \log(1-2/p) \Bigr) 
-    > \frac{1}{2}\exp\Bigl(-2\sum_{2<p<z} \frac{1}{p} \Bigr).
+    \gg \frac{1}{2}\exp\Bigl(\sum_{2<p<z} \frac{-2}{p} \Bigr).
 \end{align*}
 Partiell summation av (\ref{brun.eq.sum_logp_over_p}) ger att $\sum_{p\leq n}\frac{1}{p} = \log\log z + O(1)$, så
 \begin{align*}
@@ -107,7 +104,7 @@ Detta uppfylls av $b=1$ samt $\lambda=0.101$ som medför att $c_3-1<8$.
 
 \todo{Krävs nog lite förtydligande här.}
 
-Om det är så att $n$ eller $n+2$ har mer än 7 primtalsfaktorer,
+I fallet att $n$ eller $n+2$ har mer än 7 primtalsfaktorer,
 så måste $p\mid n(n+2)$ för något primtal $p\leq n^{1/u}$ och $u<8$.
 Vi kan därför uttrycka $\card\mathcal{T}$ som $\S{A}{P}{z}$ genom att sätta $z := x^{1/u}$, vilket ger
 \begin{equation*}
