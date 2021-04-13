@@ -17,12 +17,12 @@ Den grundläggande sållteorins största fördel är att den är relativt elemen
 Det krävs inga idéer från komplex analys som t.ex. Dirichlets L-funktioner eller serier för att ha användning av de enklare sållen och om man kan formulera vikterna på ett korrekt sätt, går det att tillämpa metoderna på nästan vilken mängd som helst. 
 Trots sina enkla konstruktion, kan dessa matematiska såll fortfarande ge starka resultat, även om bättre resultat kunde hittas genom att använda mer raffinerad analytiska metoder. 
 Ett exempel på detta är att asymptotiska beteendet av \(x/\log(x)\) för antalet primtal mindre än \textit{x} som ges i primtalssatsen. 
-Detta kan nästan bevisas utan något arbete med zeta funktioner då man använder Selbergs såll, dock så får man bara en övre gräns av \(x/\log(x)\) istället för asymptotiska beteendet. 
+Detta kan nästan bevisas utan något arbete med zeta-funktioner då man använder Selbergs såll, dock så får man bara en övre gräns av \(x/\log(x)\) istället för asymptotiska beteendet. 
 Mer avancerade sållmetoder har givit svar på frågor närliggande till primtalstvillingshypotesen i \cite{chen2Prime}, och att det finns oändligt många primtal med maximalt 600 steg emellan sig \cite{mayBound}.
 
 Vår rapport kommer att fokusera på små såll av både kombinatorisk och viktad form. 
-Små innebär att de fokuserar på att uppskatta storleken på ett litet antal restklasser modulo primtal, att ett såll är kombinatorisk innebär att den använder sig av inklusion-exklusionsprincipen för att uppskatta mängdens storlek på ett lämpligt sätt, och att ett såll är viktad innebär att något vikt funktion används för att uppskatta storleken. 
-Bland dessa typer av såll håller vi oss till Eratosthenes allmänna såll, Bruns såll, och Selbergs såll. 
-För varje såll kommer vi att ge en kortfattat härledning till dess formulering, där vi liftar fram de centrala idéer av dess konstruktion, och en förklaring till hur det används. 
+Små innebär att de fokuserar på att uppskatta storleken på ett litet antal restklasser modulo primtal, att ett såll är kombinatorisk innebär att den använder sig av inklusion-exklusionsprincipen för att uppskatta mängdens storlek på ett lämpligt sätt, och att ett såll är viktad innebär att någon viktfunktion används för att uppskatta storleken. 
+Bland dessa typer av såll håller vi oss till Eratosthenes generaliserade såll, Bruns såll, och Selbergs såll. 
+För varje såll kommer vi att ge en kortfattad härledning till dess formulering, där vi lyfter fram de centrala idéerna för dess konstruktion, och en förklaring till hur det används. 
 Efteråt kommer vi att redovisa och analysera en implementering i kod av Eratosthenes algoritm, vilket följer metoden som beskrivs i \cite{HaraldSieve}. 
 Dock, innan vi börjar redovisa något av sållen vill vi gå igenom några förberedelser och förklara det allmänna sållproblemet.
