@@ -15,7 +15,7 @@ Enligt \cite{cojocarumurty}, bestod summans uppskattning huvudsakligen av att f�
 \end{equation}
 För att förstå varför denna uppskattning av Möbiusfunktionens summa fungerar, kom ihåg den första egenskapen som redovisas i \ref{Mobius}. 
 Summan är antingen noll eller ett beroende på om \textit{n} är lika med ett eller inte, och uppskattningen är minimalt 0 då \textit{n} är skild ifrån ett, eftersom det är ett reellt tal i kvadrat.
-Målet då blir att konstruera talföljden så att uppskattningen minimeras, vilket kommer göras senare.
+Slutmålet med sållets härledning blir att konstruera talföljden så att uppskattningen minimeras, vilket kommer göras senare.
 Med hjälp av talföljden \((\lambda_d)\) kan vi nu uppskatta \(\S{A}{P}{z}\) eftersom
 \begin{equation}
 \S{A}{P}{z} = \sum_{\substack{a\in \mathcal{A}\\a\not\in\mathcal{A}_p,\forall p\divides P(z)}} 1 = \sum_{d\divides P(z)} \mu(d) \sum_{a\in\mathcal{A}_d}1 = \sum_{a\in A} \Bigg(\sum_{\substack{d\divides P(z)\\a\in A_d}}\mu(d)\Bigg)\leq \sum_{a\in A}\Bigg(\sum_{\substack{d\divides P(z)\\a\in A_d}}\lambda_d\Bigg)^2.\label{sel.sieve.ineq1}
@@ -33,7 +33,7 @@ För att få en form på \eqref{sel.sieve.main} vilken vi kan använda som ett s
 Om vi följer hur resonemanget redovisas i \cite{cojocarumurty}, så bestämmer vi \(\lambda_d\) genom att först betrakta bara huvudtermem. 
 Genom att använda multiplikativiteten av \(f(d)\) går det att skriva om huvudtermen till en kvadratisk form och sedan hitta dess minimum. 
 Vid detta minimumvärde blir \(|\lambda_d|\leq 1\) vilket då också ger oss en uppskattning av feltermen. Med alla dessa omskrivningar härleder vi följande sats.
-
+\todo{Ska utveckla detta tills vi har ett fullständigt härledning/bevis}
 \begin{theorem}[Selbergs såll]\label{sel.sieve.thm}
 Behåll notationen från tidigare i avsnittet och rapporten. 
 Bestäm en funktion
