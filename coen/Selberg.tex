@@ -45,24 +45,8 @@ Då har vi att
     \S{A}{P}{z} \leq \frac{X}{V(z)} + O\Bigg(\sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}|R_{[d_1, d_2]}|\Bigg).\nonumber
 \end{equation}
 \end{theorem}
-Ovanstående formulering är en kortfattad version av hur satsen redovisas i \cite{cojocarumurty}. 
-För att underlätta tillämpningen av sållet ger \cite{cojocarumurty} följande uppskattningar av \(V(z)\).
-\begin{lemma}[Uppskattningar av \(V(z)\)]\label{thm:SelVApp}
-Behåll notationen från tidigare i avsnittet och låt \(\Tilde{f}(\cdot)\) vara en fullständigt multiplikativ funktion definierad som \(\Tilde{f}(p) = f(p)\) för alla primtal \textit{p}. Bestäm också
-\begin{equation}
-    \overline{P}(z) = \prod_{\substack{p\not\in\P\\p<z}} p.\nonumber
-\end{equation}
-Då är
-\begin{enumerate}
-    \item \(
-         V(z) \geq \sum_{\substack{\delta\leq z\\p\divides\delta\implies p\divides P(z)}} {\Tilde{f}(\delta)}^{-1}\nonumber\)
-    \item \(
-        f(\overline{P}(z))V(z) \geq f_1(\overline{P}(z))\sum_{\delta \leq z}\frac{1}{\Tilde{f}(\delta)}\nonumber
-    \)
-\end{enumerate}
-\end{lemma}
-För att ha nytta av lemmat måste vi först bestämma en funktion \(f(\cdot)\). 
-Ett exempel på hur detta kan göras redovisas i nästa avsnitt.
+Ovanstående formulering är en kortfattad version av hur satsen redovisas i \cite{cojocarumurty}.
+
 
 \subsection{Selbergs såll och primtal i aritmetiska talföljder}
 
@@ -80,16 +64,16 @@ Låt oss nu ta något \(z\leq x,\; z \in \mathbb{R}^+\) som vi kommer att bestä
 \end{align}
 Uppskattningen av den andra kardinaliteten som utförs i \eqref{sel.apl.over} motsvarar en sållning av alla tal som finns i talföjlden med primtal mindre än \textit{z}. 
 Det är klart att det är en uppskattning eftersom om det finns ett sammansatt tal i följden som endast är delbart med primtal större än \textit{z} så kommer den inte sållas bort. 
-Dock så behöver vi faktiskt inte sålla med avseende på alla primtal mindre än \textit{z}, bara de som är relativt prima med \textit{k} vilket är på grund av att om till exempel \(k = 6\) då måste \textit{a} inte vara delbar med antingen 2 eller 3 och därför inte \textit{n} heller. 
+Dock så behöver vi faktiskt inte sålla med avseende på alla primtal mindre än \textit{z}, bara de som är relativt prima med \textit{k}. Om till exempel \(k = 6\) så får \textit{a} inte vara delbar med varken 2 eller 3 och därför inte alla tal i följden heller. 
 Följaktligen ger detta oss att vi bara behöver primtal ur \(\P = \{p: (p, k) = 1\}\) och mängden vi vill uppskatta är då \(\S{A}{P}{z} = \{n\leq x; n \equiv a \bmod k,\; n \not\equiv 0 \bmod p,\; p\leq z, (p,k) = 1\}\).
 
 För att kunna använda sållet så behöver vi bestämma \(\A\), \(\A_d\), \textit{X}, \(f(d)\) samt \(f_1(d)\), och \(R_d\). 
 Det är uppenbart att \(\A = \{n\leq x; n \equiv a \bmod k\}\) och dessutom att \(\A_d = \{n \leq x; n \equiv a \bmod k,\; n \equiv 0 \bmod d\}\). 
 Eftersom \textit{k} och \textit{d} är relativt prima ger Kinesiska restsatsen att det finns ett unikt tal modulo \textit{kd} som är kongruent med \textit{n}, dvs. \(\{\exists! n_0:\; n \equiv n_0 \bmod kd\}\). 
 Detta delar då upp intervalet \([0, x]\) i \(\lfloor x/{kd}\rfloor\) stycken delintervall där det i varje delintervall finns det ett element som ska sållas bort vilket medför att \(\#\A_d = \frac{x}{kd} + O(1)\). 
-Vi erhåller \(f(d) = d\), \(X = \frac{x}{k}\), och \(R_d = O(1)\). 
-För att bestämma \(f_1(d)\) använder vi oss av dess definition, att den kan skrivas som en slags Euler produkt eftersom \textit{f} är multiplikativ, och att varje \textit{d} är kvadratfri. 
-Detta görs på följaden sätt;
+Vi erhåller \(X = \frac{x}{k}\), \(f(d) = d\), och \(R_d = O(1)\). 
+För att bestämma \(f_1(d)\) använder vi oss av dess definition, att den kan skrivas som en slags Euler-produkt eftersom \textit{f} är multiplikativ, och att varje \textit{d} är kvadratfri. 
+Detta görs på följande sätt;
 \begin{align}
     f_1(d) &= \sum_{m\divides d}\mu(m)f(d/m) = \sum_{m\divides p_1...p_j}\mu(m)f((p_1...p_j)/m) = \nonumber\\
     &=\sum_{b_1 = 0}^1...\sum_{b_j = 0}^1\mu(p_1^{b_1}...p_j^{b_j})f((p_1...p_j)/(p_1^{b_1}...p_j^{b_j})) = \prod_{h = 1}^j\sum_{b_h = 0}^1\mu(p_h^{b_h})f(p_h/p_h^{b_h}) = \nonumber\\
@@ -102,7 +86,7 @@ För att uppskatta \(1/V(z)\) tillämpar vi en sats från \cite[Kap. 7]{cojocaru
 \begin{equation}
     f(\overline{P}(z))V(z) \geq f_1(\overline{P}(z))\sum_{\delta \leq z}\frac{1}{\Tilde{f}(\delta)}\label{sel.apl.V}
 \end{equation}
-där \(\overline{P}(z) = \prod_{p\leq z,\; p \not \in \P}p\) och \(\Tilde{f}(d)\) är en fullständig multiplikativ funktion med \(\Tilde{f}(p) = f(p)\) för alla primtal \textit{p}. 
+där \(\overline{P}(z) = \prod_{p\leq z,\; p \not \in \P}p\) och \(\Tilde{f}(d)\) är en fullständigt multiplikativ funktion med \(\Tilde{f}(p) = f(p)\) för alla primtal \textit{p}. 
 Eftersom de enda primtal som inte är i \(\P\) är de som delar \textit{k} har vi enligt \eqref{sel.apl.V} att 
 \begin{equation}
     kV(z) \geq \phi(k) \sum_{\delta \leq z}\frac{1}{\delta} = \phi(k)(\log z + O(1)) \iff \frac{1}{V(z)} \leq \frac{k}{\phi(k)(\log z + O(1))}\label{sel.apl.vAppr}
@@ -118,4 +102,6 @@ Genom att likställa de två termerna kan vi bestämma \textit{z} så att båda 
     \pi(x;k,a) \leq \frac{(2+\varepsilon)x}{\phi(k)\log(2x/k)}\nonumber
 \end{equation}
 för alla \(\varepsilon > 0\) och \textit{x} större än något \(x_0(\varepsilon) >0\). 
-Resultatet är en variant på Brun-Titchmarshsatsen och är ett exempel på hur sållmetoder kan ge bättre uppskattningar än vissa analytiska metoder eftersom Brun och Titchmarshs orignal uppskattning var svagare än uppskattningen som kan fås genom att använda Selbergs såll \cite{BrunTitch}.
+Resultatet är en variant på Brun-Titchmarshsatsen vilket bevisades först, på ett svagare form, i 1930 av Titchmarsh \cite{BrunTitch} med hjälp av Bruns såll. 
+Att Selbergs såll kan ge än bättre uppskattning är ett mycket icke-trivialt resultat och reflekterar hur stort påverkan feltermen har på en sållmetods slutlig uppskattning.
+Denna idé kommer utvecklas mer i nästa avsnitt.
