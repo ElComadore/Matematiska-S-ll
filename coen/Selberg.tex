@@ -29,18 +29,46 @@ Med infogande av \(\delta_d = 1/f(d)\) i \eqref{deltaX} får vi uppskattningen s
 \begin{equation}
     \S{A}{P}{z} \leq X\sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}\frac{\lambda_{d_1}\lambda_{d_2}}{f([d_1,d_2])} + O\Bigg(\sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}|\lambda_{d_1}||\lambda_{d_2}||R_{[d_1, d_2]}|\Bigg)\label{sel.sieve.main}.
 \end{equation}
+
 För att få en form på \eqref{sel.sieve.main} vilken vi kan använda som ett såll kommer vi nu bestämma talföljden \((\lambda_d)\). 
 Om vi följer hur resonemanget redovisas i \cite{cojocarumurty}, så bestämmer vi \(\lambda_d\) genom att först betrakta bara huvudtermem. 
-Genom att använda multiplikativiteten av \(f(d)\) går det att skriva om huvudtermen till en kvadratisk form och sedan hitta dess minimum. 
-Vid detta minimumvärde blir \(|\lambda_d|\leq 1\) vilket då också ger oss en uppskattning av feltermen. Med alla dessa omskrivningar härleder vi följande sats.
-\todo{Ska utveckla detta tills vi har ett fullständigt härledning/bevis}
-\begin{theorem}[Selbergs såll]\label{sel.sieve.thm}
-Behåll notationen från tidigare i avsnittet och rapporten. 
-Bestäm en funktion
+%Genom att använda multiplikativiteten av \(f(d)\) går det att skriva om huvudtermen till en kvadratisk form och sedan hitta dess minimum. 
+%Vid detta minimumvärde blir \(|\lambda_d|\leq 1\) vilket då också ger oss en uppskattning av feltermen. Med alla dessa omskrivningar härleder vi följande sats.
+ Med det som utgångspunkt, börjar vi med att använda oss av ett lemma angående multiplikativa funktioner, och definition av \textit{f}, för att skriva om huvudtermen på följande sätt;
 \begin{equation}
-    V(z) = \sum_{\substack{d\leq z\\ d\divides P(z)}}\frac{\mu^2(d)}{f_1(d)}.\nonumber
+    \sum_{\substack{d_1,d_2\leq z\\d_1,d_2|P(z)}}\frac{\lambda_{d_1}\lambda_{d_2}}{f([d_1,d_2])} = \sum_{\substack{d_1,d_2\leq z\\d_1,d_2|P(z)}}\frac{\lambda_{d_1}\lambda_{d_2}}{f(d_1)f(d_2)}f((d_1,d_2)) = \sum_{\substack{d_1,d_2\leq z\\d_1,d_2|P(z)}}\frac{\lambda_{d_1}\lambda_{d_2}}{f(d_1)f(d_2)}\sum_{\delta|(d_1,d_2)}f_1(\delta).\label{sel.sieve.exchange}
 \end{equation}
-Då har vi att
+
+Nu bytar vi summeringsordningen i \eqref{sel.sieve.exchange}, genom att inse om \(\delta|(d_1,d_2)\) då är \(\delta \leq z\) och \(\delta | P(z)\).
+Med detta, har vi också att inre summans \(d_1\) och \(d_2\) måste vara delbart med delta. Därför är
+\begin{equation}
+    \eqref{sel.sieve.exchange} = \sum_{\substack{\delta \leq z\\ \delta | P(z)}}f_1(\delta) \sum_{\substack{d_1,d_2\leq z\\d_1,d_2|P(z)\\\delta|(d_1,d_2)}}\frac{\lambda_{d_1}\lambda_{d_2}}{f(d_1)f(d_2)} = \sum_{\substack{\delta \leq z\\ \delta | P(z)}}f_1(\delta)\Bigg(\sum_{\substack{d\leq z\\d|P(z)\\\delta|d}}\frac{\lambda_d}{f(d)}\Bigg)^2.\label{sel.sieve.square}
+\end{equation}
+Sätter vi 
+\begin{equation}
+u_\delta = \sum_{\substack{d\leq z \\ d|P(z) \\ \delta | d}} \frac{\lambda_d}{f(d)} \implies \eqref{sel.sieve.square} = \sum_{\substack{\delta \leq z\\ \delta | P(z)}}f_1(\delta) u_\delta^2\label{sel.sieve.uuu}.
+\end{equation}
+Vi får även Möbius inverteringsformel för \(u_\delta\), vilket ger att
+\begin{equation}
+    \frac{\lambda_\delta}{f(\delta)} = \sum_{\substack{d\leq z\\d|P(z)\\\delta|d}} \mu(d/\delta)u_d \implies 1 = \frac{\lambda_1}{f(1)} = \sum_{\substack{d\leq z\\ d|P(z)}}\mu(d)u_d.\label{sel.sieve.one}
+\end{equation}
+
+Eftersom vi har diagonaliserad huvudtermen i \eqref{sel.sieve.uuu} kan vi enkelt bestämma ett värde på \(u_\delta\), med hjälp av \eqref{sel.sieve.one} och infogandet av en ny funktion \(V(z) = \sum_{d\leq z,\; d\divides P(z)}\frac{\mu^2(d)}{f_1(d)}\), sådan att summan antar sitt minimumvärde.
+Då vi har bestämt en sådan \(u_\delta\), kan vi använda oss av Möbius inverteringsformeln för att bestämma \(\lambda_d\), eller, snarare, uppskatta sin storlek.
+Vi hittar en minimum på följande sätt;
+\begin{align}
+    \eqref{sel.sieve.one} &= \sum_{\substack{\delta\leq z\\\delta|P(z)}} f_1(\delta)u_\delta^2 + \frac{V(z)}{V(z)^2} - \frac{2}{V(z)} + \frac{1}{V(z)}\nonumber\\
+    &= \sum_{\substack{\delta\leq z\\\delta|P(z)}} f_1(\delta)u_\delta^2 + \sum_{\substack{\delta\leq z\\ \delta|P(z)}}\frac{\mu^2(\delta)}{f_1(\delta)V^2(z)} - \sum_{\substack{\delta\leq z\\\delta |P(z)}}\frac{2\mu(\delta)u_\delta}{V(z)} + \frac{1}{V(z)}\label{sel.sieve.VVV}
+\end{align}
+där vi kan nu samla alla summor i \eqref{sel.sieve.VVV} in till en, och, efter vi faktoriserar ut \(f_1(\delta)\) och kvadratkompletterar, får vi att
+\begin{equation}
+    \eqref{sel.sieve.VVV} = \sum_{\substack{\delta\leq z\\\delta|P(z)}}f_1(\delta)\Bigg(u_\delta - \frac{\mu(\delta)}{f_1(\delta)V(z)}\Bigg)^2 + \frac{1}{V(z)}.\nonumber
+\end{equation}
+Uppenbarligen blir ovanstående summa noll då vi väljer \(u_\delta = \frac{\mu(\delta)}{f_1(\delta)V(z)}\), dock så kvarstår frågan om detta verkligen är ett minimum på summan. Får att kontrollera det kan vi se att \(f_1(\delta)\) är alltid större än noll, eftersom för varje primtal har vi att \(f_1(p) = \sum_{d|p}\mu(d)f({p}/{d}) = \mu(1)f(p) + \mu(p)f(1) = f(p) - 1 > 0\). 
+Vi också har att \(f_1\) är multiplikativ och att \textit{d} är kvadratfri vilket tillsammans med föregående resonemanget medför att \(f_1 > 0\) och att summan antar ett minimumvärde med vårt val av \(u_\delta\).
+Det också går att bevisa \cite[s. 122-123]{cojocarumurty} att med detta val av \(u_\delta\) blir \(|\lambda_d| < 1\) och därför härledar vi följande sats.
+\begin{theorem}[Selbergs såll]\label{sel.sieve.thm}
+Behåll notationen från tidigare i avsnittet och rapporten. Då har vi att
 \begin{equation}
     \S{A}{P}{z} \leq \frac{X}{V(z)} + O\Bigg(\sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}|R_{[d_1, d_2]}|\Bigg).\nonumber
 \end{equation}
