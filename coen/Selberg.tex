@@ -83,24 +83,24 @@ Med hjälp av Selbergs såll kan vi lätt uppskatta antalet primtal som finns i 
 Det finns också ett krav på \textit{a} och \textit{k}, nämligen att de är relativt prima, utan det kravet så skulle inga primtal finnas i talföjlden. 
 Om vi vill uppskatta antalet primtal på ovanstående form mindre än något \textit{x}, då är det samma som att uppskatta storleken på följande kardinalitet;
 \begin{equation}
-    \pi(x;k,a) = \#\{p\leq x; p \equiv a \bmod{k}\}.\label{sel.apl.arithPrimes}
+    \pi(x;k,a) = \#\{p\leq x: p \equiv a \pmod{k}\}.\label{sel.apl.arithPrimes}
 \end{equation}
 
 Låt oss nu ta något \(z\leq x,\; z \in \mathbb{R}^+\) som vi kommer att bestämma senare. Då kan vi uppskatta \eqref{sel.apl.arithPrimes} genom att dela upp mängden på följande sätt.
 \begin{align}
-    \pi(x;k,a) &= \pi(z;k,a) + \#\{z<p\leq x; p \equiv a \bmod{k}\} \nonumber\\
-    &\leq z + \#\{n\leq x; n \equiv a \bmod k,\; n \not\equiv 0 \bmod p,\; p\leq z\}.\label{sel.apl.over}
+    \pi(x;k,a) &= \pi(z;k,a) + \#\{z<p\leq x: p \equiv a \pmod{k}\} \nonumber\\
+    &\leq z + \#\{n\leq x: n \equiv a \pmod k,\; n \not\equiv 0 \pmod p,\; p\leq z\}.\label{sel.apl.over}
 \end{align}
 Uppskattningen av den andra kardinaliteten som utförs i \eqref{sel.apl.over} motsvarar en sållning av alla tal som finns i talföjlden med primtal mindre än \textit{z}. 
 Det är klart att det är en uppskattning eftersom om det finns ett sammansatt tal i följden som endast är delbart med primtal större än \textit{z} så kommer den inte sållas bort. 
 Dock så behöver vi faktiskt inte sålla med avseende på alla primtal mindre än \textit{z}, bara de som är relativt prima med \textit{k}. 
 Om till exempel \(k = 6\) så får \textit{a} inte vara delbar med varken 2 eller 3.
 Som konsekvens av det kommer inga element in talföjlden vara delbar med \textit{k}s delare heller.
-Följaktligen ger detta oss att vi bara behöver primtal ur \(\P = \{p: (p, k) = 1\}\) och mängden vi vill uppskatta är då \(\S{A}{P}{z} = \{n\leq x; n \equiv a \bmod k,\; n \not\equiv 0 \bmod p,\; p\leq z, (p,k) = 1\}\).
+Följaktligen ger detta oss att vi bara behöver primtal ur \(\P = \{p: (p, k) = 1\}\) och mängden vi vill uppskatta är då \(\S{A}{P}{z} = \{n\leq x: n \equiv a \pmod k,\; n \not\equiv 0 \pmod p,\; p\leq z, (p,k) = 1\}\).
 
 För att kunna använda sållet så behöver vi bestämma \(\A\), \(\A_d\), \textit{X}, \(f(d)\) samt \(f_1(d)\), och \(R_d\). 
-Det är uppenbart att \(\A = \{n\leq x; n \equiv a \bmod k\}\) och dessutom att \(\A_d = \{n \leq x; n \equiv a \bmod k,\; n \equiv 0 \bmod d\}\). 
-Eftersom \textit{k} och \textit{d} är relativt prima ger Kinesiska restsatsen att det finns ett unikt tal modulo \textit{kd} som är kongruent med \textit{n}, dvs. \(\exists! n_0:\; n \equiv n_0 \bmod kd\). 
+Det är uppenbart att \(\A = \{n\leq x: n \equiv a \pmod k\}\) och dessutom att \(\A_d = \{n \leq x: n \equiv a \pmod k,\; n \equiv 0 \pmod d\}\). 
+Eftersom \textit{k} och \textit{d} är relativt prima ger Kinesiska restsatsen att det finns ett unikt tal modulo \textit{kd} som är kongruent med \textit{n}, dvs. \(\exists! n_0:\; n \equiv n_0 \pmod{kd}\). 
 Detta delar då upp intervalet \([0, x]\) i \(\lfloor x/{kd}\rfloor\) stycken delintervall där det i varje delintervall finns det ett element som ska sållas bort vilket medför att \(\#\A_d = \frac{x}{kd} + O(1)\). 
 Vi erhåller \(X = \frac{x}{k}\), \(f(d) = d\), och \(R_d = O(1)\). 
 För att bestämma \(f_1(d)\) använder vi oss av dess definition, att den kan skrivas som en slags Euler-produkt eftersom \textit{f} är multiplikativ, och att varje \textit{d} är kvadratfri. 
