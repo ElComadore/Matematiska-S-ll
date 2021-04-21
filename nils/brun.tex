@@ -70,32 +70,27 @@ Vi skiljer på två typer av restklasser; noll och nollskild modulo $p$, och har
     \omega(2)=1\ \text{ och }\ \omega(p)=2,\ \text{för}\ p>2.
 \end{equation*}
 Detta ger direkt att $\frac{\omega(p)}{p}\leq\frac{2}{3}$ med likhet då $p=3$, låt därför $A_1=2/3$.
-För att hitta ett passande $\kappa$, använder vi oss av
-\begin{equation}\label{brun.eq.sum_logp_over_p}
-    \sum_{p\leq n}\frac{\log p}{p} = \log n + O(1).
-\end{equation}
-\todo{Bör nog presenteras tidigare, eller i appendix} \\ \noindent
-För $\omega(p)\leq2$ implicerar detta att
+För att hitta ett passande $\kappa$, använder vi oss av (\ref{Thm.1.4.4}) som tillsammans med $\omega(p)\leq2$ implicerar
 \begin{equation*}
     \sum_{w\leq p<z} \frac{\omega(p)\log p}{p} \leq 2\log\left(z/w\right) + O(1),
 \end{equation*}
 varpå vi ser att $\kappa=2$ uppfyller kriterierna och att $A_2$ existerar.
-Något explicit värde på $A_2$ är inte nödvändigt, för betrakta exponenten i ($\ref{brun.eq.lower}$). Taylorutveckling av ger
-\begin{align*}
+Något explicit värde på $A_2$ är inte nödvändigt, för betrakta exponenten i ($\ref{brun.eq.lower}$). Taylorutveckling ger
+\begin{align}\label{brun.eq.exp}
     \exp\left(c_2\frac{2b+2}{\lambda\log z}\right) = 1 + c_2\frac{2b+2}{\lambda}(\log z)^{-1} + \left(c_2\frac{2b+2}{\lambda}\right)^2(\log z)^{-2} + ...
-\end{align*}
-Fixera $b,\lambda$ och $A_2$ så att även $c_2$ är fixerat, då följer det att exponenten begränsas av $1+O((\log z)^{-1})$, då $z\to\infty$.
-Vidare har vi att 
+\end{align}
+Fixera $b,\lambda$ och $A_2$ så att även $c_2$ är fixerat, då följer det att (\ref{brun.eq.exp}) begränsas av $1+O((\log z)^{-1})$, då $z\to\infty$.
+Vidare gäller det att 
 \begin{align*}
     W(z) = \frac{1}{2}\exp\Bigl(\sum_{2<p<z} \log(1-2/p) \Bigr) 
     \gg \frac{1}{2}\exp\Bigl(\sum_{2<p<z} \frac{-2}{p} \Bigr).
 \end{align*}
-Partiell summation av (\ref{brun.eq.sum_logp_over_p}) ger att $\sum_{p\leq n}\frac{1}{p} = \log\log z + O(1)$, så
+Partiell summation av (\ref{Thm.1.4.4}) ger att $\sum_{p\leq n}\frac{1}{p} = \log\log z + O(1)$, så
 \begin{align*}
     W(z) \gg \exp\Bigl(-2\log\log z\Bigr)
     = (\log z)^{-2}.
 \end{align*}
-Sats \ref{brun.thm.brun} ger därmed att
+Genom tillämpning av sats \ref{brun.thm.brun} erhålls
 \begin{equation*}
     \S{A}{P}{z} \gg \frac{x}{(\log z)^2}\bigl(1 - c_1\bigr) + O\left(z^{c_3 - 1}\right).
 \end{equation*}
