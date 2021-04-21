@@ -18,7 +18,7 @@ Eftersom \(\A_p\), för varje $p$, är definierad som en restklass modulo $p$ s�
 \end{align}
 Vi ser således att ett naturligt nästa steg är att generalisera Eratosthenes-Legendres såll för godtyckliga dimensioner. 
 
-\subsection{Eratosthenes generaliserade såll}
+\subsection{Eratosthenes generaliserade såll} \label{eratosthenes.gen.såll}
 % "Effektivt" kräver en förklaring, i kontrast mot exaktheten av Eratosthenes såll?
 Vi vill alltså härleda ett generellt verktyg från idéerna från föregående avsnittet vilket vi kommer göra genom att följa \cite[Kap. 5.4]{cojocarumurty}. Om vi låter $\A_d$, $\P$, $P(z)$ och $\omega(d)$ vara definierade som i avsnitt \ref{sallproblemet} så kan vi, med utgångspunkt i Eratosthenes och Legendres grundtankar, skapa ett mer flexibelt och effektivt såll. Den stora skillnaden mot vad vi gjorde i föregående avsnitt är att vi här tillåter fler restklasser sållas bort per primtal $p$. 
 
@@ -80,4 +80,8 @@ så gäller att
 
 \subsection{Tillämpningar}
 
-\todo{Skriva om en tillämpning på tvillingprimtal}
+%\todo{Skriva om en tillämpning på tvillingprimtal}
+%\todo{I. Förklara val av restklasser. II. Kortfattat komma fram till sats 5.4.4. III. Utföra partiell summationen och konstatera att resultatet är ändligt}
+
+Ett av målen med avsnitt \ref{eratosthenes.gen.såll} var att kunna använda Eratosthenes såll till att sålla bort flera kongruensklasser per primtal $p$. I det här avsnittet kommer vi utnyttja denna egenskapen till att sålla fram tvillingprimtal och sedan bevisa en variant av Bruns sats \cite[Korollarium 5.4.5]{cojocarumurty}, \(\sum_{\substack{p \\ p + 2 \textit{ prima}}} \frac{1}{p} < \infty\).
+
