@@ -83,5 +83,13 @@ så gäller att
 %\todo{Skriva om en tillämpning på tvillingprimtal}
 %\todo{I. Förklara val av restklasser. II. Kortfattat komma fram till sats 5.4.4. III. Utföra partiell summationen och konstatera att resultatet är ändligt}
 
-Ett av målen med avsnitt \ref{eratosthenes.gen.såll} var att kunna använda Eratosthenes såll till att sålla bort flera kongruensklasser per primtal $p$. I det här avsnittet kommer vi utnyttja denna egenskapen till att sålla fram tvillingprimtal och sedan bevisa en variant av Bruns sats \cite[Korollarium 5.4.5]{cojocarumurty}, \(\sum_{\substack{p \\ p + 2 \textit{ prima}}} \frac{1}{p} < \infty\).
+Ett av målen med avsnitt \ref{eratosthenes.gen.såll} var att kunna använda Eratosthenes såll till att sålla bort flera kongruensklasser per primtal $p$. I det här avsnittet kommer vi utnyttja denna egenskapen till att sålla fram tvillingprimtal och sedan bevisa en variant av Bruns sats \cite[Korollarium 5.4.5]{cojocarumurty}, \(\sum_{\substack{p \\ p + 2 \text{ prima}}} \frac{1}{p} < \infty\). \todo{Kort historiebeskrivning koordinerad med efterföljande avsnitt och referens till Coj. och M. för resonemang}. 
 
+För att hitta tvillingprimtal mindre än x (\textit{här}: \( \P_2 := \{p < x : p + 2 \text{ är ett primtal}\}\)) så vill vi utesluta multipler av primtal samt tal två mindre än dessa. På så vis väljer vi kongruensklasserna $0$ och $-2$ modulo $p$ så att dimensionen \(\kappa = 2\) samt \(\omega(2) = 1\) och \(\omega(p) = 2\) för alla primtal $p > 2$. Sats \ref{thm:EratosthenesSieve} ger oss då 
+\begin{align*}
+    \card{\P_2} \leq \pi(z) + \S{A}{P}{z} \leq z + x \prod_{p < z}\left( 1 - \frac{\omega(p)}{p} \right) + O\Big(x (\log x)^3 \exp \Big( - \frac{\log x}{\log z} \Big) \Big).
+\end{align*}
+Vi kan enkelt se att huvudtermen
+\begin{align*}
+    x \prod_{p < z}\left( 1 - \frac{\omega(p)}{p} \right) = x \exp \Big( - \frac{\log x}{\log z} \Big)
+\end{align*}
