@@ -22,7 +22,9 @@ Vi ser således att ett naturligt nästa steg är att generalisera Eratosthenes-
 % "Effektivt" kräver en förklaring, i kontrast mot exaktheten av Eratosthenes såll?
 Vi vill alltså härleda ett generellt verktyg från idéerna från föregående avsnittet vilket vi kommer göra genom att följa \cite[Kap. 5.4]{cojocarumurty}. Om vi låter $\A_d$, $\P$, $P(z)$ och $\omega(d)$ vara definierade som i avsnitt \ref{sallproblemet} så kan vi, med utgångspunkt i Eratosthenes och Legendres grundtankar, skapa ett mer flexibelt och effektivt såll. Den stora skillnaden mot vad vi gjorde i föregående avsnitt är att vi här tillåter fler restklasser sållas bort per primtal $p$. 
 
-Utöver vad som står i avsnitt \ref{sallproblemet} kommer vi göra antagandena att \(\card{A_d} = 0\) för alla \(d\) större än något positivt $y$, att \(\abs{R_d} = O(\omega(d))\) samt att (\ref{dimension}) håller. Vi kan lätt övertyga oss om att dessa är rimliga antaganden i det klassiska Eratosthenes såll-fallet. Eftersom vi utgår från en ändlig mängd $\A$ så håller det första antagandet då \(\card{\A_p} = 0\) för \(p > X\) innebär att, väldigt grovt, \(y \leq P_{X}\). Att det andra antagandet gäller såg vi i föregående avsnitt ty \(\{x/d\} \leq \omega(p) = 1\). Sist så ser vi att (\ref{dimension}) håller genom att sätta in \(\omega(p) = 1\) och utnyttja att \(\sum_{p\leq n}\frac{\log p}{p} = \log n + O(1)\).
+Utöver vad som står i avsnitt \ref{sallproblemet} kommer vi göra antagandena att \(\card{A_d} = 0\) för alla \(d\) större än något positivt $y$, att \(\abs{R_d} = O(\omega(d))\) samt att (\ref{dimension}) håller. Vi kan lätt övertyga oss om att dessa är rimliga antaganden i det klassiska Eratosthenes såll-fallet. Eftersom vi utgår från en ändlig mängd $\A$ så håller det första antagandet då \(\card{\A_p} = 0\) för \(p > X\) innebär att, väldigt grovt, \(y \leq P_{X}\). Att det andra antagandet gäller såg vi i föregående avsnitt ty \(\{x/d\} \leq \omega(p) = 1\). Sist så ser vi att (\ref{dimension}) håller genom att sätta in \(\omega(p) = 1\) och utnyttja att \begin{align} \label{Thm.1.4.4}
+    \sum_{p\leq n}\frac{\log p}{p} = \log n + O(1).
+\end{align}
 
 Vi börjar återigen med Legendres grundidé, inklusion-exklusionsprincipen, men infogar det mer generella uttrycket för $\card{A_d}$ i formeln,
 \begin{align*}
@@ -91,5 +93,9 @@ För att hitta tvillingprimtal mindre än x (\textit{här}: \( \P_2 := \{p < x :
 \end{align*}
 Vi kan enkelt se att huvudtermen
 \begin{align*}
-    x \prod_{p < z}\left( 1 - \frac{\omega(p)}{p} \right) = x \exp \Big( - \frac{\log x}{\log z} \Big)
+    x \prod_{p < z}\left( 1 - \frac{\omega(p)}{p} \right) = x \exp(1/2) \exp \Bigg( \sum_{2 <p < z} \log \left( 1 - \frac{2}{p} \right) \Bigg) \ll x \exp \Bigg( - \sum_{2 <p < z} \frac{2}{p}  \Bigg) 
+\end{align*}
+där sista steget följer av olikheten \(\log(1 + x) \leq x, \forall x > -1\). Slutligen ger (\ref{Thm.1.4.4}) oss att huvudtermen är \(\ll (\log z)^{-2}\) och väljer vi \(\log z = \log x / A \log \log x\) så erhåller vi \cite[Sats 5.4.4]{cojocarumurty},
+\begin{align*}
+    \card{\P_2} \ll \frac{x (\log \log x)^2}{\log^2 x}.
 \end{align*}
