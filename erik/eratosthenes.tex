@@ -87,15 +87,23 @@ så gäller att
 
 Ett av målen med avsnitt \ref{eratosthenes.gen.såll} var att kunna använda Eratosthenes såll till att sålla bort flera kongruensklasser per primtal $p$. I det här avsnittet kommer vi utnyttja denna egenskapen till att sålla fram tvillingprimtal och sedan bevisa en variant av Bruns sats \cite[Korollarium 5.4.5]{cojocarumurty}, \(\sum_{\substack{p \\ p + 2 \text{ prima}}} \frac{1}{p} < \infty\). \todo{Kort historiebeskrivning koordinerad med efterföljande avsnitt och referens till Coj. och M. för resonemang}. 
 
-För att hitta tvillingprimtal mindre än x (\textit{här}: \( \P_2 := \{p < x : p + 2 \text{ är ett primtal}\}\)) så vill vi utesluta multipler av primtal samt tal två mindre än dessa. På så vis väljer vi kongruensklasserna $0$ och $-2$ modulo $p$ så att dimensionen \(\kappa = 2\) samt \(\omega(2) = 1\) och \(\omega(p) = 2\) för alla primtal $p > 2$. Sats \ref{thm:EratosthenesSieve} ger oss då 
+För att hitta tvillingprimtal mindre än $x$ (\textit{här}: \( \P_2(x) := \{p < x : p + 2 \text{ är ett primtal}\}\)) så vill vi utesluta multipler av primtal samt tal två mindre än dessa. På så vis väljer vi kongruensklasserna $0$ och $-2$ modulo $p$ så att dimensionen \(\kappa = 2\) samt \(\omega(2) = 1\) och \(\omega(p) = 2\) för alla primtal $p > 2$. Sats \ref{thm:EratosthenesSieve} ger oss då 
 \begin{align*}
-    \card{\P_2} \leq \pi(z) + \S{A}{P}{z} \leq z + x \prod_{p < z}\left( 1 - \frac{\omega(p)}{p} \right) + O\Big(x (\log x)^3 \exp \Big( - \frac{\log x}{\log z} \Big) \Big).
+    \card{\P_2(x)} \leq \pi(z) + \S{A}{P}{z} \leq z + x \prod_{p < z}\left( 1 - \frac{\omega(p)}{p} \right) + O\Big(x (\log x)^3 \exp \Big( - \frac{\log x}{\log z} \Big) \Big).
 \end{align*}
 Vi kan enkelt se att huvudtermen
 \begin{align*}
     x \prod_{p < z}\left( 1 - \frac{\omega(p)}{p} \right) = x \exp(1/2) \exp \Bigg( \sum_{2 <p < z} \log \left( 1 - \frac{2}{p} \right) \Bigg) \ll x \exp \Bigg( - \sum_{2 <p < z} \frac{2}{p}  \Bigg) 
 \end{align*}
 där sista steget följer av olikheten \(\log(1 + x) \leq x, \forall x > -1\). Slutligen ger (\ref{Thm.1.4.4}) oss att huvudtermen är \(\ll (\log z)^{-2}\) och väljer vi \(\log z = \log x / A \log \log x\) så erhåller vi \cite[Sats 5.4.4]{cojocarumurty},
+\begin{align} \label{PrimTwinCard}
+    \card{\P_2(x)} \ll \frac{x (\log \log x)^2}{\log^2 x}.
+\end{align}
+
+%\todo{partiell summation et voilà: Bruns sats}
+
+Genom att partialsummera summan av de reciproka värdena, med \(c_n\) som indikatorfunktionen på \(\P_2\) och \(f(n) = 1 / n\), så får vi 
 \begin{align*}
-    \card{\P_2} \ll \frac{x (\log \log x)^2}{\log^2 x}.
+    \sum_{\substack{p \leq x \\ p + 2 \text{ prima}}} \frac{1}{p} = \card{\P_2(x)} \cdot \frac{1}{x} + \int_2^x \card{\P_2(t)} \cdot \frac{1}{t^2} \text{d}t . 
 \end{align*}
+Med hjälp av (\ref{PrimTwinCard}) får vi att summan i Bruns sats är \(\ll \int_2^\infty \frac{(\log \log t)^2}{t \log^2 t}\) som är ändlig vilket betyder att summan är begränsad. 
