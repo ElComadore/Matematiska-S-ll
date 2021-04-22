@@ -93,17 +93,17 @@ För att hitta tvillingprimtal mindre än $x$ (\textit{här}: \( \P_2(x) := \{p 
 \end{align*}
 Vi kan enkelt se att huvudtermen
 \begin{align*}
-    x \prod_{p < z}\left( 1 - \frac{\omega(p)}{p} \right) = x \exp(1/2) \exp \Bigg( \sum_{2 <p < z} \log \left( 1 - \frac{2}{p} \right) \Bigg) \ll x \exp \Bigg( - \sum_{2 <p < z} \frac{2}{p}  \Bigg) 
+    x \prod_{p < z}\left( 1 - \frac{\omega(p)}{p} \right) = x \frac{1}{2} \exp \Bigg( \sum_{2 <p < z} \log \left( 1 - \frac{2}{p} \right) \Bigg) \ll x \exp \Bigg( - \sum_{2 <p < z} \frac{2}{p}  \Bigg) 
 \end{align*}
-där sista steget följer av olikheten \(\log(1 + x) \leq x, \forall x > -1\). Slutligen ger (\ref{Thm.1.4.4}) oss att huvudtermen är \(\ll (\log z)^{-2}\) och väljer vi \(\log z = \log x / A \log \log x\) så erhåller vi \cite[Sats 5.4.4]{cojocarumurty},
+där sista steget följer av olikheten \(\log(1 + x) \leq x, \forall x > -1\). Slutligen ger en partiell summation av (\ref{Thm.1.4.4}) \todo{ev. bevisa i appendix} oss att huvudtermen är \(\ll (\log z)^{-2}\) och väljer vi \(\log z = \log x / A \log \log x\) så erhåller vi \cite[Sats 5.4.4]{cojocarumurty},
 \begin{align} \label{PrimTwinCard}
     \card{\P_2(x)} \ll \frac{x (\log \log x)^2}{\log^2 x} .
 \end{align}
-
-%\todo{partiell summation et voilà: Bruns sats}
 
 Genom att partialsummera summan av de reciproka värdena, med \(c_n\) som indikatorfunktionen på \(\P_2\) och \(f(n) = 1 / n\), så får vi 
 \begin{align*}
     \sum_{\substack{p \leq x \\ p + 2 \text{ prima}}} \frac{1}{p} = \card{\P_2(x)} \cdot \frac{1}{x} + \int_2^x \card{\P_2(t)} \cdot \frac{1}{t^2} \text{d}t . 
 \end{align*}
 Med hjälp av (\ref{PrimTwinCard}) får vi att summan i Bruns sats är \(\ll \int_2^\infty \frac{(\log \log t)^2}{t \log^2 t} \text{d}t\) som är ändlig vilket medför att summan är begränsad. 
+
+Vad vi nu visat för summan över \(\P_2\) är i kontrast mot en annan identitet vi använde i ovanstående bevis, \(\sum_{p \leq n} \frac{1}{p} = \log \log n + O(1)\) vilken implicerar att samma summa över primtalen divergerar. Detta innebär inte att tvillingprimtalen är en ändlig delmängd av primtalen men det säger oss att andelen tvillingprimtal är relativt liten. I nästa del kommer vi se ett annat resultat tillskrivet Viggo Brun, Bruns såll, och med hjälp av detta visa ett resultat i motsatt riktning för en mängd snarlik mängden tvillingprimtal. 
