@@ -57,14 +57,14 @@ Eftersom vi har diagonaliserad huvudtermen i \eqref{sel.sieve.uuu} kan vi enkelt
 Då vi har bestämt en sådan \(u_\delta\), kan vi använda oss av Möbius inverteringsformeln för att bestämma \(\lambda_d\), eller, snarare, uppskatta sin storlek.
 Vi hittar en minimum på följande sätt;
 \begin{align}
-    \eqref{sel.sieve.one} &= \sum_{\substack{\delta\leq z\\\delta|P(z)}} f_1(\delta)u_\delta^2 + \frac{V(z)}{V(z)^2} - \frac{2}{V(z)} + \frac{1}{V(z)}\nonumber\\
+    \eqref{sel.sieve.uuu} &= \sum_{\substack{\delta\leq z\\\delta|P(z)}} f_1(\delta)u_\delta^2 + \frac{V(z)}{V(z)^2} - \frac{2}{V(z)} + \frac{1}{V(z)}\nonumber\\
     &= \sum_{\substack{\delta\leq z\\\delta|P(z)}} f_1(\delta)u_\delta^2 + \sum_{\substack{\delta\leq z\\ \delta|P(z)}}\frac{\mu^2(\delta)}{f_1(\delta)V^2(z)} - \sum_{\substack{\delta\leq z\\\delta |P(z)}}\frac{2\mu(\delta)u_\delta}{V(z)} + \frac{1}{V(z)}\label{sel.sieve.VVV}
 \end{align}
 där vi kan nu samla alla summor i \eqref{sel.sieve.VVV} in till en, och, efter vi faktoriserar ut \(f_1(\delta)\) och kvadratkompletterar, får vi att
 \begin{equation}
     \eqref{sel.sieve.VVV} = \sum_{\substack{\delta\leq z\\\delta|P(z)}}f_1(\delta)\Bigg(u_\delta - \frac{\mu(\delta)}{f_1(\delta)V(z)}\Bigg)^2 + \frac{1}{V(z)}.\nonumber
 \end{equation}
-Uppenbarligen blir ovanstående summa noll då vi väljer \(u_\delta = \frac{\mu(\delta)}{f_1(\delta)V(z)}\), dock så kvarstår frågan om detta verkligen är ett minimum på summan. Får att kontrollera det kan vi se att \(f_1(\delta)\) är alltid större än noll, eftersom för varje primtal har vi att \(f_1(p) = \sum_{d|p}\mu(d)f({p}/{d}) = \mu(1)f(p) + \mu(p)f(1) = f(p) - 1 > 0\). 
+Uppenbarligen blir ovanstående summa noll då vi väljer \(u_\delta = \frac{\mu(\delta)}{f_1(\delta)V(z)}\), dock så kvarstår frågan om detta verkligen ger ett minimumvärde på summan. Får att kontrollera det kan vi se att \(f_1(\delta)\) är alltid större än noll, eftersom för varje primtal har vi att \(f_1(p) = \sum_{d|p}\mu(d)f({p}/{d}) = \mu(1)f(p) + \mu(p)f(1) = f(p) - 1 > 0\). 
 Vi också har att \(f_1\) är multiplikativ och att \textit{d} är kvadratfri vilket tillsammans med föregående resonemanget medför att \(f_1 > 0\) och att summan antar ett minimumvärde med vårt val av \(u_\delta\).
 Det också går att bevisa \cite[s. 122-123]{cojocarumurty} att med detta val av \(u_\delta\) blir \(|\lambda_d| < 1\) och därför härledar vi följande sats.
 \begin{theorem}[Selbergs såll]\label{sel.sieve.thm}
