@@ -39,7 +39,7 @@ Studerar vi den första summan ovan ser vi att vi kan skriva om den som summan �
 %\end{align*}
 Med observationen att \(W(z) := \prod_{p \divides P(z)} (1 - \omega(p)/p) = \sum_{d \divides P(z)} \frac{\mu(d)}{d} \omega(d)\) då \(\frac{\omega(d)}{d}\) är multiplikativ kan vi således dela upp den siktade mängden i en huvuddel och en rest på följande vis
 \begin{align*}
-    \S{A}{P}{z} = \left(X W(z) \right) + \Biggl(- X \sum_{\substack{d \divides P(z) \\ d > y}} \frac{\omega(d)}{d} \mu(d) + \sum_{\substack{d \divides P(z)  \\ d \leq y}} \mu(d) R_d \Biggr).
+    \S{A}{P}{z} = X W(z) + \Biggl(- X \sum_{\substack{d \divides P(z) \\ d > y}} \frac{\omega(d)}{d} \mu(d) + \sum_{\substack{d \divides P(z)  \\ d \leq y}} \mu(d) R_d \Biggr).
 \end{align*}
 
 Vi kan skriva om resttermen, först med hjälp av triangelolikheten och sedan med $\abs{\mu(x)} \leq 1$ och vårt antagande $\abs{R_d} = O(\omega(d))$ så att
@@ -80,7 +80,7 @@ så gäller att
 
 % Återför vi fokuset till räknandet av primtal så ger sats \ref{thm:EratosthenesSieve} oss att \(\Phi(x,z) = x W(z) + O((x + ))\)...
 
-\subsection{Tillämpningar}
+\subsection{Tillämpning}
 
 %\todo{Skriva om en tillämpning på tvillingprimtal}
 %\todo{I. Förklara val av restklasser. II. Kortfattat komma fram till sats 5.4.4. III. Utföra partiell summationen och konstatera att resultatet är ändligt}
