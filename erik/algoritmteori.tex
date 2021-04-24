@@ -1,3 +1,5 @@
 \todo{Förklara övergripande struktur och syfte för NewSegSiev och underordnade funktioner, ev. med en flowchart.}
 
 \todo{Ge intuition för den bakomliggande teorin i NewSegSiev. Geometrisk tolkning?}
+
+Flaggskeppet i Helfgotts artikel är algoritmen \textsc{NewSegSiev} som sållar efter alla primtal i ett interval \([n - \Delta, n + \Delta] \subset \mathbb{R}_+\). \textsc{NewSegSiev} gör detta genom att först kalla på en funktion \textsc{SubSegSiev} vilken sållar för mindre primtal och använder en segmenterad variant av Eratosthenes såll. För större primtal utnyttjar Helfgott en del analytiska metoder för att effektivisera sökandet efter multiplar i intervallet. Vi börjar med att kolla på strukturen av \textsc{SubSegSiev} före vi studerar Helfgotts matematiska resonemang för \textsc{NewSegSiev}:s pseudokod.

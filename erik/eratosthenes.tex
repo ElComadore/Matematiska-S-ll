@@ -12,7 +12,7 @@ där \(1\):an på vänstersidan tar i hänsyn att \(1 \in \A\) inte sållas bort
 
 Legendres formel är bra för att räkna primtal exakt men är långsam och golvfunktionen kan vara svårhanterlig. Vi kan underlätta för oss genom att ersätta golvfunktionen med $x/d$ och dess bråkdel, \(\{x/d\} := x/d - \lfloor x/d \rfloor = O(1)\), som restterm vilket leder till \(\card{\A_d} = x/d + O(1)\). Dessvärre resulterar det här i en väldigt stor felterm då restermerna ackumulerar, så att \(\pi(x) - \pi(\sqrt{x}) + 1 = x \sum_{d \divides P(\sqrt{x})}\frac{\mu(d)}{d} + O(2^{\pi(\sqrt{x})}) \).
 
-Eftersom \(\A_p\), för varje $p$, är definierad som en restklass modulo $p$ så säger vi att antalet utvalda restklasser modulo $p$ är $\omega(p) = 1$ för alla $p$ - vi kallar Eratosthenes för ett endimensionellt eller linjärt såll av den här anledningen. Mer allmänt betecknas dimensionen av ett såll med parametern \(\kappa\) om det är en välvald genomsnittlig övre gräns för \(\omega(p)\) för alla $p$ \cite{tenenbaum}, så att
+Eftersom \(\A_p\), för varje $p$, är definierad som en restklass modulo $p$ så säger vi att antalet utvalda restklasser modulo $p$ är $\omega(p) = 1$ för alla $p$ -- vi kallar Eratosthenes för ett endimensionellt eller linjärt såll av den här anledningen. Mer allmänt betecknas dimensionen av ett såll med parametern \(\kappa\) om det är en välvald genomsnittlig övre gräns för \(\omega(p)\) för alla $p$ \cite{tenenbaum}, så att
 \begin{align} \label{dimension}
     \sum_{p \divides P(z)} \frac{\omega(p) \log(p)}{p} \leq \kappa \log(z) + O(1).
 \end{align}
@@ -37,7 +37,7 @@ Studerar vi den första summan ovan ser vi att vi kan skriva om den som summan �
 %    \sum_{\substack{d \divides P(z) \\ d \leq y}} \frac{\omega(d)}{d} \mu(d) =
 %    \sum_{\substack{d \divides P(z)}} \frac{\omega(d)}{d} \mu(d) - \sum_{\substack{d \divides P(z) \\ d > y}} \frac{\omega(d)}{d} \mu(d) .
 %\end{align*}
-Med observationen att \(W(z) := \prod_{p \divides P(z)} (1 - \omega(p)/p) = \sum_{d \divides P(z)} \frac{\mu(d)}{d} \omega(d)\) då \(\frac{\omega(d)}{d}\) är multiplikativ kan vi således dela upp den siktade mängden i en huvuddel och en rest på följande vis
+Med observationen att \(W(z) = \prod_{p \divides P(z)} (1 - \omega(p)/p) = \sum_{d \divides P(z)} \frac{\mu(d)}{d} \omega(d)\) då \(\frac{\omega(d)}{d}\) är multiplikativ kan vi således dela upp den siktade mängden i en huvuddel och en rest på följande vis
 \begin{align*}
     \S{A}{P}{z} = X W(z) + \Biggl(- X \sum_{\substack{d \divides P(z) \\ d > y}} \frac{\omega(d)}{d} \mu(d) + \sum_{\substack{d \divides P(z)  \\ d \leq y}} \mu(d) R_d \Biggr).
 \end{align*}
@@ -77,17 +77,14 @@ så gäller att
 \end{align*}
 
 \end{theorem}
-
+    
 % Återför vi fokuset till räknandet av primtal så ger sats \ref{thm:EratosthenesSieve} oss att \(\Phi(x,z) = x W(z) + O((x + ))\)...
 
-\subsection{Tillämpning}
+\subsection{En flerdimensionell tillämpning av Eratosthenes såll}
 
-%\todo{Skriva om en tillämpning på tvillingprimtal}
-%\todo{I. Förklara val av restklasser. II. Kortfattat komma fram till sats 5.4.4. III. Utföra partiell summationen och konstatera att resultatet är ändligt}
+Ett av målen med avsnitt \ref{eratosthenes.gen.såll} var att kunna använda Eratosthenes såll till att sålla bort flera kongruensklasser per primtal $p$. I det här avsnittet kommer vi utnyttja denna egenskap till att sålla fram tvillingprimtal och sedan bevisa en variant av Bruns sats \cite[Korollarium 5.4.5]{cojocarumurty}, \(\sum_{\substack{p \\ p + 2 \text{ prima}}} \frac{1}{p} < \infty\). \todo{Kort historiebeskrivning koordinerad med efterföljande avsnitt och referens till Coj. och M. för resonemang}. 
 
-Ett av målen med avsnitt \ref{eratosthenes.gen.såll} var att kunna använda Eratosthenes såll till att sålla bort flera kongruensklasser per primtal $p$. I det här avsnittet kommer vi utnyttja denna egenskapen till att sålla fram tvillingprimtal och sedan bevisa en variant av Bruns sats \cite[Korollarium 5.4.5]{cojocarumurty}, \(\sum_{\substack{p \\ p + 2 \text{ prima}}} \frac{1}{p} < \infty\). \todo{Kort historiebeskrivning koordinerad med efterföljande avsnitt och referens till Coj. och M. för resonemang}. 
-
-För att hitta tvillingprimtal mindre än $x$ (\textit{här}: \( \P_2(x) := \{p < x : p + 2 \text{ är ett primtal}\}\)) så vill vi utesluta multipler av primtal samt tal två mindre än dessa. På så vis väljer vi kongruensklasserna $0$ och $-2$ modulo $p$ så att dimensionen \(\kappa = 2\) samt \(\omega(2) = 1\) och \(\omega(p) = 2\) för alla primtal $p > 2$. Sats \ref{thm:EratosthenesSieve} ger oss då 
+För att hitta tvillingprimtal mindre än $x$ (\textit{här}: \( \P_2(x) := \{p < x : p + 2 \text{ är ett primtal}\}\)) så vill vi utesluta multipler av primtal samt tal två mindre än dessa. Med andra ord väljer vi kongruensklasserna $0$ och $-2$ modulo $p$ i sålldefinitionen så att dimensionen \(\kappa = 2\) samt \(\omega(2) = 1\) och \(\omega(p) = 2\) för alla primtal $p > 2$. Vårt val av kongruensklasser ger att \(y = x + 2\) i det första antagandet av sats \ref{thm:EratosthenesSieve} som då säger att
 \begin{align*}
     \card{\P_2(x)} \leq \pi(z) + \S{A}{P}{z} \leq z + x \prod_{p < z}\left( 1 - \frac{\omega(p)}{p} \right) + O\Big(x (\log x)^3 \exp \Big( - \frac{\log x}{\log z} \Big) \Big).
 \end{align*}
@@ -95,7 +92,7 @@ Vi kan enkelt se att huvudtermen
 \begin{align*}
     x \prod_{p < z}\left( 1 - \frac{\omega(p)}{p} \right) = x \frac{1}{2} \exp \Bigg( \sum_{2 <p < z} \log \left( 1 - \frac{2}{p} \right) \Bigg) \ll x \exp \Bigg( - \sum_{2 <p < z} \frac{2}{p}  \Bigg) 
 \end{align*}
-där sista steget följer av olikheten \(\log(1 + x) \leq x, \forall x > -1\). Slutligen ger en partiell summation av (\ref{Thm.1.4.4}) \todo{ev. bevisa i appendix} oss att huvudtermen är \(\ll (\log z)^{-2}\) och väljer vi \(\log z = \log x / A \log \log x\) så erhåller vi \cite[Sats 5.4.4]{cojocarumurty},
+där sista steget följer av olikheten \(\log(1 + x) \leq x, \forall x > -1\). Slutligen ger en partiell summation av (\ref{Thm.1.4.4}) \todo{ev. bevisa i appendix} oss att huvudtermen är \(\ll (\log z)^{-2}\) och väljer vi \(\log z = \log x / A \log \log x\) så erhåller vi \cite[Sats 5.4.4]{cojocarumurty}, % "Huvudterm" << x / log^2 z
 \begin{align} \label{PrimTwinCard}
     \card{\P_2(x)} \ll \frac{x (\log \log x)^2}{\log^2 x} .
 \end{align}
