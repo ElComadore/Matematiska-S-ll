@@ -22,7 +22,7 @@ Andra förbättringar var språkspecifika och åstadkoms genom att jämföra ber
     Ett specialfall av detta nyttjas i \textsc{DiophAppr} där vi har ersatt uttryck på formen \texttt{temp=x; x=y; y=temp;} med det snabbare \texttt{x,y=y,x;}.
 \end{myitemize}
 En ytterligare förbättring kunde göras efter en noggrann analys av pseudokoden för \textsc{NewSegSiev} i \cite[s.338]{HaraldSieve}.
-Efter approximering en erhålls $n'\geq0$, en multipel av $m>0$ som möjligen uppfyller $n'\in[n-\Delta,n+\Delta]$ och $n'>m$.
+Efter en approximering erhålls $n'\geq0$, en multipel av $m>0$ som möjligen uppfyller $n'\in[n-\Delta,n+\Delta]$ och $n'>m$.
 Enligt \cite{HaraldSieve} ska dessa tre villkor testas en efter en,
 men i själva verket är $n'\leq n+\Delta$ alltid uppfyllt eftersom $n'$ definieras som
 \begin{equation} \label{helf.nprim}
@@ -45,13 +45,9 @@ Detta medför att
 där den sista olikheten håller så länge $n+\Delta\geq16$. 
 Att sålla efter primtal i en lista av positiva heltal mindre än $16$ är ointressant.
 Därför kan vi rimligtvis introducera kravet $n+\Delta\geq16$ i början av \textsc{NewSegSiev},
-så att villkoret $n'>m$ alltid håller och inte behöver testas senare i algoritmen.
-Det har följaktligen visat sig att utav de tre villkor som ska testas är två av dem alltid uppfyllda och behöver därmed inte prövas.
+så att $n'>m$ alltid håller och inte behöver testas senare i algoritmen.
+Det har följaktligen visat sig att utav de tre villkor som ska testas, så är två av dem alltid uppfyllda och behöver därmed inte prövas.
 
-
-
-
-\todo{Berätta om väsentliga förbättringar som har gjorts}
 
 \todo{Infoga graf där körningstid av gammal och ny kod jämförs}
 
