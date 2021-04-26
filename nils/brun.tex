@@ -47,7 +47,7 @@ Konstanterna $c_1$, $c_2$ och $c_3$ definieras som
 \end{equation*}
 \end{theorem}
 
-\todo{Förtydligande av sållet. Val av konstanter, mängder etc.}
+\todo{Förtydligande av sållet. Val av konstanter, mängder etc. Referera till föregående avsnitt.}
 
 
 \subsection{En tillämpning av Bruns såll}
@@ -75,11 +75,11 @@ För att hitta ett passande $\kappa$, använder vi oss av (\ref{Thm.1.4.4}) som 
     \sum_{w\leq p<z} \frac{\omega(p)\log p}{p} \leq 2\log\left(z/w\right) + O(1),
 \end{equation*}
 varpå vi ser att $\kappa=2$ uppfyller kriterierna och att $A_2$ existerar.
-Något explicit värde på $A_2$ är inte nödvändigt, för betrakta exponenten i ($\ref{brun.eq.lower}$). Taylorutveckling ger
-\begin{align}\label{brun.eq.exp}
+Något explicit värde på $A_2$ är inte nödvändigt, vilket kan ses genom att betrakta exponenten i ($\ref{brun.eq.lower}$). Taylorutveckling ger
+\begin{align}\label{brun.example.exp}
     \exp\left(c_2\frac{2b+2}{\lambda\log z}\right) = 1 + c_2\frac{2b+2}{\lambda}(\log z)^{-1} + \left(c_2\frac{2b+2}{\lambda}\right)^2(\log z)^{-2} + ...
 \end{align}
-Fixera $b,\lambda$ och $A_2$ så att även $c_2$ är fixerat, då följer det att (\ref{brun.eq.exp}) begränsas av $1+O((\log z)^{-1})$, då $z\to\infty$.
+Fixera $b,\lambda$ och $A_2$ så att även $c_2$ är fixerat, då följer det att (\ref{brun.example.exp}) begränsas av $1+O((\log z)^{-1})$, då $z\to\infty$.
 Vidare gäller det att 
 \begin{align*}
     W(z) = \frac{1}{2}\exp\Bigl(\sum_{2<p<z} \log(1-2/p) \Bigr) 
@@ -91,38 +91,27 @@ Partiell summation av (\ref{Thm.1.4.4}) ger att $\sum_{p\leq n}\frac{1}{p} = \lo
     = (\log z)^{-2}.
 \end{align*}
 Genom tillämpning av sats \ref{brun.thm.brun} erhålls
-\begin{equation*}
+\begin{equation} \label{brun.example.sap}
     \S{A}{P}{z} \gg \frac{x}{(\log z)^2}\bigl(1 - c_1\bigr) + O\left(z^{c_3 - 1}\right).
-\end{equation*}
+\end{equation}
 Nu vill vi välja $b$ och $\lambda$, så att $c_1<1$ och $c_3$ är litet. 
 Detta uppfylls av $b=1$ samt $\lambda=0.101$ som medför att $c_3-1<8$.
 
-\todo{Krävs nog lite förtydligande här.}
-
 I fallet att $n$ eller $n+2$ har mer än 7 primtalsfaktorer,
-så måste $p\mid n(n+2)$ för något primtal $p\leq n^{1/u}$ och $u<8$.
-Vi kan därför uttrycka $\card\mathcal{T}$ som $\S{A}{P}{z}$ genom att sätta $z := x^{1/u}$, vilket ger
+så måste $p\mid n(n+2)$ för något primtal $p < n^{1/8}$.
+Således erhålls $\card\mathcal{T}$ ur $\S{A}{P}{z}$ genom att sålla för primtal upp till $z = x^{1/u}$, där $u<8$.
+Insättning av detta i (\ref{brun.example.sap}) ger
 \begin{equation*}
-    \card\mathcal{T} \gg \frac{x}{(\log x)^2}.
+    \frac{u^2x}{(\log x)^2}\bigl(1 - c_1\bigr) + O\left(z^{\frac{c_3 - 1}{u}}\right) \gg 
+    \frac{x}{(\log x)^2} + O\left(z^{\frac{c_3 - 1}{u}}\right).
 \end{equation*}
+Genom att ställa det ytterligare kravet $u>c_3-1$, har vi att feltermen ovan försvinner när $x$ blir stort och vi får slutligen
+\begin{equation} \label{brun.example.bound}
+    \card\mathcal{T} \gg \frac{x}{(\log x)^2}.
+\end{equation}
+Notera här att vi inte bara har bevisat påståendet \textit{det finns oändligt många par av heltal $(n,n+2)$ där båda talen har högst 7 primtalsfaktorer},
+uttrycket (\ref{brun.example.bound}) ger oss även en undre gräns för det asymptotiska beteendet hos mängden ifråga.
 
 
 
 
-
-
-% Sådant som inte används just nu
-\begin{comment}
-
-två funktioner $g_U$ och $g_L$ som uppfyller 
-\begin{alignat*}{3}
-    g_U(1)&=1,\quad \text{och}&\quad \mu(d)(g_U(d)-g_U(pd)) &\geq 0, \\
-    g_L(1)&=1,\quad \text{och}&\quad \mu(d)(g_L(d)-g_L(pd)) &\leq 0,
-\end{alignat*}
-
-
-
-
-
-
-\end{comment}
