@@ -89,9 +89,9 @@ För att hitta tvillingprimtal mindre än $x$ (\textit{här}: \( \P_2(x) := \{p 
     \card{\P_2(x)} \leq \pi(z) + \S{A}{P}{z} \leq z + x \prod_{p < z}\left( 1 - \frac{\omega(p)}{p} \right) + O\Big(x (\log x)^3 \exp \Big( - \frac{\log x}{\log z} \Big) \Big).
 \end{align*}
 Vi kan enkelt se att huvudtermen
-\begin{align*}
-    x \prod_{p < z}\left( 1 - \frac{\omega(p)}{p} \right) = x \frac{1}{2} \exp \Bigg( \sum_{2 <p < z} \log \left( 1 - \frac{2}{p} \right) \Bigg) \ll x \exp \Bigg( - \sum_{2 <p < z} \frac{2}{p}  \Bigg) 
-\end{align*}
+\begin{align}
+    x \prod_{p < z}\left( 1 - \frac{\omega(p)}{p} \right) = x \frac{1}{2} \exp \Bigg( \sum_{2 <p < z} \log \left( 1 - \frac{2}{p} \right) \Bigg) \ll x \exp \Bigg( - \sum_{2 <p < z} \frac{2}{p}  \Bigg) \label{era.app.mainAppr}
+\end{align}
 där sista steget följer av olikheten \(\log(1 + x) \leq x, \forall x > -1\). Slutligen ger en partiell summation av (\ref{Thm.1.4.4}) \todo{ev. bevisa i appendix} oss att huvudtermen är \(\ll (\log z)^{-2}\) och väljer vi \(\log z = \log x / A \log \log x\) så erhåller vi \cite[Sats 5.4.4]{cojocarumurty}, % "Huvudterm" << x / log^2 z
 \begin{align} \label{PrimTwinCard}
     \card{\P_2(x)} \ll \frac{x (\log \log x)^2}{\log^2 x} .
