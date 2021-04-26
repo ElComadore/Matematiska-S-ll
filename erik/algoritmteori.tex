@@ -4,6 +4,4 @@
 
 Flaggskeppet i \cite{HaraldSieve} är algoritmen \textsc{NewSegSiev} som sållar efter alla primtal i ett interval \([n - \Delta, n + \Delta] \subset \mathbb{R}_+\). \textsc{NewSegSiev} gör detta genom att först kalla på en funktion \textsc{SubSegSiev} vilken sållar för mindre primtal och använder en segmenterad variant av Eratosthenes såll. För större primtal utnyttjar Helfgott en del analytiska metoder för att effektivisera sökandet efter multiplar i intervallet. Vi börjar med att kolla på strukturen av \textsc{SubSegSiev} före vi sedan studerar Helfgotts matematiska resonemang för \textsc{NewSegSiev}:s pseudokod.
 
-Målet med \textsc{SubSegSiev}\((n, \Delta, M)\) är att sålla \([n, n + \Delta]\) med primtal $p \leq M$. Algoritmen gör detta på i stort sett samma vis som i Eratosthenes klassiska såll men delar in primtalen i segment, $p \in [M', M' + Delta']$. 
-
-en underordnad funktion, \textsc{SimpleSegSiev}, som 
+Målet med \textsc{SubSegSiev}\((n, \Delta, M)\) är att sålla \([n, n + \Delta]\) med primtal $p \leq M$. Algoritmen gör detta på i stort sett samma vis som i Eratosthenes klassiska såll men delar in primtalen i segment, $p \in [M', M' + \Delta']$. 
