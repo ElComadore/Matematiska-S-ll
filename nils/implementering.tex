@@ -10,7 +10,7 @@ Andra förbättringar var språkspecifika och åstadkoms genom att jämföra ber
     \item Istället för att spara och göra beräkningar på en vektor av booleaner, väljer vi att uttrycka mängden som en bitsträng. 
     Denna idé föreslås redan i \cite{HaraldSieve} och sparar i första hand minne,
     som i sin tur kan leda till snabbare beräkningar på grund av bättre användning av cache.
-    Här användes Python-biblioteket Bitarray.
+    Här användes Python-biblioteket \textit{Bitarray}.
     \item På vissa ställen har det varit möjligt att flytta ut beräkningar utanför loopar så att samma beräkning inte behöver göras flera gånger.
     \item Flera while-loopar har kunnat ersättas med for-loopar,
     som ger att istället för att testa ett argument för varje iteration i loopen,
@@ -19,11 +19,37 @@ Andra förbättringar var språkspecifika och åstadkoms genom att jämföra ber
     \item I Python kan operatorn \texttt{x//y} användas för division utan rest, denna visar sig vara snabbare än sammansättningen \texttt{floor(x/y)},
     detta ger också att \texttt{ceil(x/y)} kan bytas ut mot \texttt{-(x//-y)}. Operatorn \texttt{isqrt(x)} har fått ersätta \texttt{floor(sqrt(x))} på liknande sätt.
     \item Deklaration av temporära variabler har i vissa fall kunnat uteslutas genom sammanskrivning av flera uttryck. 
-    Ett specialfall av detta nyttjas i DiophAppr där vi har ersatt uttryck på formen \texttt{temp=x; x=y; y=temp;} med det snabbare \texttt{x,y=y,x;}.
+    Ett specialfall av detta nyttjas i \textsc{DiophAppr} där vi har ersatt uttryck på formen \texttt{temp=x; x=y; y=temp;} med det snabbare \texttt{x,y=y,x;}.
 \end{myitemize}
-En ytterligare förbättring som gjordes erhölls efter noggrann analys av pseudokoden på rad 14 av NewSegSiev i \cite[s.338]{HaraldSieve}.
-Här testas det om $n'\in[n-\Delta,n+\Delta]$ och $n'>m$ är uppfyllt.
-Detta är tre stycken villkor, men i själva verket är två dessa alltid uppfyllda, nämligen...
+En ytterligare förbättring kunde göras efter en noggrann analys av pseudokoden för \textsc{NewSegSiev} i \cite[s.338]{HaraldSieve}.
+Efter approximering en erhålls $n'\geq0$, en multipel av $m>0$ som möjligen uppfyller $n'\in[n-\Delta,n+\Delta]$ och $n'>m$.
+Enligt \cite{HaraldSieve} ska dessa tre villkor testas en efter en,
+men i själva verket är $n'\leq n+\Delta$ alltid uppfyllt eftersom $n'$ definieras som
+\begin{equation} \label{helf.nprim}
+    n' := \left\lfloor \frac{n+\Delta}{m} \right\rfloor\cdot m,
+\end{equation}
+vilken givetvis är mindre eller lika med $\frac{n+\Delta}{m}\cdot m = n+\Delta$. 
+Vidare inspekterar vi villkoret $n'>m$, (\ref{helf.nprim}) ger oss att 
+\begin{equation*}
+    n'>m \iff
+    \left\lfloor \frac{n+\Delta}{m} \right\rfloor > 1 \iff
+    \left\lfloor \frac{n+\Delta}{m} \right\rfloor \geq 2 \iff
+    (n+\Delta)/2\geq m.
+\end{equation*}
+Men $m$ väljs ur intervallet $[M,M+2R]$ där $M\leq\sqrt{n+\Delta}$ och $R:=\lfloor M\sqrt{\Delta/4n}\rfloor$.
+Således håller $M+2R\leq2\sqrt{n+\Delta}$ eftersom $1\leq\Delta\leq n$.
+Detta medför att
+\begin{equation*}
+    m \leq M+2R \leq 2\sqrt{n+\Delta} \leq (n+\Delta)/2,
+\end{equation*}
+där den sista olikheten håller så länge $n+\Delta\geq16$. 
+Att sålla efter primtal i en lista av positiva heltal mindre än $16$ är ointressant.
+Därför kan vi rimligtvis introducera kravet $n+\Delta\geq16$ i början av \textsc{NewSegSiev},
+så att villkoret $n'>m$ alltid håller och inte behöver testas senare i algoritmen.
+Det har följaktligen visat sig att utav de tre villkor som ska testas är två av dem alltid uppfyllda och behöver därmed inte prövas.
+
+
+
 
 \todo{Berätta om väsentliga förbättringar som har gjorts}
 
