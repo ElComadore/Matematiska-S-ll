@@ -28,3 +28,12 @@
 % Todo
 \newcommand{\todo}[1]{\smallskip\noindent\big[To do: #1\big]\smallskip}
 
+
+% För att få en mer kompakt lista
+\newenvironment{myitemize}
+{ \begin{itemize}
+    \setlength{\itemsep}{0pt}
+    \setlength{\parskip}{0pt}
+    \setlength{\parsep}{0pt}     }
+{ \end{itemize}                  } 
+

@@ -5,16 +5,25 @@ Det var möjligt att översätta pseudokoden mer eller mindre ordagrant, vilket 
 Därefter kunde flera förbättringar av koden göras för att korta ned dess körningstid. 
 Vissa av förbättringar var möjliga då pseudokoden i \cite{HaraldSieve} är skriven i syfte att tydligt illustrera algoritmerna,
 och är således inte ämnad till att vara färdig, optimerad kod.
-Andra förbättringar var språkspecifika och åstadkoms genom att jämföra beräkningstiden hos olika funktioner och metoder i Python, för att sedan implementera de som visade sig vara snabba. Här är några av de förbättringar som gjorts
-\begin{itemize}
+Andra förbättringar var språkspecifika och åstadkoms genom att jämföra beräkningstiden hos olika funktioner och metoder i Python, för att sedan implementera de som visade sig vara snabba. Nedan följer, utan inbördes ordning, några av de förbättringar som gjorts
+\begin{myitemize}
     \item Istället för att spara och göra beräkningar på en vektor av booleaner, väljer vi att uttrycka mängden som en bitsträng. 
     Denna idé föreslås redan i \cite{HaraldSieve} och sparar i första hand minne,
-    men kan i sin tur leda till snabbare beräkningar på grund av bättre användning av cache.
-    
-    \item 
-    
-    
-\end{itemize}
+    som i sin tur kan leda till snabbare beräkningar på grund av bättre användning av cache.
+    Här användes Python-biblioteket Bitarray.
+    \item På vissa ställen har det varit möjligt att flytta ut beräkningar utanför loopar så att samma beräkning inte behöver göras flera gånger.
+    \item Flera while-loopar har kunnat ersättas med for-loopar,
+    som ger att istället för att testa ett argument för varje iteration i loopen,
+    behöver argumentet bara testas en gång när loopen påbörjas.
+    \item Infogande av iteratorer vid iterering över primtalslistor, vilket också har resulterat i bättre nyttjande av cache.
+    \item I Python kan operatorn \texttt{x//y} användas för division utan rest, denna visar sig vara snabbare än sammansättningen \texttt{floor(x/y)},
+    detta ger också att \texttt{ceil(x/y)} kan bytas ut mot \texttt{-(x//-y)}. Operatorn \texttt{isqrt(x)} har fått ersätta \texttt{floor(sqrt(x))} på liknande sätt.
+    \item Deklaration av temporära variabler har i vissa fall kunnat uteslutas genom sammanskrivning av flera uttryck. 
+    Ett specialfall av detta nyttjas i DiophAppr där vi har ersatt uttryck på formen \texttt{temp=x; x=y; y=temp;} med det snabbare \texttt{x,y=y,x;}.
+\end{myitemize}
+En ytterligare förbättring som gjordes erhölls efter noggrann analys av pseudokoden på rad 14 av NewSegSiev i \cite[s.338]{HaraldSieve}.
+Här testas det om $n'\in[n-\Delta,n+\Delta]$ och $n'>m$ är uppfyllt. 
+Detta är tre stycken villkor, men i själva verket är två dessa alltid uppfyllda, nämligen...
 
 \todo{Berätta om väsentliga förbättringar som har gjorts}
 
