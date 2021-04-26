@@ -5,7 +5,16 @@ Det var möjligt att översätta pseudokoden mer eller mindre ordagrant, vilket 
 Därefter kunde flera förbättringar av koden göras för att korta ned dess körningstid. 
 Vissa av förbättringar var möjliga då pseudokoden i \cite{HaraldSieve} är skriven i syfte att tydligt illustrera algoritmerna,
 och är således inte ämnad till att vara färdig, optimerad kod.
-Andra förbättringar var språkspecifika och åstadkoms genom att jämföra beräkningstiden hos olika funktioner och metoder i Python, för att sedan implementera de som visade sig vara snabba.
+Andra förbättringar var språkspecifika och åstadkoms genom att jämföra beräkningstiden hos olika funktioner och metoder i Python, för att sedan implementera de som visade sig vara snabba. Här är några av de förbättringar som gjorts
+\begin{itemize}
+    \item Istället för att spara och göra beräkningar på en vektor av booleaner, väljer vi att uttrycka mängden som en bitsträng. 
+    Denna idé föreslås redan i \cite{HaraldSieve} och sparar i första hand minne,
+    men kan i sin tur leda till snabbare beräkningar på grund av bättre användning av cache.
+    
+    \item 
+    
+    
+\end{itemize}
 
 \todo{Berätta om väsentliga förbättringar som har gjorts}
 
