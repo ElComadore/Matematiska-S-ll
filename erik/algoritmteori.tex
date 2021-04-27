@@ -2,6 +2,27 @@
 
 \todo{Ge intuition för den bakomliggande teorin i NewSegSiev. Geometrisk tolkning?}
 
-Flaggskeppet i \cite{HaraldSieve} är algoritmen \textsc{NewSegSiev} som sållar efter alla primtal i ett interval \([n - \Delta, n + \Delta] \subset \mathbb{R}_+\). \textsc{NewSegSiev} gör detta genom att först kalla på en funktion \textsc{SubSegSiev} vilken sållar för mindre primtal och använder en segmenterad variant av Eratosthenes såll. För större primtal utnyttjar Helfgott en del analytiska metoder för att effektivisera sökandet efter multiplar i intervallet. Vi börjar med att kolla på strukturen av \textsc{SubSegSiev} före vi sedan studerar Helfgotts matematiska resonemang för \textsc{NewSegSiev}:s pseudokod.
+Flaggskeppet i \cite{HaraldSieve} är algoritmen \textsc{NewSegSiev} som sållar efter alla primtal i ett intervall \([n - \Delta, n + \Delta] \subset \mathbb{R}_+\). \textsc{NewSegSiev} gör detta genom att först kalla på en funktion \textsc{SubSegSiev} vilken sållar för mindre primtal och använder en segmenterad variant av Eratosthenes såll. För större primtal utnyttjar Helfgott en del analytiska metoder för att effektivisera sökandet efter multiplar i intervallet. Vi börjar med att kolla på strukturen av \textsc{SubSegSiev} före vi sedan studerar Helfgotts matematiska resonemang för \textsc{NewSegSiev}:s pseudokod.
 
-Målet med \textsc{SubSegSiev}\((n, \Delta, M)\) är att sålla \([n, n + \Delta]\) med primtal $p \leq M$. Algoritmen gör detta på i stort sett samma vis som i Eratosthenes klassiska såll men delar in primtalen i segment, $p \in [M', M' + \Delta']$. 
+Målet med \textsc{SubSegSiev} är att, givet \(n, \Delta \) och $M$, sålla \([n, n + \Delta]\) med primtal $p \leq M$. Algoritmen gör detta på i stort sett samma vis som i Eratosthenes klassiska såll men delar in primtalen i segment för att optimera minneskomplexiteten. \todo{Fortsätt med att gå igenom SimpleSiev, SimpleSegSiev och SubSegSiev}.
+
+Nästa steg, algoritmen i \textsc{NewSegSiev}, kräver mer matematisk eftertanke. Uppgiften som kvarstår funktionen efter \textsc{SubSegSiev} är att sålla intervallet \([n - \Delta, n + \Delta]\) med resterande primtal, \( p \geq K \Delta\) där \(K \geq 5/2\). Problemet är ekvivalent med att leta efter alla multiplar av \(m \geq K \Delta\) i vårt intervall. Låt \(\ell m\) vara en sådan multiplel då ser vi att
+\begin{align} \label{alg.problem}
+    n - \Delta \leq \ell m \leq n + \Delta \Longleftrightarrow - \frac{\Delta}{m} \leq \frac{n}{m} - \ell \leq \frac{\Delta}{m} \Longleftrightarrow \left\{ \frac{n}{m} \right\} \in \left[- \frac{\Delta}{m}, \frac{\Delta}{m} \right] \bmod 1.
+\end{align}
+Med den här presentationen av problemet gör \cite{HaraldSieve} två approximationer -- först en Taylorutveckling och därefter en diofantisk approximation. 
+
+Den första approximationen syftar till att ersätta hyperbeln \(\frac{n}{m}\) med en (diskontinuerlig) mängd tangenter till kurvan vid olika punkter \(m_0\),
+\begin{align*}
+    \frac{n}{m} = \frac{n}{m_0} - \frac{n}{m_0^2} r + O\left(\frac{n}{m_-^3} r^2 \right)
+\end{align*}
+där \(m_- = \min(m, m_0)\). Eftersom hyperbeln planar ut för större $m$ så kan vi approximera större och större intervall av kurvan med samma linjesegment utan att förstora feltermen. Mer specifikt så låter \cite{HaraldSieve} approximera kurvan med tangenter till kurvan på mitten av intervallet \([M_i, M_i + 2R_i]\) där  $M_{i + 1} = M_i + 2R_i + 1$ med $M_0 = \lfloor K \Delta \rfloor + 1$ och
+\begin{align*}
+    R_i = \left\lfloor \sqrt{\frac{\Delta}{4n}} M_i \right\rfloor .
+\end{align*}
+Vi delar in kurvan i segment \([M, M + 2R]\) tills vi har täckt alla tal \(m \in [  \lfloor K \Delta \rfloor + 1, \sqrt{n + \Delta}]\).
+
+
+%innebär att vi går från att leta $m$ så att resten av hyperbeln \(\frac{n}{m} \pmod{1}\) är i intervallet \([- \Delta / m, \Delta / m]\) till att studera 
+
+%Vi börjar med att Taylorutvecklar vi kring \(m_0\), \(\frac{n}{m}\) \( = \frac{n}{m_0} - \frac{n}{m_0^2} r + O\left(\frac{n}{m_-^3} r^2 \right)\)
