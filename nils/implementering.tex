@@ -15,7 +15,7 @@ Andra förbättringar var språkspecifika och åstadkoms genom att jämföra ber
     \item Flera while-loopar har kunnat ersättas med for-loopar,
     som ger att istället för att testa ett argument för varje iteration i loopen,
     behöver argumentet bara testas en gång när loopen påbörjas.
-    \item Infogande av iteratorer vid iterering över primtalslistor, vilket också har resulterat i bättre nyttjande av cache.
+    \item Infogande av iteratorer vid iterering över primtalslistor, vilket också resulterar i bättre nyttjande av cache.
     \item I Python kan operatorn \texttt{x//y} användas för division utan rest, denna visar sig vara snabbare än sammansättningen \texttt{floor(x/y)},
     detta ger också att \texttt{ceil(x/y)} kan bytas ut mot \texttt{-(x//-y)}. Operatorn \texttt{isqrt(x)} har fått ersätta \texttt{floor(sqrt(x))} på liknande sätt.
     \item Deklaration av temporära variabler har i vissa fall kunnat uteslutas genom sammanskrivning av flera uttryck. 
@@ -29,25 +29,38 @@ men i själva verket är $n'\leq n+\Delta$ alltid uppfyllt eftersom $n'$ definie
     n' := \left\lfloor \frac{n+\Delta}{m} \right\rfloor\cdot m,
 \end{equation}
 vilken givetvis är mindre eller lika med $\frac{n+\Delta}{m}\cdot m = n+\Delta$. 
-Vidare inspekterar vi villkoret $n'>m$, (\ref{helf.nprim}) ger oss att 
+Vidare inspekterar vi villkoret $n'>m$, där (\ref{helf.nprim}) ger oss att 
 \begin{equation*}
     n'>m \iff
     \left\lfloor \frac{n+\Delta}{m} \right\rfloor > 1 \iff
     \left\lfloor \frac{n+\Delta}{m} \right\rfloor \geq 2 \iff
     (n+\Delta)/2\geq m.
 \end{equation*}
-Men $m$ väljs ur intervallet $[M,M+2R]$ där $M\leq\sqrt{n+\Delta}$ och $R:=\lfloor M\sqrt{\Delta/4n}\rfloor$.
-Således håller $M+2R\leq2\sqrt{n+\Delta}$ eftersom $1\leq\Delta\leq n$.
-Detta medför att
+Men $m$ väljs ur intervallet $[M,M+2R]$ så det räcker med att undersöka ifall $M+2R\leq(n+\Delta)/2$. 
+Det gäller att $M\leq\sqrt{n+\Delta}$ och $R:=\lfloor M\sqrt{\Delta/4n}\rfloor$,
+således håller 
 \begin{equation*}
-    m \leq M+2R \leq 2\sqrt{n+\Delta} \leq (n+\Delta)/2,
+    M+2R \leq
+    \sqrt{n+\Delta}\left(1+ \sqrt{\Delta/n}\right) \leq 2\sqrt{n+\Delta}
+\end{equation*}
+eftersom $1\leq\Delta\leq n$. Detta ger oss i sin tur att
+\begin{equation*}
+    m \leq 2\sqrt{n+\Delta} \leq (n+\Delta)/2,
 \end{equation*}
 där den sista olikheten håller så länge $n+\Delta\geq16$. 
 Att sålla efter primtal i en lista av positiva heltal mindre än $16$ är ointressant.
 Därför kan vi rimligtvis introducera kravet $n+\Delta\geq16$ i början av \textsc{NewSegSiev},
 så att $n'>m$ alltid håller och inte behöver testas senare i algoritmen.
-Det har följaktligen visat sig att utav de tre villkor som ska testas, så är två av dem alltid uppfyllda och behöver därmed inte prövas.
+Det har följaktligen visat sig att utav de tre villkor som skulle testas, så är två av dem alltid uppfyllda och behöver därmed inte prövas.
 
+\todo{Eventuellt något om frekvensen av test för ovanstående villkor}
+
+För att visa att ovanstående förändringar faktiskt snabbade upp programmet utfördes två stycken tester.
+Testerna jämförde körningstid mellan den första versionen av programmet, mot en senare version där ovanstående förbättringar gjorts.
+I båda testerna gjordes 100 stycken mätningar där värdet på $n$ gick över intervallet $[500000, 10^{15}]$ med konstant $K=2.5$.
+Värdet på $\Delta$ valdes i det första testet som en funktion av $n$ med $\Delta := \lfloor2\sqrt[3]{n}\rfloor$,
+detta i syfte att alla algoritmer i programmet skulle användas, vilket inträffar om $\Delta\in[\sqrt[3]{n},\sqrt{n}/K]$.
+I det andra testet hölls värdet på $\Delta$ konstant för att testa olika förhållanden mellan $n$ och $\Delta$, här sattes $\Delta := 500000$ vilket ger en intervallbredd på en miljon. De uppmätta tiderna kan ses i figur (?). Den förbättrade versionen visade sig snabbare än den första med en faktor på 10 som minst och 27 som mest, skillnaden var som störst då $n$ var nära den övre gränsen $10^{15}$.
 
 \todo{Infoga graf där körningstid av gammal och ny kod jämförs}
 
