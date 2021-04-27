@@ -1,3 +1,5 @@
+% Skrivet av Erik
+
 \todo{Förklara övergripande struktur och syfte för NewSegSiev och underordnade funktioner, ev. med en flowchart.}
 
 \todo{Ge intuition för den bakomliggande teorin i NewSegSiev. Geometrisk tolkning?}
@@ -16,11 +18,11 @@ Den första approximationen syftar till att ersätta hyperbeln \(\frac{n}{m}\) m
 \begin{align*}
     \frac{n}{m} = \frac{n}{m_0} - \frac{n}{m_0^2} r + O\left(\frac{n}{m_-^3} r^2 \right)
 \end{align*}
-där \(m_- = \min(m, m_0)\). Eftersom hyperbeln planar ut för större $m$ så kan vi approximera större och större intervall av kurvan med samma linjesegment utan att förstora feltermen. Mer specifikt så låter \cite{HaraldSieve} approximera kurvan med tangenter till kurvan på mitten av intervallet \([M_i, M_i + 2R_i]\) där  $M_{i + 1} = M_i + 2R_i + 1$ med $M_0 = \lfloor K \Delta \rfloor + 1$ och
+där \(m_- = \min(m, m_0)\). Eftersom hyperbeln planar ut för större $m$ så kan vi approximera större och större intervall av kurvan med samma linjesegment utan att förstora feltermen. Mer specifikt så låter \cite{HaraldSieve} approximera kurvan med tangenter till kurvan på mitten ($m_0$) av intervallet \([M_i, M_i + 2R_i]\) där  $M_{i + 1} = M_i + 2R_i + 1$ med $M_0 = \lfloor K \Delta \rfloor + 1$ och
 \begin{align*}
     R_i = \left\lfloor \sqrt{\frac{\Delta}{4n}} M_i \right\rfloor .
 \end{align*}
-Vi delar in kurvan i segment \([M, M + 2R]\) tills vi har täckt alla tal \(m \in [  \lfloor K \Delta \rfloor + 1, \sqrt{n + \Delta}]\).
+Vi delar in kurvan i segment \([M, M + 2R]\) tills vi har täckt alla tal \(m \in [  \lfloor K \Delta \rfloor + 1, \sqrt{n + \Delta}]\). Orsaken till att \cite{HaraldSieve} väljer att definiera \(M, m_0\) och \(R\) som ovan är så att restermen inte övertar storleken på intervallet, med andra ord är restermen \(\lesssim nr^2/m_-^3 \leq nR^2/M^3 = \Delta / (4M)\).
 
 
 %innebär att vi går från att leta $m$ så att resten av hyperbeln \(\frac{n}{m} \pmod{1}\) är i intervallet \([- \Delta / m, \Delta / m]\) till att studera 
