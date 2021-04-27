@@ -7,7 +7,7 @@
 %Beginning with the classic example of the set of prime numbers, below is illustrated the distribution predicted by the familiar x over log x from sieve theory/Chebychev, the more accurate lorgarithmic integral Li(x), and the actual number of primes found in using our implementation. In order to generate the following graph, no new sieving methods were introduced, simply the counting fucntion in Appendix X
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 0.7\textwidth]{coen/Images/test.png}
+    \includegraphics[width = \textwidth]{coen/Images/Primes.png}
     \caption{\todo{Infoga en graf med antalet primtal enligt koden, x/log x, och Li(x)}}
     %This graph shows the relative distributions of primees as per the aforementioned fucntions. Notice that while x over log x appears relatively close for smaller x the logarithmic integral approximation is a near exact match for the true distribution, so much so that the code line is hidden.
     \label{fig:res.prime}
@@ -19,7 +19,7 @@
 %Continuing our presentation of various sets of prime's distributions, next we turn to the other recurring theme of twin primes. The following figure illustrates the distributions of twin primes as predicted by x over log squared x and the second order logarithmic integral against those primes found using our implementation. It should be noted that a rather simple help function, Appendix XXX, was written which searches for non twin primes in the prime list and removes them.
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 0.7\textwidth]{coen/Images/test.png}
+    \includegraphics[width = \textwidth]{coen/Images/TwinPrimesNoKapp.png}
     \caption{\todo{Infoga en graf med antalet tvillingsprimtal enligt koden, Cx/log2 x, CLi\textunderscore2(x), undre begränsningen som finns i rapporten. Ge en motivation till varför C är vad det är och vartifrån fördelningen kommer.}}
     %This graph shows the relative distributions of the twin primes as per the aforementioned fucntions. Notice once again the accuarcy of the logarithmic integral, once again hiding our code line, as opposed to that of C x over log squared x, where the constant is 2*C_2, or 2 times the twin prime constant (discussed below).
     \label{fig:res.twins}
