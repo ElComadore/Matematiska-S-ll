@@ -34,7 +34,7 @@ För att få en form på \eqref{sel.sieve.main} vilken vi kan använda som ett s
 Om vi följer hur resonemanget redovisas i \cite{cojocarumurty}, så bestämmer vi \(\lambda_d\) genom att först betrakta bara huvudtermem. 
 %Genom att använda multiplikativiteten av \(f(d)\) går det att skriva om huvudtermen till en kvadratisk form och sedan hitta dess minimum. 
 %Vid detta minimumvärde blir \(|\lambda_d|\leq 1\) vilket då också ger oss en uppskattning av feltermen. Med alla dessa omskrivningar härleder vi följande sats.
- Med det som utgångspunkt, börjar vi med att använda oss av ett lemma angående multiplikativa funktioner, och definition av \textit{f}, för att skriva om huvudtermen på följande sätt;
+ Med det som utgångspunkt, börjar vi med att använda oss av ett lemma, se Appendix \ref{APDX:multFunk}, och definition av \textit{f}, för att skriva om huvudtermen på följande sätt;
 \begin{equation}
     \sum_{\substack{d_1,d_2\leq z\\d_1,d_2|P(z)}}\frac{\lambda_{d_1}\lambda_{d_2}}{f([d_1,d_2])} = \sum_{\substack{d_1,d_2\leq z\\d_1,d_2|P(z)}}\frac{\lambda_{d_1}\lambda_{d_2}}{f(d_1)f(d_2)}f((d_1,d_2)) = \sum_{\substack{d_1,d_2\leq z\\d_1,d_2|P(z)}}\frac{\lambda_{d_1}\lambda_{d_2}}{f(d_1)f(d_2)}\sum_{\delta|(d_1,d_2)}f_1(\delta).\label{sel.sieve.exchange}
 \end{equation}
@@ -48,7 +48,7 @@ Sätter vi
 \begin{equation}
 u_\delta = \sum_{\substack{d\leq z \\ d|P(z) \\ \delta | d}} \frac{\lambda_d}{f(d)} \implies \eqref{sel.sieve.square} = \sum_{\substack{\delta \leq z\\ \delta | P(z)}}f_1(\delta) u_\delta^2\label{sel.sieve.uuu}.
 \end{equation}
-Vi får även Möbius inverteringsformel för \(u_\delta\), vilket ger att
+Vi får även en variant på Möbius inverteringsformel, se Appendix \ref{APDX:mobDual}, för \(u_\delta\), vilket ger att
 \begin{equation}
     \frac{\lambda_\delta}{f(\delta)} = \sum_{\substack{d\leq z\\d|P(z)\\\delta|d}} \mu(d/\delta)u_d \implies 1 = \frac{\lambda_1}{f(1)} = \sum_{\substack{d\leq z\\ d|P(z)}}\mu(d)u_d.\label{sel.sieve.one}
 \end{equation}
@@ -57,7 +57,7 @@ Eftersom vi har diagonaliserad huvudtermen i \eqref{sel.sieve.uuu} kan vi enkelt
 Då vi har bestämt en sådan \(u_\delta\), kan vi använda oss av Möbius inverteringsformeln för att bestämma \(\lambda_d\), eller, snarare, uppskatta sin storlek.
 Vi hittar en minimum på följande sätt;
 \begin{align}
-    \eqref{sel.sieve.uuu} &= \sum_{\substack{\delta\leq z\\\delta|P(z)}} f_1(\delta)u_\delta^2 + \frac{V(z)}{V(z)^2} - \frac{2}{V(z)} + \frac{1}{V(z)}\nonumber\\
+    \sum_{\substack{\delta \leq z\\ \delta | P(z)}}f_1(\delta) u_\delta^2 &= \sum_{\substack{\delta\leq z\\\delta|P(z)}} f_1(\delta)u_\delta^2 + \frac{V(z)}{V(z)^2} - \frac{2}{V(z)} + \frac{1}{V(z)}\nonumber\\
     &= \sum_{\substack{\delta\leq z\\\delta|P(z)}} f_1(\delta)u_\delta^2 + \sum_{\substack{\delta\leq z\\ \delta|P(z)}}\frac{\mu^2(\delta)}{f_1(\delta)V^2(z)} - \sum_{\substack{\delta\leq z\\\delta |P(z)}}\frac{2\mu(\delta)u_\delta}{V(z)} + \frac{1}{V(z)}\label{sel.sieve.VVV}
 \end{align}
 där vi kan nu samla alla summor i \eqref{sel.sieve.VVV} in till en, och, efter vi faktoriserar ut \(f_1(\delta)\) och kvadratkompletterar, får vi att

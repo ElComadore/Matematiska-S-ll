@@ -1,38 +1,40 @@
 %As mentioned in the introduction, sieve methods, while useful, often require quite a bit of work or refinement in order to achieve the results given by more analytic methods. The central reason for this, as the reader may have noticed throguh the course of this report, is due to the error term. It is a recurring theme of sieve theory in general to attempt to better these error terms in order to minimise the apprroximations which have to be made. The reader need only recall the work done in each of the sections regarding the applications of the sieves where one of the final steps  was to find a z which made the main and error term have equal weight. In order to further show the importance of the error term let us present one final example. Take the approximation of the number of primes less than x, the original muse for much of this theory. For each of the sieves we are sieveing out the euivalence class n equiv 0 mod p, leading, for the sieves of Eratosthenes generalised and Brun, omega(p) = 1 and, in the case of Selberg, f(d) = d. If we consider now the main terms we see, for  both Eratosthenes and Brun, that ... and for Selberg, using the approximation in the application with f1 once again being Eulers totient function, that ....Notice how both main terms are of the same magnitude. Why then can Selbergs sieve return an upper bound reminiscient of the PNT while both Brun and Eratosthenes fall markedly short? Natrually this is due to the error bounds.
 
+\todo{References are needed here too}
 
-Som nämndes i inledningen, sållmetoder, även om de är användbara, kan kräva ett stort del arbete eller förfining för att spegla de resultat vilket ges av mer analytiska metoder. 
-En uppenbar anledning för detta är feltermerna kopplade till de sållmetoder som används. 
-Det är en återkommande tema, i sållmetoder som helhet, att försöka minska dessa feltermer för att minimera de slutliga uppskattningarna som kan formuleras.
-Feltermens påverkan på dessa uppskattningar kan enkelt upptäckas i alla tillämpningsdelar i de föregående kapitel.
-Den har störst påverkan i det kritiska steget då \textit{z} bestäms till något funktion av \textit{x}.
-För att vidare understryka feltermens slutlig effekt, redovisar vi ett sista exempel vilket jämför de olika sållen.
+Som nämndes i inledningen kan sållmetoder, även om de är användbara, kräva en stor del arbete eller förfining för att spegla de resultat vilka ges av mer analytiska metoder. 
+En uppenbar orsak till  detta är feltermerna kopplade till de sållmetoder som används. 
+Det är ett återkommande tema i sållmetoder som helhet att försöka minska dessa feltermer för att minimera de slutliga uppskattningarna.
+Feltermens påverkan på dessa uppskattningar kan enkelt upptäckas i alla tillämpningsdelar i de föregående kapitlen.
+Den har störst påverkan i det kritiska steget då \textit{z} bestäms till någon funktion av \textit{x}.
+För att vidare understryka feltermens slutliga effekt, redovisar vi ett sista exempel vilket jämför de olika sållen.
 
-Låt oss nu återgå till en av sållteorins musa med att uppskatta storleken på \(\pi(x)\).
-Då har vi att \(\A = \{n \leq x: n \in \mathbb{N}\}\), \(\A_d = \{n \leq x: n\equiv 0 \pmod d\}\), \(\#\A_d = \frac{1}{d}X + O(1)\), och \(\P\) består av alla primtal. 
-Om vi börjar med att uppskatta huvudtermen som ges av både Eratosthenes allmänna såll och Bruns såll, då implicerar föregående att \(\omega(p) = 1\) för alla \textit{p}.
+Låt oss nu återgå till en av sållteorins musor som är att uppskatta storleken på \(\pi(x)\).
+Då har vi att \(\A = \{n \leq x: n \in \mathbb{N}\}\), \(\A_d = \{n \leq x: n\equiv 0 \pmod d\}\), \(\#\A_d = \frac{1}{d}X + O(1)\), och \(\P\) är mängden av alla primtal. 
+Om vi börjar med att uppskatta huvudtermen som ges av både Eratosthenes generaliserade såll och Bruns såll, då implicerar ovanstående att \(\omega(p) = 1\) för alla \textit{p}.
 Vi uppskattar huvudtermen på en liknade sätt som i \eqref{era.app.mainAppr} och får att \(xW(z) \ll x/\log z\) för både sållen.
-Om vi nu använder Selbergs såll istället med \(f(d) = d\), \(f_1(d) = \phi(d)\), och \(\overline{P}(z) = 1\) (eftersom vi använder alla primtal mindre än \textit{z}), då får vi, genom en uppskattning vilket liknar \eqref{sel.apl.vAppr}, att \(x/V(z) \leq x/(\log z + O(1)) \leq x/\log z\).
-Lägg nu märke till att både huvudtermer har samma magnitud.
-Dock, som nämndes tidigare, kan Selbergs såll återhämta ett övre gräns vilket liknar primtalssatsen fast både Eratosthenes och Bruns såll kommer till korta, med feltermen som huvudanledning för det.
+Om vi nu använder Selbergs såll istället med \(f(d) = d\), \(f_1(d) = \phi(d)\), och \(\overline{P}(z) = 1\) (eftersom vi använder alla primtal mindre än \textit{z}), då får vi, genom en uppskattning som liknar \eqref{sel.apl.vAppr}, att \(x/V(z) \leq x/(\log z + O(1)) \leq x/\log z\).
+Lägg nu märke till att både huvudtermer är av samma storleksordning.
+Dock, som nämndes tidigare, kan Selbergs såll åstadskomma en övre gräns vilken liknar primtalssatsen medan både Eratosthenes och Bruns såll kommer till korta, med feltermen som huvudanledning för det.
 
 %How then do we go about minimising these errors? Naturally, it is not that the error terms arise from nowehre; they are a direct consequence of how the vairous mehtods attempt to manage the Möbisu function. Taking Eratosthenes generla sieve as a baseline of sorts for the handling of the Möbius function, we have presented two examples of methods to manage this function. In Brun's sieve, instead of working with sum mob directly, a function g is introduced such that f = sum mob g, which in combination with use of Möbius inversion and the clever subdivision of the sets comprising S(A,P,Z), we are able to come to the form in section 5, and subsequently form approximations of those sets cardinality. In Selberg's sieve on the otherhand, most of that work is sidestepped entirely, with the introduction of the approximation as outlined in chapter 6. Both of these allowedd the reduction in the size of the error term, with varying degrees of success, which is directly due to their handling of the Möbius function. This does, however, come at a cost; we lose the dersireable asymptotic nature of Eratosthenes general sieve. Yet it is hard to say how valuable that is given the fact that the main term needs approximation in order to yield results regardless. 
 
-Det är också värt att påpeka att feltermenerna duger inte upp från ingenstans; de är en direkt konsekvens av hur en små sållmetod hanterar Möbius funktionen i samband med restermen i uppdelningen av \(\#\A_d\).
-Om vi tar Eratosthenes allmänna såll som ett slags baslinje för hur en sållmetod hanterar Möbius funktionen, där \(\mu(d)\) uppskattas direkt med 1, då har vi redovisat två olika sätt att minimera uppskattningen som görs. 
-I Bruns såll så omvandlas Möbius funktionen direkt, genom först en tillämpning av Möbius inverteringsformel på funktionen \(f(n) = \sum_{d\divides n}\mu(d)g(d)\) med \(f(1) = 1\). 
-Detta följs av en omskrivning av \(\sum_{d\divides P(z)}\A_d \mu(d) g(d)\) med hjälp av denna invertering för att komma till det först likheten av kapitel 5 och de följande uppskattningar. 
-Å andra sidan, i Selbergs så approximeras en summa av Möbius funktionen direkt, vilket förklaras i detalj i kapitel 6.
-Både dessa sött tillåter en minimering av feltermens storlek, till olika nivåer av succé, vilket är direkt kopplade till deras hantering av Möbius funktionen.
-Dock, så måste vi offra det, oftast eftersökt, asymptotiska beteendet vi får i Eratosthenes såll då vi gör dessa uppskattningar i de andra sållen.
-Ändå är det svårt att avgöra om asymptotiska beteendet har något värde då vi måst uppskatta huvudtermen i Eratosthenes såll för att få något resultat från det.
+Det är också värt att påpeka att feltermerna inte dyker upp från ingenstans; de är en direkt konsekvens av hur små sållmetoder hanterar Möbiusfunktionen i samband med restermen i uppdelningen av \(\#\A_d\).
+Om vi tar Eratosthenes allmänna såll som en slags baslinje för hur ett såll hanterar Möbiusfunktionen, där \(\mu(d)\) i feltermen uppskattas direkt med 1, då har vi sett två olika ytterligare sätt att minimera fel i uppskattningen som görs. 
+I Bruns såll så omvandlas Möbiusfunktionen direkt, genom först en tillämpning av Möbius inverteringsformel på funktionen \(f(n) = \sum_{d\divides n}\mu(d)g(d)\) med \(f(1) = 1\). 
+Detta följs av en omskrivning av \(\sum_{d\divides P(z)}\A_d \mu(d) g(d)\) med hjälp av denna invertering för att komma till den första likheten i kapitel \ref{brun} och de efterföljande uppskattningarna. 
+Å andra sidan, i Selbergs såll så approximeras en summa av Möbiusfunktioner direkt, vilket förklaras i detalj i kapitel \ref{Selberg}.
+Både dessa sätt tillåter en minimering av feltermens storlek, med varierande framgång, vilket är direkt kopplade till deras hantering av Möbiusfunktionen.
+Dock så måste vi offra det oftast eftertraktade asymptotiska beteendet vi får i Eratosthenes såll då vi gör dessa uppskattningar i de andra sållen.
+Ändå är det svårt att avgöra om det asymptotiska beteendet har något värde då vi måste uppskatta huvudtermen i Eratosthenes såll för att få något resultat från det.
 
 
 %The work with error terms exemplifies one of the major internal issues sieve theory has had to tackle throughout its development. Other areas include the sieveing of sets by large numbers of residue classes. These large sieves were first introduced by Linnik around the same time as Seelberg's sieve was developed and uses almost entirely different approaches than the small sieves, relying on more analytical tools. 
 
-Arbetet med feltermerna exemplifierar en av de stora interna kämp sållteorin har försökt lösa under sin utveckling.
-Andra områden inkluderar sållning av mängder med ett stort antal restklasser av primtal, och den så kallad \textit{paritetsproblem}. Arbetet med sådana \textit{stora} såll började med Linniks arbete, vilket publicerades nästan samtidigt som Selberg i 1941 \cite[s. 135]{cojocarumurty}, där upp till halva av alla restklasser kunde sållas bort med totalt annorlunda matematiska metoder än med små såll. 
-I nuläget så kan godtyckligt många restklasser sållas bort med det \textit{större sållet}, och sådana metoder har tillämpats i satser såsom Maynards \cite{mayBound}(*****).
-Paritetsproblemet ställer ett litet större problem för sållteorin eftersom det består av att för mängder dess element har alla udda eller alla jämna antal primtalsfaktor, såsom mängden av alla primtal själv, så kan sållmetoder, utan något hjälp, bara ge triviala undrebegränsningar eller övre begränsningar vilket är fel med en faktor av minst 2.
-Problemet, enligt Tao, stämmer från inklusion-exklusionsprincipens, eller Möbius funktionens, "binär" konstruktion där mängder antingen läggs till eller så dras bort då man delar upp en mängd.
+\todo{Pay little mind to this following; passage it will be essentially completely rewritten at some point over the next week. However the ideas will prolly be recycled}
+Arbetet med feltermerna exemplifierar en av de stora interna utmaningar som sållteorin har försökt lösa under sin utveckling.
+Andra områden inkluderar sållning av mängder med ett stort antal restklasser av primtal, genom att använda \textit{stora} såll, och det så kallade \textit{paritetsproblemet}. Arbetet med sådana stora såll började med Linniks arbete, vilket publicerades nästan samtidigt som Selberg såll år 1941 \cite[s. 135]{cojocarumurty}, där upp till häflten av alla restklasser kunde sållas bort med helt annorlunda matematiska metoder än små såll. 
+I nuläget så kan godtyckligt många restklasser sållas bort med det \textit{större sållet}.
+Paritetsproblemet ställer ett litet större problem för sållteorin eftersom det består av att för mängder dess element har alla udda eller alla jämna antal primtalsfaktor, såsom mängden av alla primtal själv, så kan sållmetoder, utan extra hjälp, bara ge triviala undrebegränsningar eller övre begränsningar vilka är fel med en faktor av minst 2.
+Problemet, enligt Tao, härstammar från inklusion-exklusionsprincipens (Möbiusfunktionens) "binära" konstruktion där mängder antingen läggs till eller dras bort då man delar upp en mängd.
 Arbetet med problemet har haft en del succé med primtal på formen \(a^2 + b^4\) \cite{abPrimes} dock så hindrar det fortfarande sållteorins förmåga att uppskatta andra slags primtalsgrupper.
