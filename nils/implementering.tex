@@ -60,8 +60,17 @@ Testerna jämförde körningstid mellan den första versionen av programmet, mot
 I båda testerna gjordes 100 stycken mätningar där värdet på $n$ gick över intervallet $[500000, 10^{15}]$ med konstant $K=2.5$.
 Värdet på $\Delta$ valdes i det första testet som en funktion av $n$ med $\Delta := \lfloor2\sqrt[3]{n}\rfloor$,
 detta i syfte att alla algoritmer i programmet skulle användas, vilket inträffar om $\Delta\in[\sqrt[3]{n},\sqrt{n}/K]$.
-I det andra testet hölls värdet på $\Delta$ konstant för att testa olika förhållanden mellan $n$ och $\Delta$, här sattes $\Delta := 500000$ vilket ger en intervallbredd på en miljon. De uppmätta tiderna kan ses i figur (?). Den förbättrade versionen visade sig snabbare än den första med en faktor på 10 som minst och 27 som mest, skillnaden var som störst då $n$ var nära den övre gränsen $10^{15}$.
+I det andra testet hölls värdet på $\Delta$ konstant för att testa olika förhållanden mellan $n$ och $\Delta$, här sattes $\Delta := 500000$ vilket ger en intervallbredd på en miljon. De uppmätta tiderna kan ses i figur (?). Den förbättrade versionen visade sig snabbare än den första med en faktor på 10 som minst och 27 som mest. Skillnaden var som störst då $n$ var nära den övre gränsen $10^{15}$ där det första testet gav tiderna $76.5$ och $2.8$ sekunder för den första respektive den förbättrade versionen, det andra testet gav ett snarlikt resultat för sådant värde på $n$.
 
 \todo{Infoga graf där körningstid av gammal och ny kod jämförs}
 
-\todo{Diskutera vilka ytterligare förbättringar som kan göras}
+Givetvis är programmet inte perfekt och det finns fler knep som skulle kunna utforskas för att förbättra koden.
+I den ursprungliga artikeln \cite{HaraldSieve} nämns redan några eventuella förbättringar, här ger vi ytterligare några.
+\begin{myitemize}
+    \item Istället för att varje gång låta \textsc{SimpleSiev} generera en lista med alla primtal upp till något tal är det möjligt att hämta detta från sparad data som kan generas i början av programmet.
+    Detta är självklart en avvägning mellan hur snabbt det går att läsa in sparad data mot hur snabbt det går att beräkna den från grunden, en fråga som bör undersökas innan detta denna idé tillämpas.
+    \item Flera beräkningar skulle kunna utföras parallellt, vilket redan föreslås i \cite{HaraldSieve}. 
+    I synnerhet skulle detta kunna användas i andra delen av \textsc{NewSegSiev} där fristående beräkningar utförs för varje $j\in[-k-1,k+1]$.
+    Dessa beräkningar är alla enkla och på samma form, och det kan således vara gynnsamt att överlåta dessa till datorns GPU (Källa kanske?).
+    \item I \textsc{DiphAppr} beräknas heltals- och decimaldelen av $\alpha$ separat men skulle eventuellt kunna göras samtidigt. Förslagsvis skulle då if-satsen förändras till att testa ifall resten är noll.
+\end{myitemize}
