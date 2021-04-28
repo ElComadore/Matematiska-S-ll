@@ -53,18 +53,18 @@ Därför kan vi rimligtvis introducera kravet $n+\Delta\geq16$ i början av \tex
 så att $n'>m$ alltid håller och inte behöver testas senare i algoritmen.
 Det har följaktligen visat sig att utav de tre villkor som skulle testas, så är två av dem alltid uppfyllda och behöver därmed inte prövas.
 
-\todo{Eventuellt något om frekvensen av test för ovanstående villkor}
+\todo{Något om frekvensen av test för ovanstående villkor}
 
 För att visa att ovanstående förändringar faktiskt snabbade upp programmet utfördes två stycken tester.
-Testerna jämförde körningstid mellan den första versionen av programmet, mot en senare version där ovanstående förbättringar gjorts.
+Testerna gjordes på en hemdator (Behövs mer spec?) och jämförde körningstid mellan den första versionen av programmet, mot en senare version där ovanstående förbättringar gjorts.
 I båda testerna gjordes 100 stycken mätningar där värdet på $n$ gick över intervallet $[500000, 10^{15}]$ med konstant $K=2.5$.
 Värdet på $\Delta$ valdes i det första testet som en funktion av $n$ med $\Delta := \lfloor2\sqrt[3]{n}\rfloor$,
 detta i syfte att alla algoritmer i programmet skulle användas, vilket inträffar om $\Delta\in[\sqrt[3]{n},\sqrt{n}/K]$.
-I det andra testet hölls värdet på $\Delta$ konstant för att testa olika förhållanden mellan $n$ och $\Delta$, här sattes $\Delta := 500000$ vilket ger en intervallbredd på en miljon. De uppmätta tiderna kan ses i figur (?). Den förbättrade versionen visade sig snabbare än den första med en faktor på 10 som minst och 27 som mest. Skillnaden var som störst då $n$ var nära den övre gränsen $10^{15}$ där det första testet gav tiderna $76.5$ och $2.8$ sekunder för den första respektive den förbättrade versionen, det andra testet gav ett snarlikt resultat för sådant värde på $n$.
+I det andra testet hölls värdet på $\Delta$ konstant för att testa olika förhållanden mellan $n$ och $\Delta$, här sattes $\Delta := 500000$ vilket ger en intervallbredd på en miljon. De uppmätta tiderna kan ses i figur (?). Den förbättrade versionen visade sig snabbare än den första med en faktor på 10 som minst och 27 som mest. Skillnaden var som störst då $n$ var nära den övre gränsen $10^{15}$ där det första testet gav tiderna $76.5$ och $2.8$ sekunder för den första respektive den förbättrade versionen.
 
 \todo{Infoga graf där körningstid av gammal och ny kod jämförs}
 
-Givetvis är programmet inte perfekt och det finns flera knep som skulle kunna utforskas för att förbättra koden.
+Givetvis är programmet inte perfekt och det finns flera knep som kan utforskas för att förbättra koden.
 I den ursprungliga artikeln \cite{HaraldSieve} nämns ett fåtal eventuella förbättringar, här ger vi ytterligare några.
 \begin{myitemize}
     \item
@@ -81,5 +81,4 @@ I den ursprungliga artikeln \cite{HaraldSieve} nämns ett fåtal eventuella för
     Dessa beräkningar är alla enkla och på samma form, och det kan således vara gynnsamt att överlåta dessa till datorns GPU (Källa kanske?).
 \end{myitemize}
 
-I nästkommande stycke ges några resultat ifrån körning av programmet.
-
+I nästkommande stycke presenteras resultat ifrån körning av programmet.
