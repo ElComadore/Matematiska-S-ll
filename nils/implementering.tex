@@ -64,13 +64,22 @@ I det andra testet hölls värdet på $\Delta$ konstant för att testa olika fö
 
 \todo{Infoga graf där körningstid av gammal och ny kod jämförs}
 
-Givetvis är programmet inte perfekt och det finns fler knep som skulle kunna utforskas för att förbättra koden.
-I den ursprungliga artikeln \cite{HaraldSieve} nämns redan några eventuella förbättringar, här ger vi ytterligare några.
+Givetvis är programmet inte perfekt och det finns flera knep som skulle kunna utforskas för att förbättra koden.
+I den ursprungliga artikeln \cite{HaraldSieve} nämns ett fåtal eventuella förbättringar, här ger vi ytterligare några.
 \begin{myitemize}
-    \item Istället för att varje gång låta \textsc{SimpleSiev} generera en lista med alla primtal upp till något tal är det möjligt att hämta detta från sparad data som kan generas i början av programmet.
-    Detta är självklart en avvägning mellan hur snabbt det går att läsa in sparad data mot hur snabbt det går att beräkna den från grunden, en fråga som bör undersökas innan detta denna idé tillämpas.
-    \item Flera beräkningar skulle kunna utföras parallellt, vilket redan föreslås i \cite{HaraldSieve}. 
-    I synnerhet skulle detta kunna användas i andra delen av \textsc{NewSegSiev} där fristående beräkningar utförs för varje $j\in[-k-1,k+1]$.
+    \item
+    Istället för att flera gånger om låta \textsc{SimpleSiev(M)} generera en lista med alla primtal upp till $M$ kan det eventuellt spara tid att generera en godtycklig lista vid start av programmet.
+    Värdet på $M$ överskrider inte $\sqrt{K\Delta+\sqrt{K\Delta}}$, vilket gör denna taktik rimlig.
+    Exempelvis tar en lista med alla primtal upp till en miljard omkring 1GB att spara och kan ersätta \textsc{SimpleSiev} för $n\leq 10^{35}$, så länge som vi håller oss till mindre interval med $\Delta\leq\sqrt{n}$.
+    Detta är självklart en avvägning mellan hur snabbt det går att läsa in sparad data mot hur snabbt det går att beräkna den från grunden och bör undersökas mer innan idén tillämpas.
+    \item
+    I \textsc{DiphAppr} beräknas heltals- och decimaldelen av $\alpha$ separat men skulle eventuellt kunna göras samtidigt.
+    Förslagsvis skulle då if-satsen förändras till att testa ifall resten är noll.
+    \item
+    Flera beräkningar kan utföras parallellt, vilket redan föreslås i \cite{HaraldSieve}. 
+    I synnerhet kan detta nyttjas i andra delen av \textsc{NewSegSiev} där oberoende beräkningar utförs för varje $j\in[-k-1,k+1]$.
     Dessa beräkningar är alla enkla och på samma form, och det kan således vara gynnsamt att överlåta dessa till datorns GPU (Källa kanske?).
-    \item I \textsc{DiphAppr} beräknas heltals- och decimaldelen av $\alpha$ separat men skulle eventuellt kunna göras samtidigt. Förslagsvis skulle då if-satsen förändras till att testa ifall resten är noll.
 \end{myitemize}
+
+I nästkommande stycke ges några resultat ifrån körning av programmet.
+
