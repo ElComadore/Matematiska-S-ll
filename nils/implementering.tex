@@ -7,18 +7,22 @@ Vissa av förbättringar var möjliga då pseudokoden i \cite{HaraldSieve} är s
 och är således inte ämnad till att vara färdig, optimerad kod.
 Andra förbättringar var språkspecifika och åstadkoms genom att jämföra beräkningstiden hos olika funktioner och metoder i Python, för att sedan implementera de som visade sig vara snabba. Nedan följer, utan inbördes ordning, några av de förbättringar som gjorts
 \begin{myitemize}
-    \item Istället för att spara och göra beräkningar på en vektor av booleaner, väljer vi att uttrycka mängden som en bitsträng. 
+    \item
+    Istället för att spara och göra beräkningar på en vektor av booleaner, väljer vi att uttrycka mängden som en bitsträng. 
     Denna idé föreslås redan i \cite{HaraldSieve} och sparar i första hand minne,
     som i sin tur kan leda till snabbare beräkningar på grund av bättre användning av cache.
     Här användes Python-biblioteket \textit{Bitarray}.
-    \item På vissa ställen har det varit möjligt att flytta ut beräkningar utanför loopar så att samma beräkning inte behöver göras flera gånger.
+    \item
+    På vissa ställen har det varit möjligt att flytta ut beräkningar utanför loopar så att samma beräkning inte behöver göras flera gånger.
     \item Flera while-loopar har kunnat ersättas med for-loopar,
     som ger att istället för att testa ett argument för varje iteration i loopen,
     behöver argumentet bara testas en gång när loopen påbörjas.
     \item Infogande av iteratorer vid iterering över primtalslistor, vilket också resulterar i bättre nyttjande av cache.
-    \item I Python kan operatorn \texttt{x//y} användas för division utan rest, denna visar sig vara snabbare än sammansättningen \texttt{floor(x/y)},
+    \item
+    I Python kan operatorn \texttt{x//y} användas för division utan rest, denna visar sig vara snabbare än sammansättningen \texttt{floor(x/y)},
     detta ger också att \texttt{ceil(x/y)} kan bytas ut mot \texttt{-(x//-y)}. Operatorn \texttt{isqrt(x)} har fått ersätta \texttt{floor(sqrt(x))} på liknande sätt.
-    \item Deklaration av temporära variabler har i vissa fall kunnat uteslutas genom sammanskrivning av flera uttryck. 
+    \item
+    Deklaration av temporära variabler har i vissa fall kunnat uteslutas genom sammanskrivning av flera uttryck. 
     Ett specialfall av detta nyttjas i \textsc{DiophAppr} där vi har ersatt uttryck på formen \texttt{temp=x; x=y; y=temp;} med det snabbare \texttt{x,y=y,x;}.
 \end{myitemize}
 En ytterligare förbättring kunde göras efter en noggrann analys av pseudokoden för \textsc{NewSegSiev} i \cite[s.338]{HaraldSieve}.
@@ -70,11 +74,13 @@ I den ursprungliga artikeln \cite{HaraldSieve} nämns ett fåtal eventuella för
     \item
     Istället för att flera gånger om låta \textsc{SimpleSiev(M)} generera en lista med alla primtal upp till $M$ kan det eventuellt spara tid att generera en godtycklig lista vid start av programmet.
     Värdet på $M$ överskrider inte $\sqrt{K\Delta+\sqrt{K\Delta}}$, vilket gör denna taktik rimlig.
-    Exempelvis tar en lista med alla primtal upp till en miljard omkring 1GB att spara och kan ersätta \textsc{SimpleSiev} för $n\leq 10^{35}$, så länge som vi håller oss till mindre interval med $\Delta\leq\sqrt{n}$.
-    Detta är självklart en avvägning mellan hur snabbt det går att läsa in sparad data mot hur snabbt det går att beräkna den från grunden och bör undersökas mer innan idén tillämpas.
+    Exempelvis tar en lista med alla primtal upp till en miljard omkring 1GB att spara och kan ersätta \textsc{SimpleSiev} för $n\leq 10^{35}$, så länge som vi håller oss till något mindre interval där $\Delta\leq\sqrt{n}$.
+    Detta handlar självklart om en avvägning mellan hur snabbt det går att läsa in sparad data mot hur snabbt det går att beräkna den från grunden och bör undersökas mer innan idén tillämpas. 
+    Om det visar sig att \textsc{SimpleSiev} är att föredra för vissa värden på $M$ men inte andra, 
+    skulle det vara möjligt att växla mellan de två metoderna beroende på värde av $M$.
     \item
-    I \textsc{DiphAppr} beräknas heltals- och decimaldelen av $\alpha$ separat men skulle eventuellt kunna göras samtidigt.
-    Förslagsvis skulle då if-satsen förändras till att testa ifall resten är noll.
+    I \textsc{DiphAppr} beräknas både heltals- och decimaldelen av $\alpha$. Detta görs i nuläget separat men skulle kunna göras samtidigt.
+    Förslagsvis skulle då if-satsen ändras till att testa ifall decimaldelen är noll.
     \item
     Flera beräkningar kan utföras parallellt, vilket redan föreslås i \cite{HaraldSieve}. 
     I synnerhet kan detta nyttjas i andra delen av \textsc{NewSegSiev} där oberoende beräkningar utförs för varje $j\in[-k-1,k+1]$.
