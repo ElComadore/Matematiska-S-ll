@@ -1,4 +1,6 @@
-\todo{Allmän källhänvissning kräv här nere}
+\todo{Allmän källhänvissning krävs härnere}
+
+\todo{Also graphs are far from final, that font needs to be changed Im jusut really lazy}
 
 %Over the course of this report we have refered to, and approximated, the distribution of variouss classifications of prime numbers. Using now our implementation of Helfgott's origianl code we seek to present the legitimacy of said distributions and also reflect on the quality of the code which we have written. The specific distributions to be presented are those of the regular prime numbers, the twin primes, and a the frequency of various prime gaps will also be presented. For each of these implementations have slight modifications been made to the code, which will be briefly discussed.
 
@@ -28,7 +30,7 @@ För att skapa följande figur använder vi bara vår implementering av Helfgott
 \end{figure}
 %As shown in figure X, should we believe in the PNT it seems as though our code does indeed find the correct number of primes. The rather large error in the x over log x estimate is indicative/reflective of one of the limitations highlighted in Section XXX, namely the impact of the error terms and their reconcillation with the main terms. Howeve, there doest exist a deeper link between the x over log x estimate and that of the logarithmic integral. Throguh the use of integral wizardry you can decompose the logarithmic integral into a series of terms, the first of which being x over log x with the remainder being of the order of sqrt(x). This then accounts for the increase in error as x grows. Thiese kinds of approximations for the prime counting function can also be rather naturally extrapolated to those for twin primes, as discussed below.
 
-\todo{Diskussion needs works, going to be rewritten from scratch prolly}
+\todo{Diskussion needs work, going to be rewritten from scratch prolly}
 
 Som vi ser i vänstra grafen av figur \ref{fig:res.prime}, då vi nu tror på primtalssatsen så verkar det som vår kod hittar det korrekta antalet primtal i intervallet, eftersom skillnaden mellan kurvorna är nästa osynlig på makronivå. 
 Att de inte ligger exakt på varandra är en kombination av felet vilket inte visas i \eqref{app.primes.PNT}, felet skapat av interpoleringen som görs för att underlätta ritningen av graferna, och att egentligen är \(\pi(x)\) en stegfunktion. 
@@ -50,14 +52,14 @@ där \(C_2 = 0.6608...\) är tvillingsprimtalskonstanten. Genom att utveckla vå
 \begin{figure}[H]
     \centering
     \includegraphics[width = \textwidth]{coen/Images/TwinPrimesNoKapp.png}
-    \caption{\todo{Infoga en graf med antalet tvillingsprimtal enligt koden, Cx/log2 x, CLi\textunderscore2(x), undre begränsningen som finns i rapporten. Ge en motivation till varför C är vad det är och vartifrån fördelningen kommer.}}
+    \caption{\todo{Explanation of and commnents on graphs}}
     %This graph shows the relative distributions of the twin primes as per the aforementioned fucntions. Notice once again the accuarcy of the logarithmic integral, once again hiding our code line, as opposed to that of C x over log squared x, where the constant is 2*C_2, or 2 times the twin prime constant (discussed below).
     \label{fig:res.twins}
 \end{figure}
 \todo{Diskutera och förklara varför saker ser ut som de gör, vad detta säger för tvillingsprimtalshypoteseen och hur vår val av C2 har påverkat saker}
 %There are a number of things to discuss regardng the above figure. 
 \subsubsection{Frekvens av primtalsgapp}
-\todo{Introducera de förändringarna som utfördes för att tillåta koden att bestämma storleken på primtalsgapp. Koppla till inledningen och väd dettahar att göra med sållteori}
+\todo{Introducera de förändringarna som utfördes för att tillåta koden att bestämma storleken på primtalsgapp. Koppla till inledningen och vad detta har att göra med sållteori}
 \begin{figure}[H]
     \centering
     \includegraphics[width = 0.7\textwidth]{coen/Images/test.png}
