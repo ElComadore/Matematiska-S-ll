@@ -22,7 +22,8 @@ där \(m_- = \min(m, m_0)\). Eftersom hyperbeln planar ut för större $m$ så k
 \begin{align*}
     R_i = \left\lfloor \sqrt{\frac{\Delta}{4n}} M_i \right\rfloor .
 \end{align*}
-Vi delar in kurvan i segment \([M, M + 2R]\) tills vi har täckt alla tal \(m \in [  \lfloor K \Delta \rfloor + 1, \sqrt{n + \Delta}]\). Orsaken till att \cite{HaraldSieve} väljer att definiera \(M, m_0\) och \(R\) som ovan är så att restermen inte övertar storleken på intervallet, med andra ord är restermen \(\lesssim nr^2/m_-^3 \leq nR^2/M^3 = \Delta / (4M)\).
+Vi delar in kurvan i segment \([M, M + 2R]\) tills vi har täckt alla tal \(m \in [  \lfloor K \Delta \rfloor + 1, \sqrt{n + \Delta}]\). Orsaken till att \cite{HaraldSieve} väljer att definiera \(M, m_0\) och \(R\) som ovan är så att restermen inte övertar storleken på intervallet, med andra ord är restermen \(\lesssim nr^2/m_-^3 \leq nR^2/M^3 = \Delta / (4M)\). Tar vi hänsyn till feltermen i problemformuleringen, (\ref{alg.problem}), så har vi omformulerat problemet till att hitta \(r \in [-R, R]\) så att \(P(r) = \frac{n}{m_0} - \frac{n}{m_0^2} r \in [-5\Delta/(4M), 5\Delta/(4M)] \bmod{1}\).
+
 
 
 %innebär att vi går från att leta $m$ så att resten av hyperbeln \(\frac{n}{m} \pmod{1}\) är i intervallet \([- \Delta / m, \Delta / m]\) till att studera 
