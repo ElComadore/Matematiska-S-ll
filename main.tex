@@ -20,7 +20,9 @@ sorting=ynt
 ]{biblatex}
 \addbibresource{bibliografi.bib}
 \usepackage{verbatim}
-\usepackage{comment}
+\usepackage{comment}  % Tillagt av Nils
+\usepackage{multirow} % Tillagt av Nils
+\usepackage{float}    % Tillagt av Nils
 \renewcommand\thepart{\Alph{part}} % Inlagd av Erik 
 
 %\usepackage{epsfig}
@@ -347,7 +349,7 @@ I förordet skall det anges vilka delar som skall tillskrivas respektive förfat
 \subsection{Grundläggande teori och algoritmer}
 \input{erik/algoritmteori}
 
-\subsection{Vår implementering}
+\subsection{Implementation i Python}
 \input{nils/implementering}
 
 \subsection{Tillämpningar och resultat}
