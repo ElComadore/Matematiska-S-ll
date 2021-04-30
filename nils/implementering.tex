@@ -5,7 +5,7 @@ Det var möjligt att översätta pseudokoden mer eller mindre ordagrant, vilket 
 Därefter kunde flera förbättringar av koden göras för att korta ned dess körningstid. 
 Vissa av förbättringar var möjliga då pseudokoden i \cite{HaraldSieve} är skriven i syfte att tydligt illustrera algoritmerna,
 och är således inte ämnad till att vara färdig, optimerad kod.
-Andra förbättringar var språkspecifika och åstadkoms genom att jämföra beräkningstiden hos olika funktioner och metoder i Python, för att sedan implementera de som visade sig vara snabba. Nedan följer, utan inbördes ordning, några av de förbättringar som gjorts
+Andra förbättringar var språkspecifika och åstadkoms genom att jämföra beräkningstiden hos olika funktioner och metoder i Python, för att sedan implementera de som visade sig vara snabba. Nedan följer, utan inbördes ordning, några av de gjorda förbättringar som har haft större inverkan.
 \begin{myitemize}
     \item
     Istället för att spara och göra beräkningar på en vektor av booleaner, väljer vi att uttrycka mängden som en bitsträng. 
@@ -14,16 +14,9 @@ Andra förbättringar var språkspecifika och åstadkoms genom att jämföra ber
     Här användes Python-biblioteket \textit{Bitarray}.
     \item
     På vissa ställen har det varit möjligt att flytta ut beräkningar utanför loopar så att samma beräkning inte behöver göras flera gånger.
-    \item Flera while-loopar har kunnat ersättas med for-loopar,
-    som ger att istället för att testa ett argument för varje iteration i loopen,
-    behöver argumentet bara testas en gång när loopen påbörjas.
-    \item Infogande av iteratorer vid iterering över primtalslistor, vilket också resulterar i bättre nyttjande av cache.
     \item
     I Python kan operatorn \texttt{x//y} användas för division utan rest, denna visar sig vara snabbare än sammansättningen \texttt{floor(x/y)},
     detta ger också att \texttt{ceil(x/y)} kan bytas ut mot \texttt{-(x//-y)}. Operatorn \texttt{isqrt(x)} har fått ersätta \texttt{floor(sqrt(x))} på liknande sätt.
-    \item
-    Deklaration av temporära variabler har i vissa fall kunnat uteslutas genom sammanskrivning av flera uttryck. 
-    Ett specialfall av detta nyttjas i \textsc{DiophAppr} där vi har ersatt uttryck på formen \texttt{temp=x; x=y; y=temp;} med det snabbare \texttt{x,y=y,x;}.
 \end{myitemize}
 En ytterligare förbättring kunde göras efter en noggrann analys av pseudokoden för \textsc{NewSegSiev} i \cite[s.338]{HaraldSieve}.
 Efter en approximering erhålls $n'\geq0$, en multipel av $m>0$ som möjligen uppfyller $n'\in[n-\Delta,n+\Delta]$ och $n'>m$.
@@ -60,16 +53,17 @@ Det har följaktligen visat sig att utav de tre villkor som skulle testas, så �
 \todo{Något om frekvensen av test för ovanstående villkor}
 
 För att visa att ovanstående förändringar faktiskt snabbade upp programmet utfördes två stycken tester.
-Testerna gjordes på en hemdator (Behövs mer spec?) och jämförde körningstid mellan den första versionen av programmet, mot en senare version där ovanstående förbättringar gjorts.
+Testerna gjordes på en hemdator och jämförde körningstid mellan den första versionen av programmet, mot en senare version där ovanstående förbättringar gjorts.
 I båda testerna gjordes 100 stycken mätningar där värdet på $n$ gick över intervallet $[500000, 10^{15}]$ med konstant $K=2.5$.
 Värdet på $\Delta$ valdes i det första testet som en funktion av $n$ med $\Delta := \lfloor2\sqrt[3]{n}\rfloor$,
 detta i syfte att alla algoritmer i programmet skulle användas, vilket inträffar om $\Delta\in[\sqrt[3]{n},\sqrt{n}/K]$.
 I det andra testet hölls värdet på $\Delta$ konstant för att testa olika förhållanden mellan $n$ och $\Delta$, här sattes $\Delta := 500000$ vilket ger en intervallbredd på en miljon. De uppmätta tiderna kan ses i figur (?). Den förbättrade versionen visade sig snabbare än den första med en faktor på 10 som minst och 27 som mest. Skillnaden var som störst då $n$ var nära den övre gränsen $10^{15}$ där det första testet gav tiderna $76.5$ och $2.8$ sekunder för den första respektive den förbättrade versionen.
 
-\todo{Infoga graf där körningstid av gammal och ny kod jämförs}
+\input{nils/tidtabell}
+
 
 Givetvis är programmet inte perfekt och det finns flera knep som kan utforskas för att förbättra koden.
-I den ursprungliga artikeln \cite{HaraldSieve} nämns ett fåtal eventuella förbättringar, här ger vi ytterligare några.
+I den ursprungliga artikeln \cite{HaraldSieve} nämns ett fåtal eventuella förbättringar, här ger vi ytterligare två stycken.
 \begin{myitemize}
     \item
     Istället för att flera gånger om låta \textsc{SimpleSiev(M)} generera en lista med alla primtal upp till $M$ kan det eventuellt spara tid att generera en godtycklig lista vid start av programmet.
@@ -79,12 +73,25 @@ I den ursprungliga artikeln \cite{HaraldSieve} nämns ett fåtal eventuella för
     Om det visar sig att \textsc{SimpleSiev} är att föredra för vissa värden på $M$ men inte andra, 
     skulle det vara möjligt att växla mellan de två metoderna beroende på värde av $M$.
     \item
-    I \textsc{DiophAppr} beräknas både heltals- och decimaldelen av $\alpha$. Detta görs i nuläget separat men skulle kunna göras samtidigt.
-    Förslagsvis skulle då if-satsen ändras till att testa ifall decimaldelen är noll.
-    \item
     Flera beräkningar kan utföras parallellt, vilket redan föreslås i \cite{HaraldSieve}. 
     I synnerhet kan detta nyttjas i andra delen av \textsc{NewSegSiev} där oberoende beräkningar utförs för varje $j\in[-k-1,k+1]$.
-    Dessa beräkningar är alla enkla och på samma form, och det kan således vara gynnsamt att överlåta dessa till datorns GPU (Källa kanske?).
+    Dessa beräkningar är alla enkla och på samma form, och det kan således vara gynnsamt att överlåta dessa till datorns GPU.
 \end{myitemize}
 
 I nästkommande stycke presenteras resultat ifrån körning av programmet.
+
+
+\begin{comment}
+    \item
+    Deklaration av temporära variabler har i vissa fall kunnat uteslutas genom sammanskrivning av flera uttryck. 
+    Ett specialfall av detta nyttjas i \textsc{DiophAppr} där vi har ersatt uttryck på formen \texttt{temp=x; x=y; y=temp;} med det snabbare \texttt{x,y=y,x;}.
+
+    \item Flera while-loopar har kunnat ersättas med for-loopar,
+    som ger att istället för att testa ett argument för varje iteration i loopen,
+    behöver argumentet bara testas en gång när loopen påbörjas.
+    \item Infogande av iteratorer vid iterering över primtalslistor, vilket också resulterar i bättre nyttjande av cache.
+
+    \item
+    I \textsc{DiophAppr} beräknas både heltals- och decimaldelen av $\alpha$. Detta görs i nuläget separat men skulle kunna göras samtidigt.
+    Förslagsvis skulle då if-satsen ändras till att testa ifall decimaldelen är noll.
+\end{comment}
