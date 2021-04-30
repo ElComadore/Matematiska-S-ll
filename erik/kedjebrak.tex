@@ -1,0 +1,9 @@
+% Skrivet av Erik
+
+I avsnitt \ref{partB.algoritmteori} där vi går igenom en implementering av Eratosthenes såll så gör vi bruk av en \textit{diofantisk approximation}, \cite[Algoritm 4]{HaraldSieve}. För att förstå det här steget krävs först lite förkunskaper om kedjebråk. 
+
+Ett \textit{ändligt kedjebråk} definieras i \cite[Definition 20.1]{Lindahl} som
+\begin{align*}
+    \langle a_0, a_1, ..., a_n \rangle := a_0 + \cfrac{1}{a_1 + \cfrac{1}{a_2 + \cfrac{1}{\ddots \raisebox{-3mm}{$a_{n-2}+\cfrac{1}{1 + \cfrac{1}{a_n}}$}}}}
+\end{align*}
+där \(a_0, a_1, ..., a_n\) är reella tal och \(a_i > 0\) för \(i \in [1, n]\).
