@@ -1,20 +1,21 @@
 Ett annat perspektiv på sållmetoder gavs av yttligare en norsk matematiker, Atle Selberg (1917-2007), under 1940 talet. 
-Hans metod, av en kombinatorisk stil som liknade de tidigare, använde sig av en ny typ av vikt och en uppskattning av en summa av Möbius funktioner för att skapa en ny sållmetod. Denna metod kallas för Selbergs såll och är ett typ av viktad såll.
+Hans metod, av en kombinatorisk stil som liknade de tidigare, använde sig av en ny typ av vikt och en uppskattning av en summa av Möbiusfunktioner för att skapa en ny sållmetod. Denna metod kallas för Selbergs såll och är ett typ av viktad såll.
 
 \subsection{Beskrivning av sållet}
 Selbergs nya vikter, vilka motsvarar \(\delta_d\) i \eqref{deltaX}, bestod av ett delat med en multiplikativ funktion 
 \begin{equation}
     f(n) = \sum_{d\divides n}f_1(d)\nonumber
 \end{equation}
-där \(f_1(d)\) är  multiplikativ också och är entydigt bestämd med hjälp av Möbius inverteringsformel. Det krävs också att \(f(p) > 1\) för alla \(p\in\P\). 
-Med en sådan mer allmän vikt hade sållteorin möjligheten att uppskatta nya typer av mängder som tidigare ej varit möjligt att uttrycka med endast restklasser modulo primtal. 
+där \(f_1(d)\) är  multiplikativ också och är entydigt bestämd med hjälp av Möbius inverteringsformel. Det krävs också att \(f(p) > 1\) för alla \(p\in\P\).
+Till exempel, om vi vill sålla bort alla tal i mängden \(\A_d = \{n\leq x:n \equiv 0 \pmod{d}\}\), där \(x>0\), då blir \(\#\A_d = x/d + O(1)\) och dessutom \(f(d) = d\).
+Föregående exempel är väldigt enkel dock, i mer komplexa fall, kan en sådan mer allmän vikt ge sållteorin möjligheten att uppskatta nya typer av mängder som tidigare ej varit möjligt att uttrycka med endast restklasser modulo primtal. 
 
 Enligt \cite{cojocarumurty}, bestod summans uppskattning huvudsakligen av att för en given reell talföljd, \((\lambda_d)\), med \(\lambda_1 = 1\), har vi att 
 \begin{equation}
     \sum_{d\divides n}\mu(d) \leq \Bigg(\sum_{d\divides n}\lambda_d\Bigg)^2.\nonumber
 \end{equation}
 För att förstå varför denna uppskattning av Möbiusfunktionens summa fungerar, kom ihåg den första egenskapen som redovisas i \ref{Mobius}. 
-Summan är antingen noll eller ett beroende på om \textit{n} är lika med ett eller inte, och uppskattningen är minimalt 0 då \textit{n} är skild ifrån ett, eftersom det är ett reellt tal i kvadrat.
+Summan är antingen noll eller ett beroende på om \textit{n} är lika med ett eller inte, och uppskattningen är minimalt noll då \textit{n} är skild ifrån ett, eftersom det är ett reellt tal i kvadrat.
 Slutmålet med sållets härledning blir att konstruera talföljden så att uppskattningen minimeras, vilket kommer göras senare.
 Med hjälp av talföljden \((\lambda_d)\) kan vi nu uppskatta \(\S{A}{P}{z}\) eftersom
 \begin{equation}
@@ -53,7 +54,8 @@ Vi får även en variant på Möbius inverteringsformel, se Appendix \ref{APDX:m
     \frac{\lambda_\delta}{f(\delta)} = \sum_{\substack{d\leq z\\d|P(z)\\\delta|d}} \mu(d/\delta)u_d \implies 1 = \frac{\lambda_1}{f(1)} = \sum_{\substack{d\leq z\\ d|P(z)}}\mu(d)u_d.\label{sel.sieve.one}
 \end{equation}
 
-Eftersom vi har diagonaliserad huvudtermen i \eqref{sel.sieve.uuu} kan vi enkelt bestämma ett värde på \(u_\delta\), med hjälp av \eqref{sel.sieve.one} och infogandet av en ny funktion \(V(z) = \sum_{d\leq z,\; d\divides P(z)}\frac{\mu^2(d)}{f_1(d)}\), sådan att summan antar sitt minimumvärde.
+Eftersom vi har diagonaliserad huvudtermen i \eqref{sel.sieve.uuu} kan vi enkelt bestämma ett värde på \(u_\delta\) sådan att summan antar sitt minimumvärde genom att använda kvadratkomplettering. 
+Vi gör detta med hjälp av \eqref{sel.sieve.one} och infogandet av en ny funktion \(V(z) = \sum_{d\leq z,\; d\divides P(z)}\frac{\mu^2(d)}{f_1(d)}\), vilket direkt underlätter kvadratkompletteringen av summans termer.
 Då vi har bestämt en sådan \(u_\delta\), kan vi använda oss av Möbius inverteringsformeln för att bestämma \(\lambda_d\), eller, snarare, uppskatta sin storlek.
 Vi hittar en minimum på följande sätt;
 \begin{align}
@@ -73,13 +75,14 @@ Behåll notationen från tidigare i avsnittet och rapporten. Då har vi att
     \S{A}{P}{z} \leq \frac{X}{V(z)} + O\Bigg(\sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}|R_{[d_1, d_2]}|\Bigg).\nonumber
 \end{equation}
 \end{theorem}
-Ovanstående formulering är en kortfattad version av hur satsen redovisas i \cite{cojocarumurty}. För att använda sållet behöver vi bestämma några parametrar. 
+Ovanstående formulering är en kortfattad version av hur satsen redovisas i \cite{cojocarumurty}. För att använda sållet behöver vi bestämma några parametrar angående mängderna \(\A_d\).
 Som i de tidigare såll, hur \(\A\) och \(\A_d\) definieras är avgörande, dock, på grund av Selbergs vikter, har vi nu mycket mer frihet med hur vi definierar dessa mängder. 
-Ett exempel på denna nyfunna flexibilitet redovisas i nästa avsnitt.
+Notera också att i Selbergs såll så har vi färre paratmetrar att bestämma än i de tidigare sållen, vilket hjälper en del med både förståelsen av sållet och dess tillämpning. 
+Ett exempel på denna nyfunna flexibilitet och lätttillämpning redovisas i nästa avsnitt.
 
 \subsection{Selbergs såll och primtal i aritmetiska talföljder}
 
-Med hjälp av Selbergs såll kan vi lätt uppskatta antalet primtal som finns i en aritmetisk talföjld, d.v.s. antalet primtal på formen \(p = a + tk\) där \textit{a}, \textit{k} är valda konstanter och \textit{t} är godtyckligt. 
+Med hjälp av Selbergs såll kan vi uppskatta antalet primtal som finns i en aritmetisk talföjld, d.v.s. antalet primtal på formen \(p = a + tk\) där \textit{a}, \textit{k} är valda konstanter och \textit{t} är godtyckligt. 
 Det finns också ett krav på \textit{a} och \textit{k}, nämligen att de är relativt prima, utan det kravet så skulle inga primtal finnas i talföjlden. 
 Om vi vill uppskatta antalet primtal på ovanstående form mindre än något \textit{x}, då är det samma som att uppskatta storleken på följande kardinalitet;
 \begin{equation}
@@ -133,6 +136,10 @@ Genom att likställa de två termerna kan vi bestämma \textit{z} så att båda 
     \pi(x;k,a) \leq \frac{(2+\varepsilon)x}{\phi(k)\log(2x/k)}\nonumber
 \end{equation}
 för alla \(\varepsilon > 0\) och \textit{x} större än något \(x_0(\varepsilon) >0\). 
-Resultatet är en variant på Brun-Titchmarshsatsen vilket bevisades först, på ett svagare form, i 1930 av Titchmarsh \cite{BrunTitch} med hjälp av Bruns såll. 
+Resultatet är en variant på Brun-Titchmarshsatsen vilket bevisades först, på den svagare formen
+\begin{equation}
+    \pi(x;k,a)\ll \frac{x}{\phi(k)\log(x)},\nonumber
+\end{equation}
+i 1930 av Titchmarsh \cite{BrunTitch} med hjälp av Bruns såll. 
 Att Selbergs såll kan ge än bättre uppskattning är ett mycket icke-trivialt resultat och reflekterar hur stort påverkan feltermen har på en sållmetods slutlig uppskattning.
 Denna idé kommer utvecklas mer i nästa avsnitt.
