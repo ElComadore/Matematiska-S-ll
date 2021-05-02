@@ -13,10 +13,9 @@ Andra förbättringar var språkspecifika och åstadkoms genom att jämföra ber
     som i sin tur kan leda till snabbare beräkningar på grund av bättre användning av cache.
     Här användes Python-biblioteket \textit{Bitarray}.
     \item
-    På vissa ställen har det varit möjligt att flytta ut beräkningar utanför loopar så att samma beräkning inte behöver göras flera gånger.
+    På vissa ställen har det varit möjligt att flytta ut beräkningar utanför loopar så att samma beräkning inte behöver göras flera gånger. Flera beräkningar har även kunnat förkortas eller skrivas ihop för att undvika temporära variabler.
     \item
-    I Python kan operatorn \texttt{x//y} användas för division utan rest, denna visar sig vara snabbare än sammansättningen \texttt{floor(x/y)},
-    detta ger också att \texttt{ceil(x/y)} kan bytas ut mot \texttt{-(x//-y)}. Operatorn \texttt{isqrt(x)} har fått ersätta \texttt{floor(sqrt(x))} på liknande sätt.
+    I Python kan operatorn \texttt{x//y} användas för division utan rest, denna visar sig vara snabbare än sammansättningen \texttt{floor(x/y)}, detta ger också att \texttt{ceil(x/y)} kan bytas ut mot \texttt{-(x//-y)}.
 \end{myitemize}
 En ytterligare förbättring kunde göras efter en noggrann analys av pseudokoden för \textsc{NewSegSiev} i \cite[s.338]{HaraldSieve}.
 Efter en approximering erhålls $n'\geq0$, en multipel av $m>0$ som möjligen uppfyller $n'\in[n-\Delta,n+\Delta]$ och $n'>m$.
@@ -52,14 +51,24 @@ Det har följaktligen visat sig att utav de tre villkor som skulle testas, så �
 
 \todo{Något om frekvensen av test för ovanstående villkor}
 
-För att visa att ovanstående förändringar faktiskt snabbade upp programmet utfördes två stycken tester.
+För att visa att ovanstående förändringar faktiskt har haft inverkan så utfördes tester.
 Testerna gjordes på en hemdator och jämförde körningstid mellan den första versionen av programmet, mot en senare version där ovanstående förbättringar gjorts.
-I båda testerna gjordes 100 stycken mätningar där värdet på $n$ gick över intervallet $[500000, 10^{15}]$ med konstant $K=2.5$.
-Värdet på $\Delta$ valdes i det första testet som en funktion av $n$ med $\Delta := \lfloor2\sqrt[3]{n}\rfloor$,
-detta i syfte att alla algoritmer i programmet skulle användas, vilket inträffar om $\Delta\in[\sqrt[3]{n},\sqrt{n}/K]$.
-I det andra testet hölls värdet på $\Delta$ konstant för att testa olika förhållanden mellan $n$ och $\Delta$, här sattes $\Delta := 500000$ vilket ger en intervallbredd på en miljon. De uppmätta tiderna kan ses i figur (?). Den förbättrade versionen visade sig snabbare än den första med en faktor på 10 som minst och 27 som mest. Skillnaden var som störst då $n$ var nära den övre gränsen $10^{15}$ där det första testet gav tiderna $76.5$ och $2.8$ sekunder för den första respektive den förbättrade versionen.
+Som nämnts tidigare så sållar programmet fram primtal i ett angivet intervall $[n-\Delta,n+\Delta]$. 
+Metoden som programmet gör detta med varierar något beroende på förhållandet mellan $\Delta$ och $n$,
+av denna anledning utfördes två stycken tester där detta förhållande är så stort som möjligt respektive så litet som möjligt.
+I det första testet valdes således $\Delta:=n$ och tre mätningar utfördes för $n=5\cdot10^3,5\cdot10^5,5\cdot10^7$.
+I det andra testet valdes $\Delta:=\sqrt[3]{n}$ och $n$ fick anta värdena $10^9$, $10^{12}$ respektive $10^{15}$.
+För alla mätningar visade sig den förbättrade versionen vara minst 10 gånger så snabb som den första versionen, det finns dessutom en antydan till att denna faktor ökar då $n$ växer. De uppmätta tiderna går att se i tabell \ref{implementering.tidtabell}.
 
+\begin{table}[H]
+\centering
 \input{nils/tidtabell}
+\caption{
+Uppmätta körningstider vid primtalssållning för den första versionen, respektive den förbättrade versionen av programmet.
+Intervallen är på formen $[n-\Delta,n+\Delta]$ där $\Delta=n$ för de tre första och $\Delta=\sqrt[3]{n}$ för de tre sista.
+Den förbättrade versionen var snabbare än den första versionen med en faktor på minst 10.}
+\label{implementering.tidtabell}
+\end{table}
 
 
 Givetvis är programmet inte perfekt och det finns flera knep som kan utforskas för att förbättra koden.
