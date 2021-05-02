@@ -1,7 +1,4 @@
 \todo{Allmän källhänvissning krävs härnere}
-
-\todo{Also graphs are far from final, that font needs to be changed Im jusut really lazy}
-
 %Over the course of this report we have refered to, and approximated, the distribution of variouss classifications of prime numbers. Using now our implementation of Helfgott's origianl code we seek to present the legitimacy of said distributions and also reflect on the quality of the code which we have written. The specific distributions to be presented are those of the regular prime numbers, the twin primes, and a the frequency of various prime gaps will also be presented. For each of these implementations have slight modifications been made to the code, which will be briefly discussed.
 
 Genom rapportens gång har vi hänvisat till, och uppskattat fördelningen av, ett antal klasser av primtal och deras egenskaper. 
@@ -73,17 +70,18 @@ Vi kan inte använda vår kod som bevis för den hypotetiska fördelningen för 
 
 %There are a number of things to discuss regardng the above figure. 
 \subsubsection{Frekvens av primtalsgap}
-\todo{Introducera de förändringarna som utfördes för att tillåta koden att bestämma storleken på primtalsgap. Koppla till inledningen och vad detta har att göra med sållteori}
 
 Vi fortsätter med att ge visualiseringar av olika egenskaper av de primtal vi har hittat med att undersöka frekvensen av olika storlekar av primtalsgap. 
-Primtalsgapar är avståndet mellan ett primtal och följande primtalet och antyddes kort till i inledningden då vi hänvisade till att det fanns oändligt många par av primtal med maximalt 600 steg emellan sig.
-Vi har arbetat en stor del tidigare i rapporten med en specifik klass av primtalsgap nämligen primtalsgap av storlek 2 (primtalstvillingar) dock nu redovisar vi något mer allmänt om storleken av avståndet själv.
-
+En primtalsgap är avståndet mellan ett primtal och sitt efterföljande primtal.
+Man kan, med hjälp av primtalssatsen, visa att det förväntade avståndet mellan ett primtal \(p_n\) och nästa, \(p_{n+1}\), är \(\log p_n\).
+Dock, som antyddes kort till i inledningden, finns oändligt många par av primtal med maximalt 600 steg emellan sig vilket betyder att, även för de stora primtalen, måste det finnas primtal relativt nära varandra.
+Detta bevisades med hjälp av nya sållmetoder, specifikt GPY metoder vilket är döpta efter de tre matematikerna om utvecklade metoden, där vikterna i metoden liknade de som används i Selbergs såll. 
+Målet är att en dag kunna reducerar de 600 steg till 2 och därmed bevisa primtalstviliingshypotesen.
+För att ge intuition om hur verklig det som har bevisats är analyserar vi nu de primtalsgap som finns i listan av primtal vi generade i \ref{app.primes.title} med att först redovisa följande figur.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width = \textwidth]{coen/Images/GapsNoKapps.pdf}
-    \caption{\todo{Infoga en histogram och sedan påpeka mönster}}
+    \caption{I figuren så redovisas frekvensen på olika stora primtalsgap i det intervallet som undersöktes tidigare, då \(n = 10^{19}\), \(\Delta = 1.25\cdot10^{9}\), och \(K = 2.5\). Notera att y axeln är logaritmerad på grund av hur högt frekvensen är för de små primtalsgap.}
     \label{fig:res.gap}
 \end{figure}
-\todo{Diskutera ovanstående graf. Varför har vi vad vi har? Hur kan detta kopplas till primtalstvillingar?}
