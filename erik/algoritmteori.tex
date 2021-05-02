@@ -12,11 +12,9 @@ När Eratosthenes först formulerade sitt såll var det, som vi såg i inledning
 
 Flaggskeppet i \cite{HaraldSieve}, algoritmen \textsc{NewSegSiev}, löser problemet genom att dela upp talen vi vill sålla bort multiplar av i två fall --- tal som är så pass små att vi är garanterade att det finns en multipel av dessa i vårt intervall och större tal som vi inte kan lika säkra på. Med den här uppdelningen kan vi behandla de båda fallen olika för att spara tid och precis som i Eratosthenes såll behöver vi inte sålla med tal större än \(\sqrt{n + \Delta}\). 
 
-Eftersom vi kan vara säkra på att alla tal mindre än längden av intervallet (det vill säga \(m \leq 2 \Delta\)) har en multipel i intervallet så börjar vi att sålla för dessa. \todo{nämna marginalen K Delta} Processen i \textsc{NewSegSiev} för \(m \leq K \Delta\) är i sin tur delad i tre funktioner
+Eftersom vi kan vara säkra på att alla tal mindre än längden av intervallet (det vill säga \(m \leq 2 \Delta\)) har en multipel i intervallet så börjar vi att sålla med dessa. Algoritmen gör detta för några fler \(m\) än dem vi kan vara säkra på har en multipel i intervallet --- för alla \(m \leq K \Delta\)) där \(K \geq 5/2\) --- så att nästa steg med \(m \geq K \Delta\) går smidigt. Vi behöver som bekant inte sålla för alla tal utan det räcker med att vi utesluter multiplar av primtal från intervallet. Processen i \textsc{NewSegSiev} för \(p \leq K \Delta\) sköts av funktionen \textsc{SubSegSiev} som delar upp dessa primtal i segment \([M_i', M_i' + \Delta']\), där \(M_0' = 1, \Delta' = \lfloor K \Delta \rfloor\) och \(M_i' = M_{i-1}' + \Delta' + 1\), och sållar sedan bort alla multiplar av dessa i vårt intervall. Primtalen i intervallen \([M_i', M_i' + \Delta']\) ges i sin tur av en annan funktion, \textit{SimpleSegSiev}, som på samma vis sållar segmentet med en lista av primtal \(p \leq \lfloor\sqrt{M_i' + \Delta'}\rfloor\). Sista pusselbiten, listan av primtal, erhålls med den tidigarenämnda algoritmen \textsc{SimpleSiev} på klassiskt vis. 
 
-Vi behöver som bekant inte sålla för alla tal utan det räcker med att vi utesluter multiplar av primtal så vi
-
-\textsc{NewSegSiev} gör detta genom att först kalla på en funktion \textsc{SubSegSiev} vilken sållar för mindre primtal och använder en segmenterad variant av Eratosthenes såll. För större primtal utnyttjar Helfgott en del analytiska metoder för att effektivisera sökandet efter multiplar i intervallet. Vi börjar med att kolla på strukturen av \textsc{SubSegSiev} före vi sedan studerar Helfgotts matematiska resonemang för \textsc{NewSegSiev}:s pseudokod.
+%\textsc{NewSegSiev} gör detta genom att först kalla på en funktion \textsc{SubSegSiev} vilken sållar för mindre primtal och använder en segmenterad variant av Eratosthenes såll. För större primtal utnyttjar Helfgott en del analytiska metoder för att effektivisera sökandet efter multiplar i intervallet. Vi börjar med att kolla på strukturen av \textsc{SubSegSiev} före vi sedan studerar Helfgotts matematiska resonemang för \textsc{NewSegSiev}:s pseudokod.
 
 \begin{figure}
     \centering
@@ -25,9 +23,9 @@ Vi behöver som bekant inte sålla för alla tal utan det räcker med att vi ute
     \label{fig:flowchart}
 \end{figure}
 
-Målet med \textsc{SubSegSiev} är att, givet \(n, \Delta \) och $M$, sålla \([n, n + \Delta]\) med primtal $p \leq M$. Algoritmen gör detta på i stort sett samma vis som i Eratosthenes klassiska såll men delar in primtalen i segment för att optimera minneskomplexiteten. \todo{Fortsätt med att gå igenom SimpleSiev, SimpleSegSiev och SubSegSiev och kort förklara hur de samverkar i NewSegSiev}.
+%Målet med \textsc{SubSegSiev} är att, givet \(n, \Delta \) och $M$, sålla \([n, n + \Delta]\) med primtal $p \leq M$. Algoritmen gör detta på i stort sett samma vis som i Eratosthenes klassiska såll men delar in primtalen i segment för att optimera minneskomplexiteten. \todo{Fortsätt med att gå igenom SimpleSiev, SimpleSegSiev och SubSegSiev och kort förklara hur de samverkar i NewSegSiev}.
 
-Nästa steg, algoritmen i \textsc{NewSegSiev}, kräver mer matematisk eftertanke. Uppgiften som kvarstår för funktionen efter \textsc{SubSegSiev} är att sålla intervallet \([n - \Delta, n + \Delta]\) med resterande primtal, \( p \geq K \Delta\) där \(K \geq 5/2\). Problemet är löst genom att leta efter alla multiplar av \(m \geq K \Delta\) i vårt intervall. Låt \(\ell m\) vara en sådan multiplel då ser vi att
+Nästa steg, huvudalgoritmen i \textsc{NewSegSiev}, kräver mer matematisk eftertanke. Uppgiften som kvarstår för funktionen efter \textsc{SubSegSiev} är att sålla intervallet \([n - \Delta, n + \Delta]\) med resterande primtal, \( p \geq K \Delta\) där \(K \geq 5/2\). Problemet är löst genom att leta efter alla multiplar av \(m \geq K \Delta\) i vårt intervall. Låt \(\ell m\) vara en sådan multiplel då ser vi att
 \begin{align} \label{alg.problem}
     n - \Delta \leq \ell m \leq n + \Delta \Longleftrightarrow - \frac{\Delta}{m} \leq \frac{n}{m} - \ell \leq \frac{\Delta}{m} \Longleftrightarrow \left\{ \frac{n}{m} \right\} \in \left[- \frac{\Delta}{m}, \frac{\Delta}{m} \right] \bmod 1.
 \end{align}
