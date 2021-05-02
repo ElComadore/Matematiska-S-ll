@@ -26,15 +26,14 @@ Detta följs av en omskrivning av \(\sum_{d\divides P(z)}\A_d \mu(d) g(d)\) med 
 Å andra sidan, i Selbergs såll så approximeras en summa av Möbiusfunktioner direkt, vilket förklaras i detalj i kapitel \ref{Selberg}.
 Både dessa sätt tillåter en minimering av feltermens storlek, med varierande framgång, vilket är direkt kopplade till deras hantering av Möbiusfunktionen.
 Dock så måste vi offra det oftast eftertraktade asymptotiska beteendet vi får i Eratosthenes såll då vi gör dessa uppskattningar i de andra sållen.
-Ändå är det svårt att avgöra om det asymptotiska beteendet har något värde då vi måste uppskatta huvudtermen i Eratosthenes såll för att få något resultat från det.
+Att vi tappar asymptotiska beteendet med de uppskattningar vi gör är dock av ingen stor konsekvens eftersom vanligtvis uppskattar \(W(z)\) då vi tillämpar Eratosthenes såll och tappar asymptotiska beteendet ändå.
 
 
 %The work with error terms exemplifies one of the major internal issues sieve theory has had to tackle throughout its development. Other areas include the sieveing of sets by large numbers of residue classes. These large sieves were first introduced by Linnik around the same time as Seelberg's sieve was developed and uses almost entirely different approaches than the small sieves, relying on more analytical tools. 
-
-\todo{Pay little mind to this following; passage it will be essentially completely rewritten at some point over the next week. However the ideas will prolly be recycled}
 Arbetet med feltermerna exemplifierar en av de stora interna utmaningar som sållteorin har försökt lösa under sin utveckling.
 Andra områden inkluderar sållning av mängder med ett stort antal restklasser av primtal, genom att använda \textit{stora} såll, och det så kallade \textit{paritetsproblemet}. Arbetet med sådana stora såll började med Linniks arbete, vilket publicerades nästan samtidigt som Selberg såll år 1941 \cite[s. 135]{cojocarumurty}, där upp till häflten av alla restklasser kunde sållas bort med helt annorlunda matematiska metoder än små såll. 
 I nuläget så kan godtyckligt många restklasser sållas bort med det \textit{större sållet}.
-Paritetsproblemet ställer ett litet större problem för sållteorin eftersom det består av att för mängder dess element har alla udda eller alla jämna antal primtalsfaktor, såsom mängden av alla primtal själv, så kan sållmetoder, utan extra hjälp, bara ge triviala undrebegränsningar eller övre begränsningar vilka är fel med en faktor av minst 2.
+Paritetsproblemet ställer ett litet större problem för sållteorin eftersom det påverkar hur bra uppskattningar kan vara för mängder dess element har alla udda eller alla jämna antal primtalsfaktor, såsom mängden av alla primtal själv.
+Sållmetoder, utan extra hjälp, bara ge triviala undrebegränsningar eller övre begränsningar vilka är fel med en faktor av minst 2 till uppskattningar av sådana mängder.
 Problemet, enligt Tao, härstammar från inklusion-exklusionsprincipens (Möbiusfunktionens) "binära" konstruktion där mängder antingen läggs till eller dras bort då man delar upp en mängd.
 Arbetet med problemet har haft en del succé med primtal på formen \(a^2 + b^4\) \cite{abPrimes} dock så hindrar det fortfarande sållteorins förmåga att uppskatta andra slags primtalsgrupper.
