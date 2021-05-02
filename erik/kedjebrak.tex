@@ -1,9 +1,32 @@
 % Skrivet av Erik
 
-I avsnitt \ref{partB.algoritmteori} där vi går igenom en implementering av Eratosthenes såll så gör vi bruk av en \textit{diofantisk approximation}, \cite[Algoritm 4]{HaraldSieve}. För att förstå det här steget krävs först lite förkunskaper om kedjebråk. 
+I avsnitt \ref{partB.algoritmteori}, där vi går igenom en implementering av Eratosthenes såll, så gör vi bruk av en \textit{diofantisk approximation}, \cite[Algoritm 4]{HaraldSieve}. För att förstå det här steget krävs först lite förkunskaper om kedjebråk. 
 
 Ett \textit{ändligt kedjebråk} definieras i \cite[Definition 20.1]{Lindahl} som
 \begin{align*}
     \langle a_0, a_1, ..., a_n \rangle := a_0 + \cfrac{1}{a_1 + \cfrac{1}{a_2 + \cfrac{1}{\ddots \raisebox{-3mm}{$a_{n-2}+\cfrac{1}{1 + \cfrac{1}{a_n}}$}}}}
 \end{align*}
-där \(a_0, a_1, ..., a_n\) är reella tal och \(a_i > 0\) för \(i \in [1, n]\).
+där \(a_0, a_1, ..., a_n\) är reella tal och \(a_i > 0\) för \(i > 0\). I den här uppsatsen berör vi endast särfallet då \(a_0, a_1, ..., a_n\) är heltal vilket då kallas för ett \textit{enkelt kedjebråk}. 
+
+En omedelbar utmaning är att, givet ett kedjebråk \(\langle a_0, a_1, ..., a_n \rangle \), beräkna \(\langle a_0, a_1, ..., a_{n+1} \rangle \) utan att räkna om hela kedjebråket från term \(a_{n+1}\) till \(a_0\). Lösningen på det här problemet är så kallade \textit{konvergenter}, \cite[Definition 20.4]{Lindahl}, och definieras som ett par \((p_n,q_n)\), där
+\begin{align*}
+    p_{-2} &= 0, p_{-1} = 1, p_n = a_n p_{n-1} + p_{n-2} \text{ då } n \geq 0 \\
+    q_{-2} &= 1, q_{-1} = 0, q_n = a_n q_{n-1} + q_{n-2} \text{ då } n \geq 0,
+\end{align*}
+och deras kvot, \(c_n := p_n / q_n\), \(n \geq 0\). Observera att definitionen ger oss att \(q_0 = 1\) och \((q_n)_{n=1}^{N}\) är en strikt växande följd om motsvarande kedjebråk är enkelt. Anledningen till att vi introducerar konvergenter ges av följande sats, \cite[Sats 20.5i) och ii)]{Lindahl},
+\begin{theorem} \label{app.konvergenter}
+    Låt \((a_n)_{n=0}^{N}\) vara en följd av reella tal där \(a_i > 0\) för \(i > 0\) och \((p_n, q_n)\) är deras respektive konvergenter. Då gäller att
+    \begin{enumerate}
+        \item \(\langle a_0, a_1, ..., a_n \rangle = c_n\) för alla \(n \geq 0\),
+        \item \(p_n q_{n-1} - p_{n-1} q_n = (-1)^{n-1}\) för alla \(n \geq -1\).
+    \end{enumerate}
+\end{theorem}
+
+
+\todo{Skriv sats 20.9}
+
+
+%Definitionen av ett \textit{oändligt kedjebråk} (\cite[Definition 20.3]{Lindahl}) följer naturligt av föregående definition som
+%\begin{align*}
+%    \lim_{n \to \infty} \langle a_0, a_1, ..., a_n \rangle
+%\end{align*}

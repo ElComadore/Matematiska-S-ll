@@ -2,6 +2,13 @@
 
 %\todo{Förklara övergripande struktur och syfte för NewSegSiev och underordnade funktioner, ev. med en flowchart.} 
 
+% Typ:
+%Vi vill sålla fram primtal ur ett intervall. Vi gör detta genom eratosthones såll. Börjar med alla tal i intervallet och sedan stryker vi sånt som är multiplar av tal mindre än sqrt(övregränsen) Vi delar in dessa tal i två kategorier
+%1. Små tal, dessa är så små att de alltid har multiplar i intervallet. Vi sållar precis som Erat. för dessa. 
+%2. Större tal, här är det inte säkert att det har en multipel i intervallet och vi kan börjar med en uppskattning var att se om så är fallet
+
+När Eratosthenes först formulerade sitt såll var det, som vi såg i inledningen, på formen av en algoritm. Algoritmen genererar alla primtal (till kvadraten av det sista primtalet vi sållar med) och kan enkelt utföras med papper och penna, men hur kan algoritmen förbättras för dagens datorsamhälle? 
+
 Flaggskeppet i \cite{HaraldSieve} är algoritmen \textsc{NewSegSiev} som sållar efter alla primtal i ett intervall \([n - \Delta, n + \Delta] \subset \mathbb{R}_+\). \textsc{NewSegSiev} gör detta genom att först kalla på en funktion \textsc{SubSegSiev} vilken sållar för mindre primtal och använder en segmenterad variant av Eratosthenes såll. För större primtal utnyttjar Helfgott en del analytiska metoder för att effektivisera sökandet efter multiplar i intervallet. Vi börjar med att kolla på strukturen av \textsc{SubSegSiev} före vi sedan studerar Helfgotts matematiska resonemang för \textsc{NewSegSiev}:s pseudokod.
 
 Målet med \textsc{SubSegSiev} är att, givet \(n, \Delta \) och $M$, sålla \([n, n + \Delta]\) med primtal $p \leq M$. Algoritmen gör detta på i stort sett samma vis som i Eratosthenes klassiska såll men delar in primtalen i segment för att optimera minneskomplexiteten. \todo{Fortsätt med att gå igenom SimpleSiev, SimpleSegSiev och SubSegSiev och kort förklara hur de samverkar i NewSegSiev}.
