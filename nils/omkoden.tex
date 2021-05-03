@@ -1,0 +1,19 @@
+\newcommand{\code}[1]{\inputminted[frame=lines,fontsize=\footnotesize,linenos]{python}{code/#1.py}}
+
+Nedan följer all väsentlig kod som använts i \ref{partB.implementering}.
+Om läsaren vill testa programmet all kod förslagsvis läggas i samma fil och för att koden ska kunna köras behöver Python-bibliotek \textit{Bitarray} vara installerat på datorn.
+
+Vi börjar import av externa funktioner, förslagsvis görs detta allra först i koden.
+\code{imports}
+
+Härnäst följer algoritmerna vars funktion beskrivs i \ref{partB.algoritmteori}, 
+på flera rader finns kommentarer som förklarar radens syfte.
+\code{SimpleSiev} %\label{code.SimpleSiev}
+\code{SimpleSegSiev} %\label{code.SimpleSiev}
+\code{SubSegSiev} %\label{code.SimpleSiev}
+\code{NewSegSiev} %\label{code.SimpleSiev}
+\code{DiophAppr} %\label{code.SimpleSiev}
+
+Här presenteras den funktion som använts i \ref{partB.applications}.
+Denna tar in en redan sållad lista med primtal och sållar bort alla primtal $p$ där $p+2$ är ett primtal.
+\code{RemoveNonTwins}
