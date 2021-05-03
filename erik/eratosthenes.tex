@@ -82,17 +82,21 @@ så gäller att
 
 \subsection{En flerdimensionell tillämpning av Eratosthenes såll}\label{eratosthenes.tillämpning}
 
-Ett av målen med avsnitt \ref{eratosthenes.gen.såll} var att kunna använda Eratosthenes såll till att sålla bort flera kongruensklasser per primtal $p$. I det här avsnittet kommer vi utnyttja denna egenskap till att sålla fram tvillingprimtal och sedan bevisa en variant av Bruns sats \cite[Korollarium 5.4.5]{cojocarumurty}, \(\sum_{\substack{p \\ p + 2 \text{ prima}}} \frac{1}{p} < \infty\). \todo{Kort historiebeskrivning koordinerad med efterföljande avsnitt och referens till Coj. och M. för resonemang}. 
+Ett av målen med avsnitt \ref{eratosthenes.gen.såll} var att kunna använda Eratosthenes såll till att sålla bort flera kongruensklasser per primtal $p$. I det här avsnittet kommer vi utnyttja denna egenskap till att sålla fram primtalstvillinigar och sedan bevisa en variant av Bruns sats \cite[Korollarium 5.4.5]{cojocarumurty}, \(\sum_{\substack{p \\ p + 2 \text{ prima}}} \frac{1}{p} < \infty\). \todo{Kort historiebeskrivning koordinerad med efterföljande avsnitt och referens till Coj. och M. för resonemang}. 
 
-För att hitta tvillingprimtal mindre än $x$ (\textit{här}: \( \P_2(x) := \{p < x : p + 2 \text{ är ett primtal}\}\)) så vill vi utesluta multipler av primtal samt tal två mindre än dessa. Med andra ord väljer vi kongruensklasserna $0$ och $-2$ modulo $p$ i sålldefinitionen så att dimensionen \(\kappa = 2\) samt \(\omega(2) = 1\) och \(\omega(p) = 2\) för alla primtal $p > 2$. Vårt val av kongruensklasser ger att \(y = x + 2\) i det första antagandet av sats \ref{thm:EratosthenesSieve} som då säger att
+För att hitta primtalstvillinigar mindre än $x$ (\textit{här}: \( \P_2(x) := \{p < x : p + 2 \text{ är ett primtal}\}\)) så vill vi utesluta multipler av primtal samt tal två mindre än dessa. Med andra ord väljer vi kongruensklasserna $0$ och $-2$ modulo $p$ i sålldefinitionen så att dimensionen \(\kappa = 2\) samt \(\omega(2) = 1\) och \(\omega(p) = 2\) för alla primtal $p > 2$. Vårt val av kongruensklasser ger att \(y = x + 2\) i det första antagandet av sats \ref{thm:EratosthenesSieve} som då säger att
 \begin{align*}
-    \card{\P_2(x)} \leq \pi(z) + \S{A}{P}{z} \leq z + x \prod_{p < z}\left( 1 - \frac{\omega(p)}{p} \right) + O\Big(x (\log x)^3 \exp \Big( - \frac{\log x}{\log z} \Big) \Big).
+    \card{\P_2(x)} \leq \pi(z) + \S{A}{P}{z} \leq z + x W(z) + O\Big(x (\log x)^3 \exp \Big( - \frac{\log x}{\log z} \Big) \Big).
 \end{align*}
-Vi kan enkelt se att huvudtermen
+Vi kan enkelt se att \(W(z)\) i huvudtermen är lika med
 \begin{align}
-    x \prod_{p < z}\left( 1 - \frac{\omega(p)}{p} \right) = x \frac{1}{2} \exp \Bigg( \sum_{2 <p < z} \log \left( 1 - \frac{2}{p} \right) \Bigg) \ll x \exp \Bigg( - \sum_{2 <p < z} \frac{2}{p}  \Bigg) \label{era.app.mainAppr}
+    \prod_{p < z}\left( 1 - \frac{\omega(p)}{p} \right) = \frac{1}{2} \exp \Bigg( \sum_{2 <p < z} \log \left( 1 - \frac{2}{p} \right) \Bigg) \ll \exp \Bigg( - \sum_{2 <p < z} \frac{2}{p}  \Bigg) \label{era.app.mainAppr}
 \end{align}
-där sista steget följer av olikheten \(\log(1 + x) \leq x, \forall x > -1\). Slutligen ger en partiell summation av (\ref{Thm.1.4.4}) \todo{ev. bevisa i appendix} oss att huvudtermen är \(\ll (\log z)^{-2}\) och väljer vi \(\log z = \log x / A \log \log x\) så erhåller vi \cite[Sats 5.4.4]{cojocarumurty}, % "Huvudterm" << x / log^2 z
+där sista steget följer av olikheten \(\log(1 + x) \leq x, \forall x > -1\). Med en partiell summation av (\ref{Thm.1.4.4}) erhåller vi att \(\sum_{p \leq z} \frac{1}{p} = \log \log z + O(1)\) som, när vi sätter in i (\ref{era.app.mainAppr}), ger oss att
+\begin{align} \label{era.app.secondMainAppr} 
+    \exp \Bigg( - 2 \sum_{2 <p < z} \frac{1}{p}  \Bigg) \asymp \exp \big( -2 \log \log z + O(1)  \big) \asymp (\log z)^{-2}.
+\end{align}
+Slutligen får vi alltså att huvudtermen \(x W(z) \ll x (\log z)^{-2}\) och väljer vi \(\log z = \log x / A \log \log x\) så leder det oss till \cite[Sats 5.4.4]{cojocarumurty}, 
 \begin{align} \label{PrimTwinCard}
     \card{\P_2(x)} \ll \frac{x (\log \log x)^2}{\log^2 x} .
 \end{align}
@@ -103,4 +107,4 @@ Genom att partialsummera summan av de reciproka värdena, med \(c_n\) som indika
 \end{align*}
 Med hjälp av (\ref{PrimTwinCard}) får vi att summan i Bruns sats är \(\ll \int_2^\infty \frac{(\log \log t)^2}{t \log^2 t} \text{d}t\) som är ändlig vilket medför att summan är begränsad. 
 
-Vad vi nu visat för summan över \(\P_2\) är i kontrast mot en annan identitet vi använde i ovanstående bevis, \(\sum_{p \leq n} \frac{1}{p} = \log \log n + O(1)\) vilken implicerar att samma summa över primtalen divergerar. Detta innebär inte att tvillingprimtalen är en ändlig delmängd av primtalen men det säger oss att andelen tvillingprimtal är relativt liten. I nästa del kommer vi se ett annat resultat tillskrivet Viggo Brun, Bruns såll, och med hjälp av detta visa ett resultat i motsatt riktning för en mängd snarlik mängden tvillingprimtal. 
+Vad vi nu visat för summan över \(\P_2\) är i kontrast mot en annan identitet vi använde i ovanstående bevis, \(\sum_{p \leq n} \frac{1}{p} = \log \log n + O(1)\) vilken implicerar att samma summa över primtalen divergerar. Detta innebär inte att primtalstvillinigar är en ändlig delmängd av primtalen men det säger oss att andelen primtalstvillingar är relativt liten. I nästa del kommer vi se ett annat resultat tillskrivet Viggo Brun, Bruns såll, och med hjälp av detta visa ett resultat i motsatt riktning för en mängd snarlik mängden primtalstvillinigar. 
