@@ -1,6 +1,6 @@
 \newcommand{\code}[1]{\inputminted[frame=lines,fontsize=\footnotesize,linenos]{python}{code/#1.py}}
 
-Nedan följer all väsentlig kod som använts i \ref{partB.implementering}.
+Nedan följer väsentliga delar av den förbättrade versionen av programmet som omnämns i \ref{partB.implementering}.
 Om läsaren vill testa programmet all kod förslagsvis läggas i samma fil och för att koden ska kunna köras behöver Python-bibliotek \textit{Bitarray} vara installerat på datorn.
 
 Vi börjar import av externa funktioner, förslagsvis görs detta allra först i koden.
@@ -15,5 +15,12 @@ på flera rader finns kommentarer som förklarar radens syfte.
 \code{DiophAppr} %\label{code.SimpleSiev}
 
 Här presenteras den funktion som använts i \ref{partB.applications}.
-Denna tar in en redan sållad lista med primtal och sållar bort alla primtal $p$ där $p+2$ är ett primtal.
-\code{RemoveNonTwins}
+Denna tar in en redan sållad lista med primtal och sållar bort alla primtal $p$ där $p+2$ inte är prima.
+De tal i listan som är kvar efter detta är primtalstvillingarna i intervallet.
+\code{RemoveNonTwins}\label{code.twins}
+
+Till sist ger vi även en modifierad version av \textsc{NewSegSiev} och \textsc{SubSegSiev} som vi kallar
+\textsc{NewSegSievTwins} respektive \textsc{SubSegSievTwins}. 
+Som namnet antyder kan dessa användas för att från grunden sålla fram alla primtalstvillingar i det angivna intervallet.
+\code{SubSegSievTwins}
+\code{NewSegSievTwins}
