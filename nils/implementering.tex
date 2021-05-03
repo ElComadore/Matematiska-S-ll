@@ -5,7 +5,7 @@ Det var möjligt att översätta pseudokoden mer eller mindre ordagrant, vilket 
 Därefter kunde flera förbättringar av koden göras för att korta ned dess körningstid. 
 Vissa av förbättringar var möjliga då pseudokoden i \cite{HaraldSieve} är skriven i syfte att tydligt illustrera algoritmerna,
 och är således inte ämnad till att vara färdig, optimerad kod.
-Andra förbättringar var språkspecifika och åstadkoms genom att jämföra beräkningstiden hos olika funktioner och metoder i Python, för att sedan implementera de som visade sig vara snabba. Nedan följer, utan inbördes ordning, några av de gjorda förbättringar som har haft större inverkan.
+Andra förbättringar var språkspecifika och åstadkoms genom att jämföra beräkningstiden hos olika funktioner och metoder i Python, för att sedan implementera de som visade sig vara snabba. Den förbättrade versionen av koden finns bifogad i appendix. Nedan följer, utan inbördes ordning, några av de gjorda förbättringar som har haft större inverkan.
 \begin{myitemize}
     \item
     Istället för att spara och göra beräkningar på en vektor av booleaner, väljer vi att uttrycka mängden som en bitsträng. 
@@ -83,10 +83,8 @@ I den ursprungliga artikeln \cite{HaraldSieve} nämns ett fåtal eventuella för
     \item
     Istället för att flera gånger om låta \textsc{SimpleSiev(M)} generera en lista med alla primtal upp till $M$ kan det eventuellt spara tid att generera en godtycklig lista vid start av programmet.
     Värdet på $M$ överskrider inte $\sqrt{K\Delta+\sqrt{K\Delta}}$, vilket gör denna taktik rimlig.
-    Exempelvis tar en lista med alla primtal upp till en miljard omkring 1GB att spara och kan ersätta \textsc{SimpleSiev} för $n\leq 10^{35}$, så länge som vi håller oss till något mindre interval där $\Delta\leq\sqrt{n}$.
-    Detta handlar självklart om en avvägning mellan hur snabbt det går att läsa in sparad data mot hur snabbt det går att beräkna den från grunden och bör undersökas mer innan idén tillämpas. 
-    Om det visar sig att \textsc{SimpleSiev} är att föredra för vissa värden på $M$ men inte andra, 
-    skulle det vara möjligt att växla mellan de två metoderna beroende på värde av $M$.
+    Exempelvis tar en lista med alla primtal upp till en miljard omkring 1GB att spara och kan användas för $n\leq 10^{35}$, så länge som vi håller oss till något mindre interval där $\Delta\leq\sqrt{n}$.
+    Detta handlar självklart om en avvägning mellan hur snabbt det går att läsa in sparad data mot hur snabbt det går att beräkna den från grunden och bör undersökas mer innan idén tillämpas.
     \item
     Flera beräkningar kan utföras parallellt, vilket redan föreslås i \cite{HaraldSieve}. 
     I synnerhet kan detta nyttjas i andra delen av \textsc{NewSegSiev} där oberoende beräkningar utförs för varje $j\in[-k-1,k+1]$.

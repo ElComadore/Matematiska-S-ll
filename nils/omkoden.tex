@@ -17,10 +17,11 @@ på flera rader finns kommentarer som förklarar radens syfte.
 Här presenteras den funktion som använts i \ref{partB.applications}.
 Denna tar in en redan sållad lista med primtal och sållar bort alla primtal $p$ där $p+2$ inte är prima.
 De tal i listan som är kvar efter detta är primtalstvillingarna i intervallet.
+Om det sista eller näst sista talet i listan är prima så är det omöjligt för funktionen att avgöra om talet är ett tvillingprimtal eller ej, funktionen sållar inte bort talet men utfärdar en varning om att detta har inträffat.
 \code{RemoveNonTwins}\label{code.twins}
 
-Till sist ger vi även en modifierad version av \textsc{NewSegSiev} och \textsc{SubSegSiev} som vi kallar
-\textsc{NewSegSievTwins} respektive \textsc{SubSegSievTwins}. 
+Till sist ger vi även en modifierad version av \textsc{NewSegSiev} och \textsc{SubSegSiev} som vi har valt att ge namnen
+\textsc{NewSegSievTwins} respektive \textsc{SubSegSievTwins}.
 Som namnet antyder kan dessa användas för att från grunden sålla fram alla primtalstvillingar i det angivna intervallet.
 \code{SubSegSievTwins}
 \code{NewSegSievTwins}
