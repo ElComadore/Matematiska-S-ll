@@ -53,7 +53,7 @@ Det totala antalet gånger som detta steg utförs är
 \begin{equation*}
     O\left(\Delta\log n + \sqrt{\Delta/n}(\log n)^2\right),
 \end{equation*}
-enligt \cite[s.346]{HaraldSieve} och vi sparar således en betydande mängd tid på att reducera antalet beräkningar här till en tredjedal av det ursprungliga.
+enligt \cite[s.346]{HaraldSieve} och vi sparar således en betydande mängd tid på att reducera antalet beräkningar här till en tredjedel av det ursprungliga.
 
 
 
@@ -66,7 +66,7 @@ I det första testet valdes således $\Delta:=n$ och tre mätningar utfördes f�
 I det andra testet valdes $\Delta:=\sqrt[3]{n}$ och $n$ fick anta värdena $10^9$, $10^{12}$ respektive $10^{15}$.
 För alla mätningar visade sig den förbättrade versionen vara minst 10 gånger så snabb som den första versionen, dessutom visar mätningarna på en antydan till att denna faktor ökar då $n$ växer. De uppmätta tiderna går att se i tabell \ref{implementering.tidtabell}.
 
-\begin{table}
+\begin{table}[H]
 \centering
 \input{nils/tidtabell}
 \caption{
