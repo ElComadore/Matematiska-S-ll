@@ -27,7 +27,7 @@ Givetvis hade vi kunnat sålla intervallet med \(p \leq K \Delta\) utan att segm
 
 %Målet med \textsc{SubSegSiev} är att, givet \(n, \Delta \) och $M$, sålla \([n, n + \Delta]\) med primtal $p \leq M$. Algoritmen gör detta på i stort sett samma vis som i Eratosthenes klassiska såll men delar in primtalen i segment för att optimera minneskomplexiteten. \todo{Fortsätt med att gå igenom SimpleSiev, SimpleSegSiev och SubSegSiev och kort förklara hur de samverkar i NewSegSiev}.
 
-Nästa steg, huvudalgoritmen i \textsc{NewSegSiev}, kräver mer matematisk eftertanke. Uppgiften som kvarstår för funktionen efter \textsc{SubSegSiev} är att sålla intervallet \([n - \Delta, n + \Delta]\) med resterande primtal, \( p \geq K \Delta\) där \(K \geq 5/2\). Problemet är löst genom att leta efter alla multiplar av \(m \geq K \Delta\) i vårt intervall. Låt \(\ell m\) vara en sådan multiplel då ser vi att
+Nästa steg, huvudalgoritmen i \textsc{NewSegSiev}, kräver mer matematisk eftertanke. Uppgiften som kvarstår för funktionen efter \textsc{SubSegSiev} är att sålla intervallet \([n - \Delta, n + \Delta]\) med resterande primtal, \( p \geq K \Delta\) där \(K \geq 5/2\). Problemet är löst genom att leta efter alla multiplar av \(m \geq K \Delta\) i vårt intervall. Låt \(\ell m\) vara en sådan multipel då ser vi att
 \begin{align} \label{alg.problem}
     n - \Delta \leq \ell m \leq n + \Delta \Longleftrightarrow - \frac{\Delta}{m} \leq \frac{n}{m} - \ell \leq \frac{\Delta}{m} \Longleftrightarrow \left\{ \frac{n}{m} \right\} \in \left[- \frac{\Delta}{m}, \frac{\Delta}{m} \right] \bmod 1.
 \end{align}
@@ -55,6 +55,7 @@ där \(c := \lfloor \alpha_0 q + 1/2 \rfloor\). Således ser vi att skillnaden m
     c + ar \in \{- k - 1, - k, ... , k, k + 1\} \bmod q
 \end{align*}
 där \(k = \lfloor q \cdot 5\Delta/(4M) \rfloor\). Det räcker alltså att sålla för \(r \equiv - a^{-1} (c + j) \pmod{q}\) där den multiplikativa inversen av $a \pmod{q}$ ges som följd av \textsc{DiophAppr}. \todo{Förklara hur}
+
 
 \todo{Gå igenom DiophAppr}
 
