@@ -89,14 +89,10 @@ Fixera $b,\lambda$ och $A_2$ så att även $c_2$ är fixerat, då följer det at
 Vidare gäller det att 
 \begin{align*}
     W(z) %= \frac{1}{2}\exp\Bigl(\sum_{2<p<z} \log(1-2/p) \Bigr) 
-    \gg \frac{1}{2}\exp\Bigl(\sum_{2<p<z} \frac{-2}{p} \Bigr).
+    \gg \frac{1}{2}\exp\Bigl(\sum_{2<p<z} \frac{-2}{p} \Bigr),
 \end{align*}
-Partiell summation av (\ref{Thm.1.4.4}) ger att $\sum_{p\leq n}\frac{1}{p} = \log\log z + O(1)$, så
-\begin{align*}
-    W(z) \gg \exp\Bigl(-2\log\log z\Bigr)
-    = (\log z)^{-2}.
-\end{align*}
-Genom tillämpning av sats \ref{brun.thm.brun} erhålls
+se appendix för bevis. Nu ger (?) oss att $W(z) \gg \exp\Bigl(-2\log\log z\Bigr) = (\log z)^{-2}$ och
+genom tillämpning av sats \ref{brun.thm.brun} erhåller vi
 \begin{equation} \label{brun.example.sap}
     \S{A}{P}{z} \gg \frac{x}{(\log z)^2}\bigl(1 - c_1\bigr) + O\left(z^{c_3 - 1}\right).
 \end{equation}
