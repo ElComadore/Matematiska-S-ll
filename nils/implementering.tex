@@ -47,9 +47,15 @@ där den sista olikheten håller så länge $n+\Delta\geq16$.
 Att sålla efter primtal i en lista av positiva heltal mindre än $16$ är ointressant.
 Därför kan vi rimligtvis introducera kravet $n+\Delta\geq16$ i början av \textsc{NewSegSiev},
 så att $n'>m$ alltid håller och inte behöver testas senare i algoritmen.
-Det har följaktligen visat sig att utav de tre villkor som skulle testas, så är två av dem alltid uppfyllda och behöver därmed inte prövas.
+Det har följaktligen visat sig att utav de tre villkor som skulle testas, 
+så är två av dem alltid uppfyllda och behöver därmed inte prövas.
+Det totala antalet gånger som detta steg utförs är
+\begin{equation*}
+    O\left(\Delta\log n + \sqrt{\Delta/n}(\log n)^2\right),
+\end{equation*}
+enligt \cite[s.346]{HaraldSieve} och vi sparar således en betydande mängd tid på att reducera antalet beräkningar här till en tredjedal av det ursprungliga.
 
-\todo{Något om frekvensen av test för ovanstående villkor}
+
 
 För att visa att ovanstående förändringar faktiskt har haft inverkan så utfördes tester.
 Testerna gjordes på en hemdator och jämförde körningstid mellan den första versionen av programmet, mot en senare version där ovanstående förbättringar gjorts.
@@ -65,8 +71,8 @@ För alla mätningar visade sig den förbättrade versionen vara minst 10 gånge
 \input{nils/tidtabell}
 \caption{
 Uppmätta körningstider för den första versionen, respektive den förbättrade versionen av programmet.
-Programmet sållade i intervall på formen $[n-\Delta,n+\Delta]$ där $\Delta=n$ för de tre första och $\Delta=\sqrt[3]{n}$ för de tre sista.
-Den förbättrade versionen var snabbare än den första versionen med en faktor på minst 10.}
+Programmet sållade fram alla primtal i ett intervall på formen $[n-\Delta,n+\Delta]$ där $\Delta=n$ för de tre första mätningarna och $\Delta=\sqrt[3]{n}$ för de tre sista.
+Den förbättrade versionen var snabbare än den första versionen med en faktor på minst 10, för alla mätningar.}
 \label{implementering.tidtabell}
 \end{table}
 
