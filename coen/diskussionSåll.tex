@@ -5,7 +5,7 @@
 Som nämndes i inledningen kan sållmetoder, även om de är användbara, kräva en stor del arbete eller förfining för att spegla de resultat vilka ges av mer analytiska metoder. 
 En uppenbar orsak till  detta är feltermerna kopplade till de sållmetoder som används. 
 Det är ett återkommande tema i sållmetoder som helhet att försöka minska dessa feltermer för att minimera de slutliga uppskattningarna.
-Feltermens påverkan på dessa uppskattningar kan enkelt upptäckas i alla tillämpningsdelar i de föregående kapitlen.
+Feltermens påverkan på dessa uppskattningar kan enkelt upptäckas i alla tillämpningsdelar i de föregående avsnitten.
 Den har störst påverkan i det kritiska steget då \textit{z} bestäms till någon funktion av \textit{x}.
 För att vidare understryka feltermens slutliga effekt, redovisar vi ett sista exempel vilket jämför de olika sållen.
 
@@ -22,8 +22,8 @@ Dock, som nämndes tidigare, kan Selbergs såll åstadskomma en övre gräns vil
 Det är också värt att påpeka att feltermerna inte dyker upp från ingenstans; oberoende vilken av dessa såll man väljer så är det hur dessa små sållmetoder hanterar Möbiusfunktionen i samband med restermen i uppdelningen av \(\#\A_d\) en gemensam anledning för feltermens storlek.
 Om vi tar Eratosthenes allmänna såll som en slags baslinje för hur ett såll hanterar Möbiusfunktionen, där \(\mu(d)\) i feltermen uppskattas direkt med 1, då har vi sett två olika ytterligare sätt att minimera fel i uppskattningen som görs. 
 I Bruns såll så omvandlas Möbiusfunktionen direkt, genom först en tillämpning av Möbius inverteringsformel på funktionen \(f(n) = \sum_{d\divides n}\mu(d)g(d)\) med \(f(1) = 1\). 
-Detta följs av en omskrivning av \(\sum_{d\divides P(z)}\A_d \mu(d) g(d)\) med hjälp av denna invertering för att komma till den första likheten i kapitel \ref{brun} och de efterföljande uppskattningarna. 
-Å andra sidan, i Selbergs såll så approximeras en summa av Möbiusfunktioner direkt, vilket förklaras i detalj i kapitel \ref{Selberg}.
+Detta följs av en omskrivning av \(\sum_{d\divides P(z)}\A_d \mu(d) g(d)\) med hjälp av denna invertering för att komma till den första likheten i avsnitt \ref{brun} och de efterföljande uppskattningarna. 
+Å andra sidan, i Selbergs såll så approximeras en summa av Möbiusfunktioner direkt, vilket förklaras i detalj i avsnitt \ref{Selberg}.
 Både dessa sätt tillåter en minimering av feltermens storlek, med varierande framgång, vilket är direkt kopplade till deras hantering av Möbiusfunktionen.
 Dock så måste vi offra det oftast eftertraktade asymptotiska beteendet vi får i Eratosthenes såll då vi gör dessa uppskattningar i de andra sållen.
 Att vi tappar asymptotiska beteendet med de uppskattningar vi gör är dock av ingen stor konsekvens eftersom vanligtvis uppskattar \(W(z)\) då vi tillämpar Eratosthenes såll och tappar asymptotiska beteendet ändå.
