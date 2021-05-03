@@ -12,7 +12,9 @@ När Eratosthenes först formulerade sitt såll var det, som vi såg i inledning
 
 Flaggskeppet i \cite{HaraldSieve}, algoritmen \textsc{NewSegSiev}, löser problemet genom att dela upp talen vi vill sålla bort multiplar av i två fall --- tal som är så pass små att vi är garanterade att det finns en multipel av dessa i vårt intervall och större tal som vi inte kan lika säkra på. Med den här uppdelningen kan vi behandla de båda fallen olika för att spara tid och precis som i Eratosthenes såll behöver vi inte sålla med tal större än \(\sqrt{n + \Delta}\). 
 
-Eftersom vi kan vara säkra på att alla tal mindre än längden av intervallet (det vill säga \(m \leq 2 \Delta\)) har en multipel i intervallet så börjar vi att sålla med dessa. Algoritmen gör detta för några fler \(m\) än dem vi kan vara säkra på har en multipel i intervallet --- för alla \(m \leq K \Delta\)) där \(K \geq 5/2\) --- så att nästa steg med \(m \geq K \Delta\) går smidigt. Vi behöver som bekant inte sålla för alla tal utan det räcker med att vi utesluter multiplar av primtal från intervallet. Processen i \textsc{NewSegSiev} för \(p \leq K \Delta\) sköts av funktionen \textsc{SubSegSiev} som delar upp dessa primtal i segment \([M_i', M_i' + \Delta']\), där \(M_0' = 1, \Delta' = \lfloor K \Delta \rfloor\) och \(M_i' = M_{i-1}' + \Delta' + 1\), och sållar sedan bort alla multiplar av dessa i vårt intervall. Primtalen i intervallen \([M_i', M_i' + \Delta']\) ges i sin tur av en annan funktion, \textit{SimpleSegSiev}, som på samma vis sållar segmentet med en lista av primtal \(p \leq \lfloor\sqrt{M_i' + \Delta'}\rfloor\). Sista pusselbiten, listan av primtal, erhålls med den tidigarenämnda algoritmen \textsc{SimpleSiev} på klassiskt vis. 
+Eftersom vi kan vara säkra på att alla tal mindre än längden av intervallet (det vill säga \(m \leq 2 \Delta\)) har en multipel i intervallet så börjar vi att sålla med dessa. Algoritmen gör detta för några fler \(m\) än dem vi kan vara säkra på har en multipel i intervallet --- för alla \(m \leq K \Delta\)) där \(K \geq 5/2\) --- så att nästa steg med \(m \geq K \Delta\) går smidigt. Vi behöver som bekant inte sålla för alla tal utan det räcker med att vi utesluter multiplar av primtal från intervallet. Processen i \textsc{NewSegSiev} för \(p \leq K \Delta\) sköts av funktionen \textsc{SubSegSiev} som delar upp dessa primtal i segment \([M_i', M_i' + \Delta']\), där \(M_0' = 1, \Delta' = \lfloor K \Delta \rfloor\) och \(M_i' = M_{i-1}' + \Delta' + 1\), och sållar sedan bort alla multiplar av dessa i vårt intervall. Primtalen i intervallen \([M_i', M_i' + \Delta']\) ges i sin tur av en annan funktion, \textsc{SimpleSegSiev}, som på samma vis sållar segmentet med en lista av primtal \(p \leq \lfloor\sqrt{M_i' + \Delta'}\rfloor\). Sista pusselbiten, listan av primtal, erhålls med den tidigarenämnda algoritmen \textsc{SimpleSiev} på klassiskt vis. 
+
+Givetvis hade vi kunnat sålla intervallet med \(p \leq K \Delta\) utan att segmentera primtalen i intervall och bara genererat alla primtal upp till och med \(K \Delta\) direkt med \textsc{SimpleSiev}. Tidskomplexiteten är enligt \cite{HaraldSieve} samma för båda metoderna men anledningen till att vi segmenterar sållet är för att bespara minneskomplexitet --- \(O(\sqrt{K \Delta} + 2R)\) för \textsc{SubSegSiev} gentemot \(O(K \Delta + 2R)\) för \textsc{SimpleSegSiev}. 
 
 %\textsc{NewSegSiev} gör detta genom att först kalla på en funktion \textsc{SubSegSiev} vilken sållar för mindre primtal och använder en segmenterad variant av Eratosthenes såll. För större primtal utnyttjar Helfgott en del analytiska metoder för att effektivisera sökandet efter multiplar i intervallet. Vi börjar med att kolla på strukturen av \textsc{SubSegSiev} före vi sedan studerar Helfgotts matematiska resonemang för \textsc{NewSegSiev}:s pseudokod.
 
@@ -33,15 +35,15 @@ Med den här presentationen av problemet gör \cite{HaraldSieve} två approximat
 
 Den första approximationen syftar till att ersätta hyperbeln \(f(m) := \frac{n}{m}\) med en (diskontinuerlig) mängd tangenter till kurvan vid olika punkter \(m_0\),
 \begin{align*}
-    \frac{n}{m} = \frac{n}{m_0} - \frac{n}{m_0^2} r + O\left(\frac{n}{m_-^3} r^2 \right)
-\end{align*}
+    \frac{n}{m} = \frac{n}{m_0 + r} = \frac{n}{m_0} - \frac{n}{m_0^2} r + O\left(\frac{n}{m_-^3} r^2 \right)
+\end{align*} % mellansteg nödvändigt?
 där \(m_- = \min(m, m_0)\). Eftersom hyperbeln planar ut för större $m$ så kan vi approximera större och större intervall av kurvan med samma linjesegment utan att förstora feltermen. Mer specifikt så låter \cite{HaraldSieve} approximera kurvan med tangenter till kurvan på mitten ($m_0$) av intervallet \([M_i, M_i + 2R_i]\) där  $M_{i + 1} = M_i + 2R_i + 1$ med $M_0 = \lfloor K \Delta \rfloor + 1$ och
 \begin{align*}
     R_i = \left\lfloor \sqrt{\frac{\Delta}{4n}} M_i \right\rfloor .
 \end{align*}
 Vi delar in kurvan i segment \([M, M + 2R]\) tills vi har täckt alla tal \(m \in [  \lfloor K \Delta \rfloor + 1, \sqrt{n + \Delta}]\). Orsaken till att \cite{HaraldSieve} väljer att definiera \(M, m_0\) och \(R\) som ovan är så att restermen inte övertar storleken på intervallet, med andra ord är resttermen \(\lesssim nr^2/m_-^3 \leq nR^2/M^3 = \Delta / (4M)\). Tar vi hänsyn till feltermen i problemformuleringen, (\ref{alg.problem}), så har vi omformulerat problemet till att hitta \(r \in [-R, R]\) så att \(P(r) = (\frac{n}{m_0} - \frac{n}{m_0^2} r) \in [-5\Delta/(4M), 5\Delta/(4M)] \bmod{1}\). Helfgotts val av \(K \geq 5/2\) fyller nu två syften: \(R \geq 1\) så att intevallen vi söker i inte är tomma och \(5\Delta/(4M) \leq 1/2\) så att intervallet vi försöker pricka inte är hela \(\mathbb{R}\).
 
-Vi kan ställa ytterligare krav på \(r \in [-R, R]\) för att slippa gå över hela intervallet. Vad \cite{HaraldSieve} gör är att, med en diofantisk approximation \todo{förklara}, hitta \(a, q\) med \(\gcd{a,q} = 1\) som approximerar \(\alpha_1 := - n / m_0^2\) så att \(\abs{\alpha_1 - \frac{a}{q}} \leq \frac{1}{q \cdot 2R}\) för största möjliga konvergent $q$ mindre än eller lika med \(2R\). Låt \(\alpha_0 = n / m_0\), då får vi då
+Vi kan ställa ytterligare krav på \(r \in [-R, R]\) för att slippa gå över hela intervallet. Vad \cite{HaraldSieve} gör är att, med en diofantisk approximation \todo{förklara}, hitta \(a, q\) med \(\gcd{a,q} = 1\) som approximerar \(\alpha_1 := - n / m_0^2\) så att \(\abs{\alpha_1 - \frac{a}{q}} \leq \frac{1}{q \cdot 2R}\) för största möjliga konvergent $q$ mindre än eller lika med \(2R\). Låt \(\alpha_0 = n / m_0\), då får vi att
 \begin{align*}
     \abs{\alpha_1 r + \alpha_0} &= \abs{\left(\alpha_1 - \frac{a}{q}\right) r + \frac{ar}{q} + \alpha_0} \leq 
     \abs{\alpha_1 - \frac{a}{q}} \abs{r} + \frac{\abs{\alpha_0 q + ar}}{q} \\
@@ -52,7 +54,7 @@ där \(c := \lfloor \alpha_0 q + 1/2 \rfloor\). Således ser vi att skillnaden m
 \begin{align*}
     c + ar \in \{- k - 1, - k, ... , k, k + 1\} \bmod q
 \end{align*}
-där \(k = \lfloor q \cdot 5\Delta/(4M) \rfloor\). Det räcker alltså att sålla med \(r \equiv - a^{-1} (c + j) \pmod{q}\) där den multiplikativa inversen av $a \pmod{q}$ ges som följd av \textsc{DiophAppr}. \todo{Förklara hur}
+där \(k = \lfloor q \cdot 5\Delta/(4M) \rfloor\). Det räcker alltså att sålla för \(r \equiv - a^{-1} (c + j) \pmod{q}\) där den multiplikativa inversen av $a \pmod{q}$ ges som följd av \textsc{DiophAppr}. \todo{Förklara hur}
 
 \todo{Gå igenom DiophAppr}
 
