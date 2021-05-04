@@ -13,7 +13,7 @@ En omedelbar utmaning är att, givet ett kedjebråk \(\langle a_0, a_1, ..., a_n
     p_{-2} &= 0, p_{-1} = 1, p_n = a_n p_{n-1} + p_{n-2} \text{ då } n \geq 0 \\
     q_{-2} &= 1, q_{-1} = 0, q_n = a_n q_{n-1} + q_{n-2} \text{ då } n \geq 0,
 \end{align*}
-och deras kvot, \(c_n := p_n / q_n\), \(n \geq 0\). Observera att definitionen ger oss att \(q_0 = 1\) och \((q_n)_{n=1}^{N}\) är en strikt växande följd om motsvarande kedjebråk är enkelt. Anledningen till att vi introducerar konvergenter ges av följande sats, \cite[Sats 20.5i) och ii)]{Lindahl},
+och deras kvot, \(c_n := p_n / q_n\), \(n \geq 0\). Observera att definitionen ger oss att \(q_0 = 1\) och \((q_n)_{n=1}^{N}\) är en strikt växande följd av heltal om motsvarande kedjebråk är enkelt. Anledningen till att vi introducerar konvergenter ges av följande sats, \cite[Sats 20.5i) och ii)]{Lindahl},
 \begin{theorem} \label{app.konvergenter}
     Låt \((a_n)_{n=0}^{N}\) vara en följd av reella tal där \(a_i > 0\) för \(i > 0\) och \((p_n, q_n)\) är deras respektive konvergenter. Då gäller att
     \begin{enumerate}
@@ -22,20 +22,20 @@ och deras kvot, \(c_n := p_n / q_n\), \(n \geq 0\). Observera att definitionen g
     \end{enumerate}
 \end{theorem}
 \begin{proof}
-
+    \todo{Bevisa}
 \end{proof}
 
 \todo{Koppla samman med sats 20.9}
 
-\begin{theorem}
-    Låt \((a_n)_{n=0}^{N}\) vara en följd av heltal med positiva termer då \(n > 0\) och med konvergenter \(p_n / q_n = c_n\). Kedjebråket \(\xi = \langle a_0, a_1, \dots, a_N \rangle\) uppfyller då för alla \(0 \leq n < N/2\)
+\begin{theorem} \label{app.kovfel}
+    Låt \((a_n)_{n=0}^{N}\) vara en följd av heltal med positiva termer då \(n > 0\) och med konvergenter \(p_n / q_n = c_n\). Kedjebråket \(\xi = \langle a_0, a_1, \dots, a_N \rangle\) uppfyller då för alla \(n \geq 0\)
     \begin{enumerate}
         \item \(c_{2n} < \xi < c_{2n + 1}\) samt
-        \item \(\frac{a_{n + 2}}{q_n q_{n + 2}} < \abs{\xi - c_n} < \frac{1}{q_n q_{n + 1}}\) % Undre gräns överflödig?
+        \item \(\abs{\xi - c_n} < \frac{1}{q_n q_{n + 1}}\) % Undre gräns överflödig?
     \end{enumerate}
 \end{theorem}
 \begin{proof}
-
+    \todo{Bevisa}
 \end{proof}
 
 %Definitionen av ett \textit{oändligt kedjebråk} (\cite[Definition 20.3]{Lindahl}) följer naturligt av föregående definition som
