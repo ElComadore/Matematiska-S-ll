@@ -5,7 +5,7 @@ Genom rapportens gång har vi hänvisat till, och uppskattat fördelningen av, e
 Nu, med användning av vår implementering av Helfgotts ursprunglig kod, ämnar vi att först redovisa legitimiteten av vår kod med stöd av primtalssatsens förväntad primtalsfördelning. 
 Sedan undersöker vi den möjliga sanningen av en hypotetisk fördelning för primtalstvillingar. 
 Slutligen redovisas frekvensen av primtalsgapp, och mönster som uppträder där i.
-För varje implementering vilket kräver justering av koden, kommer dessa modifikationer förklaras kort, därmed finns fullständigt kod för modifikationerna finns med i Appendix XXX - YYY.
+För varje implementering vilket kräver justering av koden, kommer dessa modifikationer förklaras kort, därmed finns fullständigt kod för modifikationerna i Appendix XXX - YYY.
 
 \subsubsection{Fördelningen av primtal}\label{app.primes.title}
 %Beginning with the classic example of the set of prime numbers, below is illustrated the distribution predicted by the familiar x over log x from sieve theory/Chebychev, the more accurate lorgarithmic integral Li(x), and the actual number of primes found in using our implementation. In order to generate the following graph, no new sieving methods were introduced, simply the counting fucntion in Appendix X
@@ -29,11 +29,11 @@ För att skapa följande figur använder vi bara vår implementering av Helfgott
 
 Som vi ser i vänstra grafen av figur \ref{fig:res.prime}, då vi nu tror på primtalssatsen så verkar det som vår kod hittar det korrekta antalet primtal i intervallet, eftersom skillnaden mellan kurvorna är nästa osynlig på makronivå. 
 Att de inte ligger exakt på varandra är huvudsakligen beroende på felet vilket inte visas i \eqref{app.primes.PNT}.
-Att vår kod hittar ungefär 100 färre primtal än förväntat efter 20000 heltal och ungefär 2000 färre primtal efter \(2.5\times10^9\) heltal är mycket rimligt då vi anser att felet i \eqref{app.primes.PNT} kan bäst vara \(O(x^{1/2 + \varepsilon}),\; \varepsilon > 0\), då Riemannhypotesen gäller.
+Att vår kod hittar ungefär 100 färre primtal än förväntat efter 20 000 heltal och ungefär 2000 färre primtal efter \(2.5\times10^9\) heltal är mycket rimligt då vi anser att felet i \eqref{app.primes.PNT} kan bäst vara \(O(x^{1/2 + \varepsilon}),\; \varepsilon > 0\), då Riemannhypotesen gäller.
 
 Vi väljer \textit{n} som den är för att först och främst undersöka så långt ifrån noll som möjligt, med tanke på att öka feltermen för \eqref{app.primes.PNT}\footnote{Att \textit{n} inte valdes större i detta fallet är på grund av körningstiden för koden.}.
 Följaktligen väljer vi \(\Delta\) på så sätt att vi använder Helfgotts förbättringar i \textsc{NewSegSiev}, \textsc{DiophAppr} funktionen, och för att göra det krävs en specifik storlek på intervallet.
-Slutligen väljer vi \textit{K} till 2.5 för att det är minsta K:et som kan vals enligt Helfgott.
+Slutligen väljer vi \textit{K} till 2.5 för att det är minsta \textit{K}:et som kan vals enligt Helfgott.
 Tillsammans bildar dessa parametrar, med stöd från primtalssatsen, en bra bas för de följande tillämpningar då vi sparar bitarry:n och läser in den istället för att hitta alla primtal över igen.
 
 \subsubsection{Fördelningen av primtalstvillingar}
@@ -82,6 +82,24 @@ För att ge intuition om hur verklig det som har bevisats är analyserar vi nu d
 \begin{figure}[H]
     \centering
     \includegraphics[width = \textwidth]{coen/Images/GapsNoKapps.pdf}
-    \caption{I figuren så redovisas frekvensen på olika stora primtalsgap i det intervallet som undersöktes tidigare, då \(n = 10^{19}\), \(\Delta = 1.25\cdot10^{9}\), och \(K = 2.5\). Notera att y axeln är logaritmerad på grund av hur högt frekvensen är för de små primtalsgap.}
+    \caption{I figuren så redovisas frekvensen på olika stora primtalsgap i det intervallet som undersöktes tidigare, då \(n = 10^{19}\), \(\Delta = 1.25\cdot10^{9}\), och \(K = 2.5\). Notera att y-axeln är logaritmerad på grund av hur högt frekvensen är för de små primtalsgap. }
     \label{fig:res.gap}
 \end{figure}
+
+I figur \ref{fig:res.gap} får vi några insikter kring beteendet av primtalsgap i vårt intervall angående deras fördelning. 
+Det mest överraskande aspekten av grafen, för någon som har inte sett en sådan graf förut, är hur rak den är då vi logaritmerar y-axeln.
+Detta påpekar att frekvensen på primtalsgap minskar exponentiellt då dess längd ökar. 
+Vi ser att det mest frekvent längd på primtalsgap i vårt intervall var 6 och längsta strecket utan något primtal var av längd 668.
+En till detalj vilket inte kan läsas lätt av figuren är att det finns par av primtal i intervallet där avståndet mellan dem är lika med varje jämn tal upp till och inklusive 560.
+Vi nämnde tidigare att det förväntade längden på primtalsgapet för ett primtal \textit{p} tills nästa primtal är \(\log(p)\). 
+Då vi uppskattar våra primtal i intervallet med \(10^{19}\) får vi att det förväntade längden på ett primtalsgap i intervallet är ungefär 43.7491. 
+Vi ser att många avstånd överstiger detta och ännu fler är mycket mindre, dock då vi beräknar det genomsnittliga längden på primtals gap i vårt intervall så får vi det till 43.7505.
+Återigen stöder denna resultat legitimiteten av vår kod eftersom den bygger på den välkända resultaten av primtalssatsen.
+
+Om vi återgår till primtalstvillingar så ger figuren även något om de. 
+Vi kan se att om alla primtal med ett visst primtals gap tills nästa primtal skulle betraktas vara lika speciellt som primtalstvillingar, då skulle primtalstvillingar vara de sjunde vanligaste typ av primtal i vårt intervall, och består av 0.03 procent av alla primtal i intervallet.
+
+Såsom mycket andra angående primtal, finns det åtminstone en förmodan kopplade till dessa frekvenser ovan, och vilket primtalsgap är mest frekvent upp till ett givet övregräns. 
+Som vi ser i figur \ref{fig:res.gap} är 6 det mest frekventa längden på primtals gap i vår interval, och det som är speciellt med 6 är att det är produkten av de första två primtalen. 
+Vi ser också från figuren att 30, vilket är produkten av de första 3 primtalen, hoppar upp lite från översta delen av bandet, och även 210 med. Förmodan är då att varje \textit{primorial}, produkt av de första \textit{m} primtalen, någon gång blir "hoppmästaren" (namnet gavs av J. H. Conway, 1993).
+Förmodan har undersökts direkt med med hjälp numeriska uppskattnings metoder \cite{primeGap} och har visat att 6 är hoppmästaren fram till \(\approx 1.74\cdot10^{35}\) och att 30 är hoppmästaren mellan föregående och \(\approx 10^{425}\).
