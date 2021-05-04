@@ -43,7 +43,9 @@ där \(m_- = \min(m, m_0)\). Eftersom hyperbeln planar ut för större $m$ så k
 \end{align*}
 Vi delar in kurvan i segment \([M, M + 2R]\) tills vi har täckt alla tal \(m \in [  \lfloor K \Delta \rfloor + 1, \sqrt{n + \Delta}]\). Orsaken till att \cite{HaraldSieve} väljer att definiera \(M, m_0\) och \(R\) som ovan är så att restermen inte övertar storleken på intervallet, med andra ord är resttermen \(\lesssim nr^2/m_-^3 \leq nR^2/M^3 = \Delta / (4M)\). Tar vi hänsyn till feltermen i problemformuleringen, (\ref{alg.problem}), så har vi omformulerat problemet till att hitta \(r \in [-R, R]\) så att \(P(r) = (\frac{n}{m_0} - \frac{n}{m_0^2} r) \in [-5\Delta/(4M), 5\Delta/(4M)] \bmod{1}\). Helfgotts val av \(K \geq 5/2\) fyller nu två syften: \(R \geq 1\) så att intevallen vi söker i inte är tomma och \(5\Delta/(4M) \leq 1/2\) så att intervallet vi försöker pricka inte är hela \(\mathbb{R}\).
 
-Vi kan ställa ytterligare krav på \(r \in [-R, R]\) för att slippa gå över hela intervallet. Vad \cite{HaraldSieve} gör är att, med en diofantisk approximation \todo{förklara}, hitta \(a, q\) med \(\gcd{a,q} = 1\) som approximerar \(\alpha_1 := - n / m_0^2\) så att \(\abs{\alpha_1 - \frac{a}{q}} \leq \frac{1}{q \cdot 2R}\) för största möjliga konvergent $q$ mindre än eller lika med \(2R\). Låt \(\alpha_0 = n / m_0\), då får vi att
+Vi kan ställa ytterligare krav på \(r \in [-R, R]\) för att slippa gå över hela intervallet. Vad \cite{HaraldSieve} gör är att hitta en approximation för \(\alpha_1 := -n/m_0^2\) på formen \(a/q\) där $a,q$ är två relativt prima heltal med ett krav på nämnaren, $q \leq 2R$. Detta är precis funktionen av en så kallad diofantisk approximation och för att förstå den här processen krävs lite förkunskaper om kedjebråk som kan hittas i appendix \ref{APDX:cfrac}. \todo{Fortsätter härifrån snart}
+
+%Vad \cite{HaraldSieve} gör är att, med en diofantisk approximation \todo{förklara}, hitta \(a, q\) med \(\gcd{a,q} = 1\) som approximerar \(\alpha_1 := - n / m_0^2\) så att \(\abs{\alpha_1 - \frac{a}{q}} \leq \frac{1}{q \cdot 2R}\) för största möjliga konvergent $q$ mindre än eller lika med \(2R\). Låt \(\alpha_0 = n / m_0\), då får vi att
 \begin{align*}
     \abs{\alpha_1 r + \alpha_0} &= \abs{\left(\alpha_1 - \frac{a}{q}\right) r + \frac{ar}{q} + \alpha_0} \leq 
     \abs{\alpha_1 - \frac{a}{q}} \abs{r} + \frac{\abs{\alpha_0 q + ar}}{q} \\
@@ -58,7 +60,5 @@ där \(k = \lfloor q \cdot 5\Delta/(4M) \rfloor\). Det räcker alltså att såll
 
 
 \todo{Gå igenom DiophAppr}
-
-\todo{Ge en känsla för hur ofta loopar itereras, i synnerhet innersta loopen i NewSegSiev}
 
 \todo{Kortfattat om tids- och minneskomplexitet}
