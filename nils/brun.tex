@@ -11,15 +11,21 @@ I detta avsnitt ges en kortfattad beskrivning av Bruns såll och ett exempel tag
 
 
 \subsection{Beskrivning av sållet}
-Brun visade att för varje funktion $g$ som uppfyller $g(1)=1$,
-så gäller det att
+Med syfte i att utveckla (\ref{inclusionexclusion}) och med grund i \cite[Kap. 6.2]{cojocarumurty}, definierar vi en funktion $f$ som
 \begin{equation*}
-    \S{A}{P}{z} 
-    = \sum_{d \mid P(z)} \mu(d) g(d) \card\A_d 
-    - f_g,
-\end{equation*} % f_g = \sum_{d \mid P(z)} \sum_{\substack{p \mid P(z) \\ p<q(d)}} \mu(d) (g(d)-g(pd)) S(\A_{pd},\P^{(pd)},p).
-där $f_g$ är en funktion av $\A,\P$ och $z$, definierad med hjälp av $g$. 
-Därefter konstruerade Brun två funktioner $g_U$ och $g_L$ så att $f_{g_U}\geq 0$ och $f_{g_L}\leq 0$ alltid gäller. 
+    f(n) := \sum_{d\mid n} \mu(d) g(d),
+\end{equation*}
+där $g$ är någon funktion så att $f(1)=1$ håller. 
+Genom en variant av Möbius inverteringsformel gäller det att
+\begin{equation*}
+    \sum_{d\mid n} \mu\left(\frac{n}{d}\right) f(d) = \mu(n)g(n).
+\end{equation*}
+Viggo Brun använde detta för att modifiera (\ref{inclusionexclusion}) och visade att för varje funktion $g$ som uppfyller $g(1)=1$, vilket implicerar $f(1)=1$, så gäller det att
+\begin{equation*}
+    \sum_{d \mid P(z)} \mu(d) g(d) \card\A_d = \S{A}{P}{z} - G,
+\end{equation*} % G = \sum_{d \mid P(z)} \sum_{\substack{p \mid P(z) \\ p<q(d)}} \mu(d) (g(d)-g(pd)) S(\A_{pd},\P^{(pd)},p).
+där $G$ är en funktion av $\A,\P$ och $z$, definierad med hjälp av $g$. 
+Därefter konstruerade Brun två funktioner $g_U$ och $g_L$ så att $G_U\geq 0$ och $G_L\leq 0$ alltid gäller. 
 Således kan en undre och övre begränsning till $\S{A}{P}{z}$ erhållas, nämligen
 \begin{equation}\label{brun.eq.gugl}
     \sum_{d \mid P(z)} \mu(d) g_L(d) \card\A_d 
