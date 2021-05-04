@@ -1,7 +1,7 @@
 % Skrivet av Nils
 
 Primtal är förrädiskt oförutsägbara.
-De dyker upp när du minst anar det och kan till synes bete sig oregelbundet.
+De dyker upp när du minst anar det och kan till synes bete sig totalt oregelbundet.
 Trots detta är de helt deterministiska i sin natur och gränsen för vad som är och inte är ett primtal är mycket tydlig.
 Det är kanske just av denna anledning som primtalen, även i modern tid, är så intressanta att studera.
 
@@ -19,53 +19,41 @@ Det har alltså skett en dubbelräkning av alla tal som kan delas med 6,
 men vi kan kompensera för detta genom att addera en sjättedels miljon till svaret.
 
 
-Denna uppskattning är bättre vår tidigare. 
-Vi skulle givetvis kunna fortsätta med talet 5 och på så sätt komma ännu närmre det faktiska svaret, 
+Denna uppskattning är bättre vår tidigare och vi kan givetvis fortsätta med talet 5.
+På så vis skulle vi komma ännu närmre det faktiska svaret, 
 men vi skulle också behöva hantera fler dubbelräkningar.
-Den generella idén kallas för \textit{inklusions-exklusionsprincipen} och illustreras nedan för tre mängder med hjälp av figur \ref{pop.fig}.
+Den generella idén här kallas för \textit{inklusions-exklusionsprincipen} och illustreras nedan för tre mängder med hjälp av figur \ref{pop.fig}.
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.3]{erik/Images/Venndiagram.pdf}
     \caption{Illustration av inklusions-exklusionsprincipen för tre stycken överlappande mängder $A$,$B$ och $C$.}
     \label{pop.fig}
 \end{figure}
-Säg att vi vill uppskatta den totala storleken de överlappande mängderna $A$, $B$ och $C$. 
+Säg att vi vill uppskatta den totala storleken för de överlappande mängderna $A$, $B$ och $C$. 
 Vi kan börja med att summera storleken på mängderna var för sig.
 Om vi betecknar storleken på $A$ som $|A|$ och gör samma sak för de andra mängderna så kan vi skriva summan som $|A|+|B|+|C|$.
-Men nu har det som bekant skett en dubbelräkning av överlappen $AB$, $BC$ samt $AC$, vi drar bort dessa från summan och får $|A|+|B|+|C|-|AB|-|BC|-|AC|$.
-Dessutom har vi $ABC$ där alla tre mängder överlappar varandra.
+Som bekant har det skett en dubbelräkning av överlappen $AB$, $BC$ samt $AC$, vi drar bort dessa från summan och får $|A|+|B|+|C|-|AB|-|BC|-|AC|$.
+Vidare har vi $ABC$ där alla tre mängderna överlappar varandra.
 Denna ingår i alla tidigare nämnda mängder och har därmed lagts till och dragits bort tre gånger om. 
 Vi lägger till $ABC$ en gång till och kommer fram till svaret
 \begin{equation*}
     |A|+|B|+|C|-|AB|-|BC|-|AC|+|ABC|.
 \end{equation*}
-Detta är inklusions-exklusionsprincipen och den kan användas för godtyckligt många mängder.
+Detta är inklusions-exklusionsprincipen och den kan användas för ett godtyckligt antal mängder.
 Metoden att använda denna princip för att räkna primtal kallas för Legendres såll och är fundamental i teorin om matematiska såll.
 
 
 Ett (matematiskt) såll är i stora drag en metod för att rensa bort vissa tal ur en större mängd.
-Som ovan exempelvis, när vi använde Legendres såll för att utesluta tal som inte är primtal ur mängden av heltal upp till en miljon.
+Som ovan exempelvis, då vi använde Legendres såll för att sålla bort icke-primtal ur mängden av heltal upp till en miljon.
 I denna rapport presenteras tre stycken såll;
 Eratosthenes generaliserade såll, Bruns såll samt Selbergs såll som alla bygger på idéer liknande det vi har sett här.
-Gemensamt för de tre sållen är att de inte ger något exakt svar, då detta ofta är opraktiskt och ibland även omöjligt att erhålla ett sådant.
-Istället får vi nöja oss med approximationer, vilket ändå kan vara användbart förutsatt att vi känner till storleken på uppskattningens felterm.
-Det är dessa feltermer och deras beteenden som utgör skillnaden mellan de olika sållen.
-Diskussion och jämförelse av feltermerna är mycket relevant i sållteori och har därför tillägnats en egen del i rapporten.
+Gemensamt för de tre sållen är att de inte ger något exakt svar, då det ofta är opraktiskt och ibland även omöjligt att erhålla ett sådant.
+Istället får vi nöja oss med approximationer, vilket ändå kan vara användbart förutsatt att vi känner till storleken på uppskattningens fel.
+Dessa feltermer och deras inneboende beteende utgör en väsentlig skillnad mellan de olika sållen och en diskussion samt jämförelse av feltermerna är således relevant. Därför har detta tillägnats en egen del i rapporten vilken följer efter att de tre sållen presenterats.
 
 
-Avslutningsvis utvecklar vi idéer från ett grundläggande såll och redogör för hur de kan implementeras i form av programmering.
-Dessutom presenteras några resultat som vi fått från vår implementation där ett av resultaten knyter an till frågan om att räkna primtal.
-Men istället för att titta mellan noll och en miljon som vi gjorde ovan, har vi valt att svara på frågan för ett intervall med mittpunkt i $10^{19}$ och en bredd på $2.5\times10^9$.
-
-
-
-
-
-
-
-
-
-
-
-
-
+I rapportens sista avsnitt redogör vi för hur Harald Helfgott i \cite{HaraldSieve} har utvecklat idéer från ett grundläggande såll för att skapa effektiva algoritmer som kan utföras med en dator. 
+Därefter framför vi vår implementation av algoritmerna i ett program skrivet i Python.
+Avslutningsvis presenteras även några resultat som vi fått från att köra programmet,
+där ett av resultaten knyter an till frågan om att räkna primtal.
+Men istället för att som ovan, titta på tal mellan noll och en miljon, har vi valt att svara på frågan för ett intervall med mittpunkt i $10^{19}$ och en bredd på $2.5\times10^9$.
