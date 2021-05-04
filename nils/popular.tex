@@ -40,20 +40,23 @@ Vi lägger till $ABC$ en gång till och kommer fram till svaret
     |A|+|B|+|C|-|AB|-|BC|-|AC|+|ABC|.
 \end{equation*}
 Detta är inklusions-exklusionsprincipen och den kan användas för godtyckligt många mängder.
-Metoden att använda principen för att räkna primtal kallas för Legendres såll och är fundamental i teorin om matematiska såll.
+Metoden att använda denna princip för att räkna primtal kallas för Legendres såll och är fundamental i teorin om matematiska såll.
 
 
 Ett (matematiskt) såll är i stora drag en metod för att rensa bort vissa tal ur en större mängd.
 Som ovan exempelvis, när vi använde Legendres såll för att utesluta tal som inte är primtal ur mängden av heltal upp till en miljon.
 I denna rapport presenteras tre stycken såll;
 Eratosthenes generaliserade såll, Bruns såll samt Selbergs såll som alla bygger på idéer liknande det vi har sett här.
-Gemensamt för de tre sållen är att de inte ger något exakt svar, detta då det ofta är opraktiskt och ibland även omöjligt att erhålla ett sådant.
-Istället får vi nöja oss med approximationer, vilket ändå kan vara användbart förutsatt att vi känner till storleken på felet av uppskattningen ifråga.
-Det är här som de tre sållen skiljer sig åt; i sållens respektive felterm och hur denna beter sig.
-Diskussion kring, och jämförelse av feltermerna är mycket relevant i sållteori och har därför tillägnas detta en egen del i rapporten.
+Gemensamt för de tre sållen är att de inte ger något exakt svar, då detta ofta är opraktiskt och ibland även omöjligt att erhålla ett sådant.
+Istället får vi nöja oss med approximationer, vilket ändå kan vara användbart förutsatt att vi känner till storleken på uppskattningens felterm.
+Det är dessa feltermer och deras beteenden som utgör skillnaden mellan de olika sållen.
+Diskussion och jämförelse av feltermerna är mycket relevant i sållteori och har därför tillägnats en egen del i rapporten.
 
 
-Avslutningsvis redogör vi för hur vi, med idéer ur ett grundläggande såll kan använda datorkraft för sållning.
+Avslutningsvis utvecklar vi idéer från ett grundläggande såll och redogör för hur de kan implementeras i form av programmering.
+Dessutom presenteras några resultat som vi fått från vår implementation där ett av resultaten knyter an till frågan om att räkna primtal.
+Men istället för att titta mellan noll och en miljon som vi gjorde ovan, har vi valt att svara på frågan för ett intervall med mittpunkt i $10^{19}$ och en bredd på $2.5\times10^9$.
+
 
 
 
