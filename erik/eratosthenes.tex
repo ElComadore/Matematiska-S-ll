@@ -1,6 +1,6 @@
 % Skrivet av Erik
 
-Även om Eratosthenes såll fortfarande är mest känt som en enkel algoritm som utan större möda kan utföras med papper och penna så har dess idé raffinerats genom historien till att inkorperera mer avancerad teori för att tillämpas på nya sätt. 1808 utvecklade Adrien-Marie Legendre (1752-1833) sållet med hjälp av inklusion-exklusionsprincipen formulerad på formen från avsnitt \ref{sallproblemet}. Nedan kommer vi gå igenom denna form av Eratosthenes såll samt, i efterföljande avsnitt, följa hur \cite{cojocarumurty} presenterar en utvidgning av sållet till en mer generell form. 
+Även om Eratosthenes såll fortfarande är mest känt som en enkel algoritm som utan större möda kan utföras med papper och penna så har dess idé raffinerats genom historien till att inkorperera mer avancerad teori för att tillämpas på nya sätt. År 1808 utvecklade Adrien-Marie Legendre (1752-1833) sållet med hjälp av inklusion-exklusionsprincipen formulerad på formen från avsnitt \ref{sallproblemet}. Nedan kommer vi gå igenom denna form av Eratosthenes såll samt, i efterföljande avsnitt, följa hur \cite{cojocarumurty} presenterar en utvidgning av sållet till en mer generell form. 
 
 \subsection{Legendres såll}
 
@@ -8,9 +8,9 @@ Första steget för att utveckla Eratosthenes såll är att omformulera sållexe
 \begin{align*}
     \pi(x) - \pi(\sqrt{x}) + 1 = \sum_{d \divides \P(\sqrt{x})} \mu(d) \left\lfloor \frac{x}{d} \right\rfloor  
 \end{align*}
-där \(1\):an på vänstersidan tar i hänsyn att \(1 \in \A\) inte sållas bort på högersidan och \(\pi(\sqrt{x})\) är de inringade primtalen. Detta var Legendres idé 1808 när han omformulerade Eratosthenes såll till att räkna primtal 1808 \cite{opera}. 
+där \(1\):an på vänstersidan tar i hänsyn att \(1 \in \A\) inte sållas bort på högersidan och \(\pi(\sqrt{x})\) är de inringade primtalen. Detta var Legendres idé när han omformulerade Eratosthenes såll till att räkna primtal \cite{opera}. 
 
-Legendres formel är bra för att räkna primtal exakt men är långsam och golvfunktionen kan vara svårhanterlig. Vi kan underlätta för oss genom att ersätta golvfunktionen med $x/d$ och dess bråkdel, \(\{x/d\} := x/d - \lfloor x/d \rfloor = O(1)\), som restterm vilket leder till \(\card{\A_d} = x/d + O(1)\). Dessvärre resulterar det här i en väldigt stor felterm då restermerna ackumulerar, så att \(\pi(x) - \pi(\sqrt{x}) + 1 = x \sum_{d \divides P(\sqrt{x})}\frac{\mu(d)}{d} + O(2^{\pi(\sqrt{x})}) \).
+Legendres formel är bra för att räkna primtal exakt men är långsam och golvfunktionen kan vara svårhanterlig. Vi kan underlätta för oss genom att ersätta golvfunktionen med $x/d$ och med bråkdelen som restterm. Skriver vi bråkdelen som \(\{x/d\} := x/d - \lfloor x/d \rfloor = O(1)\) leder det oss till \(\card{\A_d} = x/d + O(1)\). Dessvärre resulterar det här i en väldigt stor felterm då restermerna ackumulerar, så att \(\pi(x) - \pi(\sqrt{x}) + 1 = x \sum_{d \divides P(\sqrt{x})}\frac{\mu(d)}{d} + O(2^{\pi(\sqrt{x})}) \).
 
 Eftersom \(\A_p\), för varje $p$, är definierad som en restklass modulo $p$ så säger vi att antalet utvalda restklasser modulo $p$ är $\omega(p) = 1$ för alla $p$ -- vi kallar Eratosthenes för ett endimensionellt eller linjärt såll av den här anledningen. Mer allmänt betecknas dimensionen av ett såll med parametern \(\kappa\) om det är ett minimum för en genomsnittlig övre gräns för \(\omega(p)\) för alla $p$ \cite{tenenbaum}, så att
 \begin{align} \label{dimension}
@@ -37,7 +37,7 @@ Studerar vi den första summan ovan ser vi att vi kan skriva om den som summan �
 %    \sum_{\substack{d \divides P(z) \\ d \leq y}} \frac{\omega(d)}{d} \mu(d) =
 %    \sum_{\substack{d \divides P(z)}} \frac{\omega(d)}{d} \mu(d) - \sum_{\substack{d \divides P(z) \\ d > y}} \frac{\omega(d)}{d} \mu(d) .
 %\end{align*}
-Med observationen att \(W(z) = \prod_{p \divides P(z)} (1 - \omega(p)/p) = \sum_{d \divides P(z)} \frac{\mu(d)}{d} \omega(d)\) då \(\frac{\omega(d)}{d}\) är multiplikativ kan vi således dela upp den siktade mängden i en huvuddel och en rest på följande vis
+Med observationen att \(W(z) = \prod_{p \divides P(z)} (1 - \omega(p)/p) = \sum_{d \divides P(z)} \frac{\mu(d)}{d} \omega(d)\) då \(\frac{\omega(d)}{d}\) är multiplikativ kan vi således dela upp den siktade mängden i en huvudterm och en rest på följande vis
 \begin{align*}
     \S{A}{P}{z} = X W(z) + \Biggl(- X \sum_{\substack{d \divides P(z) \\ d > y}} \frac{\omega(d)}{d} \mu(d) + \sum_{\substack{d \divides P(z)  \\ d \leq y}} \mu(d) R_d \Biggr).
 \end{align*}

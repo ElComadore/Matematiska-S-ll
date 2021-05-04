@@ -1,7 +1,5 @@
-Det allmänna fallet i sållteori är att vi har en mängd heltal \(\A\), en mängd primtal \(\P\), samt delmängder \(\A_p, \forall p \in \P\) och är intresserade av att sålla fram delmängden \(\mathbb{S}(\A, \P) := \A \setminus \cup_{p \in \P} \A_p\) eller kardinaliteten av dito, \(S(\A, \P) :=\card{(\A \setminus \cup_{p \in \P} \A_p)}\). Vi låter \(P(z)\) beteckna produkten av alla \(p < z\) i \(\P\) med specialfallet \(P(z) = P_z\) då \(\P\) är mängden av alla primtal. Med denna notation så skriver vi %Om \(P(z) = \prod_{\substack{p\in \mathcal{P} \\ p < z}} p\) så låter vi
+Det allmänna fallet i sållteori är att vi har en mängd heltal \(\A\), en mängd primtal \(\P\), samt delmängder \(\A_p, \forall p \in \P\) och är intresserade av att sålla fram kardinaliteten \(S(\A, \P) :=\card{(\A \setminus \cup_{p \in \P} \A_p)}\). Vi låter \(P(z)\) beteckna produkten av alla \(p < z\) i \(\P\) med specialfallet \(P(z) = P_z\) då \(\P\) är mängden av alla primtal. Med denna notation så skriver vi 
 \begin{align*}
-    \mathbb{S}(\A, \P, z) := (\A \setminus \cup_{p \divides P(z)} \A_p)
-    \quad \text{och} \quad
     \S{A}{P}{z} := \card{(\A \setminus \cup_{p \divides P(z)} \A_p)} .
 \end{align*}
 För \(d\), en kvadratfri produkt (det vill säga utan delare \(p^\alpha\) för \(\alpha > 1\)) av element \(p \in \P\) definierar vi \(\A_d = \cap_{p \divides d} \A_p\) och \(\A_1 = \A\). Använder vi oss av inklusion-exklusionsprincipen, formulerad med hjälp av möbiusfunktionen, får vi då
@@ -13,7 +11,7 @@ Ett gemensamt drag hos de matematiska sållen diskuterade nedan är att låta \(
 \begin{align} \label{deltaX}
     \card{\A_p} = \delta_p X + R_p
 \end{align}
-där \(\delta_p \in [0, 1)\) kan betraktas som en uppskattning av andelen element i delmängden \(\A_p\) och \(R_p\) som en felterm. För \(p \neq q\) låter vi \(\delta_{pq} = \delta_p \delta_q\) så att \(\card{\A_{pq}} = \delta_p \delta_q X + R_{pq}\) och utvidgat för ett kvadratfritt tal \(d = p_1 \cdot ... \cdot p_n\) låter vi \(\delta_{d} = \delta_{p_1} \cdot ... \cdot \delta_{p_n}\). 
+där \(\delta_p \in [0, 1)\) kan betraktas som en uppskattning av andelen element i delmängden \(\A_p\) och \(R_p\) som en felterm. % För \(p \neq q\) låter vi \(\delta_{pq} = \delta_p \delta_q\) så att \(\card{\A_{pq}} = \delta_p \delta_q X + R_{pq}\) och utvidgat för ett kvadratfritt tal \(d = p_1 \cdot ... \cdot p_n\) låter vi \(\delta_{d} = \delta_{p_1} \cdot ... \cdot \delta_{p_n}\). 
 
 I avsnitt \ref{Eratosthenes} om Eratosthenes generaliserade såll och avsnitt \ref{brun} om Bruns såll så kommer vi välja \(\delta_p = \omega(p) / p\) där \(\omega(p)\) betecknar antalet utvalda restklasser modulo \(p\) vi vill sålla bort. Som följd låter vi i dessa fall \(\A_p\) vara alla element som tillhör någon av dessa restklasser modulo $p$ och för kvadratfria $d$ låter vi \(\omega(d) := \prod_{p \divides d} \omega(p)\). Därtill definierar vi den användbara funktionen 
 \begin{align} \label{Wfunc}
