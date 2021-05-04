@@ -7,7 +7,7 @@ I detta avsnitt ges en kortfattad beskrivning av Bruns såll och ett exempel tag
 
 När den norska matematikern Viggo Brun (1881-1978) år 1915 publicerade artikeln \textit{Über das Goldbachsche Gesetz und die Anzahl der Primzahlpaare}, lades grunden till modern sållteori \cite{ViggoBrun}. 
 I artikeln presenterade Brun ett såll baserat på Eratosthenes idéer, som numera kallas Bruns såll och fyra år senare använde han det för att bevisa Bruns sats, vilken finns beskriven i avsnitt \ref{eratosthenes.tillämpning} ovan.
-I detta avsnitt ges en kortfattad beskrivning av Bruns såll och ett exempel taget ur \cite{cojocarumurty} på hur sållet kan tillämpas för att frambringa ett resultat som angränsar till primtalstvillingsförmodan.
+I detta avsnitt ges en kortfattad beskrivning av Bruns såll och ett exempel hämtat ur \cite{cojocarumurty} på hur sållet kan tillämpas för att frambringa ett resultat som angränsar till primtalstvillingsförmodan.
 
 
 \subsection{Beskrivning av sållet}
@@ -16,11 +16,11 @@ Med syfte i att utveckla (\ref{inclusionexclusion}) och med grund i \cite[Kap. 6
     f(n) := \sum_{d\mid n} \mu(d) g(d),
 \end{equation*}
 där $g$ är någon funktion så att $f(1)=1$ håller. 
-Genom en variant av Möbius inverteringsformel gäller det att
+Genom direkt användning av Möbius inverteringsformel (\ref{mobiusinv}) får vi att
 \begin{equation*}
-    \sum_{d\mid n} \mu\left(\frac{n}{d}\right) f(d) = \mu(n)g(n).
+    \sum_{d\mid n} \mu(n/d) f(d) = \mu(n)g(n).
 \end{equation*}
-Viggo Brun använde detta för att modifiera (\ref{inclusionexclusion}) och visade att för varje funktion $g$ som uppfyller $g(1)=1$, vilket implicerar $f(1)=1$, så gäller det att
+Detta använde sig Viggo Brun av för att modifiera (\ref{inclusionexclusion}) och visa att för varje funktion $g$ som uppfyller $g(1)=1$, vilket implicerar $f(1)=1$, så gäller det att
 \begin{equation*}
     \sum_{d \mid P(z)} \mu(d) g(d) \card\A_d = \S{A}{P}{z} - G,
 \end{equation*} % G = \sum_{d \mid P(z)} \sum_{\substack{p \mid P(z) \\ p<q(d)}} \mu(d) (g(d)-g(pd)) S(\A_{pd},\P^{(pd)},p).
