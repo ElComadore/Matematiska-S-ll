@@ -15,6 +15,33 @@ Detta är dessvärre inte riktigt sant.
 Tal som både är jämna och delbara med 3 har ju uteslutits två gånger.
 Det har alltså skett en dubbelräkning av alla tal som kan delas med 6 men vi kan kompensera för detta genom att addera en sjättedels miljon till svaret.
 
+Detta är en bättre uppskattning än vad vi hade tidigare och vi skulle givetvis kunna fortsätta med talet 5 och på så sätt komma ännu närmre det faktiska svaret.
+Den generella idén kallas för \textit{inklusions-exklusionsprincipen} och illustreras nedan för tre mängder.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.3]{erik/Images/Venndiagram.pdf}
+\end{figure}
+Säg att vi vill uppskatta den totala storleken de överlappande mängderna $A$, $B$ och $C$. 
+Vi kan börja med att summera storleken på mängderna var för sig.
+Om vi betecknar storleken på $A$ som $|A|$ och gör samma sak för de andra mängderna så kan vi skriva summan som $|A|+|B|+|C|$.
+Men nu har det som bekant skett en dubbelräkning av överlappen $AB$, $BC$ samt $AC$, vi drar bort dessa från summan och får $|A|+|B|+|C|-|AB|-|BC|-|AC|$.
+Dessutom har vi $ABC$ där alla tre mängder överlappar varandra.
+Denna ingår i alla tidigare nämnda mängder och har därmed lagts till och dragits bort tre gånger om. 
+Vi lägger till $ABC$ en gång till och kommer fram till svaret
+\begin{equation*}
+    |A|+|B|+|C|-|AB|-|BC|-|AC|+|ABC|.
+\end{equation*}
+Vi kan göra liknande för ett större antal mängder och det skulle resultera i ännu flera överlapp att ta hänsyn till.
+
+Idén att använda inklusions-exklusionsprincipen för att räkna primtal är en grundpelare för matematiska såll.
+Ett (matematiskt) såll är i stora drag en metod för att rensa bort vissa tal ur en större mängd.
+Ovan använde vi exempelvis ett såll för att utesluta tal som inte är primtal ur mängden av heltal upp till en miljon.
+
+
+
+
+
+
 \begin{comment}
 Dubbelräkningen skedde eftersom vi hade två stycken mängder av tal som överlappade varandra och vi kompenserade genom att återlägga överlappet.
 
@@ -28,11 +55,11 @@ Dessutom har vi $ABC$ där alla tre mängder överlappar vilken vi måste kompen
 \end{comment}
 
 
-
+\begin{comment}
 Denna rapport utforskar några metoder som kan användas för att hitta svaret på frågor som ovanstående.
 Oftast är det inte möjligt att få ett exakt svar och istället måste vi nöja oss med en uppskattning,
 vilket givetvis leder till en följdfråga om hur bra uppskattningen är.
-
+\end{comment}
 
 
 \begin{comment}
