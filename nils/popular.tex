@@ -1,7 +1,7 @@
 % Skrivet av Nils
 
 Primtal är förrädiskt oförutsägbara.
-De dyker upp när du minst anar det och verkar nästan bete sig slumpmässigt.
+De dyker upp när du minst anar det och kan till synes bete sig helt oregelbundet.
 Trots detta är de helt deterministiska i sin natur och gränsen för vad som är och inte är ett primtal är mycket tydlig.
 Det är kanske just av denna anledning som primtalen har fascinerat matematiker i tusentals år och fortsätter att göra så än idag.
 
@@ -10,12 +10,45 @@ Om vi istället frågar oss hur många primtal det finns som är mindre än en m
 Förutom talet 2 så är primtal aldrig jämna så vi kan åtminstone utesluta vartannat tal och säga att svaret är mindre än en halv miljon.
 Hur går vi vidare härifrån?
 Ett naturligt andra steg vore att föra samma resonemang för talet 3;
-förutom just 3 så är primtal aldrig delbara med 3 så vi borde kunna dra bort ytterligare en tredjedel från svaret.
+förutom just 3 så är primtal aldrig delbara med 3 så vi borde kunna dra bort ytterligare en tredjedels miljon från svaret.
 Detta är dessvärre inte riktigt sant.
 Tal som både är jämna och delbara med 3 har ju uteslutits två gånger.
-Det har skett en dubbelräkning och det visar sig att denna typ av fel blir allt vanligare ju fler steg som tas.
+Det har alltså skett en dubbelräkning av alla tal som kan delas med 6 men vi kan kompensera för detta genom att addera en sjättedels miljon till svaret.
+
+\begin{comment}
+Dubbelräkningen skedde eftersom vi hade två stycken mängder av tal som överlappade varandra och vi kompenserade genom att återlägga överlappet.
+
+Denna idé kallas för \textit{inklusions-exklusionsprincipen} och kan även användas när vi har fler än bara två mängder.
+Tag tre stycken mängder $A$,$B$ samt $C$, och låt överlappet mellan $A$ och $B$ betecknas med $AB$.
+Om vi ska beskriva den sammanlagda mängden av $A$, $B$ och $C$ så måste vi 
+Dessutom har vi $ABC$ där alla tre mängder överlappar vilken vi måste kompensera ytterligare för. Vi kan således beskriva den sammanlagda mängden av $A$, $B$ och $C$ som
+\begin{equation*}
+    (A+B+C) - (AB+BC+AC) + ABC
+\end{equation*}
+\end{comment}
+
+
 
 Denna rapport utforskar några metoder som kan användas för att hitta svaret på frågor som ovanstående.
 Oftast är det inte möjligt att få ett exakt svar och istället måste vi nöja oss med en uppskattning,
 vilket givetvis leder till en följdfråga om hur bra uppskattningen är.
 
+
+
+\begin{comment}
+Dubbelräkningen skedde eftersom vi hade två stycken mängder av tal som överlappade varandra och vi kompenserade genom att titta på hur stort detta överlapp var.
+Denna idé kallas för \textit{inklusions-exklusionsprincipen} och kan även användas när vi har fler än bara två mängder.
+Säg nu att vi har tre stycken överlappande mängder som vi kallar för $A$,$B$ och $C$, och vi vill ta reda på den sammanlagda storleken av dem.
+För att underlätta beräkningarna kan vi låta $\#\left( A\right)$ beteckna storleken av $A$ och göra sak för $B$ och $C$.
+Det första vi kan göra är att addera de individuella storlekarna för $A$,$B$ och $C$, så att vi får 
+\begin{align*}
+    &\#\left( A\right)+\#\left( B\right)+\#\left( C\right).
+\intertext{Som bekant har vi nu dubbelräknat mängdernas överlapp, vi drar ifrån dessa och får}
+    &\#\left( A\right)+\#\left( B\right)+\#\left( C\right) - \#\left( AB\right)-\#\left( BC\right)-\#\left( AC\right),
+\intertext{där $AB$ representerar överlappet mellan $A$ och $B$, och liknande för $BC$ samt $AC$.
+Men vi är inte klara än, det finns nämligen ett ytterligare överlapp; $ABC$ där alla tre mängder överlappar.
+Denna mängd trippelräknades i första steget och därefter har vi dragit bort den tre gånger om.
+Vi måste därmed lägga till den igen;}
+   &\#\left( A\right)+\#\left( B\right)+\#\left( C\right) - \#\left( AB\right)-\#\left( BC\right)-\#\left( AC\right)+\#\left( ABC\right),
+\end{align*}
+\end{comment}
