@@ -62,14 +62,16 @@ Det totala antalet gånger som detta steg utförs är
 \end{equation*}
 enligt \cite[s.346]{HaraldSieve} och vi sparar således en betydande mängd tid på att reducera antalet beräkningar här till en tredjedel av det ursprungliga.
 
+
 För att visa att de förändringar som gjorts i koden, faktiskt har haft inverkan så lät vi utföra tester.
 Testerna gjordes på en hemdator och jämförde körningstid mellan den första versionen av programmet, mot en senare version där förbättringarna har införts.
-Som tidigare nämnts så sållar programmet fram primtal i ett angivet intervall $[n-\Delta,n+\Delta]$ och 
-programmets tillvägagångssätt varierar något beroende på förhållandet mellan $\Delta$ och $n$.
+Som tidigare nämnts så sållar algoritmen fram primtal i ett angivet intervall $[n-\Delta,n+\Delta]$ och 
+dess tillvägagångssätt varierar något beroende på förhållandet mellan $\Delta$ och $n$.
 Av denna anledning utfördes två stycken tester där detta förhållande sattes till att vara så stort som möjligt respektive så litet som möjligt.
 I det första testet valdes således $\Delta:=n$ och tre mätningar utfördes för $n=5\cdot10^3,5\cdot10^5,5\cdot10^7$.
 I det andra testet valdes $\Delta:=\sqrt[3]{n}$ och $n$ fick anta värdena $10^9$, $10^{12}$ respektive $10^{15}$.
 För alla mätningar visade sig den förbättrade versionen vara minst 10 gånger så snabb som den ursprungliga versionen, dessutom visar mätningarna på en antydan till att denna faktor ökar då $n$ växer. De uppmätta tiderna finnes i tabell \ref{implementering.tidtabell}.
+
 
 \begin{table}[H]
 \centering
