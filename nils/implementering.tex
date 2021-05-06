@@ -1,23 +1,28 @@
 % Skrivet av Nils
 
-Algoritmerna i \cite{HaraldSieve} presenteras i form av pseudokod som för att kunna användas, måste översättas till något programmeringsspråk, här valdes Python.
+Algoritmerna i \cite{HaraldSieve} presenteras i form av pseudokod som för att kunna användas, måste översättas till något programmeringsspråk.
+Vår implementation av algoritmerna är skrivna i språket Python.
+%Vi har valt att använda språket Python för att implementera algoritmerna.
 Det var möjligt att översätta pseudokoden mer eller mindre ordagrant, vilket gjordes och resulterade i en första version av programmet.
 Därefter kunde flera förbättringar av koden göras för att korta ned dess körningstid. 
 Vissa av förbättringarna var möjliga då pseudokoden i \cite{HaraldSieve} är skriven i syfte att tydligt illustrera algoritmerna,
 och är således inte ämnad till att vara färdig, optimerad kod.
-Andra förbättringar var språkspecifika och åstadkoms genom att jämföra beräkningstiden hos olika funktioner och metoder i Python, för att sedan implementera de som visade sig vara snabba. 
+Andra förbättringar var språkspecifika och åstadkoms genom att jämföra beräkningstiden hos olika funktioner och metoder i Python, för att sedan implementera de som visade sig vara snabba.
 Den förbättrade versionen av koden finns bifogad i appendix.
 Nedan följer, utan inbördes ordning, några av de gjorda förbättringar som har haft större inverkan.
 \begin{myitemize}
     \item
-    Istället för att spara och göra beräkningar på en vektor av booleaner, väljer vi att uttrycka mängden som en bitsträng. 
+    I den ursprungliga pseudokoden representeras den sållade mängden av en vektor bestående av booleaner, vilken vi har ersatt med en bitsträng.
+    %Algoritmen sållar primtal ur en lista som i det ursprungliga programmet representeras av en vektor bestående av booleaner.%  Det ursprungliga programmet sållar över en vektor av booleaner, vilken vi har valt att ersätta med en bitsträng.   
+    %Istället för att spara och göra beräkningar på en vektor av booleaner, väljer vi att uttrycka mängden som en bitsträng. 
     Denna idé föreslås redan i \cite{HaraldSieve} och sparar i första hand minne,
     som i sin tur kan leda till snabbare beräkningar på grund av bättre användning av cache.
     Här användes Python-biblioteket \textit{Bitarray}.
     \item
-    På vissa ställen har det varit möjligt att flytta ut beräkningar utanför loopar så att samma beräkning inte behöver göras flera gånger. Flera beräkningar har även kunnat förkortas eller skrivas ihop för att undvika temporära variabler.
+    På vissa ställen har det varit möjligt att flytta ut beräkningar utanför loopar så att samma beräkning inte behöver göras flera gånger. 
+    Dessutom har flera beräkningar kunnat kortas ned eller skrivas ihop för att undvika temporära variabler.
     \item
-    I Python kan operatorn \texttt{x//y} användas för division utan rest, denna visar sig vara snabbare än sammansättningen \texttt{floor(x/y)}, detta ger också att \texttt{ceil(x/y)} kan bytas ut mot \texttt{-(x//-y)}.
+    I Python kan operatorn \texttt{x//y} användas för division utan rest. Denna har visat sig vara snabbare än sammansättningen \texttt{floor(x/y)} och har således fått ersätta den senare där det varit möjligt. På ett liknande sätt har \texttt{ceil(x/y)} ersatts med \texttt{-(x//-y)}.
 \end{myitemize}
 En ytterligare förbättring kunde göras efter en noggrann analys av pseudokoden för \textsc{NewSegSiev} i \cite[s.338]{HaraldSieve}.
 Efter en approximering erhålls $n'\geq0$, en multipel av $m>0$ som möjligen uppfyller $n'\in[n-\Delta,n+\Delta]$ och $n'>m$.
