@@ -11,7 +11,7 @@ I detta avsnitt ges en kortfattad beskrivning av Bruns såll och ett exempel hä
 
 
 \subsection{Beskrivning av sållet}
-Med syfte i att utveckla (\ref{inclusionexclusion}) och med grund i \cite[Kap. 6.2]{cojocarumurty}, definierar vi en funktion $f$ som
+Med syftet att utveckla (\ref{inclusionexclusion}) och med grund i \cite[Kap. 6.2]{cojocarumurty}, definierar vi en funktion $f$ som
 \begin{equation*}
     f(n) := \sum_{d\mid n} \mu(d) g(d),
 \end{equation*}
@@ -37,7 +37,7 @@ Genom att sedan skriva $\card\A_d=\frac{\omega(d)}{d}X + R_d$ kunde han, efter m
 
 
 \begin{theorem}[Bruns såll] \label{brun.thm.brun}
-Med notation från avsnitt \ref{sallproblemet}, låt $b$ vara ett positivt heltal och $\lambda$,
+Med notation från avsnitt \ref{sallproblemet}, låt $b$ vara ett positivt heltal och låt $\lambda$ vara
 ett reellt tal som uppfyller $0<\lambda e^{1+\lambda}<1$.
 Antag att $\left|R_d\right|\leq\omega(d)\leq dA_1$ för varje kvadratfritt tal $d$ med faktorer ur $\P$ och någon konstant $A_1<1$,
 samt att det finns konstanter $A_2\geq 1$ och $\kappa>0$ som uppfyller
@@ -53,7 +53,7 @@ Då begränsas $\S{A}{P}{z}$ ovanifrån av
 Konstanterna $c_1$, $c_2$ och $c_3$ definieras som
 \begin{equation*}
     c_1 := \frac{ 2\lambda^{2b}e^{2\lambda} }{ 1 - \lambda^2e^{2+2\lambda} }, \quad
-    c_2 := \frac{A_2}{2}\biggl(1+\frac{\kappa+\frac{A_2}{\log 2}}{1+A_1}\biggr)\ \text{och} \quad
+    c_2 := \frac{A_2}{2}\biggl(1+\frac{\kappa+\frac{A_2}{\log 2}}{1+A_1}\biggr)\quad \text{och} \quad
     c_3 := 2b + \frac{2.01}{e^{2\lambda/\kappa} - 1}.
 \end{equation*}
 \end{theorem}
@@ -81,7 +81,7 @@ Vi skiljer på två typer av restklasser; noll och nollskild modulo $p$, och har
 \begin{equation*}
     \omega(2)=1\ \text{ och }\ \omega(p)=2,\ \text{för}\ p>2.
 \end{equation*}
-Detta ger direkt att $\frac{\omega(p)}{p}\leq\frac{2}{3}$ med likhet då $p=3$, låt därför $A_1=2/3$.
+Detta ger direkt att $\omega(p)/p\leq 2/3$ med likhet då $p=3$, låt därför $A_1=2/3$.
 För att hitta ett passande $\kappa$, använder vi oss av (\ref{Thm.1.4.4}) som tillsammans med $\omega(p)\leq2$ implicerar
 \begin{equation*}
     \sum_{w\leq p<z} \frac{\omega(p)\log p}{p} \leq 2\log\left(z/w\right) + O(1),
@@ -89,7 +89,7 @@ För att hitta ett passande $\kappa$, använder vi oss av (\ref{Thm.1.4.4}) som 
 varpå vi ser att $\kappa=2$ uppfyller kriterierna och att $A_2$ existerar.
 Något explicit värde på $A_2$ är inte nödvändigt, vilket kan ses genom att betrakta exponenten i ($\ref{brun.eq.lower}$). Taylorutveckling ger
 \begin{align}\label{brun.example.exp}
-    \exp\left(c_2\frac{2b+2}{\lambda\log z}\right) = 1 + c_2\frac{2b+2}{\lambda}(\log z)^{-1} + \left(c_2\frac{2b+2}{\lambda}\right)^2(\log z)^{-2} + ...
+    \exp\left(c_2\frac{2b+2}{\lambda\log z}\right) = 1 + c_2\frac{2b+2}{\lambda}(\log z)^{-1} + \left(c_2\frac{2b+2}{\lambda}\right)^2(\log z)^{-2} + \cdots
 \end{align}
 Fixera $b,\lambda$ och $A_2$ så att även $c_2$ är fixerat, då följer det att (\ref{brun.example.exp}) begränsas av $1+O((\log z)^{-1})$, då $z\to\infty$.
 Vidare gäller det att 
@@ -101,18 +101,17 @@ se appendix för bevis.
 Från (\ref{era.app.secondMainAppr}) får vi nu att $W(z) \gg (\log z)^{-2}$
 och genom att tillämpa den undre begränsningen i sats \ref{brun.thm.brun} erhåller vi
 \begin{equation} \label{brun.example.sap}
-    \S{A}{P}{z} \gg \frac{x}{(\log z)^2}\bigl(1 - c_1\bigr) + O\left(z^{c_3 - 1}\right).
+    \S{A}{P}{z} \gg \frac{x}{(\log z)^2}\bigl(1 - c_1\bigr) + O\bigl(z^{c_3 - 1}\bigr).
 \end{equation}
 Nu vill vi välja $b$ och $\lambda$, så att $c_1<1$ och $c_3$ är litet. 
 Detta uppfylls av $b=1$ samt $\lambda=0.101$ som medför att $c_3-1<8$.
 
-I fallet att $n$ eller $n+2$ har mer än 7 primtalsfaktorer,
-så måste $p\mid n(n+2)$ för något primtal $p < n^{1/8}$.
+I fallet att $n$ eller $n+2$ har mer än 7 primtalsfaktorer måste $p\mid n(n+2)$ för något primtal $p < n^{1/8}$.
 Således erhålls $\card\mathcal{T}$ ur $\S{A}{P}{z}$ genom att sålla för primtal upp till $z = x^{1/u}$, där $u<8$.
 Insättning av detta i (\ref{brun.example.sap}) ger
 \begin{equation*}
-    \frac{u^2x}{(\log x)^2}\bigl(1 - c_1\bigr) + O\left(z^{\frac{c_3 - 1}{u}}\right) \gg 
-    \frac{x}{(\log x)^2} + O\left(z^{\frac{c_3 - 1}{u}}\right).
+    \frac{u^2x}{(\log x)^2}\bigl(1 - c_1\bigr) + O\bigl(z^{\frac{c_3 - 1}{u}}\bigr) \gg 
+    \frac{x}{(\log x)^2} + O\bigl(z^{\frac{c_3 - 1}{u}}\bigr).
 \end{equation*}
 Genom att ställa det ytterligare kravet $u>c_3-1$, har vi att feltermen ovan försvinner när $x$ blir stort och vi får slutligen
 \begin{equation} \label{brun.example.bound}
