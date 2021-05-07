@@ -23,12 +23,23 @@ Denna uppskattning är bättre än vår tidigare och vi kan givetvis fortsätta 
 På så vis skulle vi komma ännu närmre det faktiska svaret, 
 men vi skulle också behöva hantera fler dubbelräkningar.
 Den generella idén här kallas för \textit{inklusions-exklusionsprincipen} och illustreras nedan för tre mängder med hjälp av figur \ref{pop.fig}.
+
+\begin{figure}[H]
+    \centering
+    \input{nils/tikz_venn}
+    \caption{Illustration av inklusions-exklusionsprincipen för tre stycken överlappande mängder $A$, $B$ och $C$.}
+    \label{pop.fig}
+\end{figure}
+
+\begin{comment}
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.3]{erik/Images/Venndiagram.pdf}
     \caption{Illustration av inklusions-exklusionsprincipen för tre stycken överlappande mängder $A$, $B$ och $C$.}
     \label{pop.fig}
 \end{figure}
+\end{comment}
+
 Säg att vi vill uppskatta den totala storleken för de överlappande mängderna $A$, $B$ och $C$. 
 Vi kan börja med att summera storleken på mängderna var för sig.
 Om vi betecknar storleken på $A$ som $|A|$ och gör samma sak för de andra mängderna så kan vi skriva summan som $|A|+|B|+|C|$.
