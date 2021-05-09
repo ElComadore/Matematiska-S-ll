@@ -1,6 +1,7 @@
 \documentclass[a4paper]{article}
 \usepackage{graphicx}
 \usepackage{amsmath, amssymb}
+\usepackage{tabularx}
 \usepackage{hyperref}
 \usepackage{csquotes}
 \usepackage{amsthm}
@@ -59,7 +60,7 @@ sorting=ynt
 
 \newcommand{\titel}{Små matematiska såll och dess tillämpningar} %Skriv in projektets/rapportens titel här
 \newcommand{\undertitel}{En introduktion och algoritmisk implementation} %Skriv in ev undertitel här, eller lämna tomt
-\newcommand{\engtitel}{Small mathematical Sieves and their Applications} %Skriv in engelsk översättning av projektets/rapportens titel här
+\newcommand{\engtitel}{Small Mathematical Sieves and their Applications} %Skriv in engelsk översättning av projektets/rapportens titel här
 
 
 \newcommand{\namn}{ %Skriv in medlemmarnas namn i bokstavsordning.
@@ -290,8 +291,7 @@ Göteborg, Sverige 2021 }
 \newgeometry{top=3cm, bottom=3cm,left=3 cm,right=3cm}
 
 \section*{Förord}
-
-I förordet skall det anges vilka delar som skall tillskrivas respektive författare. Det skall också anges att en loggbok förts över de enskilda medverkandes prestationer under arbetet. Med loggbok menas här gruppens dagbok och de individuella tidsloggarna.
+\input{coen/forord}
 
 \newpage
 
@@ -337,7 +337,7 @@ I förordet skall det anges vilka delar som skall tillskrivas respektive förfat
 \section{Selbergs såll} \label{Selberg}
 \input{coen/Selberg}
 
-\section{Diskussion av sållmetoder}
+\section{Diskussion av sållmetoder}\label{Diskussion}
 \input{coen/diskussionSåll}
 
 %\part{Applikation:}
