@@ -1,10 +1,11 @@
 \usetikzlibrary{shapes.geometric, arrows, positioning}
 
-\def\H{0.9cm}       % Min height of objects
-\def\W{1.7cm}       % Min width of objects
+\def\H{0.9cm}       % Min height for all objects
+\def\W{2.15cm}      % Min width of rectangles
+\def\Wpill{1.6cm}  % Min width of pills
 \def\Wsplit{2.15cm} % Min width for split box (ugly solution)
-\def\distV{1.3cm}   % Vertical distance between objects
-\def\distH{0.7cm}   % Horizontal distance between objects
+\def\distV{1.5cm}   % Vertical distance between objects
+\def\distH{0.6cm}   % Horizontal distance between objects
 
 
 % Style
@@ -14,7 +15,7 @@
 \tikzstyle{arrow} = [thick,->,>=stealth]
 
 % Objects
-\tikzstyle{startstop} = [rectangle, minimum width=\W, minimum height=\H, text centered, draw=black, rounded corners=\H/2]
+\tikzstyle{startstop} = [rectangle, minimum width=\Wpill, minimum height=\H, text centered, draw=black, rounded corners=\H/2]
 \tikzstyle{process}   = [rectangle, minimum width=\W, minimum height=\H, text centered, draw=black]
 \tikzstyle{decision}  = [diamond,   minimum width=\H, minimum height=\H, text centered, draw=black]
 
@@ -65,4 +66,4 @@
     \node[above=3pt of B1, anchor=east]  {NEJ};
     \node[right=4pt of B1, anchor=south] {JA};
 \end{tikzpicture}
-%\vspace{0.2cm}
+\vspace{1cm}
