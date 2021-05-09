@@ -9,7 +9,7 @@ Det är kanske just av denna anledning som primtalen, även i modern tid, är s�
 Hur många primtal finns det? Svaret är att det finns oändligt många.
 Om vi istället frågar oss hur många primtal det finns som är mindre än en miljon, så är svaret inte lika lätt.
 Till att börja med vet vi att primtal, med undantag för talet 2, aldrig är jämna.
-Därför kan vi åtminstone utesluta vartannat tal upp till en miljon och säga att svaret är mindre än en halv miljon.
+Därför kan vi åtminstone utesluta vartannat tal och säga att svaret är mindre än en halv miljon.
 Hur går vi vidare härifrån?
 Ett naturligt andra steg vore att föra samma resonemang för talet 3;
 förutom just 3 så är primtal aldrig delbara med 3 och därmed borde vi kunna dra bort ytterligare en tredjedels miljon från svaret.
@@ -19,20 +19,34 @@ Det har alltså skett en dubbelräkning av alla tal som kan delas med 6,
 men vi kan kompensera för detta genom att addera en sjättedels miljon till svaret.
 
 
-Denna uppskattning är bättre vår tidigare och vi kan givetvis fortsätta med talet 5.
+Denna uppskattning är bättre än vår tidigare och vi kan givetvis fortsätta med talet 5.
 På så vis skulle vi komma ännu närmre det faktiska svaret, 
 men vi skulle också behöva hantera fler dubbelräkningar.
 Den generella idén här kallas för \textit{inklusions-exklusionsprincipen} och illustreras nedan för tre mängder med hjälp av figur \ref{pop.fig}.
+
+\begin{figure}[H]
+    \centering
+    \input{nils/tikz_venn}
+    \caption{Illustration av inklusions-exklusionsprincipen för tre stycken överlappande mängder $A$, $B$ och $C$.}
+    \label{pop.fig}
+\end{figure}
+
+\begin{comment}
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.3]{erik/Images/Venndiagram.pdf}
-    \caption{Illustration av inklusions-exklusionsprincipen för tre stycken överlappande mängder $A$,$B$ och $C$.}
+    \caption{Illustration av inklusions-exklusionsprincipen för tre stycken överlappande mängder $A$, $B$ och $C$.}
     \label{pop.fig}
 \end{figure}
+\end{comment}
+
 Säg att vi vill uppskatta den totala storleken för de överlappande mängderna $A$, $B$ och $C$. 
 Vi kan börja med att summera storleken på mängderna var för sig.
 Om vi betecknar storleken på $A$ som $|A|$ och gör samma sak för de andra mängderna så kan vi skriva summan som $|A|+|B|+|C|$.
-Som bekant har det skett en dubbelräkning av överlappen $AB$, $BC$ samt $AC$, vi drar bort dessa från summan och får $|A|+|B|+|C|-|AB|-|BC|-|AC|$.
+Som bekant har det skett en dubbelräkning där mängderna överlappar varandra.
+Låt oss skriva $AB$ när vi menar överlappet mellan $A$ och $B$, och liknande för de andra överlappen.
+Precis som i tidigare exempel kompenserar vi för dubbelräkningen genom att dra bort dessa överlapp ifrån summan, vilket ger oss $|A|+|B|+|C|-|AB|-|BC|-|AC|$.
+%$AB$, $BC$ samt $AC$, vi drar bort dessa från summan och får $|A|+|B|+|C|-|AB|-|BC|-|AC|$.
 Vidare har vi $ABC$ där alla tre mängderna överlappar varandra.
 Denna ingår i alla tidigare nämnda mängder och har därmed lagts till och dragits bort tre gånger om. 
 Vi lägger till $ABC$ en gång till och kommer fram till svaret
