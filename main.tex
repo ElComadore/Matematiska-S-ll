@@ -45,7 +45,8 @@ sorting=ynt
 
 % Ska laddas in sist, i denna ordning.
 \usepackage{csquotes}
-\usepackage{hyperref} 
+\usepackage{hyperref}
+
 
 
 % Här nedan kommer kommandon där du skall göra val
@@ -367,6 +368,7 @@ Göteborg, Sverige 2021 }
 %\bibitem[UR]{rapp} Utformning av rapporter och kandidatarbetens skriftliga presentation för Civilingenjörsprogrammen vid Chalmers tekniska högskola. 2008. Göteborg: Chalmers Tekniska Högskola
 
 \newpage
+\emergencystretch=1em
 \printbibliography
 
 %\end{thebibliography}
@@ -377,7 +379,7 @@ Göteborg, Sverige 2021 }
 \section{Ordonotation} \label{APDX:Ordo}
 \input{erik/ordo} 
 \section{Partiell summation}
-\section{Bevis av (\ref{Thm.1.4.4}) och \(\sum_{p \leq z} \frac{1}{p} = \log \log z + O(1)\)}
+\section{Bevis av (\ref{Thm.1.4.4}) och \texorpdfstring{\(\sum_{p \leq z} \frac{1}{p} = \log \log z + O(1)\)}{Summan av primtalsreciproker}}
 \section{Ett lemma angående multiplikativa funktioner}
 \input{coen/lemmaMult}
 \section{Kedjebråk}
