@@ -10,9 +10,9 @@ För att vidare understryka feltermens slutliga effekt, redovisar vi ett sista e
 Låt oss nu återgå till en av sållteorins musor som är att uppskatta storleken på \(\pi(x)\).
 Då har vi att \(\A = \{n \leq x: n \in \mathbb{N}\}\), \(\A_d = \{n \leq x: n\equiv 0 \pmod d\}\), \(\#\A_d = \frac{1}{d}X + O(1)\), och \(\P\) är mängden av alla primtal. 
 Om vi börjar med att uppskatta huvudtermen som ges av både Eratosthenes generaliserade såll och Bruns såll, då implicerar ovanstående att \(\omega(p) = 1\) för alla \textit{p}.
-Vi uppskattar huvudtermen på en liknade sätt som i \eqref{era.app.mainAppr} och får att \(xW(z) \ll x/\log z\) för både sållen.
+Vi uppskattar huvudtermen på en liknade sätt som i \eqref{era.app.mainAppr} och får att \(xW(z) \ll x/\log z\) för båda sållen.
 Om vi nu använder Selbergs såll istället med \(f(d) = d\), \(f_1(d) = \phi(d)\), och \(\overline{P}(z) = 1\) (eftersom vi använder alla primtal mindre än \textit{z}), då får vi, genom en uppskattning av \(V(z)\) som liknar \eqref{sel.apl.vAppr}, att \(x/V(z) \leq x/(\log z + O(1)) \leq x/\log z\).
-Lägg nu märke till att både huvudtermer är av samma storleksordning.
+Lägg nu märke till att båda huvudtermerna är av samma storleksordning.
 Dock, som nämndes tidigare, kan Selbergs såll åstadskomma en övre gräns vilken liknar primtalssatsen medan både Eratosthenes och Bruns såll kommer till korta, med feltermen som huvudanledning för det.
 
 %How then do we go about minimising these errors? Naturally, it is not that the error terms arise from nowehre; they are a direct consequence of how the vairous mehtods attempt to manage the Möbisu function. Taking Eratosthenes generla sieve as a baseline of sorts for the handling of the Möbius function, we have presented two examples of methods to manage this function. In Brun's sieve, instead of working with sum mob directly, a function g is introduced such that f = sum mob g, which in combination with use of Möbius inversion and the clever subdivision of the sets comprising S(A,P,Z), we are able to come to the form in section 5, and subsequently form approximations of those sets cardinality. In Selberg's sieve on the otherhand, most of that work is sidestepped entirely, with the introduction of the approximation as outlined in chapter 6. Both of these allowedd the reduction in the size of the error term, with varying degrees of success, which is directly due to their handling of the Möbius function. This does, however, come at a cost; we lose the dersireable asymptotic nature of Eratosthenes general sieve. Yet it is hard to say how valuable that is given the fact that the main term needs approximation in order to yield results regardless. 
@@ -21,9 +21,9 @@ Det är också värt att påpeka att feltermerna inte dyker upp från ingenstans
 Om vi tar Eratosthenes allmänna såll som en slags baslinje för hur ett såll hanterar Möbiusfunktionen, där \(\mu(d)\) i feltermen uppskattas direkt med 1, då har vi sett två olika ytterligare sätt att minimera fel i uppskattningen som görs. 
 I Bruns såll så omvandlas Möbiusfunktionen direkt, genom en tillämpning av Möbius inverteringsformel på funktionen \(f(n) = \sum_{d\divides n}\mu(d)g(d)\) med \(f(1) = 1\). 
 Å andra sidan, i Selbergs såll så approximeras en summa av Möbiusfunktioner direkt, vilket förklaras i detalj i avsnitt \ref{Selberg}.
-Både dessa sätt tillåter en minimering av feltermens storlek, med varierande framgång, vilket är direkt kopplade till deras hantering av Möbiusfunktionen.
+Båda dessa sätt tillåter en minimering av feltermens storlek, med varierande framgång, vilket är direkt kopplade till deras hantering av Möbiusfunktionen.
 Dock så måste vi offra det oftast eftertraktade asymptotiska beteendet vi får i Eratosthenes såll då vi gör dessa uppskattningar i de andra sållen.
-Att vi tappar asymptotiska beteendet med de uppskattningar vi gör är dock av ingen stor konsekvens eftersom feltermen i Eratosthenes generaliserade såll är så stort att föreningen av huvud- och feltermen leder till sämre uppskattningar än vad kan fås med de andra sållen.
+Att vi tappar asymptotiska beteendet med de uppskattningar vi gör är dock av ingen stor konsekvens eftersom feltermen i Eratosthenes generaliserade såll är så stor att föreningen av huvud- och feltermen leder till sämre uppskattningar än vad som kan fås med de andra sållen.
 
 
 %The work with error terms exemplifies one of the major internal issues sieve theory has had to tackle throughout its development. Other areas include the sieveing of sets by large numbers of residue classes. These large sieves were first introduced by Linnik around the same time as Seelberg's sieve was developed and uses almost entirely different approaches than the small sieves, relying on more analytical tools. 
