@@ -1,11 +1,35 @@
-Detta lemma är hämtad från \cite[Sats 1.2.3]{cojocarumurty}
+Formuleringen av satsen är hämtad från \cite[Sats 1.2.3]{cojocarumurty} där beviset utelämnas.
 \begin{theorem}\label{APDX:mobDual}
-Låt \textit{f} vara en multiplikativ funktion med \(d_1,d_2\) positiva, kvadratfria heltal. Då
+Låt \(\mathcal{D}\) vara en sluten delare mängd av naturliga tal (det vill säga, om \(d \in \mathcal{D}\) och \(d'\divides d\), då är \(d'\in \mathcal{D}\). Låt \textit{f} och \textit{g} vara två komplexvärda funktioner på de naturliga talen. Om
 \begin{equation}
-    f([d_1,d_2])\cdot f((d_1, d_2)) = f(d_1)f(d_2)\nonumber
+    f(n)=\sum_{\substack{n\divides d\\d\in \mathcal{D}}}g)(d)\nonumber
 \end{equation}
+då
+\begin{equation}
+    g(n) = \sum_{\substack{n\divides d\\d\in \mathcal{D}}}\mu\bigg(\frac{d}{n}\bigg)f(d)\nonumber
+\end{equation}
+och motsatsen också gälller (om man antar att alla serier är absolutkonvergenta).
 \end{theorem}
 \begin{proof}
-Yadda yadda yadda.
-\todo{Skriva beviset för detta}
+Vi bevisar bara framåt riktningen, eftersom omvändningen  bevisas  på likadant sätt. Låt
+\begin{equation}
+    f(n)=\sum_{\substack{n\divides d\\d\in \mathcal{D}}}g(d)\nonumber
+\end{equation}
+då är
+\begin{equation}
+    \sum_{\substack{n\divides d\\d\in \mathcal{D}}}\mu\bigg(\frac{d}{n}\bigg)f(d) = \sum_{\substack{n\divides d\\d\in \mathcal{D}}}\mu\bigg(\frac{d}{n}\bigg)\sum_{\substack{d\divides d'\\d'\in \mathcal{D}}}g(d').\nonumber
+\end{equation}
+Vi nu använder att
+\begin{equation}
+    d' = \frac{d'}{d}d = \frac{d'}{d}\frac{d}{n}n = kln\nonumber
+\end{equation}
+med \(k = d'/d\) och \(l = d/n\) för att skriva om föregående summa på följande sätt.
+\begin{equation}
+    \sum_{\substack{nl = d\\d\in \mathcal{D}}}\mu(l)\sum_{\substack{dk= d'\\d'\in \mathcal{D}}}g(d') = \sum_{\substack{n \divides d'\\d'\in \mathcal{D}}}g(d')\sum_{k\divides \frac{d'}{n}}\mu(k).\label{APDX:dualMob.proof.div}
+\end{equation}
+Enligt den första egenskapen som redovisas i \ref{Mobius}, så är inre summan i \eqref{APDX:dualMob.proof.div} antingen 1 eller 0 beroende på om \(d'/n = 1\) eller inte. Detta medför att
+\begin{equation}
+    \eqref{APDX:dualMob.proof.div} = g(n)\nonumber
+\end{equation}
+eftersom \(n \in \mathcal{D}\) på grund av att \(n \divides d'\).
 \end{proof}
