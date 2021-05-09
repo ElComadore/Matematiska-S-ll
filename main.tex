@@ -1,8 +1,8 @@
 \documentclass[a4paper]{article}
 \usepackage{graphicx}
 \usepackage{amsmath, amssymb}
-\usepackage{hyperref}
-\usepackage{csquotes}
+%\usepackage{hyperref}  % Flyttad till lägre ned
+%\usepackage{csquotes}  % Flyttad till lägre ned
 \usepackage{amsthm}
 \usepackage{amssymb}
 \usepackage{commath}
@@ -44,6 +44,10 @@ sorting=ynt
 	\parbox[b][\paperheight]{\paperwidth}{
 	\centering
 	\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{#3}}}}
+
+% Ska laddas in sist, i denna ordning.
+\usepackage{csquotes}
+\usepackage{hyperref} 
 
 
 % Här nedan kommer kommandon där du skall göra val
