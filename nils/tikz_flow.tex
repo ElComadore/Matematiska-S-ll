@@ -1,12 +1,15 @@
 \usetikzlibrary{shapes.geometric, arrows, positioning}
 
-\def\H{0.8cm}     % Min height of objects
-\def\W{1.7cm}     % Min width of objects
-\def\distV{1.3cm} % Vertical distance between objects
-\def\distH{0.7cm} % Horizontal distance between objects
+\def\H{0.9cm}       % Min height of objects
+\def\W{1.7cm}       % Min width of objects
+\def\Wsplit{2.15cm} % Min width for split box (ugly solution)
+\def\distV{1.3cm}   % Vertical distance between objects
+\def\distH{0.7cm}   % Horizontal distance between objects
+
 
 % Style
-\tikzstyle{every node} = [font=\tiny]
+%\tikzstyle{every node} = [font=\tiny]
+\tikzstyle{every node} = [font=\scriptsize]
 \tikzstyle{every path} = [thick]
 \tikzstyle{arrow} = [thick,->,>=stealth]
 
@@ -15,6 +18,7 @@
 \tikzstyle{process}   = [rectangle, minimum width=\W, minimum height=\H, text centered, draw=black]
 \tikzstyle{decision}  = [diamond,   minimum width=\H, minimum height=\H, text centered, draw=black]
 
+
 \begin{tikzpicture}
 % Objects
     % Start
@@ -22,8 +26,9 @@
     % First loop
     \node (sub)   [process,  right=\distH of start] {\textsc{SubSegSiev}};
     \node (sim2)  [process,  above=\distV of sub]   {\textsc{SimpleSegSiev}};
-    \node (sim1)  [process,  right=\distH of sim2]  {\textsc{SimpleSiev}};
-    \node (sim0)  [process,  below=-1pt   of sim1]  {\textsc{SimpleSegSiev}};
+
+    \node (sim1)  [process,  right=\distH of sim2, minimum width=\Wsplit]  {\textsc{SimpleSiev}};
+    \node (sim0)  [process,  below=-\pgflinewidth of sim1, minimum width=\Wsplit]  {\textsc{SimpleSegSiev}};
     \node (A)     [decision, below=\distV of sim1]  {\textbf{A}};
     % Middle
     \node (B0)    [decision, right=\distH of A]     {\textbf{B}};
@@ -60,4 +65,4 @@
     \node[above=3pt of B1, anchor=east]  {NEJ};
     \node[right=4pt of B1, anchor=south] {JA};
 \end{tikzpicture}
-\vspace{0.2cm}
+%\vspace{0.2cm}
