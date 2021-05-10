@@ -6,7 +6,7 @@
 
 Första steget för att utveckla Eratosthenes såll är att omformulera sållexemplet från introduktionen i de termer vi definierade i föregående avsnittet. I exemplet börjar vi med en lista av alla positiva heltal upp till en övre gräns, säg $x$, vilken vi kan skriva som $\A = \{n \in \mathbb{N} : n \leq x\}$. Låt alla primtal upp till $z$ redan vara inringade och mängderna vi kryssar över vara \(\A_p = \{a \in \A :  a \equiv 0 \pmod{p}\}\). Om vi väljer $z = \sqrt{x}$ så blir, med hjälp av (\ref{inclusionexclusion}),
 \begin{align*}
-    \pi(x) - \pi(\sqrt{x}) + 1 = \sum_{d \divides \P(\sqrt{x})} \mu(d) \left\lfloor \frac{x}{d} \right\rfloor  
+    \pi(x) - \pi(\sqrt{x}) + 1 = \sum_{d \divides P(\sqrt{x})} \mu(d) \left\lfloor \frac{x}{d} \right\rfloor  
 \end{align*}
 där \(1\):an på vänstersidan tar i hänsyn att \(1 \in \A\) inte sållas bort på högersidan och \(\pi(\sqrt{x})\) är de inringade primtalen. Detta var Legendres idé när han omformulerade Eratosthenes såll till att räkna primtal \cite{opera}. 
 
@@ -22,13 +22,13 @@ Vi ser således att ett naturligt nästa steg är att generalisera Eratosthenes-
 % "Effektivt" kräver en förklaring, i kontrast mot exaktheten av Eratosthenes såll?
 Vi vill alltså härleda ett generellt verktyg från idéerna från föregående avsnittet vilket vi kommer göra genom att följa \cite[Kap. 5.4]{cojocarumurty}. Om vi låter $\A_d$, $\P$, $P(z)$ och $\omega(d)$ vara definierade som i avsnitt \ref{sallproblemet} så kan vi, med utgångspunkt i Eratosthenes och Legendres grundtankar, skapa ett mer flexibelt och effektivt såll. Den stora skillnaden mot vad vi gjorde i föregående avsnitt är att vi här tillåter fler restklasser sållas bort per primtal $p$. 
 
-Utöver vad som står i avsnitt \ref{sallproblemet} kommer vi göra antagandena att \(\card{A_d} = 0\) för alla \(d\) större än något positivt $y$, att \(\abs{R_d} = O(\omega(d))\) samt att (\ref{dimension}) håller. Vi kan lätt övertyga oss om att dessa är rimliga antaganden i det klassiska Eratosthenes såll-fallet. Eftersom vi utgår från en ändlig mängd $\A$ så håller det första antagandet då \(\card{\A_p} = 0\) för \(p > X\) innebär att, väldigt grovt, \(y \leq P_{X}\). Att det andra antagandet gäller såg vi i föregående avsnitt ty \(\{x/d\} \leq \omega(p) = 1\). Sist så ser vi att (\ref{dimension}) håller genom att sätta in \(\omega(p) = 1\) och utnyttja att \begin{align} \label{Thm.1.4.4}
+Utöver vad som står i avsnitt \ref{sallproblemet} kommer vi göra antagandena att \(\card{\A_d} = 0\) för alla \(d\) större än något positivt $y$, att \(\abs{R_d} = O(\omega(d))\) samt att (\ref{dimension}) håller. Vi kan lätt övertyga oss om att dessa är rimliga antaganden i det klassiska Eratosthenes såll-fallet. Eftersom vi utgår från en ändlig mängd $\A$ så håller det första antagandet då \(\card{\A_p} = 0\) för \(p > X\) innebär att, väldigt grovt, \(y \leq P_{X}\). Att det andra antagandet gäller såg vi i föregående avsnitt ty \(\{x/d\} \leq \omega(p) = 1\). Sist så ser vi att (\ref{dimension}) håller genom att sätta in \(\omega(p) = 1\) och utnyttja att \begin{align} \label{Thm.1.4.4}
     \sum_{p\leq n}\frac{\log p}{p} = \log n + O(1).
 \end{align}
 
-Vi börjar återigen med Legendres grundidé, inklusion-exklusionsprincipen, men infogar det mer generella uttrycket för $\card{A_d}$ i formeln,
+Vi börjar återigen med Legendres grundidé, inklusion-exklusionsprincipen, men infogar det mer generella uttrycket för $\card{\A_d}$ i formeln,
 \begin{align*}
-    \S{A}{P}{z} = \sum_{d \divides P(z)} \mu(d) \card{A_d} = X \sum_{\substack{d \divides P(z) \\ d \leq y}} \frac{\omega(d)}{d} \mu(d) + \sum_{\substack{d \divides P(z)  \\ d \leq y}} \mu(d) R_d 
+    \S{A}{P}{z} = \sum_{d \divides P(z)} \mu(d) \card{\A_d} = X \sum_{\substack{d \divides P(z) \\ d \leq y}} \frac{\omega(d)}{d} \mu(d) + \sum_{\substack{d \divides P(z)  \\ d \leq y}} \mu(d) R_d 
 \end{align*}
 där trunkeringen av summan kommer av antagandet \(\card{\A_d} = 0, \forall d > y\). 
 
@@ -69,7 +69,7 @@ Med notationen från avsnitt \ref{sallproblemet} och följande tre antaganden
 \begin{enumerate}
     \item \(\card{\A_d} = 0, \forall d > y\) för något \(y \in \mathbb{R}_+\)
     \item \(\abs{R_d} = O(\omega(d))\)
-    \item \(\sum_{p \divides P(z)} \frac{\omega(p) \log(p)}{p} \leq \kappa \log(z) + O(1)\).
+    \item \(\sum_{p \divides P(z)} \frac{\omega(p) \log(p)}{p} \leq \kappa \log(z) + O(1)\)
 \end{enumerate}
 så gäller att
 \begin{align*}
