@@ -32,7 +32,7 @@
     \node (sim0)  [process,  below=-\pgflinewidth of sim1, minimum width=\Wsplit]  {\textsc{SimpleSegSiev}};
     \node (A)     [decision, below=\distV of sim1]  {\textbf{A}};
     % Middle
-    \node (B0)    [decision, right=\distH of A]     {\textbf{B}};
+    \node (B0)    [decision, right=\distH + 0.5cm of A]     {\textbf{B}};
     % Second loop
     \node (new)   [process,  right=\distH of B0]    {\textsc{NewSegSiev}};
     \node (B1)    [decision, right=\distH of new]   {\textbf{B'}};
