@@ -1,6 +1,6 @@
 % Skrivet av Erik
 
-Den här texten lånar större delen av sin notation från boken \textit{An Introduction to Sieve Methods and their Applications} av Alina Carmen Cojocaru och M. Ram Murty \cite{cojocarumurty}, exempelvis skriver vi \(p, q, \ell\) när vi menar primtal, \(n, d, k\) för naturliga tal och \(x, y, z\) för positivt reella tal. Den största gemensamma delaren betecknas här \(\gcd{d, k}\), funktionen \(\nu(d)\) beskriver antalet distinkta primtalsdelare av \(d\) och \(\pi(z)\) är antalet primtal mindre än eller lika med \(z\). Nedanstående avsnitt ämnar till att etablera mer notation och tekniker som är vanligt förekommande i sållteori med utgångspunkt i \cite{cojocarumurty}.
+Den här texten lånar större delen av sin notation från boken \textit{An Introduction to Sieve Methods and their Applications} av Alina Carmen Cojocaru och M. Ram Murty \cite{cojocarumurty}, exempelvis skriver vi \(p, q\) när vi menar primtal, \(n, d, k\) för naturliga tal och \(x, y, z\) för positivt reella tal. Den största gemensamma delaren betecknas här \(\gcd{d, k}\), funktionen \(\nu(d)\) beskriver antalet distinkta primtalsdelare av \(d\) och \(\pi(z)\) är antalet primtal mindre än eller lika med \(z\). Nedanstående avsnitt ämnar till att etablera mer notation och tekniker som är vanligt förekommande i sållteori med utgångspunkt i \cite{cojocarumurty}.
 
 \subsection{Multiplikativa funktioner} \label{mult}
 En särskilt trevlig delmängd av alla funktioner i talteoretiska sammanhang är de multiplikativa funktionerna. Vi säger att en funktion $f$ är \textit{multiplikativ} om $f(1) = 1$ och \(f(mn) = f(m)f(n)\) då $\gcd{m,n} = 1$. Om detta håller för alla $m, n$ så kallar vi $f$ för \textit{fullständigt multiplikativ}. 
@@ -9,7 +9,7 @@ Multiplikativa funktioner har fördelen att en viss typ av summor kan omskrivas 
 \begin{align*}
     \sum_{n = 1}^\infty f(n) = \prod_p \sum_{i=0}^\infty f(p^i)
 \end{align*}
-så länge den första summan konvergerar. 
+så länge den första summan absolutkonvergerar. 
 
 \subsection{Möbiusfunktionen} \label{Mobius}
 En ytterst väsentlig multiplikativ funktion i sållteori är Möbiusfunktionen,
@@ -26,7 +26,7 @@ som vi, bland annat, kommer se förenklar inklusion-exklusionsprincipen i nästa
     \sum_{d \divides n} \mu(d) =
     \begin{cases}
         1, & \text{om}\ n = 1 \\
-        0, & \text{om}\ n > 0
+        0, & \text{om}\ n > 1
     \end{cases}
 \end{equation*}
 och Möbius inverteringsformel som säger
