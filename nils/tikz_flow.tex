@@ -25,7 +25,7 @@
 \begin{tikzpicture}
 % Objects
     % Start
-    \node (start) [startstop]                       {\textsc{start}};
+    \node (start) [startstop]                       {\textsc{START}};
     % First loop
     \node (sub)   [process,  right=\distH of start] {\textsc{SubSegSiev}};
     \node (sim2)  [process,  above=\distV of sub]   {\textsc{SimpleSegSiev}};
@@ -40,7 +40,7 @@
     \node (B1)    [decision, right=\distH of new]   {\textbf{B'}};
     \node (dio)   [process,  above=\distV of B1]    {\textsc{DiophAppr}};
     % Stop
-    \node (stop)  [startstop,right=\distH of B1]    {\textsc{stop}};
+    \node (stop)  [startstop,right=\distH of B1]    {\textsc{STOP}};
 
 % Arrows
     % Start to first loop

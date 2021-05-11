@@ -1,5 +1,5 @@
 \cite[Sats 1.4.3]{cojocarumurty}
-\begin{theorem}
+\begin{theorem} \label{APDX:THM1.4.3}
     $\sum_{p \leq n} \frac{\log p}{p} = \log n + O(1) $.
 \end{theorem}
 \begin{proof}
@@ -19,18 +19,46 @@ vari en restterm kan urskiljas och uppskattas till
     = n \sum_{p \leq n} \frac{1}{p^2} \cdot \frac{\log p}{1 - 1/p} \ll n.
 \end{align*} % Det här kan förbättras
 Den första observationen är alltså att
-\begin{align}
-    \log n! \leq n \sum_{p \leq n} \frac{\log p}{p} + O(n).
+\begin{align} \label{APDX:obser1Thm1.4.3}
+    \log n! = n \sum_{p \leq n} \frac{\log p}{p} + O(n).
 \end{align}
 
 Den andra observationen ser vi genom att utföra en partiell summation,
 \begin{align*}
-    \log n! = \log \left(\prod_{k \leq n} k\right) = \sum_{k \leq n} 1 \cdot k = 
+    \log n! = \log \Big(\prod_{k \leq n} k\Big) = \sum_{k \leq n} 1 \cdot k = 
     \lfloor n \rfloor \log n - \int_1^n \frac{\lfloor t \rfloor}{t} \text{d} t 
 \end{align*}
 och att \(\lfloor t \rfloor = t + O(1)\) ger att detta är lika med
-\begin{align}
+\begin{align} \label{APDX:obser2Thm1.4.3}
     (n + O(1)) \log n - \int_1^n \frac{t}{t} \text{d} t + O(1) \int_1^n \frac{1}{t} \text{d} t  = n \log n - n + O(\log n).
 \end{align}
+
+Sätter vi samman observationerna, (\ref{APDX:obser1Thm1.4.3}) och (\ref{APDX:obser2Thm1.4.3}), så får vi 
+\begin{align*}
+    n \sum_{p \leq n} \frac{\log p}{p} + O(n) &= n \log n - n + O(\log n) \\
+    n \sum_{p \leq n} \frac{\log p}{p} &= n \log n + O(n)
+\end{align*}
+vilket efter division med $n$ ger det önskade resultatet.
+\end{proof}
+
+\begin{theorem} \label{APDX:THM1.4.4}
+    \(\sum_{p \leq n} \frac{1}{p} = \log n + O(1)\) 
+\end{theorem}
+\begin{proof}
+Låt
+\begin{align*}
+    c_k := 
+    \begin{cases}
+    \log p \quad \text{för } k = p \\
+    0 \quad \text{annars}
+    \end{cases}
+\end{align*}
+då får vi att \(S(x) = \sum_{k \leq x} c_k\) är lika med summan i sats \ref{APDX:THM1.4.3}. Om vi använder föregående sats efter en partiell summation så ser vi att
+\begin{align*}
+    \sum_{p \leq n} \frac{1}{p} &= \frac{S(n)}{\log n} + \int_2^n \frac{S(t)}{t(\log t)^2} \text{d}t 
+    = \frac{\log n + O(1)}{\log n} + \int_2^n \frac{\log t}{t(\log t)^2} \text{d}t + \int_2^n \frac{O(1)}{t(\log t)^2} \text{d}t \\
+    &= O(1) + \left[\log \log t \right]_2^n + O(1) \left[- \frac{1}{\log t} \right]_2^n
+    = \log \log n  + O(1).
+\end{align*}
 
 \end{proof}
