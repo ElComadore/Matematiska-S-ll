@@ -1,90 +1,99 @@
 Ett annat perspektiv på sållmetoder gavs av yttligare en norsk matematiker, Atle Selberg (1917-2007), under 1940 talet. 
 Hans metod var av en kombinatorisk stil som liknade de tidigare.Dock så använde sig av en ny typ av vikt och en uppskattning av en summa av Möbiusfunktioner för att uppskatta kardinaliteten av \(\A\).
-Denna metod kallas för Selbergs såll och är ett typ av viktad såll. I detta avsnitt så ges en beskrivning av sållets uppbyggnad följt av en tillämpning av sållet för att uppskatta antalet primtal i en aritmetisk talföljd.
+Denna metod kallas för Selbergs såll och är ett exempel på ett viktat såll. I detta avsnitt så ges en beskrivning av sållets uppbyggnad följt av en tillämpning av sållet för att uppskatta antalet primtal i en aritmetisk talföljd.
 
 \subsection{Beskrivning av sållet}
-Selbergs nya vikter, vilka motsvarar \(\delta_d\) i \eqref{deltaX}, bestod av 1 delat med en multiplikativ funktion 
+Selbergs nya vikter, vilka motsvarar \(\delta_d\) i \eqref{deltaX}, består av
 \begin{equation}
-    f(n) = \sum_{d\divides n}f_1(d)\nonumber
+    \frac{1}{f(n)},\quad f(n) = \sum_{d\divides n}f_1(d)\nonumber
 \end{equation}
-där \(f_1(d)\) är  multiplikativ också och är entydigt bestämd med hjälp av Möbius inverteringsformel. Det krävs också att \(f(p) > 1\) för alla \(p\in\P\).
+där \(f(n)\) och \(f_1(d)\) är multiplikativa funktioner och \(f_1(d)\) är entydigt bestämd med hjälp av Möbius inverteringsformel. Det krävs också att \(f(p) > 1\) för alla \(p\in\P\).
 Till exempel, om vi vill sålla bort alla tal i mängden \(\A_d = \{n\leq x:n \equiv 0 \pmod{d}\}\), där \(x>0\), då blir \(\#\A_d = x/d + O(1)\) och dessutom \(f(d) = d\).
-Föregående exempel är relativt enkelt dock i mer komplexa fall kan en sådan mer allmän vikt ge sållteorin möjligheten att uppskatta nya typer av mängder som tidigare ej varit möjligt att uttrycka med endast restklasser modulo primtal. 
+Föregående exempel är relativt enkelt dock i mer komplexa fall kan en sådan mer allmän vikt ge sållteorin möjligheten att uppskatta nya typer av mängder som tidigare hade inte varit möjligt att uttrycka med endast restklasser modulo primtal. 
 
-Enligt \cite{cojocarumurty}, bestod summans uppskattning huvudsakligen av att för en given reell talföljd, \((\lambda_d)\), med \(\lambda_1 = 1\), har vi att 
+Enligt \cite{cojocarumurty}, bestod grundläggande uppskattningen av Selbergs såll huvudsakligen av att för en given reell talföljd, \((\lambda_d)\), med \(\lambda_1 = 1\), har vi att 
 \begin{equation}
     \sum_{d\divides n}\mu(d) \leq \bigg(\sum_{d\divides n}\lambda_d\bigg)^2.\nonumber
 \end{equation}
 För att förstå varför denna uppskattning av Möbiusfunktionens summa fungerar, kom ihåg den första egenskapen som redovisas i \ref{Mobius}. 
-Summan är antingen noll eller ett beroende på om \textit{n} är lika med ett eller inte, och uppskattningen är minimalt noll då \textit{n} är skild ifrån ett, eftersom det är ett reellt tal i kvadrat.
-Slutmålet med sållets härledning blir att konstruera talföljden så att uppskattningen minimeras, vilket kommer göras senare.
+Summan av Möbiusfunktioner är antingen ett eller noll beroende på om \textit{n} är lika med ett eller inte.
+Uppskattningen är exakt ett då \textit{n} är 1 eller minimalt noll då \textit{n} är skild ifrån ett, eftersom det är ett reellt tal i kvadrat.
+Slutmålet med sållets härledning blir att konstruera talföljden \((\lambda_d)\) så att uppskattningen minimeras, vilket kommer göras senare.
 Med hjälp av talföljden \((\lambda_d)\) kan vi nu uppskatta \(\S{A}{P}{z}\) eftersom
 \begin{equation}
 \S{A}{P}{z} = \sum_{\substack{a\in \mathcal{A}\\a\not\in\mathcal{A}_p,\forall p\divides P(z)}} 1 = \sum_{d\divides P(z)} \mu(d) \sum_{a\in\mathcal{A}_d}1 = \sum_{a\in \A} \Bigg(\sum_{\substack{d\divides P(z)\\a\in \A_d}}\mu(d)\Bigg)\leq \sum_{a\in \A}\bigg(\sum_{\substack{d\divides P(z)\\a\in \A_d}}\lambda_d\bigg)^2.\label{sel.sieve.ineq1}
 \end{equation}
-Genom att skriva om kvadraten av summan som en summa över två olika \textit{d} kan vi omvandla \eqref{sel.sieve.ineq1} till
+Låt oss nu antar att \(\lambda_d = 0\) för alla \(d > z\). Med antagandet kan vi nu skriva om kvadraten av summan som en summa över två olika \textit{d} och omvandla \eqref{sel.sieve.ineq1} till
 \begin{equation}
-    \S{A}{P}{z} \leq \sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}\lambda_{d_1}\lambda_{d_2}\#\A_{[d_1, d_2]}\nonumber
+    \S{A}{P}{z} \leq \sum_{a\in \A}\Bigg(\sum_{\substack{d_1\divides P(z)\\a\in \A_{d_1}}}\lambda_{d_1}\sum_{\substack{d_2\divides P(z)\\a\in \A_{d_2}}}\lambda_{d_2}\Bigg)  =  \sum_{a\in \A}\sum_{\substack{d_1,d_2\divides P(z)\\a\in \A_{[d_1,d_2]}}}\lambda_{d_1}\lambda_{d_2} = \sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}\lambda_{d_1}\lambda_{d_2}\#\A_{[d_1, d_2]}\nonumber
 \end{equation}
 där \([a, b]\) betecknar den minsta gemensamma multipeln av \textit{a} och \textit{b}. 
+Vi kombinerar summorna av \(\lambda_{d_1}\) och \(\lambda_{d_2}\) ovan genom att inse om \(a\in\A_{d_1}\) och \(a\in\A_{d_2}\) då måste den vara ett element i \(\A_{[d_1,d_2]}\) på grund av definitionen av \(\A\).
 Med infogande av \(\delta_d = 1/f(d)\) i \eqref{deltaX} får vi uppskattningen som är grundläggande för Selbergs såll;
 \begin{equation}
     \S{A}{P}{z} \leq X\sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}\frac{\lambda_{d_1}\lambda_{d_2}}{f([d_1,d_2])} + O\Bigg(\sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}|\lambda_{d_1}||\lambda_{d_2}||R_{[d_1, d_2]}|\Bigg)\label{sel.sieve.main}.
 \end{equation}
 
-För att få en form på \eqref{sel.sieve.main} vilken vi kan använda som ett såll kommer vi nu bestämma talföljden \((\lambda_d)\). 
+För att få en form på \eqref{sel.sieve.main} vilken vi kan använda för att uppskatt mängders storlek kommer vi nu bestämma talföljden \((\lambda_d)\). 
 Om vi följer hur resonemanget redovisas i \cite{cojocarumurty}, så bestämmer vi \(\lambda_d\) genom att först betrakta bara huvudtermem. 
 %Genom att använda multiplikativiteten av \(f(d)\) går det att skriva om huvudtermen till en kvadratisk form och sedan hitta dess minimum. 
 %Vid detta minimumvärde blir \(|\lambda_d|\leq 1\) vilket då också ger oss en uppskattning av feltermen. Med alla dessa omskrivningar härleder vi följande sats.
- Med det som utgångspunkt, börjar vi med att använda oss av ett lemma, se Appendix \ref{APDX:multFunk}, och definition av \textit{f}, för att skriva om huvudtermen på följande sätt:
+ Med det som utgångspunkt, börjar vi med att använda oss av ett lemma som låter oss skriva om multiplikativa funktioner av minsta gemensamma multipler, se Appendix \ref{APDX:multFunk}.
+Lemmat tillsammans med definitionen av \textit{f} tillåter följande omskrivning:
 \begin{equation}
     \sum_{\substack{d_1,d_2\leq z\\d_1,d_2|P(z)}}\frac{\lambda_{d_1}\lambda_{d_2}}{f([d_1,d_2])} = \sum_{\substack{d_1,d_2\leq z\\d_1,d_2|P(z)}}\frac{\lambda_{d_1}\lambda_{d_2}}{f(d_1)f(d_2)}f((d_1,d_2)) = \sum_{\substack{d_1,d_2\leq z\\d_1,d_2|P(z)}}\frac{\lambda_{d_1}\lambda_{d_2}}{f(d_1)f(d_2)}\sum_{\delta|(d_1,d_2)}f_1(\delta).\label{sel.sieve.exchange}
 \end{equation}
-
-Nu byter vi summeringsordningen i \eqref{sel.sieve.exchange}, genom att inse om \(\delta|(d_1,d_2)\) då är \(\delta \leq z\) och \(\delta | P(z)\).
-Med detta, har vi också att inre summans \(d_1\) och \(d_2\) måste vara delbart med \(\delta\). Därför är
+Nu byter vi summationsordningen i \eqref{sel.sieve.exchange}, genom att inse att om \(\delta|(d_1,d_2)\) då är \(\delta \leq z\) och \(\delta | P(z)\).
+Med detta, har vi också att inre summans \(d_1\) och \(d_2\) måste vara delbart med \(\delta\). Därför kan vi skriva om \eqref{sel.sieve.exchange} till
 \begin{equation}
-    \eqref{sel.sieve.exchange} = \sum_{\substack{\delta \leq z\\ \delta | P(z)}}f_1(\delta) \sum_{\substack{d_1,d_2\leq z\\d_1,d_2|P(z)\\\delta|(d_1,d_2)}}\frac{\lambda_{d_1}\lambda_{d_2}}{f(d_1)f(d_2)} = \sum_{\substack{\delta \leq z\\ \delta | P(z)}}f_1(\delta)\Bigg(\sum_{\substack{d\leq z\\d|P(z)\\\delta|d}}\frac{\lambda_d}{f(d)}\Bigg)^2.\label{sel.sieve.square}
+    \sum_{\substack{\delta \leq z\\ \delta | P(z)}}f_1(\delta) \sum_{\substack{d_1,d_2\leq z\\d_1,d_2|P(z)\\\delta|(d_1,d_2)}}\frac{\lambda_{d_1}\lambda_{d_2}}{f(d_1)f(d_2)} = \sum_{\substack{\delta \leq z\\ \delta | P(z)}}f_1(\delta)\Bigg(\sum_{\substack{d\leq z\\d|P(z)\\\delta|d}}\frac{\lambda_d}{f(d)}\Bigg)^2.\nonumber
 \end{equation}
 Sätter vi 
 \begin{equation}
-u_\delta = \sum_{\substack{d\leq z \\ d|P(z) \\ \delta | d}} \frac{\lambda_d}{f(d)} \implies \eqref{sel.sieve.square} = \sum_{\substack{\delta \leq z\\ \delta | P(z)}}f_1(\delta) u_\delta^2\label{sel.sieve.uuu}.
+u_\delta = \sum_{\substack{d\leq z \\ d|P(z) \\ \delta | d}} \frac{\lambda_d}{f(d)} \implies \sum_{\substack{\delta \leq z\\ \delta | P(z)}}f_1(\delta)\Bigg(\sum_{\substack{d\leq z\\d|P(z)\\\delta|d}}\frac{\lambda_d}{f(d)}\Bigg)^2 = \sum_{\substack{\delta \leq z\\ \delta | P(z)}}f_1(\delta) u_\delta^2\label{sel.sieve.uuu}.
 \end{equation}
-Vi får även en variant på Möbius inverteringsformel, se Appendix \ref{APDX:mobDual}, för \(u_\delta\), vilket ger att
+Vi kan nu tillämpa en variant på Möbius inverteringsformel, se Appendix \ref{APDX:mobDual}, på \(u_\delta\), vilket ger att
 \begin{equation}
-    \frac{\lambda_\delta}{f(\delta)} = \sum_{\substack{d\leq z\\d|P(z)\\\delta|d}} \mu(d/\delta)u_d \implies 1 = \frac{\lambda_1}{f(1)} = \sum_{\substack{d\leq z\\ d|P(z)}}\mu(d)u_d.\label{sel.sieve.one}
+    \frac{\lambda_\delta}{f(\delta)} = \sum_{\substack{d\leq z\\d|P(z)\\\delta|d}} \mu(d/\delta)u_d \label{sel.sieve.one}
 \end{equation}
 
-Eftersom vi har diagonaliserat huvudtermen i \eqref{sel.sieve.uuu} kan vi enkelt bestämma ett värde på \(u_\delta\) sådant att summan antar sitt minimumvärde genom att använda kvadratkomplettering. 
-Vi gör detta med hjälp av \eqref{sel.sieve.one} och införandet av en ny funktion \(V(z) = \sum_{d\leq z,\; d\divides P(z)}\frac{\mu^2(d)}{f_1(d)}\), vilket direkt underlätter kvadratkompletteringen av summans termer.
-Då vi har bestämt ett sådant \(u_\delta\), kan vi använda oss av Möbius inverteringsformeln för att bestämma \(\lambda_d\), eller, snarare, uppskatta sin storlek.
-Vi hittar en minimum på följande sätt;
+Eftersom vi har diagonaliserat huvudtermen i \eqref{sel.sieve.uuu} kan vi enkelt bestämma ett värde på \(u_\delta\) sådant att summan antar sitt minimivärde genom att använda kvadratkomplettering. 
+Vi gör detta med hjälp av \eqref{sel.sieve.one} och införandet av en ny funktion \(V(z) = \sum_{d\leq z,\; d\divides P(z)}\frac{\mu^2(d)}{f_1(d)}\), vilket direkt underlätter kvadratkompletteringen av summans termer. 
+Det är också värt att påpeka att \(V(z)\) är strikt positivt eftersom \(f_1(d)\) är alltid större än noll. 
+Vi kan se detta eftersom för varje primtal är \(f_1(p) = \sum_{d|p}\mu(d)f({p}/{d}) = \mu(1)f(p) + \mu(p)f(1) = f(p) - 1 > 0\).
+Dessutom har vi att \(f_1\) är multiplikativ och att \textit{d} är kvadratfri vilket tillsammans med föregående resonemanget medför att \(f_1 > 0\) för alla \textit{d} i summan. 
+Därför blir \(V(z)\) en summa av strikt positiva tal och därmed strikt positivt själv.
+Om vi sätter \(\delta = 1\) i \eqref{sel.sieve.one} då får vi att
+\begin{equation}
+    1 = \frac{\lambda_1}{f(1)} = \sum_{\substack{d\leq z\\ d|P(z)}}\mu(d)u_d.\nonumber
+\end{equation}
+vilket vi kan nu använda för att hitta en minimum på följande sätt:
 \begin{align}
     \sum_{\substack{\delta \leq z\\ \delta | P(z)}}f_1(\delta) u_\delta^2 &= \sum_{\substack{\delta\leq z\\\delta|P(z)}} f_1(\delta)u_\delta^2 + \frac{V(z)}{V(z)^2} - \frac{2}{V(z)} + \frac{1}{V(z)}\nonumber\\
-    &= \sum_{\substack{\delta\leq z\\\delta|P(z)}} f_1(\delta)u_\delta^2 + \sum_{\substack{\delta\leq z\\ \delta|P(z)}}\frac{\mu^2(\delta)}{f_1(\delta)V^2(z)} - \sum_{\substack{\delta\leq z\\\delta |P(z)}}\frac{2\mu(\delta)u_\delta}{V(z)} + \frac{1}{V(z)}\label{sel.sieve.VVV}
+    &= \sum_{\substack{\delta\leq z\\\delta|P(z)}} f_1(\delta)u_\delta^2 + \sum_{\substack{\delta\leq z\\ \delta|P(z)}}\frac{\mu^2(\delta)}{f_1(\delta)V^2(z)} - \sum_{\substack{\delta\leq z\\\delta |P(z)}}\frac{2\mu(\delta)u_\delta}{V(z)} + \frac{1}{V(z)}.\label{sel.sieve.VVV}
 \end{align}
-där efter vi faktoriserar ut \(f_1(\delta)\) och kvadratkompletterar kan vi  samla alla summor i \eqref{sel.sieve.VVV} in till en. Då har vi att
+Vi kan samla alla summor i \eqref{sel.sieve.VVV} in till en och då vi kvadratkompletterar summans termer har vi att
 \begin{equation}
     \eqref{sel.sieve.VVV} = \sum_{\substack{\delta\leq z\\\delta|P(z)}}f_1(\delta)\Bigg(u_\delta - \frac{\mu(\delta)}{f_1(\delta)V(z)}\Bigg)^2 + \frac{1}{V(z)}.\nonumber
 \end{equation}
-Självklart blir ovanstående summa noll då vi väljer \(u_\delta = \frac{\mu(\delta)}{f_1(\delta)V(z)}\), dock så kvarstår frågan om detta verkligen ger ett minimumvärde på summan. Får att kontrollera det kan vi se att \(f_1(\delta)\) är alltid större än noll, eftersom för varje primtal har vi att \(f_1(p) = \sum_{d|p}\mu(d)f({p}/{d}) = \mu(1)f(p) + \mu(p)f(1) = f(p) - 1 > 0\). 
-Dessutom har vi att \(f_1\) är multiplikativ och att \textit{d} är kvadratfri vilket tillsammans med föregående resonemanget medför att \(f_1 > 0\) och att summan antar ett minimumvärde med vårt val av \(u_\delta\).
-Det också går att bevisa att med detta val av \(u_\delta\) blir \(|\lambda_d| < 1\) \cite[s. 122-123]{cojocarumurty} och därför härledar vi följande sats.
+Uppenbarligen blir ovanstående summa noll då vi väljer \(u_\delta = \frac{\mu(\delta)}{f_1(\delta)V(z)}\), vilket måste vara en minimivärde eftersom \(f_1(\delta\) är strikt positivt.
+Det går också att bevisa att med detta val av \(u_\delta\) blir \(|\lambda_d||V(z)| \leq |V(z)|\) \cite[s. 122-123]{cojocarumurty} och därför härleder följande sats.
 \begin{theorem}[Selbergs såll]\label{sel.sieve.thm}
 Behåll notationen från tidigare i avsnittet och rapporten. Då har vi att
 \begin{equation}
     \S{A}{P}{z} \leq \frac{X}{V(z)} + O\Bigg(\sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}|R_{[d_1, d_2]}|\Bigg).\nonumber
 \end{equation}
 \end{theorem}
-Ovanstående formulering är en kortfattad version av hur satsen redovisas i \cite{cojocarumurty}. För att använda sållet behöver vi bestämma några parametrar angående mängderna \(\A_d\).
+Ovanstående formulering är hur satsen redovisas i \cite{cojocarumurty}. För att använda sållet behöver vi bestämma några parametrar angående mängderna \(\A_d\).
 Som i de tidigare tillämpningar, hur \(\A\) och \(\A_d\) definieras är avgörande för uppskattningen, dock, på grund av Selbergs vikter, har vi nu mycket mer frihet med hur vi definierar dessa mängder. 
 Notera också att i Selbergs såll så har vi färre paratmetrar att bestämma än i de tidigare sållen, vilket hjälper en del med både förståelsen av sållet och dess tillämpning. 
-Ett exempel på denna nyfunna flexibilitet och lätttillämpning redovisas i nästa avsnitt.
+Ett exempel på denna nyfunna flexibilitet redovisas i nästa avsnitt.
 
 \subsection{Selbergs såll och primtal i aritmetiska talföljder}
 
 Med hjälp av Selbergs såll kan vi uppskatta antalet primtal som finns i en aritmetisk talföjld, d.v.s. antalet primtal på formen \(p = a + tk\) där \textit{a}, \textit{k} är valda konstanter och \textit{t} är godtyckligt. 
-Det finns också ett krav på \textit{a} och \textit{k}, nämligen att de är relativt prima, utan det kravet så skulle inga primtal finnas i talföjlden. 
+Det finns också ett krav på \textit{a} och \textit{k}, nämligen att de är relativt prima, utan det kravet så skulle maximalt ett primtal finnas i talföjlden. 
+Slutligen antar vi att \textit{k} är kvadratfritt, vilket kommer underlätta beräkningar senare.
 Om vi vill uppskatta antalet primtal på ovanstående form mindre än något \textit{x}, då är det samma som att uppskatta storleken av följande kardinalitet;
 \begin{equation}
     \pi(x;k,a) = \#\{p\leq x: p \equiv a \pmod{k}\}.\label{sel.apl.arithPrimes}
@@ -96,26 +105,26 @@ Låt oss nu ta något \(z\leq x,\; z \in \mathbb{R}^+\) som vi kommer att bestä
     &\leq z + \#\{n\leq x: n \equiv a \pmod k,\; n \not\equiv 0 \pmod p,\; p\leq z\}.\label{sel.apl.over}
 \end{align}
 Uppskattningen av den andra kardinaliteten som utförs i \eqref{sel.apl.over} motsvarar en sållning av alla tal som finns i talföjlden med primtal mindre än \textit{z}. 
-Det är klart att det är en uppskattning eftersom om det finns ett sammansatt tal i följden som endast är delbart med primtal större än \textit{z} så kommer den inte sållas bort. 
+Det är klart att det är en uppskattning eftersom om det finns ett sammansatt tal i följden som endast är delbart med primtal större än \textit{z} så kommer de inte sållas bort. 
 Dock så behöver vi faktiskt inte sålla med avseende på alla primtal mindre än \textit{z}, bara de som är relativt prima med \textit{k}. 
 Om till exempel \(k = 6\) så får \textit{a} inte vara delbar med varken 2 eller 3.
 Som konsekvens av det kommer inga element i talföjlden vara delbar med \textit{k}s delare heller.
-Följaktligen ger detta oss att vi bara behöver primtal ur \(\P = \{p: (p, k) = 1\}\) och mängden vi vill uppskatta är då \(\S{A}{P}{z} = \{n\leq x: n \equiv a \pmod k,\; n \not\equiv 0 \pmod p,\; p\leq z, (p,k) = 1\}\).
+Följaktligen ger detta oss att vi bara behöver primtal ur \(\P = \{p: (p, k) = 1\}\) och kardinaliteten vi vill uppskatta är då \(\S{A}{P}{z} = \{n\leq x: n \equiv a \pmod k,\; n \not\equiv 0 \pmod p,\; p\leq z, (p,k) = 1\}\).
 
 För att kunna använda sållet så behöver vi bestämma \(\A\), \(\A_d\), \textit{X}, \(f(d)\) samt \(f_1(d)\), och \(R_d\). 
 Det är uppenbart att \(\A = \{n\leq x: n \equiv a \pmod k\}\) och dessutom att \(\A_d = \{n \leq x: n \equiv a \pmod k,\; n \equiv 0 \pmod d\}\). 
-Eftersom \textit{k} och \textit{d} är relativt prima ger kinesiska restsatsen att det finns ett unikt tal modulo \textit{kd} som är kongruent med \textit{n}, dvs. \(\exists! n_0:\; n \equiv n_0 \pmod{kd}\). 
-Detta delar då upp intervalet \([0, x]\) i \(\lfloor x/{kd}\rfloor\) stycken delintervall där det i varje delintervall finns det ett element som ska sållas bort vilket medför att \(\#\A_d = \frac{x}{kd} + O(1)\). 
+Eftersom \textit{k} och \textit{d} är relativt prima ger kinesiska restsatsen att det finns ett unikt tal modulo \textit{kd} som är kongruent med \textit{n}. 
+Detta delar då upp intervalet \([0, x]\) i \(\lfloor x/{kd}\rfloor\) stycken delintervall där det i varje delintervall finns ett element som ska sållas bort, vilket medför att \(\#\A_d = \frac{x}{kd} + O(1)\). 
 Vi erhåller \(X = \frac{x}{k}\), \(f(d) = d\), och \(R_d = O(1)\). 
-För att bestämma \(f_1(d)\) använder vi oss av dess definition, att den kan skrivas som en slags Euler-produkt eftersom \textit{f} är multiplikativ, och att varje \textit{d} är kvadratfri. 
+För att bestämma \(f_1(d)\) använder vi oss av dess definition, att \textit{f} är multiplikativ, och att varje \(d = p_1p_2...p_j\) är kvadratfri. 
 Detta görs på följande sätt:
 \begin{align}
     f_1(d) &= \sum_{m\divides d}\mu(m)f(d/m) = \sum_{m\divides p_1...p_j}\mu(m)f((p_1...p_j)/m) = \nonumber\\
     &=\sum_{b_1 = 0}^1...\sum_{b_j = 0}^1\mu(p_1^{b_1}...p_j^{b_j})f((p_1...p_j)/(p_1^{b_1}...p_j^{b_j})) = \prod_{h = 1}^j\sum_{b_h = 0}^1\mu(p_h^{b_h})f(p_h/p_h^{b_h}) = \nonumber\\
     &= \prod_{h = 1}^j\Bigg(f(p_h) - 1\Bigg) = \prod_{h = 1}^j p_h\Bigg(1 - \frac{1}{p_h}\Bigg) = d\prod_{h = 1}^j \Bigg(1 - \frac{1}{p_h}\Bigg) = \phi(d).\label{sel.apl.tot}
 \end{align}
-I \eqref{sel.apl.tot} ser vi att \(f_1(d) = \phi(d)\) där \(\phi(d)\) är Eulers fi-funktion. 
-Tillsammans ger ovanstående att \(\S{A}{P}{z} \leq x/(kV(z)) + O(z^2)\). 
+I \eqref{sel.apl.tot} ser vi att \(f_1(d) = \phi(d)\) där \(\phi(d)\) är Eulers \(\phi\)-funktion. 
+Tillsammans med \ref{sel.sieve.thm} ger ovanstående att \(\S{A}{P}{z} \leq x/(kV(z)) + O(z^2)\). 
 
 För att uppskatta \(1/V(z)\) tillämpar vi en sats från \cite[Kap. 7]{cojocarumurty} som säger att
 \begin{equation}
@@ -131,16 +140,12 @@ Med hjälp av \eqref{sel.apl.vAppr} har vi nu att
 \begin{equation}
      \pi(x;k,a) \leq z + \frac{x}{\phi(k)(\log z + O(1))} + O(z^2) = \frac{x}{\phi(k)(\log z + O(1))} + O(z^2)\nonumber
 \end{equation}
-där likheten gäller eftersom \(z^1\) absorberas av ordo notationen. 
+där likheten gäller eftersom \(z^1\) absorberas av ordonotationen. 
 Genom att likställa de två termerna kan vi bestämma \textit{z} så att båda termerna har samma vikt. Vi följer förslaget på \textit{z} i \cite{cojocarumurty} och tar \(z = (2x/k)^{\frac{1}{2}-\varepsilon_0}\) för något \(\varepsilon_0\in(0, 1)\). Detta val av \textit{z} ger oss den slutliga uppskattningen
 \begin{equation}
     \pi(x;k,a) \leq \frac{(2+\varepsilon)x}{\phi(k)\log(2x/k)}\nonumber
 \end{equation}
 för alla \(\varepsilon > 0\) och \textit{x} större än något \(x_0(\varepsilon) >0\). 
-Resultatet är en variant på Brun-Titchmarshsatsen vilket bevisades först, på den svagare formen
-\begin{equation}
-    \pi(x;k,a)\ll \frac{x}{\phi(k)\log(x)},\nonumber
-\end{equation}
-i 1930 av Titchmarsh \cite{BrunTitch} med hjälp av Bruns såll. 
+Resultatet är en variant på Brun-Titchmarshsatsen som bevisades först år 1930 av Titchmarsh \cite{BrunTitch} med hjälp av Bruns såll.
 Att Selbergs såll kan ge än bättre uppskattning är ett mycket icke-trivialt resultat och reflekterar hur stort påverkan feltermen har på en sållmetods slutlig uppskattning.
 Denna idé kommer utvecklas mer i nästa avsnitt.
