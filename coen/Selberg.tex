@@ -20,11 +20,11 @@ Summan är antingen noll eller ett beroende på om \textit{n} är lika med ett e
 Slutmålet med sållets härledning blir att konstruera talföljden så att uppskattningen minimeras, vilket kommer göras senare.
 Med hjälp av talföljden \((\lambda_d)\) kan vi nu uppskatta \(\S{A}{P}{z}\) eftersom
 \begin{equation}
-\S{A}{P}{z} = \sum_{\substack{a\in \mathcal{A}\\a\not\in\mathcal{A}_p,\forall p\divides P(z)}} 1 = \sum_{d\divides P(z)} \mu(d) \sum_{a\in\mathcal{A}_d}1 = \sum_{a\in A} \Bigg(\sum_{\substack{d\divides P(z)\\a\in A_d}}\mu(d)\Bigg)\leq \sum_{a\in A}\bigg(\sum_{\substack{d\divides P(z)\\a\in A_d}}\lambda_d\bigg)^2.\label{sel.sieve.ineq1}
+\S{A}{P}{z} = \sum_{\substack{a\in \mathcal{A}\\a\not\in\mathcal{A}_p,\forall p\divides P(z)}} 1 = \sum_{d\divides P(z)} \mu(d) \sum_{a\in\mathcal{A}_d}1 = \sum_{a\in \A} \Bigg(\sum_{\substack{d\divides P(z)\\a\in \A_d}}\mu(d)\Bigg)\leq \sum_{a\in \A}\bigg(\sum_{\substack{d\divides P(z)\\a\in \A_d}}\lambda_d\bigg)^2.\label{sel.sieve.ineq1}
 \end{equation}
 Genom att skriva om kvadraten av summan som en summa över två olika \textit{d} kan vi omvandla \eqref{sel.sieve.ineq1} till
 \begin{equation}
-    \S{A}{P}{z} \leq \sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}\lambda_{d_1}\lambda_{d_2}\#A_{[d_1, d_2]}\nonumber
+    \S{A}{P}{z} \leq \sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}\lambda_{d_1}\lambda_{d_2}\#\A_{[d_1, d_2]}\nonumber
 \end{equation}
 där \([a, b]\) betecknar den minsta gemensamma multipeln av \textit{a} och \textit{b}. 
 Med infogande av \(\delta_d = 1/f(d)\) i \eqref{deltaX} får vi uppskattningen som är grundläggande för Selbergs såll;
