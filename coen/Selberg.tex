@@ -34,11 +34,10 @@ Med infogande av \(\delta_d = 1/f(d)\) i \eqref{deltaX} får vi uppskattningen s
     \S{A}{P}{z} \leq X\sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}\frac{\lambda_{d_1}\lambda_{d_2}}{f([d_1,d_2])} + O\Bigg(\sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}|\lambda_{d_1}||\lambda_{d_2}||R_{[d_1, d_2]}|\Bigg)\label{sel.sieve.main}.
 \end{equation}
 
-För att få en form på \eqref{sel.sieve.main} vilken vi kan använda för att uppskatt mängders storlek kommer vi nu bestämma talföljden \((\lambda_d)\). 
-Om vi följer hur resonemanget redovisas i \cite{cojocarumurty}, så bestämmer vi \(\lambda_d\) genom att först betrakta bara huvudtermem. 
+Vi kommer att fokusera vår härledning på huvudtermen av sållet eftersom den kräver att vi visar hur vi bestämmer talföjlden \((\lambda_d)\) vilket är avgörande för sållets konstruktion.
 %Genom att använda multiplikativiteten av \(f(d)\) går det att skriva om huvudtermen till en kvadratisk form och sedan hitta dess minimum. 
 %Vid detta minimumvärde blir \(|\lambda_d|\leq 1\) vilket då också ger oss en uppskattning av feltermen. Med alla dessa omskrivningar härleder vi följande sats.
- Med det som utgångspunkt, börjar vi med att använda oss av ett lemma som låter oss skriva om multiplikativa funktioner av minsta gemensamma multipler, se Appendix \ref{APDX:multFunk}.
+ Med \cite[s. 120]{cojocarumurty} som utgångspunkt, börjar vi med att använda oss av ett lemma som låter oss skriva om multiplikativa funktioner av minsta gemensamma multipler, se Appendix \ref{APDX:multFunk}.
 Lemmat tillsammans med definitionen av \textit{f} tillåter följande omskrivning:
 \begin{equation}
     \sum_{\substack{d_1,d_2\leq z\\d_1,d_2|P(z)}}\frac{\lambda_{d_1}\lambda_{d_2}}{f([d_1,d_2])} = \sum_{\substack{d_1,d_2\leq z\\d_1,d_2|P(z)}}\frac{\lambda_{d_1}\lambda_{d_2}}{f(d_1)f(d_2)}f((d_1,d_2)) = \sum_{\substack{d_1,d_2\leq z\\d_1,d_2|P(z)}}\frac{\lambda_{d_1}\lambda_{d_2}}{f(d_1)f(d_2)}\sum_{\delta|(d_1,d_2)}f_1(\delta).\label{sel.sieve.exchange}
@@ -126,7 +125,7 @@ Detta görs på följande sätt:
 I \eqref{sel.apl.tot} ser vi att \(f_1(d) = \phi(d)\) där \(\phi(d)\) är Eulers \(\phi\)-funktion. 
 Tillsammans med \ref{sel.sieve.thm} ger ovanstående att \(\S{A}{P}{z} \leq x/(kV(z)) + O(z^2)\). 
 
-För att uppskatta \(1/V(z)\) tillämpar vi en sats från \cite[Kap. 7]{cojocarumurty} som säger att
+För att uppskatta \(1/V(z)\) tillämpar vi ett lemma från \cite[Lemma 7.2.3]{cojocarumurty} som säger att
 \begin{equation}
     f(\overline{P}(z))V(z) \geq f_1(\overline{P}(z))\sum_{\delta \leq z}\frac{1}{\Tilde{f}(\delta)}\label{sel.apl.V}
 \end{equation}
@@ -141,11 +140,11 @@ Med hjälp av \eqref{sel.apl.vAppr} har vi nu att
      \pi(x;k,a) \leq z + \frac{x}{\phi(k)(\log z + O(1))} + O(z^2) = \frac{x}{\phi(k)(\log z + O(1))} + O(z^2)\nonumber
 \end{equation}
 där likheten gäller eftersom \(z^1\) absorberas av ordonotationen. 
-Genom att likställa de två termerna kan vi bestämma \textit{z} så att båda termerna har samma vikt. Vi följer förslaget på \textit{z} i \cite{cojocarumurty} och tar \(z = (2x/k)^{\frac{1}{2}-\varepsilon_0}\) för något \(\varepsilon_0\in(0, 1)\). Detta val av \textit{z} ger oss den slutliga uppskattningen
+Genom att likställa de två termerna kan vi bestämma \textit{z} så att båda termerna har samma vikt. Vi följer förslaget på \textit{z} i \cite[s. 127]{cojocarumurty} och tar \(z = (2x/k)^{\frac{1}{2}-\varepsilon_0}\) för något \(\varepsilon_0\in(0, 1)\). Detta val av \textit{z} ger oss den slutliga uppskattningen
 \begin{equation}
     \pi(x;k,a) \leq \frac{(2+\varepsilon)x}{\phi(k)\log(2x/k)}\nonumber
 \end{equation}
 för alla \(\varepsilon > 0\) och \textit{x} större än något \(x_0(\varepsilon) >0\). 
 Resultatet är en variant på Brun-Titchmarshsatsen som bevisades först år 1930 av Titchmarsh \cite{BrunTitch} med hjälp av Bruns såll.
-Att Selbergs såll kan ge än bättre uppskattning är ett mycket icke-trivialt resultat och reflekterar hur stort påverkan feltermen har på en sållmetods slutlig uppskattning.
+Varianten som vi har härledt ovan är en starkare form än vad om bevisades av Titchmarsh vilket i viss mån beror på skillnaden mellan storleken på feltermerna i Bruns och Selbergs såll.
 Denna idé kommer utvecklas mer i nästa avsnitt.
