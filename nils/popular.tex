@@ -40,9 +40,9 @@ Den generella idén här kallas för \textit{inklusions-exklusionsprincipen} och
 \end{figure}
 \end{comment}
 
-Säg att vi vill uppskatta den totala storleken för de överlappande mängderna $A$, $B$ och $C$. 
+Säg att vi vill beräkna den totala storleken för de överlappande mängderna $A$, $B$ och $C$. 
 Vi kan börja med att summera storleken på mängderna var för sig.
-Om vi betecknar storleken på $A$ som $|A|$ och gör samma sak för de andra mängderna så kan vi skriva summan som $|A|+|B|+|C|$.
+Om vi betecknar storleken på $A$ som $|A|$ och gör på samma vis för de andra mängderna så kan vi skriva summan som $|A|+|B|+|C|$.
 Som bekant har det skett en dubbelräkning där mängderna överlappar varandra.
 Låt oss skriva $AB$ när vi menar överlappet mellan $A$ och $B$, och liknande för de andra överlappen.
 Precis som i tidigare exempel kompenserar vi för dubbelräkningen genom att dra bort dessa överlapp ifrån summan, vilket ger oss $|A|+|B|+|C|-|AB|-|BC|-|AC|$.
@@ -63,11 +63,11 @@ I denna rapport presenteras tre stycken såll;
 \textit{Eratosthenes generaliserade såll}, \textit{Bruns såll} samt \textit{Selbergs såll} som alla bygger på idéer liknande det vi har sett här.
 Gemensamt för de tre sållen är att de inte ger något exakt svar, då det ofta är opraktiskt och ibland även omöjligt att erhålla ett sådant.
 Istället får vi nöja oss med approximationer, vilket ändå kan vara användbart förutsatt att vi känner till storleken på uppskattningens fel.
-Dessa feltermer och deras inneboende beteende utgör en väsentlig skillnad mellan de olika sållen och en diskussion samt jämförelse av feltermerna är således relevant. Därför har detta tillägnats en egen del i rapporten vilken följer efter att de tre sållen presenterats.
+Dessa feltermer och deras beteende utgör en väsentlig skillnad mellan de olika sållen och en diskussion samt jämförelse av feltermerna är således relevant. Därför har detta tillägnats en egen del i rapporten vilken följer efter att de tre sållen presenterats.
 
 
 I rapportens sista avsnitt redogör vi för hur Harald Helfgott i \cite{HaraldSieve} har utvecklat idéer från ett grundläggande såll för att skapa effektiva algoritmer som kan utföras med en dator. 
-Därefter framför vi vår implementation av algoritmerna i ett program skrivet i Python.
+Därefter framlägger vi vår implementation av algoritmerna i ett program skrivet i Python.
 Avslutningsvis presenteras även några resultat som vi fått från att köra programmet,
 där ett av resultaten knyter an till frågan om att räkna primtal.
 Men istället för att som ovan, titta på tal mellan noll och en miljon, har vi valt att svara på frågan för ett intervall med mittpunkt i $10^{19}$ och en bredd på $2.5\times10^9$.
