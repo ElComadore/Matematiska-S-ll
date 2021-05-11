@@ -1,5 +1,6 @@
 \usetikzlibrary{shapes.geometric, arrows, positioning}
 
+
 \def\H{0.9cm}       % Min height for all objects
 \def\W{2.15cm}      % Min width of rectangles
 \def\Wpill{1.6cm}   % Min width of pills
@@ -20,6 +21,7 @@
 \tikzstyle{decision}  = [diamond,   minimum width=\H, minimum height=\H, text centered, draw=black]
 
 
+{\fontfamily{qhv}\selectfont % phv, qhv eller qag 
 \begin{tikzpicture}
 % Objects
     % Start
@@ -66,4 +68,5 @@
     \node[above=3pt of B1, anchor=east]  {NEJ};
     \node[right=4pt of B1, anchor=south] {JA};
 \end{tikzpicture}
+}
 \vspace{0.5cm}
