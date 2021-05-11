@@ -31,7 +31,7 @@ men i själva verket är $n'\leq n+\Delta$ alltid uppfyllt eftersom $n'$ definie
 \begin{equation} \label{helf.nprim}
     n' := \left\lfloor \frac{n+\Delta}{m} \right\rfloor\cdot m,
 \end{equation}
-vilken givetvis är mindre eller lika med $\frac{n+\Delta}{m}\cdot m = n+\Delta$. 
+vilken givetvis är mindre än eller lika med $\frac{n+\Delta}{m}\cdot m = n+\Delta$. 
 Vidare inspekterar vi villkoret $n'>m$, där (\ref{helf.nprim}) ger oss att 
 \begin{equation*}
     n'>m \iff
@@ -40,13 +40,13 @@ Vidare inspekterar vi villkoret $n'>m$, där (\ref{helf.nprim}) ger oss att
     (n+\Delta)/2\geq m.
 \end{equation*}
 Men $m$ väljs ur intervallet $[M,M+2R]$ så det räcker med att undersöka ifall $M+2R\leq(n+\Delta)/2$. 
-Det gäller att $M\leq\sqrt{n+\Delta}$ och $R:=\lfloor M\sqrt{\Delta/4n}\rfloor$,
-således håller 
+Det gäller att $M\leq\sqrt{n+\Delta}$ och $R:=\lfloor M\sqrt{\Delta/4n}\rfloor$.
+Således håller 
 \begin{equation*}
     M+2R \leq
     \sqrt{n+\Delta}\left(1+ \sqrt{\Delta/n}\right) \leq 2\sqrt{n+\Delta}
 \end{equation*}
-eftersom $1\leq\Delta\leq n$. Vilket i sin tur ger oss att
+eftersom $1\leq\Delta\leq n$. Detta ger i sin tur att
 \begin{equation*}
     m \leq 2\sqrt{n+\Delta} \leq (n+\Delta)/2,
 \end{equation*}
@@ -58,7 +58,7 @@ Det har följaktligen visat sig att utav de tre villkor som skulle testas,
 så är två av dem alltid uppfyllda och behöver därmed inte prövas.
 Det totala antalet gånger som detta steg utförs är
 \begin{equation*}
-    O\left(\Delta\log n + \sqrt{\Delta/n}(\log n)^2\right),
+    O\left(\Delta\log n + \sqrt{n/\Delta}(\log n)^2\right),
 \end{equation*}
 enligt \cite[s.346]{HaraldSieve} och vi sparar således en betydande mängd tid på att reducera antalet beräkningar här till en tredjedel av det ursprungliga.
 
@@ -95,10 +95,11 @@ I den ursprungliga artikeln \cite{HaraldSieve} nämns ett fåtal eventuella för
     \item
     Flera beräkningar kan utföras parallellt, vilket redan föreslås i \cite{HaraldSieve}. 
     I synnerhet kan detta nyttjas i andra delen av \textsc{NewSegSiev} där oberoende beräkningar utförs för varje $j\in[-k-1,k+1]$.
-    Dessa beräkningar är alla enkla och på samma form, och det kan således vara gynnsamt att överlåta dessa till datorns GPU.
+    Dessa beräkningar är alla enkla och på samma form, och det kan således vara gynnsamt att överlåta dessa till datorns grafikkort.
+    Detta eftersom grafikkortet ofta visar sig snabbare än processorn på att utföra denna typ av uppgift.
 \end{myitemize}
 
-I nästkommande stycke presenteras diverse resultat som erhållits ifrån körning av programmet.
+I nästkommande avsnitt presenteras diverse resultat som erhållits ifrån körning av programmet.
 
 \begin{comment}
     \item

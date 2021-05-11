@@ -32,7 +32,7 @@ för alla kvadratfria tal $d$ och $p<q$ för alla $q\mid d$. Då gäller det att
     \leq \S{A}{P}{z} 
     \leq \sum_{d \mid P(z)} \mu(d) g_U(d) \card\A_d.
 \end{equation}
-Enligt \cite{cojocarumurty} var detta Bruns innoverande idé. %Valet för $g_U$ och $g_L$ som antar värdena 1 eller 0 beronde på delarna i $d$.
+Enligt \cite{cojocarumurty} var detta Bruns innovativa idé. %Valet för $g_U$ och $g_L$ som antar värdena 1 eller 0 beronde på delarna i $d$.
 Genom att sedan skriva $\card\A_d=\frac{\omega(d)}{d}X + R_d$ kunde han, efter mycket möda, hitta en approximation och en felterm för begränsningarna i (\ref{brun.eq.gugl}) och på så vis formulera Bruns såll. Följande sats är hämtad ur \cite[Kap. 6.2]{cojocarumurty}.
 
 
@@ -79,7 +79,7 @@ Då begränsas $\S{A}{P}{z}$ ovanifrån av
 Konstanterna $c_1$, $c_2$ och $c_3$ definieras som
 \begin{equation*}
     c_1 := \frac{ 2\lambda^{2b}e^{2\lambda} }{ 1 - \lambda^2e^{2+2\lambda} }, \quad
-    c_2 := \frac{A_2}{2}\biggl(1+\frac{\kappa+\frac{A_2}{\log 2}}{1+A_1}\biggr)\quad \text{och} \quad
+    c_2 := \frac{A_2}{2}\biggl(1+\frac{\kappa+\frac{A_2}{\log 2}}{1-A_1}\biggr)\quad \text{och} \quad
     c_3 := 2b + \frac{2.01}{e^{2\lambda/\kappa} - 1}.
 \end{equation*}
 \end{theorem}
@@ -89,8 +89,12 @@ Nedan följer ett exempel på hur detta kan göras, där en tillämpning av sats
 
 
 \subsection{En tillämpning av Bruns såll}\label{brun.application}
-Låt oss uttrycka en modifierad version av primtalstvillingsförmodan på följande vis:\\
-\textit{Det finns oändligt många par av heltal $(n,n+2)$ där båda talen har högst $r$ primtalsfaktorer.}\\
+Låt oss uttrycka en modifierad version av primtalstvillingsförmodan på följande vis:
+
+\vspace{4pt}\noindent
+\textit{Det finns oändligt många par av heltal $(n,n+2)$ där båda talen har högst $r$ primtalsfaktorer.} 
+
+\vspace{4pt}\noindent
 För valet $r=1$ erhålls exakt primtalstvillingsfömodan, vilken står obevisad.
 Däremot går det att med hjälp av Bruns såll bevisa påståendet för $r=7$, vi följer samma tillvägagångssätt som i \cite[Kap. 6.2]{cojocarumurty}.
 Definiera mängden
@@ -102,10 +106,10 @@ Låt $\P$ vara mängden av alla primtal och låt
 \begin{equation*}
     \A := \{n(n+2): n\leq x\}.
 \end{equation*}
-Med hjälp av (\ref{brun.eq.lower}), vill vi nu uppskatta storleken på $\A$ efter bortsållning av tal delbara med primtal $p<z$ för något $z$.
-Vi skiljer på två typer av restklasser; noll och nollskild modulo $p$, och har därmed att
+Med hjälp av (\ref{brun.eq.lower}), vill vi nu uppskatta storleken på $\A$ efter bortsållning av tal delbara med primtal $p<z$ för något $z$. 
+På samma sätt som i avsnitt \ref{eratosthenes.tillämpning} är vi intresserade av kongruensklasserna $0$ och $-2$ vilket ger oss $\kappa=2$, samt att
 \begin{equation*}
-    \omega(2)=1\ \text{ och }\ \omega(p)=2,\ \text{för}\ p>2.
+    \omega(2)=1\ \text{och}\ \omega(p)=2,\ \text{för}\ p>2.
 \end{equation*}
 Detta ger direkt att $\omega(p)/p\leq 2/3$ med likhet då $p=3$, låt därför $A_1=2/3$.
 För att hitta ett passande $\kappa$, använder vi oss av (\ref{Thm.1.4.4}) som tillsammans med $\omega(p)\leq2$ implicerar
@@ -118,28 +122,22 @@ Något explicit värde på $A_2$ är inte nödvändigt, vilket kan ses genom att
     \exp\left(c_2\frac{2b+2}{\lambda\log z}\right) = 1 + c_2\frac{2b+2}{\lambda}(\log z)^{-1} + \left(c_2\frac{2b+2}{\lambda}\right)^2(\log z)^{-2} + \cdots
 \end{align}
 Fixera $b,\lambda$ och $A_2$ så att även $c_2$ är fixerat, då följer det att (\ref{brun.example.exp}) begränsas av $1+O((\log z)^{-1})$, då $z\to\infty$.
-Vidare gäller det att 
-\begin{align*}
-    W(z) %= \frac{1}{2}\exp\Bigl(\sum_{2<p<z} \log(1-2/p) \Bigr) 
-    \gg \frac{1}{2}\exp\Bigl(\sum_{2<p<z} \frac{-2}{p} \Bigr),
-\end{align*}
-se appendix för bevis. 
-Från (\ref{era.app.secondMainAppr}) får vi nu att $W(z) \gg (\log z)^{-2}$
-och genom att tillämpa den undre begränsningen i sats \ref{brun.thm.brun} erhåller vi
+Från (??) gäller det att $W(z) \gg (\log z)^{-2}$
+och genom att nu tillämpa den undre begränsningen i sats \ref{brun.thm.brun} erhåller vi
 \begin{equation} \label{brun.example.sap}
     \S{A}{P}{z} \gg \frac{x}{(\log z)^2}\bigl(1 - c_1\bigr) + O\bigl(z^{c_3 - 1}\bigr).
 \end{equation}
 Nu vill vi välja $b$ och $\lambda$, så att $c_1<1$ och $c_3$ är litet. 
-Detta uppfylls av $b=1$ samt $\lambda=0.101$ som medför att $c_3-1<8$.
+Detta uppfylls av $b=1$ samt $\lambda=0.253$ som medför att $c_3-1<8$.
 
 I fallet att $n$ eller $n+2$ har mer än 7 primtalsfaktorer måste $p\mid n(n+2)$ för något primtal $p < n^{1/8}$.
 Således erhålls $\card\mathcal{T}$ ur $\S{A}{P}{z}$ genom att sålla för primtal upp till $z = x^{1/u}$, där $u<8$.
 Insättning av detta i (\ref{brun.example.sap}) ger
 \begin{equation*}
-    \frac{u^2x}{(\log x)^2}\bigl(1 - c_1\bigr) + O\bigl(z^{\frac{c_3 - 1}{u}}\bigr) \gg 
-    \frac{x}{(\log x)^2} + O\bigl(z^{\frac{c_3 - 1}{u}}\bigr).
+    \frac{u^2x}{(\log x)^2}\bigl(1 - c_1\bigr) + O\bigl(x^{\frac{c_3 - 1}{u}}\bigr) \gg 
+    \frac{x}{(\log x)^2} + O\bigl(x^{\frac{c_3 - 1}{u}}\bigr).
 \end{equation*}
-Genom att ställa det ytterligare kravet $u>c_3-1$, har vi att feltermen ovan försvinner när $x$ blir stort och vi får slutligen
+Genom att ställa det ytterligare kravet $u>c_3-1$, har vi att feltermen ovan minskar när $x$ blir ökar och vi får slutligen
 \begin{equation} \label{brun.example.bound}
     \card\mathcal{T} \gg \frac{x}{(\log x)^2}.
 \end{equation}
