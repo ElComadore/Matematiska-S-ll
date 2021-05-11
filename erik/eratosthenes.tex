@@ -4,11 +4,11 @@
 
 \subsection{Legendres såll} \label{era.Legendres}
 
-Första steget för att utveckla Eratosthenes såll är att omformulera sållexemplet från introduktionen i de termer vi definierade i föregående avsnittet. I exemplet börjar vi med en lista av alla positiva heltal upp till en övre gräns, säg $x$, vilken vi kan skriva som $\A = \{n \in \mathbb{N} : n \leq x\}$. Låt alla primtal upp till $z$ redan vara inringade och mängderna vi kryssar över vara \(\A_p = \{a \in \A :  a \equiv 0 \pmod{p}\}\). Om vi väljer $z = \sqrt{x}$ så blir, med hjälp av (\ref{inclusionexclusion}),
+Första steget för att utveckla Eratosthenes såll är att omformulera sållexemplet från introduktionen i de termer vi definierade i föregående avsnittet. I exemplet börjar vi med en lista av alla positiva heltal upp till en övre gräns, säg $x$, vilken vi kan skriva som $\A = \{n \in \mathbb{N} : n \leq x\}$. Låt alla primtal upp till $z$ redan vara inringade och mängderna vi kryssar över vara \(\A_p = \{a \in \A :  a \equiv 0 \pmod{p}\}\) --- mängden av multiplar av $p$ som är mindre än eller lika med x. Det är enkelt att se att kardinaliteten av \(\A_d\) är \(\lfloor x/d \rloor\) så att, om vi väljer $z = \sqrt{x}$ så blir, med hjälp av (\ref{inclusionexclusion}),
 \begin{align*}
     \pi(x) - \pi(\sqrt{x}) + 1 = \sum_{d \divides P(\sqrt{x})} \mu(d) \left\lfloor \frac{x}{d} \right\rfloor  
 \end{align*}
-där \(1\):an på vänstersidan tar i hänsyn att \(1 \in \A\) inte sållas bort på högersidan och \(\pi(\sqrt{x})\) är de inringade primtalen. Detta var Legendres idé när han omformulerade Eratosthenes såll till att räkna primtal \cite{opera}. 
+där \(1\):an på vänstersidan tar i hänsyn att \(1 \in \A\) inte sållas bort på högersidan och \(\pi(\sqrt{x})\) är de inringade primtalen. Detta var Legendres idé när han omformulerade Eratosthenes såll till att räkna primtal \cite[kapitel 1.1]{opera}. 
 
 Legendres formel är bra för att räkna primtal exakt men är långsam och golvfunktionen kan vara svårhanterlig. Vi kan underlätta för oss genom att ersätta golvfunktionen med $x/d$ och med bråkdelen som restterm. Skriver vi bråkdelen som \(\{x/d\} := x/d - \lfloor x/d \rfloor = O(1)\) leder det oss till \(\card{\A_d} = x/d + O(1)\). Dessvärre resulterar det här i en väldigt stor felterm då restermerna ackumulerar, så att \(\pi(x) - \pi(\sqrt{x}) + 1 = x \sum_{d \divides P(\sqrt{x})}\frac{\mu(d)}{d} + O(2^{\pi(\sqrt{x})}) \).
 
@@ -20,7 +20,7 @@ Vi ser således att ett naturligt nästa steg är att generalisera Eratosthenes-
 
 \subsection{Eratosthenes generaliserade såll} \label{eratosthenes.gen.såll}
 % "Effektivt" kräver en förklaring, i kontrast mot exaktheten av Eratosthenes såll?
-Vi vill alltså härleda ett generellt verktyg från idéerna från föregående avsnittet vilket vi kommer göra genom att följa \cite[Kap. 5.4]{cojocarumurty}. Om vi låter $\A_d$, $\P$, $P(z)$ och $\omega(d)$ vara definierade som i avsnitt \ref{sallproblemet} så kan vi, med utgångspunkt i Eratosthenes och Legendres grundtankar, skapa ett mer flexibelt och effektivt såll. Den stora skillnaden mot vad vi gjorde i föregående avsnitt är att vi här tillåter fler restklasser sållas bort per primtal $p$. 
+Vi vill alltså härleda ett generellt verktyg från idéerna från föregående avsnittet vilket vi kommer göra genom att följa \cite[Kapitel 5.4]{cojocarumurty}. Om vi låter $\A_d$, $\P$, $P(z)$ och $\omega(d)$ vara definierade som i avsnitt \ref{sallproblemet} så kan vi, med utgångspunkt i Eratosthenes och Legendres grundtankar, skapa ett mer flexibelt och effektivt såll. Den stora skillnaden mot vad vi gjorde i föregående avsnitt är att vi här tillåter fler restklasser sållas bort per primtal $p$. 
 
 Utöver vad som står i avsnitt \ref{sallproblemet} kommer vi göra antagandena att \(\card{\A_d} = 0\) för alla \(d\) större än något positivt $y$, att \(\abs{R_d} = O(\omega(d))\) samt att (\ref{dimension}) håller. Vi kan lätt övertyga oss om att dessa är rimliga antaganden i det klassiska Eratosthenes såll-fallet. Eftersom vi utgår från en ändlig mängd $\A$ så håller det första antagandet då \(\card{\A_p} = 0\) för \(p > X\) innebär att, väldigt grovt, \(y \leq P_{X}\). Att det andra antagandet gäller såg vi i föregående avsnitt ty \(\{x/d\} \leq \omega(p) = 1\). Sist så ser vi att (\ref{dimension}) håller genom att sätta in \(\omega(p) = 1\) och utnyttja att \begin{align} \label{Thm.1.4.4}
     \sum_{p\leq n}\frac{\log p}{p} = \log n + O(1).
@@ -48,7 +48,7 @@ Vi kan skriva om resttermen, först med hjälp av triangelolikheten och sedan me
     \sum_{\substack{d \divides P(z) \\ d > y}} \abs{\frac{\omega(d)}{d}} + \sum_{\substack{d \divides P(z)  \\ d \leq y}} \abs{R_d} \leq
     \sum_{\substack{d \divides P(z) \\ d > y}} \frac{\omega(d)}{d} + O\Bigg(\sum_{\substack{d \divides P(z)  \\ d \leq y}} \omega(d)\Bigg).
 \end{align*}
-Summan innanför Ordo-tecknet kan vi förenkla med Rankins trick som, enligt \cite{Tao}, säger att indikator funktionen, \(1_{n \leq x} \leq \frac{x}{n}\). Därav skriver vi 
+Summan innanför Ordo-tecknet kan vi förenkla med Rankins trick som, enligt \cite[s.68]{cojocarumurty}, säger att indikator funktionen, \(1_{n \leq x} \leq \frac{x}{n}\). Därav skriver vi 
 \begin{align*}
     \sum_{\substack{d \divides P(z)  \\ d \leq y}} \omega(d) =
     \sum_{\substack{d \divides P(z)}} \omega(d) (1_{d \leq y})^{\delta} \leq
@@ -80,9 +80,13 @@ så gäller att
     
 % Återför vi fokuset till räknandet av primtal så ger sats \ref{thm:EratosthenesSieve} oss att \(\Phi(x,z) = x W(z) + O((x + ))\)...
 
-\subsection{En flerdimensionell tillämpning av Eratosthenes såll}\label{eratosthenes.tillämpning}
+\subsection{En högredimensionell tillämpning av Eratosthenes såll}\label{eratosthenes.tillämpning}
 
-Ett av målen med avsnitt \ref{eratosthenes.gen.såll} var att kunna använda Eratosthenes såll till att sålla bort flera kongruensklasser per primtal $p$. I det här avsnittet kommer vi utnyttja denna egenskap till att sålla fram primtalstvillinigar och sedan bevisa en variant av Bruns sats \cite[Korollarium 5.4.5]{cojocarumurty}, \(\sum_{\substack{p \\ p + 2 \text{ prima}}} \frac{1}{p} < \infty\). Satsen bevisades först av Brun 1919 i artikeln \textit{La série} \(1/5 + 1/7 + 1/11 + 1/13 + 1/17 + 1/19 + 1/29 + 1/31 + 1/41 + 1/43 + 1/59 + 1/61 \dots\) \textit{ou les dénominateurs sont \guillemotleft nombres premiers jumeaux \guillemotright est convergente ou finie} men vi kommer här följa ett annat bevis, ur \cite[s.72-73]{cojocarumurty}, som använder sig av sats \ref{thm:EratosthenesSieve}.
+Ett av målen med avsnitt \ref{eratosthenes.gen.såll} var att kunna använda Eratosthenes såll till att sålla bort flera kongruensklasser per primtal $p$. I det här avsnittet kommer vi utnyttja denna egenskap till att sålla fram primtalstvillinigar och sedan bevisa en variant av Bruns sats \cite[Korollarium 5.4.5]{cojocarumurty},
+\begin{theorem}[Bruns sats]
+    \(\sum_{\substack{p \\ p + 2 \text{ prima}}} \frac{1}{p} < \infty\). 
+\end{theorem} 
+Satsen bevisades först av Brun 1919 i artikeln \textit{La série} \(1/5 + 1/7 + 1/11 + 1/13 + 1/17 + 1/19 + 1/29 + 1/31 + 1/41 + 1/43 + 1/59 + 1/61 \dots\) \textit{ou les dénominateurs sont \guillemotleft nombres premiers jumeaux \guillemotright est convergente ou finie} men vi kommer här följa ett annat bevis, ur \cite[s.72-73]{cojocarumurty}, som använder sig av sats \ref{thm:EratosthenesSieve}.
 
 För att hitta primtalstvillinigar mindre än $x$ (\textit{här}: \( \P_2(x) := \{p < x : p + 2 \text{ är ett primtal}\}\)) så vill vi utesluta multiplar av primtal samt tal två mindre än dessa. Med andra ord väljer vi kongruensklasserna $0$ och $-2$ modulo $p$ i sålldefinitionen så att dimensionen \(\kappa = 2\) samt \(\omega(2) = 1\) och \(\omega(p) = 2\) för alla primtal $p > 2$. Vårt val av kongruensklasser ger att \(y = x + 2\) i det första antagandet av sats \ref{thm:EratosthenesSieve} som då säger att
 \begin{align*}
@@ -92,7 +96,7 @@ Vi kan enkelt se att \(W(z)\) i huvudtermen är lika med
 \begin{align}
     \prod_{p < z}\left( 1 - \frac{\omega(p)}{p} \right) = \frac{1}{2} \exp \Bigg( \sum_{2 <p < z} \log \left( 1 - \frac{2}{p} \right) \Bigg) \ll \exp \Bigg( - \sum_{2 <p < z} \frac{2}{p}  \Bigg) \label{era.app.mainAppr}
 \end{align}
-där sista steget följer av olikheten \(\log(1 + x) \leq x, \forall x > -1\). Med en partiell summation av (\ref{Thm.1.4.4}) erhåller vi att \(\sum_{p \leq z} \frac{1}{p} = \log \log z + O(1)\) som, när vi sätter in i (\ref{era.app.mainAppr}), ger oss att
+där sista steget följer av olikheten \(\log(1 + x) \leq x, \text{ om } x > -1\). Med en partiell summation av (\ref{Thm.1.4.4}) erhåller vi att \(\sum_{p \leq z} \frac{1}{p} = \log \log z + O(1)\) som, när vi sätter in i (\ref{era.app.mainAppr}), ger oss att
 \begin{align} \label{era.app.secondMainAppr} 
     \exp \Bigg( - 2 \sum_{2 <p < z} \frac{1}{p}  \Bigg) \asymp \exp \big( -2 \log \log z + O(1)  \big) \asymp (\log z)^{-2}.
 \end{align}
