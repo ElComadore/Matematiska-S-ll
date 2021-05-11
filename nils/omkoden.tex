@@ -1,19 +1,53 @@
+% Skrivet av Nils
+
 \newcommand{\code}[1]{\inputminted[frame=lines,fontsize=\footnotesize,linenos]{python}{code/#1.py}}
 
+\subsection{Vår förbättrade version av programmet}
 Nedan följer väsentliga delar av den förbättrade versionen av programmet som omnämns i \ref{partB.implementering}.
-Om läsaren vill testa programmet all kod förslagsvis läggas i samma fil och för att koden ska kunna köras behöver Python-bibliotek \textit{Bitarray} vara installerat på datorn.
+Om läsaren vill testa programmet kan all nedanstående kod förslagsvis läggas i samma fil. För att koden ska kunna köras behöver Python-bibliotek \textit{Bitarray} vara installerat.
 
-Vi börjar import av externa funktioner, förslagsvis görs detta allra först i koden.
+
+Vi börjar import av några externa funktioner, förslagsvis görs detta allra först i koden.
+Funktionen \texttt{zeros(N)} ger en bitsträng bestående av \texttt{N} stycken nollor och funktionen \texttt{isqrt(k)} ger största heltalet mindre eller lika med kvadratroten av \texttt{k}.
 \code{imports}
 
-Härnäst följer algoritmerna vars funktion beskrivs i \ref{partB.algoritmteori}, 
-på flera rader finns kommentarer som förklarar radens syfte.
-\code{SimpleSiev} %\label{code.SimpleSiev}
-\code{SimpleSegSiev} %\label{code.SimpleSiev}
-\code{SubSegSiev} %\label{code.SimpleSiev}
-\code{NewSegSiev} %\label{code.SimpleSiev}
-\code{DiophAppr} %\label{code.SimpleSiev}
 
+Härnäst följer algoritmerna vars funktion beskrivs i \ref{partB.algoritmteori}, 
+på flera rader finns det extra kommentarer (på engelska) som förklarar radens syfte.
+Alla funktioner, med undantag för \textsc{DiophAppr}, returnerar en bitsträng. Strängen representerar något sållat heltalsintervall $[a,b]$ 
+där biten med index $i$ är en nolla om talet $i+a$ har sållats bort och en etta annars.
+
+
+\subsubsection*{\textsc{SimpleSiev}}
+Detta är det vanliga Eratosthenes såll. Funktionen tar in ett heltal $N$ och returnerar en lista med alla primtal i intervallet $[0,N]$.
+Exempelvis ger \texttt{SimpleSiev(7)} svaret \texttt{00110101} vilket representerar alla primtal från 0 till 7. 
+\code{SimpleSiev} 
+
+
+\subsubsection*{\textsc{SimpleSegSiev}}
+Denna funktion tar in tre argument; $n$, $\Delta$ och $M$. Därefter returnerar den en lista vilken representerar alla tal i intervallet $[n, n+\Delta]$ som antingen är prima eller saknar delare mindre än, eller lika med $M$. Använder vi notation från avsnitt \ref{sallproblemet}, representerar denna lista mängden $\S{A}{P}{z}$ där $A=[n, n+\Delta]$, $z=M$ och $\P$ är mängden av alla primtal. Sållningen görs med primtal genererade av \textsc{SimpleSiev}.
+\code{SimpleSegSiev} 
+
+
+\subsubsection*{\textsc{SubSegSiev}}
+Denna funktion är exakt som \textsc{SimpleSegSiev} gällande indata och utdata. 
+Skillnaden mot förstnämnda är att \textsc{SubSegSiev} kan sålla i ett större intervall då den delar upp intervallet i mindre segment som sedan sållas en åt gången. Sållningen av de mindre intervallen utförs av \textsc{SimpleSegSiev}.
+\code{SubSegSiev} 
+
+
+\subsubsection*{\textsc{NewSegSiev}}
+Detta är algoritmens huvudfunktion. Den tar in tre argument; $n$, $\Delta$ och $K$, och returnerar alla primtal i intervallet $[n-\Delta,n+\Delta]$. Det sista argumentet $K$ ska vara ett flyttal större eller lika med $2.5$ och påverkar hur funktionen går tillväga för att sålla. Funktionen sållningen sker i två delar. Först sållas intervallet för multiplar av primtal mindre än eller lika med $K\Delta$. Detta utförs av \textsc{SubSegSiev} och sker på rad 16. Därefter sållas intervallet för resterande tal, vilket är multiplar av tal mellan $K\Delta$ och $\sqrt{n+\Delta}$. Detta görs med hjälp av \textsc{DiophAppr} i while-loopen som börjar på rad 17 och slutar på rad 31.
+\code{NewSegSiev} 
+
+\subsubsection*{\textsc{DiophAppr}}
+Denna funktion tar in två tal; $\alpha$ och $Q$, och beräknar en rationell approximation $a/q$ av $\alpha$ med hjälp av kedjebråk.
+Heltalen $a$ och $q$ uppfyller $\gcd{a,q}=1$ samt att $q\leq Q$ och $\abs{a/q-\alpha}\leq 1/qQ$.
+Funktionen returnerar talparet $(q, a^{-1})$ där $a^{-1}$ är den multiplikativa inversen till $a$ modulo $q$.
+\code{DiophAppr} 
+
+
+\subsection{Några extra funktioner}
+\subsubsection*{\textsc{RemoveNonTwins}}
 Här presenteras den funktion som använts i \ref{partB.applications}.
 Denna tar in en redan sållad lista med primtal och sållar bort alla primtal $p$ där $p+2$ inte är prima.
 De tal i listan som är kvar efter detta är primtalstvillingarna i intervallet.
@@ -22,6 +56,10 @@ Om det sista eller näst sista talet i listan är prima så är det omöjligt f�
 
 Till sist ger vi även en modifierad version av \textsc{NewSegSiev} och \textsc{SubSegSiev} som vi har valt att ge namnen
 \textsc{NewSegSievTwins} respektive \textsc{SubSegSievTwins}.
-Som namnet antyder kan dessa användas för att från grunden sålla fram alla primtalstvillingar i det angivna intervallet.
-\code{SubSegSievTwins}
+Som namnet antyder kan \textsc{NewSegSiev} användas för att från grunden sålla fram alla primtalstvillingar i det angivna intervallet och funktionen brukas på samma sätt som \textsc{NewSegSiev}.
+Funktionen \textsc{SubSegSievTwins} är nödvändig för att \textsc{NewSegSievTwins} ska fungera.
+
+\subsubsection*{\textsc{NewSegSievTwins}}
 \code{NewSegSievTwins}
+\subsubsection*{\textsc{NewSegSievTwins}}
+\code{SubSegSievTwins}
