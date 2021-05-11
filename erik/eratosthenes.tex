@@ -2,7 +2,7 @@
 
 Även om Eratosthenes såll fortfarande är mest känt som en enkel algoritm som utan större möda kan utföras med papper och penna så har dess idé raffinerats genom historien till att inkorperera mer avancerad teori för att tillämpas på nya sätt. År 1808 utvecklade Adrien-Marie Legendre (1752-1833) sållet med hjälp av inklusion-exklusionsprincipen formulerad på formen från avsnitt \ref{sallproblemet}. Nedan kommer vi gå igenom denna form av Eratosthenes såll samt, i efterföljande avsnitt, följa hur \cite{cojocarumurty} presenterar en utvidgning av sållet till en mer generell form. 
 
-\subsection{Legendres såll}
+\subsection{Legendres såll} \label{era.Legendres}
 
 Första steget för att utveckla Eratosthenes såll är att omformulera sållexemplet från introduktionen i de termer vi definierade i föregående avsnittet. I exemplet börjar vi med en lista av alla positiva heltal upp till en övre gräns, säg $x$, vilken vi kan skriva som $\A = \{n \in \mathbb{N} : n \leq x\}$. Låt alla primtal upp till $z$ redan vara inringade och mängderna vi kryssar över vara \(\A_p = \{a \in \A :  a \equiv 0 \pmod{p}\}\). Om vi väljer $z = \sqrt{x}$ så blir, med hjälp av (\ref{inclusionexclusion}),
 \begin{align*}
