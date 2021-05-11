@@ -1,29 +1,32 @@
-Den som någon gång har funderat kring primtal, kanske har provat att ta en lista med heltal och börjat markera de primtalen som finns. 
+Den som någon gång har funderat kring primtal, kanske har provat att ta en lista med naturliga tal upp till någon gräns och börjat försöka hitta de primtalen som finns. 
 Efter en liten stund kanske man börjar lägga märke till mönster som uppträder; såsom att det finns vissa par av primtal som bara har ett tal mellan sig. 
-Man kanske också märker att för att hitta alla primtal upp till ett visst tal behöver man bara alla primtal mindre än eller lika med kvadratroten av det talet.
+Man kanske också börjar stryka igenom alla multipler av primtal för att ha något system för att uteslutta sammansatta tal.
+Då man har gjort det med för en liten stund kanske man slutligen märker att för att hitta alla primtal upp till ett visst tal behöver man bara alla primtal mindre än eller lika med kvadratroten av det talet.
 
 Idén bakom denna process, att hitta primtal i en lista av naturliga tal, har funnits sedan antikens grekland med en algoritm som har tillskrivits den grekiska polyhistorn Eratosthenes (ca. 276 - 194 f.v.t.). Algoritmen har följande struktur;
 \begin{enumerate}
-    \item Börja med talet 2 och lista alla naturliga tal upp till någon gräns.
+    \item Börja en lista med talet 2 och lista alla naturliga tal upp till någon gräns.
     \item Ringa in 2 och stryk över alla andra tal som är delbara med 2.
     \item Ringa in nästa tal som inte är struket och stryk alla andra tal delbara med det nya inringade talet.
-    \item Upprepa föregående steg tills varje tal på listan är struket eller inringat. 
+    \item Upprepa steg 3 tills varje tal på listan är struket eller inringat. 
 \end{enumerate}
 När algoritmen är avslutad så har varje primtal i listan blivit inringat och alla andra tal har strukits. 
-Eratosthenes algoritm lade grunden för nutidens sållteori; ett område inom matematiken som försöker uppskatta storkleken på så kallade \textit{siktade mängder}. 
+Eratosthenes algoritm lade grunden för ämnet sållteori; ett område inom matematiken som försöker uppskatta storkleken på så kallade \textit{siktade mängder}. 
 
 En siktad mängd är en mängd där alla element är heltal och har någon gemensam egenskap till exempel en mängd som består av endast primtal eller mängden av alla tal i en aritmetisk talföjld.
-De största fördelar med grundläggande sållteori är att metoderna är relativt elementära och flexibla, speciellt jämfört med andra metoder inom analytisk talteori. 
-Det krävs inga idéer från komplex analys som till exempel Dirichlets L-funktioner eller serier för att ha användning av de enklare sållen och om man kan formulera mängderna/vikterna på ett korrekt sätt, går det att effektivt tillämpa metoderna på ett stort antal mängder. 
-Effektiviteten innebär att trots sin enkla konstruktion, kan dessa matematiska såll fortfarande ge starka resultat, även om bättre resultat kunde hittas genom att använda mer raffinerade analytiska metoder. 
-Ett exempel på detta är att asymptotiska beteendet av \(x/\log(x)\) för antalet primtal mindre än \textit{x} som ges i primtalssatsen. 
-Detta kan nästan bevisas utan något arbete med zeta-funktioner då man använder Selbergs såll, dock så får man bara en övre gräns av \(x/\log(x)\) istället för det asymptotiska beteendet. 
-Mer avancerade sållmetoder har givit svar på frågor närliggande till primtalstvillingsförmodan i \cite{chen2Prime}, och att det finns oändligt många par av primtal med maximalt 600 steg emellan sig \cite{mayBound}.
+De största fördelar med den grundläggande sållteorin är att metoderna är relativt elementära och flexibla, speciellt jämfört med andra metoder inom analytisk talteori. 
+Det krävs inga idéer från komplex analys som till exempel Dirichlets L-funktioner eller serier för att ha användning av de enklare sållen och om man kan formulera mängderna på ett korrekt sätt, går det att effektivt tillämpa metoderna på ett stort antal mängder. 
+Effektiviteten innebär att trots sin enkla konstruktion, kan dessa matematiska såll fortfarande ge starka resultat, även om bättre resultat kan hittas genom att använda mer raffinerade analytiska metoder.
+Ett sådant resultat vilket sållteori kan nästan nå är att antalet primtal mindre än \textit{x} har det asymptotiska beteendet av \(x/\log(x)\) vilket ges i primtalssatsen. 
+Detta icke triviala resultat kan nästan bevisas utan arbete med zeta-funktionereller då man använder Selbergs såll, dock så får man bara en övre gräns av \(x/\log(x)\) istället för det asymptotiska beteendet. 
+Mer avancerade sållmetoder har givit svar på frågor närliggande till primtalstvillingsförmodan i \cite{chen2Prime}, och att det finns oändligt många par av primtal med maximalt 600 tal emellan sig \cite{mayBound}.
 
 Vår rapport fokuserar på små såll av både kombinatorisk och viktad form. 
-Små innebär att de fokuserar på att uppskatta storleken på ett litet antal restklasser modulo primtal, att ett såll är kombinatoriskt innebär att den använder sig av inklusion-exklusionsprincipen för att uppskatta mängdens storlek på ett lämpligt sätt, och att ett såll är viktat innebär att någon viktfunktion används för att uppskatta storleken. 
+Först, att ett såll är små innebär det att de fokuserar på att uppskatta storleken på mängder som kan beskrivas som ett litet antal restklasser modulo primtal.
+ Näst, att ett såll är kombinatoriskt innebär att den använder sig av inklusion-exklusionsprincipen för att uppskatta mängdens storlek på ett lämpligt sätt. 
+Slutligen, att ett såll är viktat innebär att någon viktfunktion används för att uppskatta storleken. 
 Bland dessa typer av såll håller vi oss till Eratosthenes generaliserade såll, Bruns såll, och Selbergs såll. 
 För varje såll ger vi en kortfattad härledning till dess formulering, där vi lyfter fram de centrala idéerna för dess konstruktion, och en förklaring till hur sållet används med exempel. 
 Efteråt redovisar och analyserar vi en implementering i kod av Eratosthenes ursprungliga algoritm, vilket följer metoden som beskrivs i \cite{HaraldSieve}.
-Med hjälp av de primtalen generade av algoritmen undersökar vi slutligen vissa egenskaper hos primtalen såsom deras fördelning, fördelningen av primtalstvillingar, och frekvensen av olika stora avstånd mellan primtal (primtalsgap).
+Med hjälp av de primtalen som genereras av algoritmen undersökar vi slutligen vissa egenskaper hos primtalen såsom deras fördelning, fördelningen av primtalstvillingar, och frekvensen av olika stora avstånd mellan på varandra följande primtal (primtalsgap).
 Dock, innan vi börjar redovisa något av sållen vill vi gå igenom några förberedelser och förklara det allmänna sållproblemet.
