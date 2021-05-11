@@ -321,6 +321,7 @@ Göteborg, Sverige 2021 }
 
 \newpage
 \pagenumbering{arabic}
+
 \section{Inledning} \label{inledning}
 \input{coen/inledning.tex}
 
@@ -345,14 +346,14 @@ Göteborg, Sverige 2021 }
 \section{Datorimplementation av Eratosthenes såll} \label{partB}
 \input{nils/inledningB}
 
-\subsection{Grundläggande teori och algoritmer} \label{partB.algoritmteori}
-\input{erik/algoritmteori}
+    \subsection{Grundläggande teori och algoritmer} \label{partB.algoritmteori}
+    \input{erik/algoritmteori}
 
-\subsection{Implementation av algoritmerna i Python}\label{partB.implementering}
-\input{nils/implementering}
+    \subsection{Implementation av algoritmerna i Python}\label{partB.implementering}
+    \input{nils/implementering}
 
-\subsection{Tillämpningar och resultat} \label{partB.applications}
-\input{coen/applications} 
+    \subsection{Tillämpningar och resultat} \label{partB.applications}
+    \input{coen/applications} 
 
 
 
@@ -369,18 +370,28 @@ Göteborg, Sverige 2021 }
 
 \newpage
 \appendix
-\section{Ordonotation} \label{APDX:Ordo}
-\input{erik/ordo} 
-\section{Partiell summation}
-\section{Bevis av (\ref{Thm.1.4.4}) och \texorpdfstring{\(\sum_{p \leq z} \frac{1}{p} = \log \log z + O(1)\)}{Summan av primtalsreciproker}}
-\input{erik/Thm.1.4.3-4}
-\section{Ett lemma angående multiplikativa funktioner}
-\input{coen/lemmaMult}
+
+\section{Ordonotation} 
+    \input{erik/ordo} \label{APDX:Ordo}
+
+\section{Bevis av några resultat som används}
+    \subsection{Partiell summation}
+    \subsection{Bevis av (\ref{Thm.1.4.4}) och 
+                \texorpdfstring{\(\sum_{p \leq z} \frac{1}{p} = \log \log z + O(1)\)}{Summan av primtalsreciproker}}
+    \input{erik/Thm.1.4.3-4}
+    
+    \subsection{Ett lemma angående multiplikativa funktioner}
+    \input{coen/lemmaMult}
+    
+    \subsection{En variant på Möbius inverteringsformel}
+    \input{coen/mobDual}
+    
 \section{Kedjebråk}
-\input{erik/kedjebrak} \label{APDX:cfrac}
-\section{En variant på Möbius inverteringsformel}
-\input{coen/mobDual}
-\section{Python-kod för Eratosthenes såll och programmering}
-\input{nils/omkoden}
+    \input{erik/kedjebrak} \label{APDX:cfrac}
+
+\section{Python-kod tillhörande avsnitt \ref{partB}}
+    \subsection{Vår förbättrade version av programmet}
+    \input{nils/omkoden}
+
 
 \end{document}                 % The input file ends with this command.
