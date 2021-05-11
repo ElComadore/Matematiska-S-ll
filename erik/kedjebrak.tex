@@ -4,7 +4,7 @@ I avsnitt \ref{partB.algoritmteori}, där vi går igenom en implementering av Er
 
 Ett \textit{ändligt kedjebråk} definieras i \cite[Definition 20.1]{Lindahl} som
 \begin{align*}
-    \langle a_0, a_1, ..., a_n \rangle := a_0 + \cfrac{1}{a_1 + \cfrac{1}{a_2 + \cfrac{1}{\ddots \raisebox{-3mm}{$a_{n-2}+\cfrac{1}{1 + \cfrac{1}{a_n}}$}}}}
+    \langle a_0, a_1, ..., a_n \rangle := a_0 + \cfrac{1}{a_1 + \cfrac{1}{a_2 + \cfrac{1}{\ddots \raisebox{-3mm}{$a_{n-2}+\cfrac{1}{a_{n-1} + \cfrac{1}{a_n}}$}}}}
 \end{align*}
 där \(a_0, a_1, ..., a_n\) är reella tal och \(a_i > 0\) för \(i > 0\). I den här uppsatsen berör vi endast särfallet då \(a_0, a_1, ..., a_n\) är heltal vilket då kallas för ett \textit{enkelt kedjebråk}. 
 
