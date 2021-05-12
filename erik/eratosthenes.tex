@@ -1,18 +1,18 @@
 % Skrivet av Erik
 
-Även om Eratosthenes såll fortfarande är mest känt som en enkel algoritm som utan större möda kan utföras med papper och penna så har dess idé raffinerats genom historien till att inkorperera mer avancerad teori för att tillämpas på nya sätt. År 1808 utvecklade Adrien-Marie Legendre (1752-1833) sållet med hjälp av inklusion-exklusionsprincipen formulerad på formen från avsnitt \ref{sallproblemet}. Nedan kommer vi gå igenom denna form av Eratosthenes såll samt, i efterföljande avsnitt, följa hur \cite{cojocarumurty} presenterar en utvidgning av sållet till en mer generell form. 
+Även om Eratosthenes såll fortfarande är mest känt som en enkel algoritm vilken utan större möda kan utföras med papper och penna så har dess idé raffinerats genom historien till att inkorperera mer avancerad teori för att tillämpas på nya sätt. År 1808 utvecklade Adrien-Marie Legendre (1752-1833) sållet med hjälp av inklusion-exklusionsprincipen formulerad på formen från avsnitt \ref{sallproblemet}. Nedan kommer vi gå igenom denna form av Eratosthenes såll samt, i efterföljande avsnitt, följa hur \cite{cojocarumurty} presenterar en utvidgning av sållet till en mer generell form. 
 
 \subsection{Legendres såll} \label{era.Legendres}
 
-Första steget för att utveckla Eratosthenes såll är att omformulera sållexemplet från introduktionen i de termer vi definierade i föregående avsnittet. I exemplet börjar vi med en lista av alla positiva heltal upp till en övre gräns, säg $x$, vilken vi kan skriva som $\A = \{n \in \mathbb{N} : n \leq x\}$. Låt alla primtal upp till $z$ redan vara inringade och mängderna vi kryssar över vara \(\A_p = \{a \in \A :  a \equiv 0 \pmod{p}\}\) --- mängden av multiplar av $p$ som är mindre än eller lika med $x$. Det är enkelt att se att kardinaliteten av \(\A_d\) är \(\lfloor x/d \rfloor\) så att, om vi väljer $z = \sqrt{x}$ så blir, med hjälp av (\ref{inclusionexclusion}),
+Första steget för att utveckla Eratosthenes såll är att omformulera sållexemplet från introduktionen i de termer vi definierade i föregående avsnittet. I exemplet börjar vi med en lista av alla positiva heltal upp till en övre gräns, säg $x$, vilken vi kan skriva som $\A = \{n \in \mathbb{N} : n \leq x\}$. Låt alla primtal upp till $z$ redan vara inringade och mängderna vi kryssar över vara \(\A_p = \{a \in \A :  a \equiv 0 \pmod{p}\}\) --- mängden av multiplar av $p$ som är mindre än eller lika med $x$. Vi kan se att kardinaliteten av \(\A_d\) är \(\lfloor x/d \rfloor\) så att, om vi väljer $z = \sqrt{x}$ så blir, med hjälp av (\ref{inclusionexclusion}),
 \begin{align*}
     \pi(x) - \pi(\sqrt{x}) + 1 = \sum_{d \divides P(\sqrt{x})} \mu(d) \left\lfloor \frac{x}{d} \right\rfloor  
 \end{align*}
 där \(1\):an på vänstersidan tar i hänsyn att \(1 \in \A\) inte sållas bort på högersidan och \(\pi(\sqrt{x})\) är de inringade primtalen. Detta var Legendres idé när han omformulerade Eratosthenes såll till att räkna primtal \cite[kapitel 1.1]{opera}. 
 
-Legendres formel är bra för att räkna primtal exakt men är långsam och golvfunktionen kan vara svårhanterlig. Vi kan underlätta för oss genom att ersätta golvfunktionen med $x/d$ och med bråkdelen som restterm. Skriver vi bråkdelen som \(\{x/d\} := x/d - \lfloor x/d \rfloor = O(1)\) leder det oss till \(\card{\A_d} = x/d + O(1)\). Dessvärre resulterar det här i en väldigt stor felterm då restermerna ackumulerar, så att \(\pi(x) - \pi(\sqrt{x}) + 1 = x \sum_{d \divides P(\sqrt{x})}\frac{\mu(d)}{d} + O(2^{\pi(\sqrt{x})}) \).
+Legendres formel är bra för att räkna primtal exakt men är långsam och golvfunktionen kan vara svårhanterlig. Vi kan underlätta för oss genom att ersätta golvfunktionen med $x/d$ och med bråkdelen som restterm. Skriver vi bråkdelen som \(\{x/d\} := x/d - \lfloor x/d \rfloor = O(1)\) leder det oss till \(\card{\A_d} = x/d + O(1)\). Dessvärre resulterar det här i en väldigt stor felterm då restermerna ackumulerar, så att \(\pi(x) - \pi(\sqrt{x}) + 1 = x \sum_{d \divides P(\sqrt{x})}\frac{\mu(d)}{d} + O(2^{\pi(\sqrt{x})}) \). % Gränsfall om det krävs display-line
 
-Eftersom \(\A_p\), för varje $p$, är definierad som en restklass modulo $p$ så säger vi att antalet utvalda restklasser modulo $p$ är $\omega(p) = 1$ för alla $p$ -- vi kallar Eratosthenes för ett endimensionellt eller linjärt såll av den här anledningen. Mer allmänt betecknas dimensionen av ett såll med parametern \(\kappa\) om det är ett minimum för en genomsnittlig övre gräns för \(\omega(p)\) för alla $p$ \cite{tenenbaum}, så att
+Eftersom \(\A_p\), för varje $p$, är definierad som en restklass modulo $p$ så säger vi att antalet utvalda restklasser modulo $p$ är $\omega(p) = 1$ för alla $p$ -- vi kallar Eratosthenes för ett endimensionellt eller linjärt såll av den här anledningen. Mer allmänt betecknas dimensionen av ett såll med parametern \(\kappa\) om det är ett minimum för en genomsnittlig övre gräns för \(\omega(p)\) för alla $p$ \cite{tenenbaum}, så att för alla \(z\)
 \begin{align} \label{dimension}
     \sum_{p \divides P(z)} \frac{\omega(p) \log(p)}{p} \leq \kappa \log(z) + O(1).
 \end{align}
@@ -42,11 +42,14 @@ Med observationen att \(W(z) = \prod_{p \divides P(z)} (1 - \omega(p)/p) = \sum_
     \S{A}{P}{z} = X W(z) + \Biggl(- X \sum_{\substack{d \divides P(z) \\ d > y}} \frac{\omega(d)}{d} \mu(d) + \sum_{\substack{d \divides P(z)  \\ d \leq y}} \mu(d) R_d \Biggr).
 \end{align*}
 
-Vi kan skriva om resttermen, först med hjälp av triangelolikheten och sedan med $\abs{\mu(x)} \leq 1$ och vårt antagande $\abs{R_d} = O(\omega(d))$ så att
+De två summorna innanför parentesen är vår felterm, vi fokuserar på den andra summan. Vi kan skriva om den, först med hjälp av triangelolikheten och sedan med $\abs{\mu(x)} \leq 1$ och vårt antagande $\abs{R_d} = O(\omega(d))$ så att
 \begin{align*}
-    \sum_{\substack{d \divides P(z) \\ d > y}} \abs{\frac{\omega(d)}{d} \mu(d)} + \sum_{\substack{d \divides P(z)  \\ d \leq y}} \abs{ \mu(d) R_d} \leq 
-    \sum_{\substack{d \divides P(z) \\ d > y}} \abs{\frac{\omega(d)}{d}} + \sum_{\substack{d \divides P(z)  \\ d \leq y}} \abs{R_d} \leq
-    \sum_{\substack{d \divides P(z) \\ d > y}} \frac{\omega(d)}{d} + O\Bigg(\sum_{\substack{d \divides P(z)  \\ d \leq y}} \omega(d)\Bigg).
+    %X \sum_{\substack{d \divides P(z) \\ d > y}} \abs{\frac{\omega(d)}{d} \mu(d)} + \sum_{\substack{d \divides P(z)  \\ d \leq y}} \abs{ \mu(d) R_d} \leq 
+    %X \sum_{\substack{d \divides P(z) \\ d > y}} \abs{\frac{\omega(d)}{d}} + \sum_{\substack{d \divides P(z)  \\ d \leq y}} \abs{R_d} \leq
+    % X \sum_{\substack{d \divides P(z) \\ d > y}} \frac{\omega(d)}{d} + O\Bigg(\sum_{\substack{d \divides P(z)  \\ d \leq y}} \omega(d)\Bigg).
+    \sum_{\substack{d \divides P(z)  \\ d \leq y}} \abs{ \mu(d) R_d} \leq 
+    \sum_{\substack{d \divides P(z)  \\ d \leq y}} \abs{R_d} \leq
+     O\Bigg(\sum_{\substack{d \divides P(z)  \\ d \leq y}} \omega(d)\Bigg).
 \end{align*}
 Summan innanför Ordo-tecknet kan vi förenkla med Rankins trick som, enligt \cite[s.68]{cojocarumurty}, säger att indikator funktionen, \(1_{n \leq x} \leq \frac{x}{n}\). Därav skriver vi 
 \begin{align*}
@@ -56,7 +59,13 @@ Summan innanför Ordo-tecknet kan vi förenkla med Rankins trick som, enligt \ci
     %  = \exp{\left( \delta \log(y) + \log \left(\sum_{d \divides P(z)} \frac{\omega(d)}{d^\delta}\right) \right)}
     % \exp{\left( \delta \log(y) + \prod_{p \divides P(z)} \log \left( 1 + \frac{\omega(p)}{p^\delta}\right) \right)}
 \end{align*}
-för alla \(\delta > 0\). Med olikheterna \(\log(1 + x) \leq x\) och \(e^x \leq 1 + x e^x\) för $x \geq 0$, och sist partiell summering av (\ref{dimension}) får vi att
+för alla \(\delta > 0\). Eftersom \(\omega(d) / d^\delta\) är multiplikativ så kan vi skriva summan som en produkt
+\begin{align*}
+    y^\delta \prod_{p \divides P(z)} \Big(1 + \frac{\omega(p)}{p^\delta} \Big) =
+    \exp \Bigg(\delta \log y + \sum_{p \divides P(z)} \log\Big(1 + \frac{\omega(p)}{p^\delta} \Big) \Bigg) \leq 
+    \exp \Bigg(\delta \log y + \sum_{p \divides P(z)} \frac{\omega(p)}{p^\delta} \Bigg)
+\end{align*}
+vari sista steget använder vi \(\log(1 + x) \leq x\). Väljer vi \(\delta = 1 - 1/\log z\) och utnyttjar olikheten \(e^x \leq 1 + x e^x\) för $x \geq 0$, och sist partiell summering av (\ref{dimension}) får vi att
 \begin{align*}
     \sum_{\substack{d \divides P(z)  \\ d \leq y}} \omega(d) = O\left( \frac{y}{\log(z)} (\log(z))^{\kappa + 1} \exp{\left(- \frac{\log(y)}{\log(z)} \right)} \right).
 \end{align*}
