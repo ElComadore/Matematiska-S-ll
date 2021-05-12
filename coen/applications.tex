@@ -76,13 +76,10 @@ Dock så ger den oss en känsla för om fördelningen verkar rimlig i detta fall
 %There are a number of things to discuss regardng the above figure. 
 \subsubsection{Frekvens av primtalsgap}
 
-Vi fortsätter med att ge visualiseringar av egenskaper av de primtal vi har hittat med att undersöka frekvensen av olika storlekar av primtalsgap. 
+Vi fortsätter med att ge visualiseringar av egenskaper av de primtal vi har genererat genom att undersöka frekvensen av olika storlekar av primtalsgap. 
 En primtalsgap är avståndet mellan ett primtal och sitt efterföljande primtal.
 Man kan, med hjälp av primtalssatsen, visa att det förväntade avståndet mellan ett primtal \(p_n\) och nästa, \(p_{n+1}\), är \(\log p_n\).
-Dock, som antyddes kortfattat i inledningden, finns oändligt många par av primtal med maximalt 600 steg emellan sig vilket betyder att, även för de stora primtalen, måste det finnas primtal relativt nära varandra.
-Detta bevisades med hjälp av nya sållmetoder, specifikt GPY metoder, där vikterna som använts i beviset liknar de som används i Selbergs såll. 
-Ett av delmålen är att en dag kunna reducerar de 600 steg till 2 och därmed bevisa primtalstviliingshypotesen.
-För att ge intuition om hur verklig det som har bevisats är analyserar vi nu de primtalsgap som finns i listan av primtal vi generade i \ref{app.primes.title} med att först redovisa följande figur.
+För att ge intuition om hur verklig det förväntade avståndet är analyserar vi nu de primtalsgap som finns i listan av primtal vi generade i \ref{app.primes.title} med att först redovisa följande figur.
 
 \begin{figure}[H]
     \centering
@@ -108,6 +105,10 @@ Såsom mycket annat angående primtal, finns det åtminstone en förmodad koppla
 Som vi ser i figur \ref{fig:res.gap} är 6 den mest frekventa längden på primtalsgap i vårt intervall, och det som är speciellt med 6 är att det är produkten av de första två primtalen. 
 Vi ser också från figuren att 30, vilket är produkten av de första 3 primtalen, hoppar upp lite från översta delen av bandet, och även 210 med. Förmodan är då att varje \textit{primorial}, produkten av de första \textit{m} primtalen, någon gång blir "hoppmästaren" (namnet gavs av J. H. Conway, 1993).
 Förmodan har undersökts direkt med hjälp av numeriska uppskattningsmetoder \cite{primeGap} som har lyckats visa att 6 är hoppmästaren fram till \(\approx 1.74\cdot10^{35}\) och att 30 är hoppmästaren mellan föregående och \(\approx 10^{425}\).
+
+Dock, som antyddes kortfattat i inledningden, finns oändligt många par av primtal med maximalt 600 steg emellan sig vilket betyder att, även för de stora primtalen, måste det finnas primtal relativt nära varandra.
+Detta bevisades med hjälp av nya sållmetoder, specifikt GPY metoder, där vikterna som använts i beviset liknar de som används i Selbergs såll. 
+Ett av delmålen är att en dag kunna reducerar de 600 steg till 2 och därmed bevisa primtalstviliingshypotesen.
 
 %Nutidens forskningen kring primtalsgap representerar kulmen på sållteorins teoretisk tillämpning.
 %Teorin har utvecklats markant under de senaste hundra åren och tillämpats framgångsrikt på många problem inom talteori.
