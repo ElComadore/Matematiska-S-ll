@@ -1,0 +1,19 @@
+\begin{algorithm}
+    \caption{En implementation av Eratosthenes såll från \cite{HaraldSieve}} \label{SimpleSiev}
+    \begin{algorithmic}[1]
+        \Function{SimpleSiev}{$N$}
+        \Ensure for $1 \leq n \leq N$, $P_n = 1$, if $n$ is prime, $P_n = 0$ otherwise
+                \State $P_1 \gets 0$, $P_2 \gets 1$, $P_n \gets 0$ for $n \geq 2$ even, $P_n \gets 1$ for $n \geq 3$ odd
+                \State $m \gets 3$, $n \gets m \cdot m$ 
+                \While{$n \leq N$}
+                    \If{$P_m = 1$}
+                        \While{$n \leq N$} \Comment{[sic]}
+                            \State $P_n \gets 0$, $n \gets n + 2m$ \Comment{sieves out multiples $\geq m^2$ of $m$}
+                        \EndWhile
+                    \EndIf
+                    \State $m \gets m + 2$, $n \gets m \cdot m$
+                \EndWhile
+            \State \textbf{return} $b$\Comment{The gcd is b}
+        \EndFunction
+    \end{algorithmic}
+\end{algorithm}
