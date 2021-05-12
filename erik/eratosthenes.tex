@@ -42,15 +42,7 @@ Med observationen att \(W(z) = \prod_{p \divides P(z)} (1 - \omega(p)/p) = \sum_
     \S{A}{P}{z} = X W(z) + \Biggl(- X \sum_{\substack{d \divides P(z) \\ d > y}} \frac{\omega(d)}{d} \mu(d) + \sum_{\substack{d \divides P(z)  \\ d \leq y}} \mu(d) R_d \Biggr).
 \end{align*}
 
-De två summorna innanför parentesen är vår felterm, vi fokuserar på den andra summan. Vi kan skriva om den, först med hjälp av triangelolikheten och sedan med $\abs{\mu(x)} \leq 1$ och vårt antagande $\abs{R_d} = O(\omega(d))$ så att
-\begin{align*}
-    %X \sum_{\substack{d \divides P(z) \\ d > y}} \abs{\frac{\omega(d)}{d} \mu(d)} + \sum_{\substack{d \divides P(z)  \\ d \leq y}} \abs{ \mu(d) R_d} \leq 
-    %X \sum_{\substack{d \divides P(z) \\ d > y}} \abs{\frac{\omega(d)}{d}} + \sum_{\substack{d \divides P(z)  \\ d \leq y}} \abs{R_d} \leq
-    % X \sum_{\substack{d \divides P(z) \\ d > y}} \frac{\omega(d)}{d} + O\Bigg(\sum_{\substack{d \divides P(z)  \\ d \leq y}} \omega(d)\Bigg).
-    \sum_{\substack{d \divides P(z)  \\ d \leq y}} \abs{ \mu(d) R_d} \leq 
-    \sum_{\substack{d \divides P(z)  \\ d \leq y}} \abs{R_d} \leq
-     O\Bigg(\sum_{\substack{d \divides P(z)  \\ d \leq y}} \omega(d)\Bigg).
-\end{align*}
+De två summorna innanför parentesen i uttrycket ovan är vår felterm. Fokuserar vi på den andra summan så kan vi uppskatta dess storlek, först med hjälp av triangelolikheten och sedan med $\abs{\mu(x)} \leq 1$ och vårt antagande $\abs{R_d} = O(\omega(d))$ så att summanden \(\abs{ \mu(d) R_d} \leq O(\omega(d))\)
 Summan innanför Ordo-tecknet kan vi förenkla med Rankins trick som, enligt \cite[s.68]{cojocarumurty}, säger att indikator funktionen, \(1_{n \leq x} \leq \frac{x}{n}\). Därav skriver vi 
 \begin{align*}
     \sum_{\substack{d \divides P(z)  \\ d \leq y}} \omega(d) =
@@ -65,7 +57,7 @@ för alla \(\delta > 0\). Eftersom \(\omega(d) / d^\delta\) är multiplikativ s�
     \exp \Bigg(\delta \log y + \sum_{p \divides P(z)} \log\Big(1 + \frac{\omega(p)}{p^\delta} \Big) \Bigg) \leq 
     \exp \Bigg(\delta \log y + \sum_{p \divides P(z)} \frac{\omega(p)}{p^\delta} \Bigg)
 \end{align*}
-vari sista steget använder vi \(\log(1 + x) \leq x\). Väljer vi \(\delta = 1 - 1/\log z\) och utnyttjar olikheten \(e^x \leq 1 + x e^x\) för $x \geq 0$, och sist partiell summering av (\ref{dimension}) får vi att
+vari sista steget använder vi \(\log(1 + x) \leq x\). Väljer vi nu \(\delta = 1 - 1/\log z\) och utnyttjar olikheten \(e^x \leq 1 + x e^x\), som gäller för $x \geq 0$, och sist partiell summering av (\ref{dimension}) får vi att
 \begin{align*}
     \sum_{\substack{d \divides P(z)  \\ d \leq y}} \omega(d) = O\left( \frac{y}{\log(z)} (\log(z))^{\kappa + 1} \exp{\left(- \frac{\log(y)}{\log(z)} \right)} \right).
 \end{align*}
@@ -74,7 +66,7 @@ På ett liknande sätt omvandlar vi den första summan i feltermen med partiell 
 Sammanställt, huvud- och felterm, erhåller vi nästa sats, \cite[Sats 5.4.1]{cojocarumurty}:
 
 \begin{theorem}[Eratosthenes generaliserade såll]\label{thm:EratosthenesSieve}
-Med notationen från avsnitt \ref{sallproblemet} och följande tre antaganden 
+Med notationen från avsnitt \ref{sallproblemet} och följande antaganden 
 \begin{enumerate}
     \item \(\card{\A_d} = 0, \forall d > y\) för något \(y \in \mathbb{R}_+\)
     \item \(\abs{R_d} = O(\omega(d))\)
@@ -97,7 +89,7 @@ Ett av målen med avsnitt \ref{eratosthenes.gen.såll} var att kunna använda Er
 \end{theorem} 
 Satsen bevisades först av Brun 1919 i artikeln \textit{La série} \(1/5 + 1/7 + 1/11 + 1/13 + 1/17 + 1/19 + 1/29 + 1/31 + 1/41 + 1/43 + 1/59 + 1/61 \dots\) \textit{ou les dénominateurs sont \guillemotleft nombres premiers jumeaux \guillemotright est convergente ou finie} men vi kommer här följa ett annat bevis, ur \cite[s.72-73]{cojocarumurty}, som använder sig av sats \ref{thm:EratosthenesSieve}.
 
-För att hitta primtalstvillinigar mindre än $x$ (\textit{här}: \( \P_2(x) := \{p < x : p + 2 \text{ är ett primtal}\}\)) så vill vi utesluta multiplar av primtal samt tal två mindre än dessa. Med andra ord väljer vi kongruensklasserna $0$ och $-2$ modulo $p$ i sålldefinitionen så att dimensionen \(\kappa = 2\) samt \(\omega(2) = 1\) och \(\omega(p) = 2\) för alla primtal $p > 2$. Vårt val av kongruensklasser ger att \(y = x + 2\) i det första antagandet av sats \ref{thm:EratosthenesSieve} som då säger att
+Primtalstvillingar i det här fallet är tal i mängden \(\P_2(x) := \{p < x : p + 2 \text{ är ett primtal}\}\). För att hitta dessa tal så vill vi utesluta alla multiplar av primtal samt alla tal två mindre än dessa multiplar. Med andra ord väljer vi kongruensklasserna $0$ och $-2$ modulo $p$ i sålldefinitionen så att dimensionen \(\kappa = 2\) samt \(\omega(2) = 1\) och \(\omega(p) = 2\) för alla primtal $p > 2$. Vårt val av kongruensklasser ger att \(y = x + 2\) i det första antagandet av sats \ref{thm:EratosthenesSieve} som då säger att
 \begin{align*}
     \card{\P_2(x)} \leq \pi(z) + \S{A}{P}{z} \leq z + x W(z) + O\Big(x (\log x)^3 \exp \Big( - \frac{\log x}{\log z} \Big) \Big).
 \end{align*}
@@ -121,3 +113,14 @@ Genom att partialsummera summan av de reciproka värdena, med \(c_n\) som indika
 Med hjälp av (\ref{PrimTwinCard}) får vi att summan i Bruns sats är \(\ll \int_2^\infty \frac{(\log \log t)^2}{t \log^2 t} \text{d}t\) som är ändlig vilket medför att summan är begränsad. 
 
 Vad vi nu visat för summan över \(\P_2\) är i kontrast mot en annan identitet vi använde i ovanstående bevis, \(\sum_{p \leq n} \frac{1}{p} = \log \log n + O(1)\) vilken implicerar att samma summa över primtalen divergerar. Detta innebär inte att primtalstvillinigar är en ändlig delmängd av primtalen men det säger oss att andelen primtalstvillingar är relativt liten. I nästa del kommer vi se ett annat resultat tillskrivet Viggo Brun, Bruns såll, och med hjälp av detta visa ett resultat i motsatt riktning för en mängd snarlik mängden primtalstvillinigar. 
+
+
+%Rad 46:
+%\begin{align*}
+    %X \sum_{\substack{d \divides P(z) \\ d > y}} \abs{\frac{\omega(d)}{d} \mu(d)} + \sum_{\substack{d \divides P(z)  \\ d \leq y}} \abs{ \mu(d) R_d} \leq 
+    %X \sum_{\substack{d \divides P(z) \\ d > y}} \abs{\frac{\omega(d)}{d}} + \sum_{\substack{d \divides P(z)  \\ d \leq y}} \abs{R_d} \leq
+    % X \sum_{\substack{d \divides P(z) \\ d > y}} \frac{\omega(d)}{d} + O\Bigg(\sum_{\substack{d \divides P(z)  \\ d \leq y}} \omega(d)\Bigg).
+    %\sum_{\substack{d \divides P(z)  \\ d \leq y}} \abs{ \mu(d) R_d} \leq 
+    %\sum_{\substack{d \divides P(z)  \\ d \leq y}} \abs{R_d} \leq
+    %O\Bigg(\sum_{\substack{d \divides P(z)  \\ d \leq y}} \omega(d)\Bigg).
+%\end{align*}
