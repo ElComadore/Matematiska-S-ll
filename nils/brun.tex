@@ -127,13 +127,12 @@ Låt $\P$ vara mängden av alla primtal och låt
 \begin{equation*}
     \A := \{n(n+2): n\leq x\}.
 \end{equation*}
-Med hjälp av (\ref{brun.eq.lower}), vill vi nu uppskatta storleken på $\A$ efter bortsållning av tal delbara med primtal $p<z$ för något $z$. 
-På samma sätt som i avsnitt \ref{eratosthenes.tillämpning} är vi intresserade av kongruensklasserna $0$ och $-2$ vilket ger oss $\kappa=2$, samt att
-\begin{equation*}
-    \omega(2)=1\ \text{och}\ \omega(p)=2,\ \text{för}\ p>2.
-\end{equation*}
-Detta ger direkt att $\omega(p)/p\leq 2/3$ med likhet då $p=3$, låt därför $A_1=2/3$.
-För att hitta ett passande $\kappa$, använder vi oss av (\ref{Thm.1.4.4}) som tillsammans med $\omega(p)\leq2$ implicerar
+
+Precis som i avsnitt \ref{eratosthenes.tillämpning} vill vi sålla bort tal i kongruensklasserna $0$ och $-2$ modulo $p$, 
+men denna gång använder vi Bruns sats och i synnerhet den undre begränsningen (\ref{brun.eq.lower}) för att göra detta.
+På samma sätt som i avsnitt \ref{eratosthenes.tillämpning} har vi $\kappa=2$ samt $\omega(2)=1$ och $\omega(p)=2$ för $p>2$. Detta ger oss direkt att $\omega(p)/p\leq 2/3$ med likhet då $p=3$, låt därför $A_1=2/3$ så antagandet $\omega(d)\leq dA_1$ håller.
+
+För att visa att detta val av $\kappa$ uppfyller antagendet i \ref{brun.thm.brun} använder vi oss av (\ref{Thm.1.4.4}) som tillsammans med $\omega(p)\leq2$ implicerar
 \begin{equation*}
     \sum_{w\leq p<z} \frac{\omega(p)\log p}{p} \leq 2\log\left(z/w\right) + O(1),
 \end{equation*}
@@ -143,8 +142,8 @@ Något explicit värde på $A_2$ är inte nödvändigt, vilket kan ses genom att
     \exp\left(c_2\frac{2b+2}{\lambda\log z}\right) = 1 + c_2\frac{2b+2}{\lambda}(\log z)^{-1} + \left(c_2\frac{2b+2}{\lambda}\right)^2(\log z)^{-2} + \cdots
 \end{align}
 Fixera $b,\lambda$ och $A_2$ så att även $c_2$ är fixerat, då följer det att (\ref{brun.example.exp}) begränsas av $1+O((\log z)^{-1})$, då $z\to\infty$.
-Från (??) gäller det att $W(z) \gg (\log z)^{-2}$
-och genom att nu tillämpa den undre begränsningen i sats \ref{brun.thm.brun} erhåller vi
+
+Vidare har vi från (??) att $W(z) \gg (\log z)^{-2}$ gäller, och insättning i (\ref{brun.eq.lower}) av detta tillsammans med begränsningen ovan ger oss
 \begin{equation} \label{brun.example.sap}
     \S{A}{P}{z} \gg \frac{x}{(\log z)^2}\bigl(1 - c_1\bigr) + O\bigl(z^{c_3 - 1}\bigr).
 \end{equation}
