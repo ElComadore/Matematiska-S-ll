@@ -13,14 +13,15 @@ Vi börjar med att jämföra antalet primtal hittat med \textsc{NewSegSiev} emot
 \begin{equation}
     \pi(x) \sim \text{Li}(x) = \int_2^x\frac{1}{\log t}dt\label{app.primes.PNT}.
 \end{equation}
-För att skapa följande figur använder vi bara vår implementering av Helfgotts kod och en enkel räknesfunktion.
+För att skapa följande figur använder vi vår implementering av Helfgotts kod och en enkel räknefunktion.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width = \textwidth]{coen/Images/Primes.pdf}
     \caption{I figuren till vänster redovisas antalet primtal som förväntas enligt primtalssatsen, \textit{orange}, och antalet primtal som hittades enligt \textsc{NewSegSiev}, \textit{blå}, då \(n = 10^{19}\), \(\Delta = 1.25\cdot10^{9}\), och \(K = 2.5\). 
     Notera gärna att kurvorna ligger nästan på varandra. 
-    I de figuren till höger redovisas zoomade versioner av grafen till vänster för att visa skillnaden mellan vår uppskattning och det som förväntas vid början av intervallet, där algoritmen returnerar kring 100 färre primtal än förväntat, och vid slutet av intervallet, där algoritmen returnerar kring 2000 färre.}
+    I grafen till höger redovisas inzoomade versioner av grafen till vänster för att visa skillnaden mellan vår uppskattning och det som förväntas vid början av intervallet, där algoritmen returnerar kring 100 färre primtal än förväntat, och vid slutet av intervallet, där algoritmen returnerar kring 2000 färre.
+    Dock att kurvorna inte ligger på varandra kan förvantas till en viss grad eftersom det finns ett fel i \ref{app.primes.PNT} vilket inte visas.}
     %This graph shows the relative distributions of primees as per the aforementioned fucntions. Notice that while x over log x appears relatively close for smaller x the logarithmic integral approximation is a near exact match for the true distribution, so much so that the code line is hidden.
     \label{fig:res.prime}
 \end{figure}
@@ -28,26 +29,28 @@ För att skapa följande figur använder vi bara vår implementering av Helfgott
 
 Som vi ser i vänstra grafen av figur \ref{fig:res.prime}, då vi nu tror på primtalssatsen så verkar det som vår kod hittar det korrekta antalet primtal i intervallet, eftersom skillnaden mellan kurvorna är nästa osynlig på makronivå. 
 Att de inte ligger exakt på varandra är huvudsakligen beroende på felet vilket inte visas i \eqref{app.primes.PNT}.
-Att vår kod hittar ungefär 100 färre primtal än förväntat efter 20 000 heltal och ungefär 2000 färre primtal efter \(2.5\times10^9\) heltal är mycket rimligt då vi anser att felet i \eqref{app.primes.PNT} kan bäst vara \(O(x^{1/2 + \varepsilon}),\; \varepsilon > 0\), under antagandet att Riemannhypotesen stämmer \cite[Kapitel 5]{RiemannErr}.
+Notera att vi normaliserar felet vid början av intervallet eftersom betraktar skillnaden \(\text{Li}(x) - \text{Li}(n - \Delta)\), \(x\in[n-\Delta,\; n+\Delta]\) då vi plottar antalet förvantat primtal i intervallet.
+Att vår kod hittar ungefär 100 färre primtal än förväntat efter 20 000 heltal och ungefär 2000 färre primtal efter \(2.5\times10^9\) heltal är mycket rimligt då vi anser att felet i \eqref{app.primes.PNT} kan bäst vara \(O(2\Delta)^{1/2 + \varepsilon}),\; \varepsilon > 0\), under antagandet att Riemannhypotesen stämmer \cite[Kapitel 5]{RiemannErr}.
 
-Vi väljer \textit{n} som den är för att först och främst undersöka så långt ifrån noll som möjligt, med tanke på att öka feltermen för \eqref{app.primes.PNT}\footnote{Att \textit{n} inte valdes större i detta fallet är på grund av körningstiden för koden.}.
-Följaktligen väljer vi \(\Delta\) på så sätt att vi använder Helfgotts förbättringar i \textsc{NewSegSiev}, \textsc{DiophAppr} funktionen, och för att göra det krävs en specifik storlek på intervallet.
-Slutligen väljer vi \textit{K} till 2.5 för att det är minsta \textit{K}:et som kan vals enligt Helfgott.
-Tillsammans bildar dessa parametrar, med stöd från primtalssatsen, en bra bas för de följande tillämpningar då vi sparar bitarray:n och läser in den istället för att generar alla primtal inför varje körning.
+Vi väljer \textit{n} till \(10^{19}\) för att först och främst undersöka så långt ifrån noll som möjligt, med tanke på att försöka öka skillnaden mellan antalet primtal som genererades och antalet primtal som förväntades i intervallet\footnote{Att \textit{n} inte valdes större i detta fallet är på grund av körningstiden för koden.}.
+Att vi väljer \(\Delta\) till \(1.25\times10^9\) för att använda Helfgotts förbättringar i \textsc{NewSegSiev}, \textsc{DiophAppr} funktionen, och för att göra det krävs en specifik storlek på intervallet.
+Slutligen väljer vi \textit{K} till 2.5 för att det är minsta \textit{K}:et som kan väljas enligt Helfgott.
+Tillsammans bildar dessa parametrar, med stöd från primtalssatsen, en bra bas för de följande tillämpning då vi sparar bitarray:n och läser in den istället för att generar alla primtal inför varje körning.
 
 \subsubsection{Fördelningen av primtalstvillingar}
 %Continuing our presentation of various sets of prime's distributions, next we turn to the other recurring theme of twin primes. The following figure illustrates the distributions of twin primes as predicted by x over log squared x and the second order logarithmic integral against those primes found using our implementation. It should be noted that a rather simple help function, Appendix XXX, was written which searches for non twin primes in the prime list and removes them.
 
-Med hjälp av de primtal vi hittade i \ref{app.primes.title}, vänder vi oss nu till primtalstvillingar. Det finns ingen sats för primtalstvillingar motsvarande primtalssatsen, dock så finns det en förmodan framlagd av \cite[Förmodan B]{Hardy} som lyder
+Med hjälp av de primtal vi hittade i \ref{app.primes.title}, vänder vi oss nu till primtalstvillingar. Det finns ingen sats för primtalstvillingar motsvarande primtalssatsen, dock så finns det en förmodan framlagd av Hardy och Littlewood \cite[Förmodan B]{Hardy} som lyder
 \begin{equation}
     \pi_2(x) \sim 2\text{C}_2\cdot \text{Li}_2(x) = 2\text{C}_2\int_2^x\frac{1}{(\log t)^2}dt\label{app.twins.TWN}
 \end{equation}
-där \(\text{C}_2 = 0.6608...\) är primtalstvillingskonstanten \cite{TwinPrimeConstant}. Jämför vi den hypotetiska fördelningen emot antalet primtalstvillingar vi har genererat, så får vi följande figur.
+där \(\text{C}_2 = 0.66016...\) är primtalstvillingskonstanten \cite{TwinPrimeConstant}. Jämför vi den hypotetiska fördelningen emot antalet primtalstvillingar vi har genererat, så får vi följande figur.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width = \textwidth]{coen/Images/TwinPrimesNoKapp.pdf}
-    \caption{I grafen till vänster redovisas antalet primtalstvillingar som förväntas enligt den hypotetiska fördelningen, \textit{orange}, och de primtalstvillingar som hittades enligt \textsc{NewSegSiev}, \textit{blå}, då \(n = 10^{19}\), \(\Delta = 1.25\times10^9\), och \(\text{C}_2\) har avrundats till 0.66. Notera återigen att kurvorna ligger nästan på varandra. I graferna till höger så redovisas in zoomade versioner av grafen till vänster. Översta graf visar skillnaden mellan antalet primtalstvilling vi har hittat och antalet som förväntas vid slutet av intervallet, där algoritmen returnerar 500 fler primtalstvillingar. Efter de första 20000 heltal i intervallet så har algoritmen genererat nästan det exakt antalet primtalstvillingar som förväntas.}
+    \caption{I grafen till vänster redovisas antalet primtalstvillingar som förväntas enligt den hypotetiska fördelningen, \textit{orange}, och de primtalstvillingar som hittades enligt \textsc{NewSegSiev}, \textit{blå}, då \(n = 10^{19}\), \(\Delta = 1.25\times10^9\), och \(\text{C}_2\) har avrundats till 0.66. Notera återigen att kurvorna ligger nästan på varandra. I graferna till höger så redovisas inzoomade versioner av grafen till vänster. 
+    Översta grafen till höger visar skillnaden mellan antalet primtalstvilling vi har hittat och antalet som förväntas vid slutet av intervallet, där algoritmen returnerar 500 fler primtalstvillingar. Efter de första 20 000 heltalen i intervallet så har algoritmen genererat nästan det exakta antalet primtalstvillingar som förväntas.}
     %This graph shows the relative distributions of the twin primes as per the aforementioned fucntions. Notice once again the accuarcy of the logarithmic integral, once again hiding our code line, as opposed to that of C x over log squared x, where the constant is 2*C_2, or 2 times the twin prime constant (discussed below).
     \label{fig:res.twins}
 \end{figure}
@@ -55,24 +58,25 @@ där \(\text{C}_2 = 0.6608...\) är primtalstvillingskonstanten \cite{TwinPrimeC
 Datan i figur \ref{fig:res.twins} ger oss några intressanta insikter angående primtalstvillingar. 
 Den första är att datan ger stöd till den hypotetiska fördelningen av primtalstvillingar. 
 Som vi ser i grafen till vänster, då vi nu litar på koden så kan den hypotetiska fördelningen av primtalstvillingar definitivt vara rimligt eftersom kurvorna verkar ligga på varandra.
-När vi betraktar mindre delintervall, som i graferna till höger, så stöds den hypotetiska fördelningen av det felet som vi erhåller. 
 Vid början av intervallet är skillnaden mellan det förväntade antalet primtalstvillingar och antalet som hittades maximalt 4, och vid slutet så har skillnaden ökat till ungefär 500.
 I sammanhanget av ett intervall av längd \(2.5\times10^9\) så är en skillnad av 500 ekvivalent med en avvikelse av \(2\times 10^{-7}\) mer primtalstvillingar per heltal än vad som förväntades.
-Att antalet primtalstvillingar blir större än det hypotetiskt förväntade antalet vid slutet på intervallet beroende möjligen på att vi avrundar \(\text{C}_2\) till 0.66 vilket påverkar den förväntade fördelningen mycket när talen blir så stora som de är.
+Att antalet primtalstvillingar blir större än det hypotetiskt förväntade antalet vid slutet på intervallet beror möjligen på att vi avrundar \(\text{C}_2\) till 0.66 i kombination med att vi normaliserar felet vid början av intervallet precis som i föregående tillämpning.
+Dock så kunde avrundningen av \(\text{C}_2\) tillsammans med normaliseringen av felet också ha ökat antalet förväntade primtalstvillingar till mer än vad det skulle egentligen vara. 
+I sin tur leder detta till att förmodan verkar stödjas av vår implementering mer än vad den borde vara.
 
 Den andra insikten grafen ger är kopplad till anmärkningen vid slutet på tillämpningen av Eratosthenes såll i avsnitt \ref{Eratosthenes}.
 Vi noterar där att Bruns sats medför att andelen primtalstvillingar av primtalen är relativt liten och då vi jämför graferna i figurer \ref{fig:res.prime} och \ref{fig:res.twins} kan vi se den förväntade relationen.
-Vi ser direkt att antalet primtal bland de första 20 000 heltal i den första figuren är kring 400 vilket är ungefär 30 gånger fler än antalet primtalstvillingar som finns i de första 20000 heltal som betraktas.
-När vi istället tittar vid slutet av intervallet blir kvoten mellan antalet primtal och antalet primtalstvillingar inte mindre; den ökar något till ungefär en faktor av 33 fler enkla primtal jämfört emot tvillingar.
+Vi ser direkt att antalet primtal bland de första 20 000 heltal i den första figuren är kring 400 vilket är ungefär 30 gånger fler än antalet primtalstvillingar som finns i de första 20 000 heltal som betraktas.
+När vi istället tittar vid slutet av intervallet blir kvoten mellan antalet primtal och antalet primtalstvillingar inte mindre; den ökar något till ungefär en faktor av 33 fler enkla primtal jämfört med tvillingar.
 
 Vi kan inte använda vår kod som bevis för den hypotetiska fördelningen för primtalstvillingar. 
-Dock så ger den oss en känsla för om fördelningen verkar rimlig i detta fallet, vilket den gör. Vi kan också få en känsla för hur få primtalstvillingar det finns jämfört mot antalet primtal, vilket underlättar förståelsen för en av sållteorins stora framsteg, nämligen Bruns sats.
+Dock så ger den oss en känsla för om fördelningen verkar rimlig i detta fallet, vilket den gör. Vi kan också få en känsla för hur få primtalstvillingar det finns jämfört mot antalet primtal, vilket underlättar förståelsen för en av sållteorins första stora framsteg, nämligen Bruns sats.
 
 
 %There are a number of things to discuss regardng the above figure. 
 \subsubsection{Frekvens av primtalsgap}
 
-Vi fortsätter med att ge visualiseringar av olika egenskaper av de primtal vi har hittat med att undersöka frekvensen av olika storlekar av primtalsgap. 
+Vi fortsätter med att ge visualiseringar av egenskaper av de primtal vi har hittat med att undersöka frekvensen av olika storlekar av primtalsgap. 
 En primtalsgap är avståndet mellan ett primtal och sitt efterföljande primtal.
 Man kan, med hjälp av primtalssatsen, visa att det förväntade avståndet mellan ett primtal \(p_n\) och nästa, \(p_{n+1}\), är \(\log p_n\).
 Dock, som antyddes kortfattat i inledningden, finns oändligt många par av primtal med maximalt 600 steg emellan sig vilket betyder att, även för de stora primtalen, måste det finnas primtal relativt nära varandra.

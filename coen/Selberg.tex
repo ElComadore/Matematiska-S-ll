@@ -101,14 +101,14 @@ Om vi vill uppskatta antalet primtal på ovanstående form mindre än något \te
 Låt oss nu ta något \(z\leq x,\; z \in \mathbb{R}^+\) som vi kommer att bestämma senare. Då kan vi uppskatta \eqref{sel.apl.arithPrimes} genom att dela upp mängden på följande sätt.
 \begin{align}
     \pi(x;k,a) &= \pi(z;k,a) + \#\{z<p\leq x: p \equiv a \pmod{k}\} \nonumber\\
-    &\leq z + \#\{n\leq x: n \equiv a \pmod k,\; n \not\equiv 0 \pmod p,\; p\leq z\}.\label{sel.apl.over}
+    &\leq z + \#\{n\leq x: n \equiv a \pmod k,\; n \not\equiv 0 \pmod q,\; \forall q\leq z\}.\label{sel.apl.over}
 \end{align}
 Uppskattningen av den andra kardinaliteten som utförs i \eqref{sel.apl.over} motsvarar en sållning av alla tal som finns i talföjlden med primtal mindre än \textit{z}. 
 Det är klart att det är en uppskattning eftersom om det finns ett sammansatt tal i följden som endast är delbart med primtal större än \textit{z} så kommer de inte sållas bort. 
 Dock så behöver vi faktiskt inte sålla med avseende på alla primtal mindre än \textit{z}, bara de som är relativt prima med \textit{k}. 
 Om till exempel \(k = 6\) så får \textit{a} inte vara delbar med varken 2 eller 3.
 Som konsekvens av det kommer inga element i talföjlden vara delbar med \textit{k}s delare heller.
-Följaktligen ger detta oss att vi bara behöver primtal ur \(\P = \{p: (p, k) = 1\}\) och kardinaliteten vi vill uppskatta är då \(\S{A}{P}{z} = \{n\leq x: n \equiv a \pmod k,\; n \not\equiv 0 \pmod p,\; p\leq z, (p,k) = 1\}\).
+Följaktligen ger detta oss att vi bara behöver primtal ur \(\P = \{p: (p, k) = 1\}\) och kardinaliteten vi vill uppskatta är då \(\S{A}{P}{z} = \#\{n\leq x: n \equiv a \pmod k,\; n \not\equiv 0 \pmod p,\; p\leq z, (p,k) = 1\}\).
 
 För att kunna använda sållet så behöver vi bestämma \(\A\), \(\A_d\), \textit{X}, \(f(d)\) samt \(f_1(d)\), och \(R_d\). 
 Det är uppenbart att \(\A = \{n\leq x: n \equiv a \pmod k\}\) och dessutom att \(\A_d = \{n \leq x: n \equiv a \pmod k,\; n \equiv 0 \pmod d\}\). 
@@ -118,8 +118,8 @@ Vi erhåller \(X = \frac{x}{k}\), \(f(d) = d\), och \(R_d = O(1)\).
 För att bestämma \(f_1(d)\) använder vi oss av dess definition, att \textit{f} är multiplikativ, och att varje \(d = p_1p_2...p_j\) är kvadratfri. 
 Detta görs på följande sätt:
 \begin{align}
-    f_1(d) &= \sum_{m\divides d}\mu(m)f(d/m) = \sum_{m\divides p_1...p_j}\mu(m)f((p_1...p_j)/m) = \nonumber\\
-    &=\sum_{b_1 = 0}^1...\sum_{b_j = 0}^1\mu(p_1^{b_1}...p_j^{b_j})f((p_1...p_j)/(p_1^{b_1}...p_j^{b_j})) = \prod_{h = 1}^j\sum_{b_h = 0}^1\mu(p_h^{b_h})f(p_h/p_h^{b_h}) = \nonumber\\
+    f_1(d) &= \sum_{m\divides d}\mu(m)f(d/m) = \sum_{m\divides p_1...p_j}\mu(m)f((p_1...p_j)/m) \nonumber\\
+    &=\sum_{b_1 = 0}^1...\sum_{b_j = 0}^1\mu(p_1^{b_1}...p_j^{b_j})f((p_1...p_j)/(p_1^{b_1}...p_j^{b_j})) = \prod_{h = 1}^j\sum_{b_h = 0}^1\mu(p_h^{b_h})f(p_h/p_h^{b_h})\nonumber\\
     &= \prod_{h = 1}^j\Bigg(f(p_h) - 1\Bigg) = \prod_{h = 1}^j p_h\Bigg(1 - \frac{1}{p_h}\Bigg) = d\prod_{h = 1}^j \Bigg(1 - \frac{1}{p_h}\Bigg) = \phi(d).\label{sel.apl.tot}
 \end{align}
 I \eqref{sel.apl.tot} ser vi att \(f_1(d) = \phi(d)\) där \(\phi(d)\) är Eulers \(\phi\)-funktion. 
