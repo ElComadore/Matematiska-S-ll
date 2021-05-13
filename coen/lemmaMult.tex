@@ -6,20 +6,20 @@ Låt \textit{f} vara en multiplikativ funktion med \(d_1,d_2\) positiva, kvadrat
 \end{equation}
 \end{lemma}
 \begin{proof}
-Vi delar upp beviset i två fall där \(d_1\) och \(d_2\) är antingen relativt prima eller inte. Då \(d_1\) och \(d_2\) är relativt prima är \((d_1,dd_2) = 1\) och \([d_1,d_2] = d_1d_2\). Detta medför att
+Vi delar upp beviset i två fall där \(d_1\) och \(d_2\) är antingen relativt prima eller inte. Då \(d_1\) och \(d_2\) är relativt prima är \((d_1,d_2) = 1\) och \([d_1,d_2] = d_1d_2\). Detta medför att
 \begin{equation}
     f([d_1,d_2])\cdot f((d_1, d_2)) = f(d_1d_2)f(1) = f(d_1)f(d_2)\nonumber
 \end{equation}
 där sista likheten gäller för att  \(d_1\) och \(d_2\) är relativt prima. 
 
-Då  \(d_1\) och \(d_2\) inte är relativt prima är både deras lägsta gemensamma multipel och största gemensamma delare också kvadratfria. Genom att skriva \([d_1,d_2]\) och \((d_1,d_2)\) som
+Då  \(d_1\) och \(d_2\) inte är relativt prima är både deras lägsta gemensamma multipel och största gemensamma delare också kvadratfria. Genom att faktorisera minsta gemensamma multipeln \([d_1,d_2]\) och största gemensamma delaren \((d_1,d_2)\) som
 \begin{align}
     [d_1,d_2] &= p_1p_2...p_m\nonumber\\
     (d_1,d_2) &= q_1q_2...q_l\nonumber
 \end{align}
-och med användning av formeln \([d_1,d_2]\cdot(d_1,d_2) = d_1d_2\) har vi att
+så får vi med användning av formeln \([d_1,d_2]\cdot(d_1,d_2) = d_1d_2\) att
 \begin{equation}
     f([d_1,d_2])\cdot f((d_1, d_2)) = f(p_1)f_(p_2)...f(p_m)f(q_1)f(q_2)...f(q_l) = f(d_1)f(d_2)\nonumber
 \end{equation}
-där i sista likheten kombinerar vi om de primtal som behövs för att få tillbaka \(d_1\) och \(d_2\), vilket vi kan göra på grund av formeln som nämndes tidigare.
+där i sista likheten arrangerar om de primtal som behövs för att få tillbaka \(d_1\) och \(d_2\). Detta kan vi göra på grund av formeln som nämndes tidigare.
 \end{proof}
