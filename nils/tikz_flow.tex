@@ -8,6 +8,8 @@
 \def\distV{1.4cm}   % Vertical distance between objects
 \def\distH{0.6cm}   % Horizontal distance between objects
 
+\def\Hbow{0.6cm}      % Height of lower bow
+
 
 % Style
 %\tikzstyle{every node} = [font=\tiny]
@@ -53,7 +55,7 @@
     % Middle
     \draw [arrow] (A)     -- (B0);
     \draw [arrow] (B0)    -- (new);
-    \draw [arrow] (B0)    |- ([yshift=-\distV]B0.south) -| (stop);
+    \draw [arrow] (B0)    |- ([yshift=-\Hbow]B0.south) -| (stop);
     % Second loop
     \draw [arrow] (new)   -- (B1);
     \draw [arrow] (B1)    -- (dio);
