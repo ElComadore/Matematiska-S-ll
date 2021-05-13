@@ -122,22 +122,24 @@ Definiera mängden
 \begin{equation*}
     \mathcal{T} := \{\textit{$n\leq x$: $n$ och $n+2$ har som mest $7$ primtalsfaktorer}\}.
 \end{equation*}
-Målet är att med hjälp av (\ref{brun.eq.lower}) hitta en undre begränsning till $\card{\mathcal{T}}$ som divergerar då $x\to\infty$.
+Målet är att med hjälp av (\ref{brun.eq.lower}), hitta en undre begränsning till $\card{\mathcal{T}}$ som divergerar då $x\to\infty$.
 
 Låt $\P$ vara mängden av alla primtal och låt
 \begin{equation*}
     \A := \{n(n+2): n\leq x\}.
 \end{equation*}
-Precis som i avsnitt \ref{eratosthenes.tillämpning} vill vi sålla i mängden $\A$ med avseende på kongruensklasserna $0$ och $-2$ modulo $p$. Därför har vi $\kappa=2$ samt $\omega(2)=1$ och $\omega(p)=2$ för $p>2$.
-Detta ger oss att antagandet $\omega(d)\leq dA_1$ i Bruns sats är uppfyllt om vi sätter $A_1:=2/3$.
-Härnäst kontrollerar vi att antagandet $|R_d|\leq \omega(d)$ håller, genom att visa det något starkare påståendet $|R_p|\leq \omega(p)$. Med användning av (\ref{deltaX}) har vi, för $p>2$, att 
+Precis som i avsnitt \ref{eratosthenes.tillämpning} vill vi sålla mängden $\A$ med avseende på kongruensklasserna $0,-2$ modulo $p$. Således har vi även här att $\omega(2)=1$ och $\omega(p)=2$ för $p>2$, samt $\kappa=2$.
+
+För att kunna använda (\ref{brun.eq.lower}) måste givetvis satsens alla antaganden vara uppfyllda.
+Sätt därför $A_1:=2/3$ så att antagandet $\omega(d)\leq dA_1$ gäller.
+Härnäst kontrollerar vi att $|R_d|\leq \omega(d)$ håller genom att visa det något starkare påståendet $|R_p|\leq \omega(p)$. Med användning av (\ref{deltaX}) har vi att 
 \begin{equation*}
     \card \A_p = \left\lfloor \frac{x}{p} \right\rfloor + \left\lfloor \frac{x+2}{p} \right\rfloor 
-    \leq \frac{2}{p}x +2.
+    \leq \frac{2}{p}x +2,\quad\text{för alla $p>2$}.
 \end{equation*}
-En liknande beräkning ger oss att $\card \A_p\geq 2x/p$ vilket visar att $|R_p|\leq 2$ för $p>2$.
-När $p=2$ har vi istället att $\card\A_2=\lfloor x/p \rfloor$ som implicerar $|R_2|\leq 1$ och därmed kan vi dra slutsatsen att $|R_p|\leq \omega(p)$. 
-Att det sista antagandet \ref{brun.thm.brun} är uppfyllt kan vi se genom användning av (\ref{Thm.1.4.4}) som tillsammans med $\omega(p)\leq2$ implicerar
+En liknande beräkning ger oss att $\card \A_p\geq 2x/p$ vilket visar att $|R_p|\leq 2$ för alla $p>2$.
+I fallet då $p=2$ har vi istället att $\card\A_2=\lfloor x/p \rfloor$ som implicerar $|R_2|\leq 1$. Därmed kan vi dra slutsatsen att $|R_p|\leq \omega(p)$, vilket implicerar att $|R_d|\leq \omega(d)$ håller för alla kvadratfria tal $d$. 
+Att det sista antagandet \ref{brun.thm.brun} är uppfyllt kan vi se genom användning av (\ref{Thm.1.4.4}) som tillsammans med $\omega(p)\leq2$ ger oss att
 \begin{equation*}
     \sum_{w\leq p<z} \frac{\omega(p)\log p}{p} \leq 2\log\left(z/w\right) + O(1),
 \end{equation*}
