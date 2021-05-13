@@ -52,10 +52,9 @@ Vi kan vara säkra på att algoritmen slutar av sig självt eftersom vi utveckla
 \end{align*}
 vilket endast är möjligt om \(1\) är en multipel av största gemensamma nämnaren, \(\gcd{a,b}\), (ett resultat från elementär talteori, se förslagsvis \cite[Sats 3.1]{Lindahl}). % H.L. istället för 1:a
 
-Ovanstående algoritm heter \textsc{DiophAppr} i \cite{HaraldSieve} vilken beräknar en diofantisk approximation \(a / q\) av huvudkoefficienten \(\alpha_1\) i \(P(r)\) med kravet på $q$ som vi nämnde tidigare. Algoritmen returnerar täljare och nämnare separat samt passar på att beräkna \(a^{-1} \pmod{q}\) då del 2 av sats \ref{app.konvergenter} ger oss en möjlighet att räkna ut inversen i termer av konvergenterna. 
+Ovanstående algoritm heter \textsc{DiophAppr} i \cite{HaraldSieve} vilken beräknar en diofantisk approximation \(a / q\) av den ledande koefficienten \(\alpha_1\) i \(P(r)\) med kravet på $q$ som vi nämnde tidigare. Algoritmen returnerar täljare och nämnare separat samt passar på att beräkna \(a^{-1} \pmod{q}\) då del 2 av sats \ref{app.konvergenter} ger oss en möjlighet att räkna ut inversen i termer av konvergenterna. 
 
-Målet med att introducera \textsc{DiophAppr} är så att vi kan gå från att leta lösningar till (\ref{alg.problem}) i \(r \in [-R, R]\) till att endast leta bland ett urval av heltal. Låter vi \(\alpha_0 := n / m_0\) beteckna konstantkoefficienten av \(P(r)\) 
-
+Målet med att introducera \textsc{DiophAppr} är så att vi kan gå från att leta lösningar till (\ref{alg.problem}) i \(r \in [-R, R]\) till att endast leta bland ett urval av heltal. Vi har redan hittat en rationell approximation av \(\alpha_1\) och, konstantkoefficienten av \(P(r)\), \(\alpha_0 := n / m_0\) kan vi också approximera med ett bråk på samma nämnare, \(\lfloor \alpha_0 q + 1/2 \rfloor / q := c / q\). Då ser vi att
 \begin{align*}
     \abs{q \cdot P(r) - (c + ar)} &= \abs{\left(\alpha_1 - \frac{a}{q}\right) q r + \left( \alpha_0 q - c\right)} \leq 
     \abs{\alpha_1 - \frac{a}{q}} \abs{r} + \abs{\alpha_0 q - c} 
