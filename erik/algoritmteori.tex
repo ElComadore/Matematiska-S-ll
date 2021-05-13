@@ -67,9 +67,11 @@ tack vare noggrannheten av den diofantiska approximationen, hur vi definierade \
 där \(k = \lfloor q \cdot 5\Delta/(4M) \rfloor\). Det räcker alltså att sålla för \(r \equiv - a^{-1} (c + j) \pmod{q}\) för heltal \(j \in [-k-1, k+1]\), där den multiplikativa inversen av $a \pmod{q}$ tillhandahålls av \textsc{DiophAppr}. 
 
 % Detta kan ge falska lösningar, vi kan kontrollera detta --> villkor på display-rad
-Vi har alltså sett hur \cite{HaraldSieve} först sparar minnesplats genom att segmentera första delen av algoritmen och sedan tid i andra delen genom att vara selektiv med vilka tal som vi sållar bort multiplar av. I det senare fallet finns som mest en multipel i intervallet, per konstruktion av \(K \Delta\), och vi har visat att alla \(m = m_0 + r\) är ...
-
-men det kan vara för något \(r \equiv - a^{-1} (c + j) \pmod{q}\) att det inte finns 
+Vi har alltså sett hur \cite{HaraldSieve} först sparar minnesplats genom att segmentera första delen av algoritmen och sedan tid i andra delen genom att vara selektiv med vilka tal som vi sållar bort multiplar av. I det senare fallet finns som mest en multipel i intervallet, per konstruktion av \(K \Delta\), och vi har visat att alla \(m = m_0 + r\) med en multipel i intervallet har \(r \equiv - a^{-1} (c + j) \pmod{q}\), för \(a, c, j\) definierade ovan. Däremot har vi inte visat det motsatta och det kan vara så att vissa \(r\) som genereras är falska lösningar orsakade av Taylor- och den diofantiska approximationen. Därför behöver vi också kontrollera att multipeln av \(m\) ingår i intervallet, det vill säga att
+\begin{align} \label{alg.control}
+    \ell m %:= \lfloor (n + \Delta) / m \rfloor \cdot m 
+    \in [n - \Delta, n + \Delta] \quad \text{och } \quad  \ell m > m.
+\end{align}
 
 I nästa avsnitt kommer vi se vilka val som gick in i Python-implementationen av pseudokoden samt studera tidsbesparingar och möjliga förbättringar från originalalgoritmen.
 
