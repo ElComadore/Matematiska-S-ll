@@ -9,30 +9,20 @@ Antag att $\omega(2)=1$ och $\omega(p)=2$ för alla primtal $p>2$, och definiera
 \end{equation*}
 Då gäller det att
 \begin{equation} \label{APDX:asympW.main}
-    W(z) \asymp (\log z)^{-2},
+    W(z) \gg \exp \biggl( - \sum_{2 <p < z} \frac{2}{p}  \biggr),
 \end{equation}
 då $z\to\infty$.
 \end{theorem}
 
 
 \begin{proof}
-Från (\ref{era.app.mainAppr}) och (\ref{era.app.secondMainAppr}) har vi redan att
-\begin{align*}
-    W(z) \ll \exp \biggl( - \sum_{2 <p < z} \frac{2}{p}  \biggr),
-    \quad\text{och}\quad
-    \exp \biggl( - 2 \sum_{2 <p < z} \frac{1}{p}  \biggr) \asymp (\log z)^{-2}.
-\end{align*}
-Det som återstår att bevisa är därmed
-\begin{equation} \label{APDX:asympW.gg}
-    W(z) \gg \exp \biggl( - \sum_{2 <p < z} \frac{2}{p}  \biggr).
-\end{equation}
 Låt oss betrakta
 \begin{equation*}
     -\log(W(z)) 
     = \sum_{p < z} -\log\biggl( 1-\frac{\omega(p)}{p} \biggr) 
     = \sum_{p < z} \log\biggl( 1+\frac{\omega(p)}{p-\omega(p)} \biggr).
 \end{equation*}
-Användning av antagandet på $\omega$ implicerar att ovanstående är lika med 
+Användning av antagandet på $\omega$ implicerar att ovanstående högerled är lika med 
 \begin{equation} \label{APDX:asympW.sum}
     \log 2 + \sum_{2<p<z} \log\biggl( 1+\frac{2}{p-2} \biggr)
     \leq \log 2 + \sum_{2<p<z} \frac{2}{p-2}.
@@ -42,7 +32,7 @@ Betrakta nu summan i högerledet och gör omskrivningen
 \begin{equation*}
     \sum_{2 <p < z} \frac{2}{p-2} = \sum_{2 <p < z} \frac{2}{p} + \sum_{2 <p < z} \frac{2}{p(p-2)}.
 \end{equation*}
-Här gäller det att den andra summan konvergerar då $z\to\infty$, vilket kan ses genom
+Här gäller det att den andra summan konvergerar då $z\to\infty$ och kan ses genom att betrakta
 \begin{equation*}
     \sum_{2 <p < z} \frac{2}{p(p-2)} < 2\sum_{2 <p < z} \frac{1}{p^2} < 2\sum_{n = 1}^\infty \frac{1}{n^2},
 \end{equation*}
@@ -51,5 +41,5 @@ Om vi nu återgår till högerledet i (\ref{APDX:asympW.sum}) får vi slutligen 
 \begin{align*}
     -\log(W(z)) \gg \sum_{2 <p < z} \frac{2}{p},
 \end{align*}
-vilket implicerar (\ref{APDX:asympW.gg}) och beviset är klart.
+vilket implicerar satsen.
 \end{proof}
