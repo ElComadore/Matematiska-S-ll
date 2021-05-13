@@ -52,7 +52,10 @@ Vi kan vara säkra på att algoritmen slutar av sig självt eftersom vi utveckla
 \end{align*}
 vilket endast är möjligt om \(1\) är en multipel av största gemensamma nämnaren, \(\gcd{a,b}\), (ett resultat från elementär talteori, se förslagsvis \cite[Sats 3.1]{Lindahl}). % H.L. istället för 1:a
 
-Ovanstående algoritm heter \textsc{DiophAppr} i \cite{HaraldSieve} vilken beräknar en diofantisk approximation \(a / q\) av huvudkoefficienten \(\alpha_1\) i \(P(r)\) med kravet på $q$ som vi nämnde tidigare. Algoritmen returnerar täljare och nämnare separat samt passar på att beräkna \(a^{-1} \pmod{q}\) då del 2 av sats \ref{app.konvergenter} ger oss en möjlighet att räkna ut inversen i termer av konvergenterna. Låter vi \(\alpha_0 := n / m_0\), så får vi att %till den diofantiska approximationen \(a/q\) för \(\alpha_1\) så att \(\abs{\alpha_1 - \frac{a}{q}} \leq \frac{1}{q \cdot 2R}\) för största möjliga konvergent $q$ mindre än eller lika med \(2R\). \textsc{DiophAppr} 
+Ovanstående algoritm heter \textsc{DiophAppr} i \cite{HaraldSieve} vilken beräknar en diofantisk approximation \(a / q\) av huvudkoefficienten \(\alpha_1\) i \(P(r)\) med kravet på $q$ som vi nämnde tidigare. Algoritmen returnerar täljare och nämnare separat samt passar på att beräkna \(a^{-1} \pmod{q}\) då del 2 av sats \ref{app.konvergenter} ger oss en möjlighet att räkna ut inversen i termer av konvergenterna. 
+
+Målet med att introducera \textsc{DiophAppr} är så att vi kan gå från att leta lösningar till (\ref{alg.problem}) i \(r \in [-R, R]\) till att endast leta bland ett urval av heltal. Låter vi \(\alpha_0 := n / m_0\) beteckna konstantkoefficienten av \(P(r)\) 
+
 \begin{align*}
     \abs{q \cdot P(r) - (c + ar)} &= \abs{\left(\alpha_1 - \frac{a}{q}\right) q r + \left( \alpha_0 q - c\right)} \leq 
     \abs{\alpha_1 - \frac{a}{q}} \abs{r} + \abs{\alpha_0 q - c} 
@@ -64,3 +67,5 @@ där \(c := \lfloor \alpha_0 q + 1/2 \rfloor\). Således ser vi att skillnaden m
 där \(k = \lfloor q \cdot 5\Delta/(4M) \rfloor\). Det räcker alltså att sålla för \(r \equiv - a^{-1} (c + j) \pmod{q}\) där den multiplikativa inversen av $a \pmod{q}$ tillhandahålls av \textsc{DiophAppr}. % Detta kan ge falska lösningar, vi kan kontrollera detta --> villkor på display-rad
 
 Vi har alltså sett hur \cite{HaraldSieve} först sparar minnesplats genom att segmentera första delen av algoritmen och sedan tid i andra delen genom att vara selektiv med vilka tal som vi sållar bort multiplar av. I nästa avsnitt kommer vi se hur implementeringen av pseudokoden \cite{HaraldSieve} gått till och studera tidsbesparingar och möjliga förbättringar från originalalgoritmen.
+
+%till den diofantiska approximationen \(a/q\) för \(\alpha_1\) så att \(\abs{\alpha_1 - \frac{a}{q}} \leq \frac{1}{q \cdot 2R}\) för största möjliga konvergent $q$ mindre än eller lika med \(2R\). \textsc{DiophAppr} 
