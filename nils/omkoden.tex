@@ -22,19 +22,26 @@ där biten med index $i$ är en nolla om talet $i+a$ har sållats bort och en et
 
 \subsubsection*{\textsc{SimpleSiev}}
 Detta är det vanliga Eratosthenes såll. Funktionen tar in ett heltal $N$ och returnerar en lista med alla primtal i intervallet $[0,N]$.
-Exempelvis ger \texttt{SimpleSiev(7)} svaret \texttt{00110101} vilket representerar alla primtal från 0 till 7. 
+Exempelvis ger \texttt{SimpleSiev(7)} svaret \texttt{00110101} vilket representerar alla primtal från 0 till 7.
+%Med \texttt{P[i]} menas elementet med index \texttt{i} i listan \texttt{P}.
+%Vidare åsyftar \texttt{P[a:b:c]} alla element med index \texttt{a+kb} där \texttt{b} är heltal 
 \code{SimpleSiev} 
 
 
 \subsubsection*{\textsc{SimpleSegSiev}}
-Denna funktion tar in tre argument; $n$, $\Delta$ och $M$. Därefter returnerar den en lista vilken representerar alla tal i intervallet $[n, n+\Delta]$ som antingen är prima eller saknar delare mindre än, eller lika med $M$. Använder vi notation från avsnitt \ref{sallproblemet}, representerar denna lista mängden $\S{A}{P}{z}$ där $A=[n, n+\Delta]$, $z=M$ och $\P$ är mängden av alla primtal. Sållningen görs med primtal genererade av \textsc{SimpleSiev}.
-\code{SimpleSegSiev} 
+Denna funktion tar in tre argument; $n$, $\Delta$ och $M$. Därefter returnerar den en lista vilken representerar alla tal i intervallet $[n, n+\Delta]$ som antingen är prima eller saknar delare mindre än, eller lika med $M$. Använder vi notation från avsnitt \ref{sallproblemet}, representerar denna lista mängden $\S{A}{P}{z}$ där $A=[n, n+\Delta]$, $z=M$ och $\P$ är mängden av alla primtal. 
+För att utföra sållningen behövs alltså alla primtal i intervallet $[0,M]$. 
+Dessa genereras av \textsc{SimpleSiev} som åkallas på rad 5.
+\code{SimpleSegSiev}
 
 
 \subsubsection*{\textsc{SubSegSiev}}
-Denna funktion är exakt som \textsc{SimpleSegSiev} gällande indata och utdata. 
-Skillnaden mot förstnämnda är att \textsc{SubSegSiev} kan sålla i ett större intervall då den delar upp intervallet i mindre segment som sedan sållas en åt gången. Sållningen av de mindre intervallen utförs av \textsc{SimpleSegSiev}.
-\code{SubSegSiev} 
+Denna funktion är exakt som \textsc{SimpleSegSiev} gällande indata och utdata.
+Skillnaden mot förstnämnda är att intervallet $[0,M]$ delas upp i mindre delintervall.
+Funktionen tar sedan ett delintervall i taget, skapar en lista med alla primtal i delintervallet för att sedan sålla med hjälp av dessa primtal. 
+På så sätt behöver inte alla primtal i intervallet $[0,M]$ ligga i arbetsminnet på samma gång.
+För att generera listorna används \textsc{SimpleSegSiev}.
+\code{SubSegSiev}
 
 
 \subsubsection*{\textsc{NewSegSiev}}

@@ -25,15 +25,20 @@ Nedan följer, utan inbördes ordning, några av de gjorda förbättringar som h
     I Python kan operatorn \texttt{x//y} användas för division utan rest. Denna har visat sig vara snabbare än sammansättningen \texttt{floor(x/y)} och har således fått ersätta den senare där det varit möjligt. På ett liknande sätt har \texttt{ceil(x/y)} ersatts med \texttt{-(x//-y)}.
 \end{myitemize}
 
-En ytterligare förbättring kunde göras efter en noggrann analys av pseudokoden för \textsc{NewSegSiev} i \cite[s.338]{HaraldSieve}.
-Efter en approximering erhålls $n'\geq0$, en multipel av $m>0$ som möjligen uppfyller $n'\in[n-\Delta,n+\Delta]$ och $n'>m$.
+En ytterligare förbättring kunde göras efter en noggrann analys av pseudokoden för \textsc{NewSegSiev};
+Efter diofantisk approximering erhålls $n'\geq0$, en multipel av $m>0$ som möjligen uppfyller $n'\in[n-\Delta,n+\Delta]$ och $n'>m$.
 Enligt \cite{HaraldSieve} ska dessa tre villkor testas en efter en,
 men i själva verket är $n'\leq n+\Delta$ alltid uppfyllt eftersom $n'$ definieras som
-\begin{equation} \label{helf.nprim}
-    n' := \left\lfloor \frac{n+\Delta}{m} \right\rfloor\cdot m,
-\end{equation}
-vilken givetvis är mindre än eller lika med $\frac{n+\Delta}{m}\cdot m = n+\Delta$. 
-Vidare inspekterar vi villkoret $n'>m$, där (\ref{helf.nprim}) ger oss att 
+$\lfloor (n+\Delta)/m \rfloor\cdot m$,
+%\begin{equation} \label{helf.nprim}
+%    n' := \left\lfloor \frac{n+\Delta}{m} \right\rfloor\cdot m,
+%\end{equation}
+vilken givetvis är mindre än eller lika med
+$n+\Delta$.
+%$\frac{n+\Delta}{m}\cdot m = n+\Delta$.
+Vidare inspekterar vi villkoret $n'>m$, 
+där definitionen av $n'$ ger oss att
+%där (\ref{helf.nprim}) ger oss att 
 \begin{equation*}
     n'>m \iff
     \left\lfloor \frac{n+\Delta}{m} \right\rfloor > 1 \iff
