@@ -11,7 +11,7 @@ Ett gemensamt drag hos de matematiska sållen diskuterade nedan är att låta \(
 \begin{align} \label{deltaX}
     \card{\A_p} = \delta_p X + R_p
 \end{align}
-där \(\delta_p \in [0, 1)\) kan betraktas som en uppskattning av andelen element i delmängden \(\A_p\) och \(R_p\) som en felterm. % För \(p \neq q\) låter vi \(\delta_{pq} = \delta_p \delta_q\) så att \(\card{\A_{pq}} = \delta_p \delta_q X + R_{pq}\) och utvidgat för ett kvadratfritt tal \(d = p_1 \cdot ... \cdot p_n\) låter vi \(\delta_{d} = \delta_{p_1} \cdot ... \cdot \delta_{p_n}\). 
+där \(\delta_p \in [0, 1)\) kan betraktas som en uppskattning av andelen element i delmängden \(\A_p\) och \(R_p\) som en felterm. Utvidgat, för ett kvadratfritt tal \(d = p_1 \cdot ... \cdot p_n\), låter vi \(\delta_{d} = \delta_{p_1} \cdot ... \cdot \delta_{p_n}\) så att \(\card{\A_{d}} = \delta_{p_1} \cdot ... \cdot \delta_{p_n} X + R_{d}\). 
 
 I avsnitt \ref{Eratosthenes} om Eratosthenes generaliserade såll och avsnitt \ref{brun} om Bruns såll så kommer vi välja \(\delta_p = \omega(p) / p\) där \(\omega(p)\) betecknar antalet utvalda restklasser modulo \(p\) vi vill sålla bort. Som följd låter vi i dessa fall \(\A_p\) vara alla element som tillhör någon av dessa restklasser modulo $p$ och för kvadratfria $d$ låter vi \(\omega(d) := \prod_{p \divides d} \omega(p)\).  Sätter vi in det här $\delta_d$:t i (\ref{inclusionexclusion}) ser vi att vi får en huvudterm som är $X$ multiplicerat med summan \(\sum_{d \divides P(z)} \mu(d) \omega(d)/d\). Vi kan se att denna summa är lika med
 \begin{align} \label{Wfunc}
