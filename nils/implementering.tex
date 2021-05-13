@@ -22,39 +22,34 @@ Nedan följer, utan inbördes ordning, några av de gjorda förbättringar som h
     På vissa ställen har det varit möjligt att flytta ut beräkningar utanför loopar så att samma beräkning inte behöver göras flera gånger. 
     Dessutom har flera beräkningar kunnat kortas ned eller skrivas ihop för att undvika temporära variabler.
     \item
-    I Python kan operatorn \texttt{x//y} användas för division utan rest. Denna har visat sig vara snabbare än sammansättningen \texttt{floor(x/y)} och har således fått ersätta den senare där det varit möjligt. På ett liknande sätt har \texttt{ceil(x/y)} ersatts med \texttt{-(x//-y)}.
+    I Python kan operatorn \texttt{x//y} användas för division utan rest. Denna har visat sig vara snabbare än sammansättningen \texttt{floor(x/y)} och har därför fått ersätta den senare där det varit möjligt. På ett liknande sätt har \texttt{ceil(x/y)} ersatts med \texttt{-(x//-y)}.
 \end{myitemize}
 
-En ytterligare förbättring kunde göras efter en noggrann analys av pseudokoden för \textsc{NewSegSiev};
-Efter diofantisk approximering erhålls $n'\geq0$, en multipel av $m>0$ som möjligen uppfyller $n'\in[n-\Delta,n+\Delta]$ och $n'>m$.
-Enligt \cite{HaraldSieve} ska dessa tre villkor testas en efter en,
-men i själva verket är $n'\leq n+\Delta$ alltid uppfyllt eftersom $n'$ definieras som
-$\lfloor (n+\Delta)/m \rfloor\cdot m$,
-%\begin{equation} \label{helf.nprim}
-%    n' := \left\lfloor \frac{n+\Delta}{m} \right\rfloor\cdot m,
-%\end{equation}
-vilken givetvis är mindre än eller lika med
-$n+\Delta$.
-%$\frac{n+\Delta}{m}\cdot m = n+\Delta$.
-Vidare inspekterar vi villkoret $n'>m$, 
-där definitionen av $n'$ ger oss att
-%där (\ref{helf.nprim}) ger oss att 
+%En ytterligare förbättring kunde göras efter en noggrann analys av pseudokoden för \textsc{NewSegSiev};
+%Efter diofantisk approximering erhålls $n'\geq0$, en multipel av $m>0$ som möjligen uppfyller $n'\in[n-\Delta,n+\Delta]$ och $n'>m$.
+En ytterligare förbättring kunde göras genom att titta närmare på (\ref{alg.control}).
+För att en lösning $m$ ska vara en äkta lösning måste alla villkor i (\ref{alg.control}) hålla
+och detta bör således kontrolleras i algoritmen.
+Men i själva verket är det överflödigt att kontrollera alla tre villkoren.
+
+Algoritmen konstruerar nämligen multipeln $\ell m$ genom att sätta $\ell:=\lfloor (n+\Delta)/m \rfloor$,
+vilket direkt implicerar att $\ell m \leq n+\Delta$ alltid är uppfyllt.
+Vidare inspekterar vi villkoret $\ell m>m$, där vi har att
 \begin{equation*}
-    n'>m \iff
+    \ell m>m \iff
     \left\lfloor \frac{n+\Delta}{m} \right\rfloor > 1 \iff
     \left\lfloor \frac{n+\Delta}{m} \right\rfloor \geq 2 \iff
     (n+\Delta)/2\geq m.
 \end{equation*}
 Men $m$ väljs ur intervallet $[M,M+2R]$ så det räcker med att undersöka vilka förhållanden som  $M+2R\leq(n+\Delta)/2$ är uppfyllt under:
-Vi har att $M\leq\sqrt{n+\Delta}$, $R=\lfloor M\sqrt{\Delta/4n}\rfloor$ samt $\Delta\leq n$ och  
-således håller $M+2R \leq 2\sqrt{n+\Delta}$.
-Detta är i sin tur mindre eller lika med $(n+\Delta)/2$ så länge $n+\Delta\geq16$.
+Vi har att $M\leq\sqrt{n+\Delta}$, $R=\lfloor M\sqrt{\Delta/4n}\rfloor$ samt $\Delta\leq n$ vilket ger oss att $M+2R \leq 2\sqrt{n+\Delta}$.
+Detta är i sin tur mindre eller lika med $(n+\Delta)/2$ om $n+\Delta\geq16$.
 Att sålla efter primtal i en lista av positiva heltal mindre än $16$ är ointressant.
 Därför kan vi rimligtvis introducera kravet $n+\Delta\geq16$ i början av \textsc{NewSegSiev},
-så att $n'>m$ alltid håller och därmed inte behöver testas senare i algoritmen.
+så att $\ell m>m$ alltid håller och därmed inte behöver testas senare i algoritmen.
 
-Det har följaktligen visat sig att utav de tre villkor som skulle testas, 
-så är två av dem alltid uppfyllda och behöver därmed inte prövas.
+Det har följaktligen visat sig att av de tre villkor i (\ref{alg.control}),
+är två av dem alltid uppfyllda och behöver därmed inte kontrolleras.
 Det totala antalet gånger som detta steg utförs är
 \begin{equation*}
     O\left(\Delta\log n + \sqrt{n/\Delta}(\log n)^2\right),
