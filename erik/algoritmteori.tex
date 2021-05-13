@@ -5,7 +5,7 @@
 
 När Eratosthenes först formulerade sitt såll var det, som vi såg i inledningen, på formen av en algoritm. Det är med utgångspunkt i Eratosthenes ursprungliga idé som \cite{HaraldSieve} utvecklar algoritmen för att optimera processen till en effektiv kod som kan leta efter primtal i ett intervall, $[n - \Delta, n + \Delta] \subset \mathbb{R}_+$. Delvis gör \cite{HaraldSieve} detta med algoritmen \textsc{SimpleSiev}, vilken är nära en direkt översättning av Eratosthenes klassiska såll, för att erhålla en lista av alla primtal upp till ett givet tal $N$. Denna metoden fungerar väl för små $N$ men vill vi hitta primtal i ett intervall $[n - \Delta, n + \Delta]$ för något stort $n$ och relativt litet $\Delta$ så ger algoritmen oss betydligt mer information än vad vi behöver och kräver mer tid och minnesutrymme. 
 
-\input{erik/pseudokod}
+%\input{erik/pseudokod}
 
 Flaggskeppet i \cite{HaraldSieve}, algoritmen \textsc{NewSegSiev}, löser problemet genom att dela upp talen vi vill sålla bort multiplar av i två fall --- tal som är så pass små att vi är garanterade att det finns en multipel av dessa i vårt intervall och större tal som bara eventuellt har en multipel i intervallet. Med den här uppdelningen kan vi behandla de båda fallen olika för att spara tid och precis som i Eratosthenes såll behöver vi inte sålla med tal större än \(\sqrt{n + \Delta}\). I figur \ref{fig:flowchart} ser vi ett flödesschema av \textsc{NewSegSiev} med den ovannämnda uppdelningen --- först sållar algoritmen bort multiplar av små primtal innan kriterium A och sedan går den in i den andra loopen för att hantera multiplar av större tal. 
 
@@ -54,17 +54,18 @@ vilket endast är möjligt om \(1\) är en multipel av största gemensamma nämn
 
 Ovanstående algoritm heter \textsc{DiophAppr} i \cite{HaraldSieve} vilken beräknar en diofantisk approximation \(a / q\) av den ledande koefficienten \(\alpha_1\) i \(P(r)\) med kravet på $q$ som vi nämnde tidigare. Algoritmen returnerar täljare och nämnare separat samt passar på att beräkna \(a^{-1} \pmod{q}\) då del 2 av sats \ref{app.konvergenter} ger oss en möjlighet att räkna ut inversen i termer av konvergenterna. 
 
-Målet med att introducera \textsc{DiophAppr} är så att vi kan gå från att leta lösningar till (\ref{alg.problem}) i \(r \in [-R, R]\) till att endast leta bland ett urval av heltal. Vi har redan hittat en rationell approximation av \(\alpha_1\) och, konstantkoefficienten av \(P(r)\), \(\alpha_0 := n / m_0\) kan vi också approximera med ett bråk på samma nämnare, \(\lfloor \alpha_0 q + 1/2 \rfloor / q := c / q\). Då ser vi att
+Målet med att introducera \textsc{DiophAppr} är så att vi kan gå från att leta lösningar till (\ref{alg.problem}) i \(r \in [-R, R]\) till att endast leta bland ett urval av heltal. Vi har redan hittat en rationell approximation av \(\alpha_1\) och, konstantkoefficienten av \(P(r)\), \(\alpha_0 := n / m_0\) kan vi också approximera med bråket \(\lfloor \alpha_0 q + 1/2 \rfloor / q := c / q\). Således ser vi att
 \begin{align*}
     \abs{q \cdot P(r) - (c + ar)} &= \abs{\left(\alpha_1 - \frac{a}{q}\right) q r + \left( \alpha_0 q - c\right)} \leq 
-    \abs{\alpha_1 - \frac{a}{q}} \abs{r} + \abs{\alpha_0 q - c} 
+    \abs{\alpha_1 - \frac{a}{q}} q \abs{r} + \abs{\alpha_0 q - c} \\
+    &\leq \frac{1}{q \cdot 2R} \cdot qR + \frac{1}{2}  = 1
 \end{align*}
-där \(c := \lfloor \alpha_0 q + 1/2 \rfloor\). Således ser vi att skillnaden mellan \(q \cdot \abs{P(r)}\) och \(\abs{c + ar}\) är som mest \(1\). Därav, om \(P(r) \in [-5\Delta/(4M), 5\Delta/(4M)] \bmod 1\) så medför det att
+tack vare noggrannheten av den diofantiska approximationen, hur vi definierade \(c\) och att \(r \in [-R, R]\). Därav, om \(P(r) \in [-5\Delta/(4M), 5\Delta/(4M)] \bmod 1\) så medför det att
 \begin{align*}
     c + ar \in \{- k - 1, - k, ... , k, k + 1\} \bmod q
 \end{align*}
-där \(k = \lfloor q \cdot 5\Delta/(4M) \rfloor\). Det räcker alltså att sålla för \(r \equiv - a^{-1} (c + j) \pmod{q}\) där den multiplikativa inversen av $a \pmod{q}$ tillhandahålls av \textsc{DiophAppr}. % Detta kan ge falska lösningar, vi kan kontrollera detta --> villkor på display-rad
+där \(k = \lfloor q \cdot 5\Delta/(4M) \rfloor\). Det räcker alltså att sålla för \(r \equiv - a^{-1} (c + j) \pmod{q}\) för heltal \(j \in [-k-1, k+1]\), där den multiplikativa inversen av $a \pmod{q}$ tillhandahålls av \textsc{DiophAppr}. % Detta kan ge falska lösningar, vi kan kontrollera detta --> villkor på display-rad
 
-Vi har alltså sett hur \cite{HaraldSieve} först sparar minnesplats genom att segmentera första delen av algoritmen och sedan tid i andra delen genom att vara selektiv med vilka tal som vi sållar bort multiplar av. I nästa avsnitt kommer vi se hur implementeringen av pseudokoden \cite{HaraldSieve} gått till och studera tidsbesparingar och möjliga förbättringar från originalalgoritmen.
+Vi har alltså sett hur \cite{HaraldSieve} först sparar minnesplats genom att segmentera första delen av algoritmen och sedan tid i andra delen genom att vara selektiv med vilka tal som vi sållar bort multiplar av. I nästa avsnitt kommer vi se vilka val som gick in i Python-implementationen av pseudokoden samt studera tidsbesparingar och möjliga förbättringar från originalalgoritmen.
 
 %till den diofantiska approximationen \(a/q\) för \(\alpha_1\) så att \(\abs{\alpha_1 - \frac{a}{q}} \leq \frac{1}{q \cdot 2R}\) för största möjliga konvergent $q$ mindre än eller lika med \(2R\). \textsc{DiophAppr} 
