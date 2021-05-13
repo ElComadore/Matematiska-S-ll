@@ -137,7 +137,7 @@ För att visa att $\kappa=2$ uppfyller det sista antagendet i \ref{brun.thm.brun
     \sum_{w\leq p<z} \frac{\omega(p)\log p}{p} \leq 2\log\left(z/w\right) + O(1),
 \end{equation*}
 varpå vi ser att $\kappa=2$ uppfyller kriterierna och att $A_2$ existerar.
-Något explicit värde på $A_2$ är inte nödvändigt, vilket kan ses genom att betrakta exponenten i ($\ref{brun.eq.lower}$). Taylorutveckling ger
+Något explicit värde på $A_2$ är inte nödvändigt, vilket kan ses genom att betrakta exponenten i ($\ref{brun.eq.lower}$). Taylorutveckling av denna ger
 \begin{align}\label{brun.example.exp}
     \exp\left(c_2\frac{2b+2}{\lambda\log z}\right) = 1 + c_2\frac{2b+2}{\lambda}(\log z)^{-1} + \left(c_2\frac{2b+2}{\lambda}\right)^2(\log z)^{-2} + \cdots
 \end{align}
@@ -157,10 +157,13 @@ Insättning av detta i (\ref{brun.example.sap}) ger
     \frac{u^2x}{(\log x)^2}\bigl(1 - c_1\bigr) + O\bigl(x^{\frac{c_3 - 1}{u}}\bigr) \gg 
     \frac{x}{(\log x)^2} + O\bigl(x^{\frac{c_3 - 1}{u}}\bigr).
 \end{equation*}
-Genom att ställa det ytterligare kravet $u>c_3-1$, har vi att feltermen ovan minskar när $x$ blir ökar och vi får slutligen
-\begin{equation} \label{brun.example.bound}
+Genom att ställa det ytterligare kravet $u>c_3-1$, 
+har vi att feltermen ovan minskar när $x$ blir ökar och vi får slutligen:
+\begin{theorem}
+\begin{equation*} \label{brun.example.bound}
     \card\mathcal{T} \gg \frac{x}{(\log x)^2}.
-\end{equation}
-Notera här att vi inte bara har bevisat påståendet \textit{det finns oändligt många par av heltal $(n,n+2)$ där båda talen har högst 7 primtalsfaktorer},
-uttrycket (\ref{brun.example.bound}) ger oss även en undre gräns för det asymptotiska beteendet hos mängden ifråga.
+\end{equation*}
+\end{theorem}
+Lägg märke att vi inte bara har bevisat påståendet att det finns oändligt många par av heltal $(n,n+2)$ där båda talen har högst 7 primtalsfaktorer,
+uttrycket ovan ger oss även en undre gräns för det asymptotiska beteendet hos mängden ifråga.
 Härnäst riktas fokus mot denna rapports tredje och sista såll.
