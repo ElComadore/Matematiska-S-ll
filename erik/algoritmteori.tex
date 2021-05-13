@@ -5,7 +5,7 @@
 
 När Eratosthenes först formulerade sitt såll var det, som vi såg i inledningen, på formen av en algoritm. Det är med utgångspunkt i Eratosthenes ursprungliga idé som \cite{HaraldSieve} utvecklar algoritmen för att optimera processen till en effektiv kod som kan leta efter primtal i ett intervall, $[n - \Delta, n + \Delta] \subset \mathbb{R}_+$. Delvis gör \cite{HaraldSieve} detta med algoritmen \textsc{SimpleSiev}, vilken är nära en direkt översättning av Eratosthenes klassiska såll, för att erhålla en lista av alla primtal upp till ett givet tal $N$. Denna metoden fungerar väl för små $N$ men vill vi hitta primtal i ett intervall $[n - \Delta, n + \Delta]$ för något stort $n$ och relativt litet $\Delta$ så ger algoritmen oss betydligt mer information än vad vi behöver och kräver mer tid och minnesutrymme. 
 
-%\input{erik/pseudokod}
+\input{erik/pseudokod}
 
 Flaggskeppet i \cite{HaraldSieve}, algoritmen \textsc{NewSegSiev}, löser problemet genom att dela upp talen vi vill sålla bort multiplar av i två fall --- tal som är så pass små att vi är garanterade att det finns en multipel av dessa i vårt intervall och större tal som bara eventuellt har en multipel i intervallet. Med den här uppdelningen kan vi behandla de båda fallen olika för att spara tid och precis som i Eratosthenes såll behöver vi inte sålla med tal större än \(\sqrt{n + \Delta}\). I figur \ref{fig:flowchart} ser vi ett flödesschema av \textsc{NewSegSiev} med den ovannämnda uppdelningen --- först sållar algoritmen bort multiplar av små primtal innan kriterium A och sedan går den in i den andra loopen för att hantera multiplar av större tal. 
 
@@ -64,7 +64,10 @@ tack vare noggrannheten av den diofantiska approximationen, hur vi definierade \
 \begin{align*}
     c + ar \in \{- k - 1, - k, ... , k, k + 1\} \bmod q
 \end{align*}
-där \(k = \lfloor q \cdot 5\Delta/(4M) \rfloor\). Det räcker alltså att sålla för \(r \equiv - a^{-1} (c + j) \pmod{q}\) för heltal \(j \in [-k-1, k+1]\), där den multiplikativa inversen av $a \pmod{q}$ tillhandahålls av \textsc{DiophAppr}. % Detta kan ge falska lösningar, vi kan kontrollera detta --> villkor på display-rad
+där \(k = \lfloor q \cdot 5\Delta/(4M) \rfloor\). Det räcker alltså att sålla för \(r \equiv - a^{-1} (c + j) \pmod{q}\) för heltal \(j \in [-k-1, k+1]\), där den multiplikativa inversen av $a \pmod{q}$ tillhandahålls av \textsc{DiophAppr}. 
+
+% Detta kan ge falska lösningar, vi kan kontrollera detta --> villkor på display-rad
+
 
 Vi har alltså sett hur \cite{HaraldSieve} först sparar minnesplats genom att segmentera första delen av algoritmen och sedan tid i andra delen genom att vara selektiv med vilka tal som vi sållar bort multiplar av. I nästa avsnitt kommer vi se vilka val som gick in i Python-implementationen av pseudokoden samt studera tidsbesparingar och möjliga förbättringar från originalalgoritmen.
 
