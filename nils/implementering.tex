@@ -24,6 +24,7 @@ Nedan följer, utan inbördes ordning, några av de gjorda förbättringar som h
     \item
     I Python kan operatorn \texttt{x//y} användas för division utan rest. Denna har visat sig vara snabbare än sammansättningen \texttt{floor(x/y)} och har således fått ersätta den senare där det varit möjligt. På ett liknande sätt har \texttt{ceil(x/y)} ersatts med \texttt{-(x//-y)}.
 \end{myitemize}
+
 En ytterligare förbättring kunde göras efter en noggrann analys av pseudokoden för \textsc{NewSegSiev} i \cite[s.338]{HaraldSieve}.
 Efter en approximering erhålls $n'\geq0$, en multipel av $m>0$ som möjligen uppfyller $n'\in[n-\Delta,n+\Delta]$ och $n'>m$.
 Enligt \cite{HaraldSieve} ska dessa tre villkor testas en efter en,
@@ -39,21 +40,14 @@ Vidare inspekterar vi villkoret $n'>m$, där (\ref{helf.nprim}) ger oss att
     \left\lfloor \frac{n+\Delta}{m} \right\rfloor \geq 2 \iff
     (n+\Delta)/2\geq m.
 \end{equation*}
-Men $m$ väljs ur intervallet $[M,M+2R]$ så det räcker med att undersöka ifall $M+2R\leq(n+\Delta)/2$. 
-Det gäller att $M\leq\sqrt{n+\Delta}$ och $R:=\lfloor M\sqrt{\Delta/4n}\rfloor$.
-Således håller $M+2R \leq 2\sqrt{n+\Delta}$,
-%\begin{equation*}
-%    M+2R \leq
-%    \sqrt{n+\Delta}\left(1+ \sqrt{\Delta/n}\right) \leq 2\sqrt{n+\Delta}
-%\end{equation*}
-eftersom $1\leq\Delta\leq n$. Detta ger i sin tur att
-\begin{equation*}
-    m \leq 2\sqrt{n+\Delta} \leq (n+\Delta)/2,
-\end{equation*}
-där den sista olikheten håller så länge $n+\Delta\geq16$. 
+Men $m$ väljs ur intervallet $[M,M+2R]$ så det räcker med att undersöka vilka förhållanden som  $M+2R\leq(n+\Delta)/2$ är uppfyllt under:
+Vi har att $M\leq\sqrt{n+\Delta}$, $R=\lfloor M\sqrt{\Delta/4n}\rfloor$ samt $\Delta\leq n$ och  
+således håller $M+2R \leq 2\sqrt{n+\Delta}$.
+Detta är i sin tur mindre eller lika med $(n+\Delta)/2$ så länge $n+\Delta\geq16$.
 Att sålla efter primtal i en lista av positiva heltal mindre än $16$ är ointressant.
 Därför kan vi rimligtvis introducera kravet $n+\Delta\geq16$ i början av \textsc{NewSegSiev},
-så att $n'>m$ alltid håller och inte behöver testas senare i algoritmen.
+så att $n'>m$ alltid håller och därmed inte behöver testas senare i algoritmen.
+
 Det har följaktligen visat sig att utav de tre villkor som skulle testas, 
 så är två av dem alltid uppfyllda och behöver därmed inte prövas.
 Det totala antalet gånger som detta steg utförs är
