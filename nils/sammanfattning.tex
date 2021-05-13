@@ -1,36 +1,29 @@
 Syftet med denna rapport är att ge läsaren en inblick i det matematiska delområdet sållteori genom att redogöra för dess grundläggande idéer och tillämpningar,
 samt att presentera en datorimplementation av Eratosthenes såll.
 %
-I rapporten presenteras Eratosthenes generaliserade såll,
-samt Bruns och Selbergs såll en åt gången med följande tillvägagångssätt:
-Först ges en kortfattad historisk kontext till sållet ifråga,
+I rapporten presenteras
+Eratosthenes generaliserade såll,
+samt Bruns och Selbergs såll;
+Först ges en kortfattad historisk kontext till sållen,
 följt av en översiktlig härledning,
-och därtill ett exempel på hur sållet kan tillämpas
+och därtill ett exempel på hur sållen kan tillämpas
 för att ge resultat om bland annat primtalstvillingar och primtal i aritmetiska serier.
 %
-Efter att de tre sållen har presenterats diskuteras och jämförs orsaken till deras feltermer.
-Detta med avsikt att belysa de möjligheter och begränsningar som finns i sållen som verktyg.
+Efter att de tre sållen introducerats diskuteras och jämförs orsaken till deras feltermer.
+Avsikten med detta är att belysa de möjligheter och begränsningar som finns i sållen som verktyg.
 %
 
 %
-Med viss grundläggande teori i ryggen  % Gillar inte riktigt den här
-övergår rapportens fokus till en algoritmisk implementation av Eratosthenes såll baserad på Helfgotts arbete \cite{HaraldSieve}.
+%Med viss grundläggande teori i ryggen  % Gillar inte riktigt den här
+Efter att ha etablerat viss grundläggande teori
+övergår rapportens fokus till en algoritmisk implementation av Eratosthenes såll baserad på Harald Helfgotts arbete \cite{HaraldSieve}.
 %
 Här beskrivs de underliggande matematiska principerna till algoritmen och dess övergripande struktur. 
 Därefter redovisas den metod som har använts, och väsentliga beslut som fattats,
 för att översätta algoritmen till ett effektivt program skrivet i programmeringsspråket Python.
 %
 I den sista delen av rapporten presenteras resultat utifrån kvantitativ data som givits av programmet vid sållning av primtal i intervallet \(10^{19}\pm 1.25\times10^9\).
-För att argumentera för denna datas giltighet jämförs den mot primtalssatsen och med stöd i detta undersöks den förmodade fördelningen av primtalstvillingar, i förhållande till det som uppmätts i intervallet.
+För att styrka denna datas giltighet jämförs den mot primtalssatsen och med stöd i detta undersöks den förmodade fördelningen av primtalstvillingar, i förhållande till det som uppmätts i intervallet.
 Avslutningsvis betraktas datan med avseende på frekvensen av primtalsgap, följt av en kort diskussion om hur detta knyter an till framsteg som gjorts om primtalsgap i modern tid.
-
-
-%För att plädera för programmets giltighet görs en betryggande jämförelse mellan datan och primtalssatsen.
- 
-
-
-%om fördelning av primtal och tvillingprimtal, samt frekvensen av primtalsgap, på intervallet \(10^{19}\pm 1.25\times10^9\).
-  
-
 
 
