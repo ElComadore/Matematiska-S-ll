@@ -67,8 +67,10 @@ tack vare noggrannheten av den diofantiska approximationen, hur vi definierade \
 där \(k = \lfloor q \cdot 5\Delta/(4M) \rfloor\). Det räcker alltså att sålla för \(r \equiv - a^{-1} (c + j) \pmod{q}\) för heltal \(j \in [-k-1, k+1]\), där den multiplikativa inversen av $a \pmod{q}$ tillhandahålls av \textsc{DiophAppr}. 
 
 % Detta kan ge falska lösningar, vi kan kontrollera detta --> villkor på display-rad
+Vi har alltså sett hur \cite{HaraldSieve} först sparar minnesplats genom att segmentera första delen av algoritmen och sedan tid i andra delen genom att vara selektiv med vilka tal som vi sållar bort multiplar av. I det senare fallet finns som mest en multipel i intervallet, per konstruktion av \(K \Delta\), och vi har visat att alla \(m = m_0 + r\) är ...
 
+men det kan vara för något \(r \equiv - a^{-1} (c + j) \pmod{q}\) att det inte finns 
 
-Vi har alltså sett hur \cite{HaraldSieve} först sparar minnesplats genom att segmentera första delen av algoritmen och sedan tid i andra delen genom att vara selektiv med vilka tal som vi sållar bort multiplar av. I nästa avsnitt kommer vi se vilka val som gick in i Python-implementationen av pseudokoden samt studera tidsbesparingar och möjliga förbättringar från originalalgoritmen.
+I nästa avsnitt kommer vi se vilka val som gick in i Python-implementationen av pseudokoden samt studera tidsbesparingar och möjliga förbättringar från originalalgoritmen.
 
 %till den diofantiska approximationen \(a/q\) för \(\alpha_1\) så att \(\abs{\alpha_1 - \frac{a}{q}} \leq \frac{1}{q \cdot 2R}\) för största möjliga konvergent $q$ mindre än eller lika med \(2R\). \textsc{DiophAppr} 
