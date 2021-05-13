@@ -1,0 +1,27 @@
+Följande sats är hämtad från \cite[Sats 1.3.1]{cojocarumurty} dock så ger vi lite mer förklaring i beviset.
+\begin{theorem}\label{APDX:parSum}
+Låt \(c_1,c_2,...\) vara en foljd av komplex tal och sätt
+\begin{equation}
+    S(x) := \sum_{n\leq x}c_n\nonumber
+\end{equation}
+Låt \(n_0\) vara ett fixt positivt heltal. Om \(c_j = 0\) för \(j < n_0\) och \(f:[n, \infty) \longrightarrow\mathbb{C}\) har en kontinuerlig derivata i \([n_0, \infty)\), då för något heltal \(x > n_0\) har vi att
+\begin{equation*}
+    \sum_{n \leq x} c_n f(n) = S(x)f(x) - \int_{n_0}^xS(t)f'(t)dt
+\end{equation*}
+\end{theorem}
+\begin{proof}
+Vi bevisar satsen genom att först inse att
+\begin{equation*}
+    c_n = S(n) - S(n-1).
+\end{equation*}
+Vi kan därför skriva om vänsterleden i satsen till
+\begin{align*}
+    \sum_{n \leq x} c_n f(n) &= \sum_{n \leq x} (S(n) - S(n-1)) f(n)\\
+    &= \sum_{n \leq x} S(n) f(n) - \sum_{n \leq x-1} S(n) f(n+1)\\
+    &= S(x)f(x) + \sum_{n \leq x-1} S(n) f(n) - \sum_{n \leq x-1} S(n) f(n+1)\\
+    &= S(x)f(x) - \sum_{n \leq x-1} S(n) (f(n+1)-f(n))\\
+    &= S(x)f(x) - \sum_{n \leq x-1} S(n) \int_n^{n+1}f'(t)dt\\
+    &= S(x)f(x) - \int_{n_0}^{x}S(t)f'(t)dt
+\end{align*}
+Att vi kan flytta in \(S(x)\) i integralen beror på att \(S(x)\) är en stegfunktion och är konstant på intervaller på formen \([n, n+1)\).
+\end{proof}
