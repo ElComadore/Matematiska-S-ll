@@ -1,7 +1,7 @@
 % Skrivet av Nils
 När den norska matematikern Viggo Brun (1881-1978) år 1915 publicerade artikeln \textit{Über das Goldbachsche Gesetz und die Anzahl der Primzahlpaare}, lades grunden till modern sållteori \cite{ViggoBrun}. 
 I artikeln presenterade Brun ett såll baserat på Eratosthenes idéer, som numera kallas Bruns såll och fyra år senare använde han det för att bevisa Bruns sats, vilken finns beskriven i avsnitt \ref{eratosthenes.tillämpning} ovan.
-I detta avsnitt ges en kortfattad beskrivning av Bruns såll, där vi nöjer oss med att illustrera huvudidéen bakom sållet och tar stöd i \cite[kap.6]{cojocarumurty} för att göra detta. Efteråt presenterar vi ett exempel hämtat ur \cite{cojocarumurty} på hur sållet kan tillämpas för att frambringa ett resultat som angränsar till primtalstvillingsförmodan.
+I detta avsnitt ges en kortfattad beskrivning av Bruns såll. Vi nöjer oss med att illustrera huvudidéen bakom sållet och tar stöd i \cite[kap.6]{cojocarumurty} för att göra detta. Därefter presenterar vi ett exempel hämtat ur \cite{cojocarumurty} på hur sållet kan tillämpas för att frambringa ett resultat som angränsar till primtalstvillingsförmodan.
 
 
 \subsection{Beskrivning av sållet}
@@ -12,7 +12,7 @@ Han gjorde detta genom införandet av en funktion $g$ i högerledets summa, vilk
 \end{equation}
 där $q(d)$ är det minsta primtal som delar $d$ för $d\geq2$ och $q(1)=z+1$. Brun visade att (\ref{brun.eq.firstsum}) håller för varje funktion $g$ som uppfyller $g(1)=1$.
 
-Därefter konstruerade han två funktioner $g_U$ och $g_L$ så att $\mu(d)(g_U(d)-g_U(pd))\geq0$ och $\mu(d)(g_L(d)-g_L(pd))\leq0$ håller för alla $d \mid P(z)$ och $p<q(d)$.
+Därefter konstruerade han två funktioner $g_U$ och $g_L$, så att $\mu(d)(g_U(d)-g_U(pd))\geq0$ och $\mu(d)(g_L(d)-g_L(pd))\leq0$ håller för alla $d \mid P(z)$ och $p<q(d)$.
 Således kunde han erhålla en undre och övre begränsning till $\S{A}{P}{z}$, nämligen
 \begin{equation}\label{brun.eq.gugl}
     \sum_{d \mid P(z)} \mu(d) g_L(d) \card\A_d 
@@ -58,7 +58,7 @@ Låt oss uttrycka en modifierad version av primtalstvillingsförmodan på följa
 
 \vspace{4pt}\noindent
 För valet $r=1$ erhålls exakt primtalstvillingsfömodan, vilken står obevisad.
-Däremot går det att med hjälp av Bruns såll bevisa påståendet för $r=7$, vi följer samma tillvägagångssätt som i \cite[kap.6.2]{cojocarumurty}.
+Däremot går det att med hjälp av Bruns såll bevisa påståendet för $r=7$. Vi följer samma tillvägagångssätt som i \cite[kap.6.2]{cojocarumurty}.
 Definiera mängden
 \begin{equation*}
     \mathcal{T} := \{\textit{$n\leq x$: $n$ och $n+2$ har som mest $7$ primtalsfaktorer}\}.
