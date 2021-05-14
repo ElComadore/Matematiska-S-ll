@@ -1,5 +1,6 @@
 Ett annat perspektiv på sållmetoder gavs av yttligare en norsk matematiker, Atle Selberg (1917-2007), under 1940 talet. 
-Hans metod var av en kombinatorisk stil som liknade de tidigare.Dock så använde sig av en ny typ av vikt och en uppskattning av en summa av Möbiusfunktioner för att uppskatta kardinaliteten av \(\A\).
+Hans metod var av en kombinatorisk stil som liknade de tidigare.
+Dock så använde sig av en ny typ av vikt och en uppskattning av en summa av Möbiusfunktioner för att uppskatta kardinaliteten av \(\A\).
 Denna metod kallas för Selbergs såll och är ett exempel på ett viktat såll. I detta avsnitt så ges en beskrivning av sållets uppbyggnad följt av en tillämpning av sållet för att uppskatta antalet primtal i en aritmetisk talföljd.
 
 \subsection{Beskrivning av sållet}
@@ -16,8 +17,8 @@ Enligt \cite[s. 114]{cojocarumurty}, bestod grundläggande uppskattningen av Sel
     \sum_{d\divides n}\mu(d) \leq \bigg(\sum_{d\divides n}\lambda_d\bigg)^2.\nonumber
 \end{equation}
 För att förstå varför denna uppskattning av Möbiusfunktionens summa fungerar, kom ihåg den första egenskapen som redovisas i \ref{Mobius}. 
-Summan av Möbiusfunktioner är antingen ett eller noll beroende på om \textit{n} är lika med ett eller inte.
-Uppskattningen är exakt ett då \textit{n} är 1 eller minimalt noll då \textit{n} är skild ifrån ett, eftersom det är ett reellt tal i kvadrat.
+Summan av Möbiusfunktioner är antingen 1 eller 0 beroende på om \textit{n} är lika med ett eller inte.
+Högerledet är exakt ett då \textit{n} är 1 eller minimalt noll då \textit{n} är skild ifrån ett, eftersom det är ett reellt tal i kvadrat.
 Slutmålet med sållets härledning blir att konstruera talföljden \((\lambda_d)\) så att uppskattningen minimeras, vilket kommer göras senare.
 Med hjälp av talföljden \((\lambda_d)\) kan vi nu uppskatta \(\S{A}{P}{z}\) eftersom
 \begin{equation}
@@ -59,7 +60,7 @@ Vi kan nu tillämpa en variant på Möbius inverteringsformel, se Appendix \ref{
 Eftersom vi har diagonaliserat huvudtermen i \eqref{sel.sieve.uuu} kan vi enkelt bestämma ett värde på \(u_\delta\) sådant att summan antar sitt minimivärde genom att använda kvadratkomplettering. 
 Vi gör detta med hjälp av \eqref{sel.sieve.one} och införandet av en ny funktion \(V(z) = \sum_{d\leq z,\; d\divides P(z)}\frac{\mu^2(d)}{f_1(d)}\), vilket direkt underlätter kvadratkompletteringen av summans termer. 
 Det är också värt att påpeka att \(V(z)\) är strikt positivt eftersom \(f_1(d)\) är alltid större än noll. 
-Vi kan se detta eftersom för varje primtal är \(f_1(p) = \sum_{d|p}\mu(d)f({p}/{d}) = \mu(1)f(p) + \mu(p)f(1) = f(p) - 1 > 0\).
+Detta gäller eftersom för varje primtal är \(f_1(p) = \sum_{d|p}\mu(d)f({p}/{d}) = \mu(1)f(p) + \mu(p)f(1) = f(p) - 1 > 0\).
 Dessutom har vi att \(f_1\) är multiplikativ och att \textit{d} är kvadratfri vilket tillsammans med föregående resonemanget medför att \(f_1 > 0\) för alla \textit{d} i summan. 
 Därför blir \(V(z)\) en summa av strikt positiva tal och därmed strikt positivt själv.
 Om vi sätter \(\delta = 1\) i \eqref{sel.sieve.one} då får vi att
@@ -73,7 +74,7 @@ vilket vi kan nu använda för att hitta en minimum på följande sätt:
 \end{align}
 Vi kan samla alla summor i \eqref{sel.sieve.VVV} in till en och då vi kvadratkompletterar summans termer har vi att
 \begin{equation}
-    \eqref{sel.sieve.VVV} = \sum_{\substack{\delta\leq z\\\delta|P(z)}}f_1(\delta)\Bigg(u_\delta - \frac{\mu(\delta)}{f_1(\delta)V(z)}\Bigg)^2 + \frac{1}{V(z)}.\nonumber
+    \sum_{\substack{\delta \leq z\\ \delta | P(z)}}f_1(\delta) u_\delta^2 = \sum_{\substack{\delta\leq z\\\delta|P(z)}}f_1(\delta)\Bigg(u_\delta - \frac{\mu(\delta)}{f_1(\delta)V(z)}\Bigg)^2 + \frac{1}{V(z)}.\nonumber
 \end{equation}
 Uppenbarligen blir ovanstående summa noll då vi väljer \(u_\delta = \frac{\mu(\delta)}{f_1(\delta)V(z)}\), vilket måste vara en minimivärde eftersom \(f_1(\delta\) är strikt positivt.
 Det går också att bevisa att med detta val av \(u_\delta\) blir \(|\lambda_d||V(z)| \leq |V(z)|\) \cite[s. 122-123]{cojocarumurty} och därför härleder följande sats.
@@ -83,13 +84,13 @@ Behåll notationen från tidigare i avsnittet och rapporten. Då har vi att
     \S{A}{P}{z} \leq \frac{X}{V(z)} + O\Bigg(\sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}|R_{[d_1, d_2]}|\Bigg).\nonumber
 \end{equation}
 \end{theorem}
-Ovanstående formulering är hur satsen redovisas i \cite{cojocarumurty}.
+Ovanstående formulering är hur satsen redovisas i \cite[sats 7.2.1]{cojocarumurty}.
 Notera att i Selbergs såll så har vi färre paratmetrar att bestämma än i de tidigare sållen, vilket hjälper en del med dess tillämpning. 
 Ett exempel på hur sållet kan tillämpas redovisas i nästa avsnitt.
 
 \subsection{Selbergs såll och primtal i aritmetiska talföljder}\label{sel.apl}
 
-Med hjälp av Selbergs såll kan vi uppskatta antalet primtal som finns i en aritmetisk talföjld, d.v.s. antalet primtal på formen \(p = a + tk\) där \textit{a}, \textit{k} är valda konstanter och \textit{t} är godtyckligt. 
+Med hjälp av Selbergs såll kan vi uppskatta antalet primtal som finns i en aritmetisk talföjld, det vill säga antalet primtal på formen \(p = a + tk\) där \textit{a}, \textit{k} är valda konstanter och \textit{t} är godtyckligt. 
 Det finns också ett krav på \textit{a} och \textit{k}, nämligen att de är relativt prima, utan det kravet så skulle maximalt ett primtal finnas i talföjlden. 
 Slutligen antar vi att \textit{k} är kvadratfritt, vilket kommer underlätta beräkningar senare.
 Om vi vill uppskatta antalet primtal på ovanstående form mindre än något \textit{x}, då är det samma som att uppskatta storleken av följande kardinalitet;

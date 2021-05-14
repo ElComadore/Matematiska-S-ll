@@ -15,11 +15,11 @@ Som nämndes i \ref{era.Legendres} motsvarar problemet en linjär sållning av \
 Med detta val av parametrar erhåller vi en felterm av storleksordning \(O(x(\log z)^2\exp({-\log x/\log z}))\).
 Vi jämför den nu emot feltemerna för både Bruns och Selbergs såll, och vad för uppskattning av \(\pi(x)\) man kan få  från de.
 Vi tillämpar Bruns såll genom att sätta \(b = 1\) och, återigen, \(\kappa = 1\). 
-Vi också sätter \(\lambda = \log 1.30\), för att minska potensen av feltermen och då får vi att \(c_3 \leq 9\) och storleksordningen på feltermen är \(O(z^9)\).
+Vi också sätter \(\lambda = 0.26\), för att minska potensen av feltermen och då får vi att \(c_3 \leq 9\) och storleksordningen på feltermen är \(O(z^9)\).
 För att tillämpa Selbergs såll inser vi att \(\#\A_d = x/d + O(1)\) vilket medför att feltermen i Selbergs såll av storleksordning \(O(z^2)\), precis som i tillämpningen i avsnitt \ref{sel.apl}.
 Skillnaden mellan felen i Bruns och Selbergs såll kan ses lätt men hur de jämförs med Eratosthenes är inte lika uppenbart.
 För att förstå skillnaden blandar vi in huvudtermen, vilket är av storleksordning \(O(x/\log z)\) för alla tre sållmetoder.
-Vi kan förena huvud och feltermen för både Bruns och Selbergs såll genom att sätta \(z = x^{1/u}\), med \(u > 9\) respektive \(u > 2\) och både ger uppskattningen \(\pi(x) \ll x/\log x\), där ordo konstanten som fås skiljer sig mellan metoderna. 
+Vi kan förena huvud och feltermen för både Bruns och Selbergs såll genom att sätta \(z = x^{1/u}\), med \(u > 9\) respektive \(u > 2\) och både ger uppskattningen \(\pi(x) \ll x/\log x\). 
 Dock så kan vi inte välja \textit{z} på samma stil när vi tillämpar Eratosthenes allmänna såll.
 I det fallet måste vi välja \(\log z = \log x/C\log\log x\) för något liten konstant \textit{C} sådan att feltermen och huvudtermen har samma vikt.
 Med en sådan \textit{z} erhåller vi från Eratosthenes allmänna såll att \(\pi(x) \ll x\log\log x/\log x\).
