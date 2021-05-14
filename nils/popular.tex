@@ -19,8 +19,8 @@ Det har alltså skett en dubbelräkning av alla tal som kan delas med 6,
 men vi kan kompensera för detta genom att addera en sjättedels miljon till svaret.
 
 
-Denna uppskattning är bättre än vår tidigare och vi kan givetvis fortsätta med talet 5.
-På så vis skulle vi komma ännu närmre det faktiska svaret, 
+Denna uppskattning av svaret är bättre än den vi hade tidigare och givetvis kan vi fortsätta vidare med talet 5.
+På så sätt skulle vi komma ännu närmre det faktiska svaret, 
 men vi skulle också behöva hantera fler dubbelräkningar.
 Den generella idén här kallas för \textit{inklusions-exklusionsprincipen} och illustreras nedan för tre mängder med hjälp av figur \ref{pop.fig}.
 
@@ -47,9 +47,9 @@ Som bekant har det skett en dubbelräkning där mängderna överlappar varandra.
 Låt oss skriva $AB$ när vi menar överlappet mellan $A$ och $B$, och liknande för de andra överlappen.
 Precis som i tidigare exempel kompenserar vi för dubbelräkningen genom att dra bort dessa överlapp ifrån summan, vilket ger oss $|A|+|B|+|C|-|AB|-|BC|-|AC|$.
 %$AB$, $BC$ samt $AC$, vi drar bort dessa från summan och får $|A|+|B|+|C|-|AB|-|BC|-|AC|$.
-Vidare har vi $ABC$ där alla tre mängderna överlappar varandra.
+Vidare har vi även $ABC$ där alla tre mängderna överlappar varandra.
 Denna ingår i alla tidigare nämnda mängder och har därmed lagts till och dragits bort tre gånger om. 
-Vi lägger till $ABC$ en gång till och kommer fram till svaret
+Vi lägger till $ABC$ en gång till och kommer fram till det slutgiltiga svaret
 \begin{equation*}
     |A|+|B|+|C|-|AB|-|BC|-|AC|+|ABC|.
 \end{equation*}
@@ -61,7 +61,7 @@ Ett (matematiskt) såll är i stora drag en metod för att rensa bort vissa tal 
 Som ovan exempelvis, då vi använde Legendres såll för att sålla bort icke-primtal ur mängden av heltal upp till en miljon.
 I denna rapport presenteras tre stycken såll;
 \textit{Eratosthenes generaliserade såll}, \textit{Bruns såll} samt \textit{Selbergs såll} som alla bygger på idéer liknande det vi har sett här.
-Gemensamt för de tre sållen är att de inte ger något exakt svar, då ett sådant ofta är opraktiskt att jobba med.
+Gemensamt för de tre sållen är att de inte ger något exakt svar, eftersom ett sådant ofta är opraktiskt att jobba med.
 Istället nöjer vi oss med approximationer, vilket ändå kan vara användbart förutsatt att vi känner till storleken på uppskattningens fel.
 Dessa feltermer och deras beteende utgör en väsentlig skillnad mellan de olika sållen och en diskussion samt jämförelse av feltermerna är således relevant. Därför har detta tillägnats en egen del i rapporten vilken följer efter att de tre sållen presenterats.
 
