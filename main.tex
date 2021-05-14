@@ -52,6 +52,30 @@ style=vancouver
 
 
 
+\DefineBibliographyExtras{swedish}{
+  \renewcommand*{\finalnamedelim}{\addcomma\addspace}
+}
+%\DeclareFieldFormat[article]{number}{\mkbibparens{#1}}
+
+\DeclareFieldFormat{urldate}{[citerad\space#1]}
+\DeclareFieldFormat{url}{{Hämtad}\space{från}\addcolon\space\url{#1}}
+\renewbibmacro*{url+urldate}{%
+  \usebibmacro{urldate}%
+  \newunit
+  \usebibmacro{url}%
+}
+
+\renewbibmacro*{volume+number+eid}{%
+  \printfield{volume}%
+  \printfield{number}%
+ }
+\DeclareFieldFormat[article]{number}{\mkbibparens{#1}}
+
+
+
+
+
+
 % Här nedan kommer kommandon där du skall göra val
 %
 
