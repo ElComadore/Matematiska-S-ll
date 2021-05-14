@@ -1,4 +1,4 @@
-\begin{algorithm}
+\begin{algorithm} \label{alg.SimpleSiev}
     \small
     %\algsetup{linenosize=\scriptsize}
     \caption{En implementation av Eratosthenes såll från \cite{HaraldSieve}} \label{SimpleSiev}
@@ -10,7 +10,7 @@
                 \State $m \gets 3$, $n \gets m \cdot m$ 
                 \While{$n \leq N$}
                     \If{$P_m = 1$}
-                        \While{$n \leq N$} \Comment{[sic]}
+                        \While{$n \leq N$} 
                             \State $P_n \gets 0$, $n \gets n + 2m$ \Comment{sieves out multiples $\geq m^2$ of $m$}
                         \EndWhile
                     \EndIf
