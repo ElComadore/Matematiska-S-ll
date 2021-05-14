@@ -30,7 +30,7 @@ För att skapa figur \ref{fig:res.prime} använder vi vår implementering av Hel
 Som vi ser i vänstra grafen av figur \ref{fig:res.prime} är skillnaden mellan kurvorna nästan osynlig på makronivå, och eftersom primtalssatsen gäller är det troligt att vårt program har hittat det korrekta antalet primtal i intervallet.
 Att de inte ligger exakt på varandra är huvudsakligen beroende på felet vilket inte visas i \eqref{app.primes.PNT}.
 Notera att vi normaliserar felet vid början av intervallet eftersom vi betraktar skillnaden \(\text{Li}(x) - \text{Li}(n - \Delta)\), \(x\in[n-\Delta,\; n+\Delta]\).
-Att vår kod hittar ungefär 100 färre primtal än förväntat efter 20 000 heltal och ungefär 2000 färre primtal efter \(2.5\times10^9\) heltal är mycket rimligt då felet i \eqref{app.primes.PNT} kan som bäst vara \(O(2\Delta)^{1/2 + \varepsilon}),\; \varepsilon > 0\), under antagandet att Riemannhypotesen stämmer \cite[Kapitel 5]{RiemannErr}.
+Att vår kod hittar ungefär 100 färre primtal än förväntat efter 20 000 heltal och ungefär 2000 färre primtal efter \(2.5\times10^9\) heltal är mycket rimligt då felet i \eqref{app.primes.PNT} kan som bäst vara \(O(2\Delta)^{1/2 + \varepsilon}),\; \varepsilon > 0\), under antagandet att Riemannhypotesen stämmer \cite[kap. 5]{RiemannErr}.
 
 Värdet på \textit{n} valdes till \(10^{19}\) för att detta är stort nog för att vara intressant men inte så stort att programmets körningstid blir orimlig\footnote{Att \textit{n} inte valdes större i detta fallet är på grund av körningstiden för koden.}.
 Vi valde \(\Delta\) till \(1.25\times10^9\) får att nyttja de tidbesparingar som fås av att gå in i den andra loopen i \textsc{NewSegSiev}.
@@ -62,61 +62,57 @@ Kurvorna ligger mycket nära varandra och stödjer därmed hypotes \ref{app.twin
 Skillnaden mellan det förväntade antalet primtalstvillingar och antalet som hittades är som mest ungefär 500, och hittas vid slutet av intervallet.
 I sammanhanget av ett intervall av längd \(2.5\times10^9\) så är en skillnad av 500 ekvivalent med en avvikelse av \(2\times 10^{-7}\) mer primtalstvillingar per heltal än vad som förväntades.
 Att antalet primtalstvillingar blir större än det hypotetiskt förväntade antalet vid slutet på intervallet beror möjligen på att vi avrundar \(\text{C}_2\) till 0.66 i kombination med att vi normaliserar felet vid början av intervallet precis som i föregående tillämpning.
-Dock så kunde avrundningen av \(\text{C}_2\) tillsammans med normaliseringen av felet också ha ökat antalet förväntade primtalstvillingar till mer än vad det skulle egentligen vara. 
-I sin tur leder detta till att förmodan verkar stödjas av vår implementering mer än vad den borde vara.
+Dock så kunde avrundningen av \(\text{C}_2\) tillsammans med normaliseringen av felet också ha ökat antalet förväntade primtalstvillingar till mer än vad det egentligen skulle vara. 
+I sin tur leder detta till att förmodan verkar stödjas av vår implementering mer än vad den borde.
 
-Den andra insikten grafen ger är kopplad till anmärkningen vid slutet på tillämpningen av Eratosthenes såll i avsnitt \ref{Eratosthenes}.
-Vi noterar där att Bruns sats medför att andelen primtalstvillingar av primtalen är relativt liten och då vi jämför graferna i figurer \ref{fig:res.prime} och \ref{fig:res.twins} kan vi se den förväntade relationen.
-Vi ser direkt att antalet primtal bland de första 20 000 heltal i den första figuren är kring 400 vilket är ungefär 30 gånger fler än antalet primtalstvillingar som finns i de första 20000 heltal som betraktas.
-När vi istället tittar vid slutet av intervallet blir kvoten mellan antalet primtal och antalet primtalstvillingar inte mindre; den ökar något till ungefär en faktor av 33 fler enkla primtal jämfört med tvillingar.
+Den andra insikten som grafen ger är kopplad till avsnitt \ref{eratosthenes.tillämpning} där vi visade att primtalstvillingarna är en relativt liten andel av primtalen.
+Låt oss undersöka detta genom att jämföra figur \ref{fig:res.prime} och \ref{fig:res.twins}.
+Vi ser direkt att bland de första 20 000 heltalen som betraktas, så finns det drygt 400 primtal och 14 primtalstvillingar. Detta är en faktor på ungefär 30, och tittar vi istället vid slutet av intervallet ser vi att denna faktor ökat till ungefär 33.
 
-Vi kan inte använda vår kod som bevis för den hypotetiska fördelningen för primtalstvillingar. 
-Dock så ger den oss en känsla för om fördelningen verkar rimlig i detta fallet, vilket den gör. Vi kan också få en känsla för hur få primtalstvillingar det finns jämfört mot antalet primtal, vilket underlättar förståelsen för en av sållteorins första stora framsteg, nämligen Bruns sats.
+Vi kan inte använda vår kod som bevis för den förmodade fördelningen av primtalstvillingar. 
+Dock så ger den oss en känsla för om fördelningen verkar rimlig på detta intervall, vilket den gör. Vi kan också få en känsla för hur få primtalstvillingar det finns jämfört med antalet primtal, vilket kan göra det lättare att acceptera Bruns sats (sats \ref{brun.example.bound}).
 
 
 %There are a number of things to discuss regardng the above figure. 
 \subsubsection{Frekvens av primtalsgap}
 
-Vi fortsätter med att ge visualiseringar av egenskaper av de primtal vi har genererat genom att undersöka frekvensen av olika storlekar av primtalsgap. 
-En primtalsgap är avståndet mellan ett primtal och sitt efterföljande primtal.
-Man kan, med hjälp av primtalssatsen, visa att det förväntade avståndet mellan ett primtal \(p_n\) och nästa, \(p_{n+1}\), är \(\log p_n\).
-För att ge intuition för det förväntade avståndet och mer stöd till vår kod så analyserar vi nu de primtalsgap som finns i listan av primtal vi generad. Datan redovisas i figur \ref{fig:res.gap}.
+Vi fortsätter undersöka och illustrera egenskaper hos vår genererade data, genom att studera frekvensen av primtalsgap. 
+Ett primtalsgap är avståndet mellan ett primtal och det efterföljande primtalet.
+Det går att visa, med hjälp av primtalssatsen, att det förväntade avståndet mellan ett primtal \(p_n\) och nästa, \(p_{n+1}\), är \(\log p_n\).
+Vi jämför nu detta med den data som vi genererat, se figur \ref{fig:res.gap}.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width = \textwidth]{coen/Images/GapsNoKapps.pdf}
-    \caption{I figuren så redovisas frekvensen på olika stora primtalsgap i det intervallet som undersöktes tidigare, då \(n = 10^{19}\), \(\Delta = 1.25\cdot10^{9}\), och \(K = 2.5\). Notera att y-axeln är logaritmerad på grund av hur hög frekvensen är för små primtalsgaper. 
-    Dem orange prickarna anger frekvensen på primtalsgap vars storlek är en primorial (en produkt av de första \textit{n} primtalen).
+    \caption{I figuren redovisas frekvensen av primtalsgap i intervallet \([n-\Delta,n+\Delta]\), då \(n = 10^{19}\) och \(\Delta = 1.25\cdot10^{9}\). Notera att y-axeln är logaritmerad på grund av den höga frekvensen av små primtalsgap. 
+    De orange prickarna anger frekvensen på primtalsgap vars storlek är en primorial (en produkt av de första \textit{n} primtalen).
     Röda linjen markerar den genomsnittliga storleken på primtalsgap i vårt intervall vilket är 43.705.}
     \label{fig:res.gap}
 \end{figure}
 
 I figur \ref{fig:res.gap} får vi några insikter kring beteendet av primtalsgap i vårt intervall. 
-Den mest överraskande aspekten av grafen, för någon som har inte sett en sådan graf förut, är hur rak den är då vi logaritmerar y-axeln.
-Detta påpekar att frekvensen på primtalsgap minskar exponentiellt då dess längd ökar. 
-Vi ser att det vanligaste storlek på primtalsgap i vårt intervall var 6 och längsta avståndet mellan två primtal var av längd 668.
-En till detalj vilken inte kan läsas lätt av figuren är att det finns par av primtal i intervallet där avståndet mellan dem är lika med varje jämn tal upp till och inklusive 560.
-Vi nämnde tidigare att den förväntade storleken på primtalsgapet för ett primtal \textit{p} tills nästa primtal är \(\log(p)\). 
-Då vi uppskattar storleksordningen på våra primtal med \(10^{19}\) får vi att den förväntade storleken på ett primtalsgap i intervallet är ungefär 43.7491.
-Vi ser att många primtalsgap överstiger detta och ännu fler är mycket mindre, dock då vi beräknar den genomsnittliga storkleken på primtalsgap i vårt intervall så får vi det till 43.7505.
-Återigen stödjer detta resultat legitimiteten av vår kod eftersom vår kod reflekterar vad som har bevisats i primtalssatsen.
+En kanske överaskande aspekt av grafen är hur rak den är efter logaritmering av y-axeln.
+Detta antyder att frekvensen på primtalsgap minskar exponentiellt då dess längd ökar. 
+Vi ser att det vanligaste storleken på ett primtalsgap i intervallet är 6 och att det störta gapet är 668.
+En detalj som är svår att utläsa från figuren är att det för varje jämnt tal upp till och inklusive 560, finns ett primtalsgap i intervallet med denna storlek.
+Enligt primtalssatsen är den förväntade storleken på ett primtalsgap i intervallet ungefär 43.7491, och om vi beräknar den genomsnittliga storleken på primtalsgap i vårt intervall så får vi det till 43.7505.
+Återigen stödjer detta resultat legitimiteten av vår kod eftersom datan reflekterar vad som har bevisats i primtalssatsen.
 
 Om vi återgår till primtalstvillingar så säger figuren även något om dem. 
-Vi kan se att om alla primtal med ett visst primtalsgap till nästa primtal skulle betraktas vara lika speciellt som primtalstvillingar, då skulle primtalstvillingar vara de sjunde vanligaste typ av primtal i vårt intervall, och består av 3 procent av alla primtal i intervallet.
+Dessa representeras av primtalsgap med storlek 2, vilket är det sjunde vanligaste primtalsgapet och utgör 3 procent av alla gap i intervallet.
 
-Till sist, figur \ref{fig:res.gap} ger intuition för en sats som antyddes till kortfattat i inledningden. 
-Satsen säger att det finns oändligt många par av primtal med maximalt 600 steg emellan sig. 
-Detta betyder att, även för de stora primtalen måste det finnas primtal relativt nära varandra.
-I vårt intervall har vi att nästan alla primtal som genererades var inom 600 steg från varandra trots att vi arbetar med så stort tal.
-Detta bevisades med hjälp av nya sållmetoder, specifikt Goldston-Pintz-Yıldırım metoder utvecklades år 2005 \cite{GPY}.
-I Maynards artikel så liknar vikterna som används i beviset de som används i Selbergs såll, fast på en ännu mer allmän form. 
-I nuläget så har 600 steg reducerades ned till 246. 
-Ett mål med att fortsätta minska längden är att en dag reducera det till 2 och därmed bevisa primtalstviliingshypotesen.
+Till sist ger figur \ref{fig:res.gap} intuition för en sats som omnämndes kortfattat i inledningden och säger att det finns oändligt många par av primtal med maximalt 600 steg emellan sig. 
+Detta betyder attdet även för stora primtal finns så finns det relativt små primtalsgap.
+I vårt intervall är nästan alla primtalsgap mindre än 600, trots att talen i intervallet är stora.
+Satsen bevisades med hjälp av nya sållmetoder, specifikt Goldston-Pintz-Yıldırım-metoder utvecklades som år 2005 \cite{GPY}.
+I Maynards artikel används vikter liknande de som finns i Selbergs såll, fast på en ännu mer allmän form. 
+Sedan 2005 så har 600 steg reducerades ned till 246. 
+Ett mål med att fortsätta minska längden är att en dag reducera det till 2 och därmed bevisa primtalstvillingshypotesen.
 
-Såsom mycket annat angående primtal, finns det åtminstone en förmodan kopplad till dessa frekvenser ovan och vilket primtalsgap är mest frekvent upp till en given övregräns. 
-Som vi ser i figur \ref{fig:res.gap} är 6, den andra orange pricken, den mest frekventa storleken på primtalsgap i vårt intervall, och det som är speciellt med 6 är att det är produkten av de första två primtalen. 
-Vi ser också från figuren att 30, den tredje orange pricken, vilket är produkten av de första 3 primtalen, hoppar upp lite från översta delen av bandet, och även 210, den fjärde orange pricken, med. Förmodan är då att varje \textit{primorial}, produkten av de första \textit{m} primtalen, någon gång blir "hoppmästaren".
-Förmodan har undersökts direkt med hjälp av numeriska uppskattningsmetoder \cite{primeGaps} som har lyckats visa att 6 är hoppmästaren fram till \(\approx 1.74\cdot10^{35}\) och att 30 är hoppmästaren mellan föregående och \(\approx 10^{425}\).
+Såsom mycket annat angående primtal, finns det även en förmodan kopplad till dessa frekvenser ovan och vilket primtalsgap som är mest frekvent upp till en given gräns. 
+Som vi ser i figur \ref{fig:res.gap} är 6 (den andra orange pricken) den mest frekventa storleken på primtalsgap i vårt intervall, och speciellt med talet 6 är att det är produkten av de första två primtalen. 
+Vi ser också att 30 (den tredje orange pricken) vilket är produkten av de första 3 primtalen, hoppar upp lite från översta delen av bandet, och på samma vis är 210 (den fjärde orange pricken) nästa tal med detta beteende. Förmodan är då att varje \textit{primorial}, produkten av de första \textit{m} primtalen, någon gång blir "hoppmästare".
+Förmodan har undersökts direkt med hjälp av numeriska uppskattningsmetoder \cite{primeGaps} som har lyckats visa att 6 är hoppmästaren fram till \(\approx 1.74\cdot10^{35}\) och att 30 sedan tar över titeln fram till \(\approx 10^{425}\).
 
 %Nutidens forskningen kring primtalsgap representerar kulmen på sållteorins teoretisk tillämpning.
 %Teorin har utvecklats markant under de senaste hundra åren och tillämpats framgångsrikt på många problem inom talteori.
