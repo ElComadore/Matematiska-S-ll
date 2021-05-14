@@ -4,13 +4,15 @@
 
 \subsection{Vår förbättrade version av programmet}
 Nedan följer väsentliga delar av den förbättrade versionen av programmet som omnämns i \ref{partB.implementering}.
-Om läsaren vill testa programmet kan all nedanstående kod förslagsvis läggas i samma fil. För att koden ska kunna köras behöver Python-bibliotek \textit{Bitarray} vara installerat.
+Koden är skrivet i Python och är en tolkning av den pseudokod som Helfgott presenterar i \cite{HaraldSieve}.
+Om läsaren vill testa programmet kan all nedanstående kod förslagsvis läggas i samma fil. 
+För att programmet ska fungera behöver Python-bibliotek \textit{Bitarray} vara installerat.
 
 
 Vi börjar med import av några externa funktioner, detta ska göras först i koden för att de senare funktionerna ska fungera.
 Biblioteket \texttt{bitarray} ger oss möjlighet att arbeta direkt med bitsträngar och funktionen \texttt{zeros(N)} konstruerar en sådan bitsträng bestående av \texttt{N} stycken nollor.
 Funktionerna \texttt{sqrt} och \texttt{floor} ger kvadratroten respektive golvfunktionen av ett tal 
-och \texttt{isqrt} returnernar heltalsdelen av kvadratroten.
+och \texttt{isqrt} returnerar heltalsdelen av kvadratroten.
 \code{imports}
 
 

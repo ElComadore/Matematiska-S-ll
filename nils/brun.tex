@@ -1,13 +1,7 @@
 % Skrivet av Nils
-\begin{comment}
-När den norska matematikern Viggo Brun (1881-1978) år 1915 publicerade artikeln \textit{Über das Goldbachsche Gesetz und die Anzahl der Primzahlpaare}, lades grunden till modern sållteori \cite{ViggoBrun}. 
-I artikeln presenterade Brun ett såll baserat på Eratosthenes idéer, som numera kallas Bruns såll och fyra år senare använde han det för att bevisa att summan av reciproker $\frac{1}{p_1}+\frac{1}{p_2}+...$ av primtalstvillingar $p_1,p_2,...$ konvergerar \cite{ViggoBrun}.
-I detta avsnitt ges en kortfattad beskrivning av Bruns såll och ett exempel taget ur \cite{cojocarumurty} på hur sållet kan tillämpas för att ge ett resultat som angränsar till primtalstvillingsförmodan.
-\end{comment}
-
 När den norska matematikern Viggo Brun (1881-1978) år 1915 publicerade artikeln \textit{Über das Goldbachsche Gesetz und die Anzahl der Primzahlpaare}, lades grunden till modern sållteori \cite{ViggoBrun}. 
 I artikeln presenterade Brun ett såll baserat på Eratosthenes idéer, som numera kallas Bruns såll och fyra år senare använde han det för att bevisa Bruns sats, vilken finns beskriven i avsnitt \ref{eratosthenes.tillämpning} ovan.
-I detta avsnitt ges en kortfattad beskrivning av Bruns såll, där vi nöjer oss med att illustrera huvudidéen bakom sållet och tar stöd i \cite[kap 6.2]{cojocarumurty} för att göra detta. Efteråt presenterar vi ett exempel hämtat ur \cite{cojocarumurty} på hur sållet kan tillämpas för att frambringa ett resultat som angränsar till primtalstvillingsförmodan.
+I detta avsnitt ges en kortfattad beskrivning av Bruns såll, där vi nöjer oss med att illustrera huvudidéen bakom sållet och tar stöd i \cite[kap.6]{cojocarumurty} för att göra detta. Efteråt presenterar vi ett exempel hämtat ur \cite{cojocarumurty} på hur sållet kan tillämpas för att frambringa ett resultat som angränsar till primtalstvillingsförmodan.
 
 
 \subsection{Beskrivning av sållet}
@@ -26,62 +20,9 @@ Således kunde han erhålla en undre och övre begränsning till $\S{A}{P}{z}$, 
     \leq \sum_{d \mid P(z)} \mu(d) g_U(d) \card\A_d.
 \end{equation}
 Enligt \cite{cojocarumurty} var detta Bruns innovativa idé.
-Genom att sedan skriva $\card\A_d=\frac{\omega(d)}{d}X + R_d$ kunde han, efter mycken möda, hitta en approximation och en felterm för begränsningarna i (\ref{brun.eq.gugl}) och på så vis formulera Bruns såll. Följande sats är hämtad ur \cite[Kap. 6.2]{cojocarumurty}.
+Genom att sedan skriva $\card\A_d=\frac{\omega(d)}{d}X + R_d$ kunde han, efter mycken möda, hitta en approximation och en felterm för begränsningarna i (\ref{brun.eq.gugl}) och på så vis formulera Bruns såll. Följande sats är hämtad ur \cite[Kap.6.2]{cojocarumurty}.
 
 
-
-\begin{comment}
-Vi nöjer oss med att beskriva huvudidéen bakom sållet med stöd i \cite[kap 6.2]{cojocarumurty}. %då en noggrann härledning inte skulle få plats i denna rapport.
-
-Viggo Brun bevisade att för varje funktion $g$ så att $g(1)=1$, gäller det att
-\begin{equation*}
-    \sum_{d \mid P(z)} \mu(d) g(d) \card\A_d = \S{A}{P}{z} + G(\A,\P,z),
-\end{equation*} % G = \sum_{d \mid P(z)} \sum_{\substack{p \mid P(z) \\ p<q(d)}} \mu(d) (g(d)-g(pd)) S(\A_{pd},\P^{(pd)},p).
-där $G$ är en funktion av $\A,\P$ och $z$, explicit definierad med hjälp av $g$.
-Därefter hittade Brun ytterligare krav på funktionen $g$ så att $G\leq0$ eller $G\geq0$ alltid gäller. 
-Således kunde en undre och övre begränsning till $\S{A}{P}{z}$ erhållas.
-Mer specifikt, tag två funktioner $g_U$ och $g_L$ som uppfyller
-\begin{align*}
-    g_U=g_L=1,\\
-    \mu(d)(g_U(d)-g_U(pd)) &\geq 0,\\
-    \mu(d)(g_L(d)-g_L(pd)) &\leq 0,
-\end{align*}
-för alla kvadratfria tal $d$ och $p<q$ för alla $q\mid d$. Då gäller det att
-\begin{equation}\label{brun.eq.gugl}
-    \sum_{d \mid P(z)} \mu(d) g_L(d) \card\A_d 
-    \leq \S{A}{P}{z} 
-    \leq \sum_{d \mid P(z)} \mu(d) g_U(d) \card\A_d.
-\end{equation}
-Enligt \cite{cojocarumurty} var detta Bruns innovativa idé. %Valet för $g_U$ och $g_L$ som antar värdena 1 eller 0 beronde på delarna i $d$.
-Genom att sedan skriva $\card\A_d=\frac{\omega(d)}{d}X + R_d$ kunde han, efter mycket möda, hitta en approximation och en felterm för begränsningarna i (\ref{brun.eq.gugl}) och på så vis formulera Bruns såll. Följande sats är hämtad ur \cite[Kap. 6.2]{cojocarumurty}.
-\end{comment}
-
-
-\begin{comment}
-Med syftet att utveckla (\ref{inclusionexclusion}) och med grund i \cite[Kap. 6.2]{cojocarumurty}, definierar vi en funktion $f$ som
-\begin{equation*}
-    f(n) := \sum_{d\mid n} \mu(d) g(d),
-\end{equation*}
-där $g$ är någon funktion så att $f(1)=1$ håller.
-Om vi nu betraktar $\mu(d)g(d)$ som en funktion av $d$ så kan vi tillämpa Möbius inverteringsformel (\ref{mobiusinv}) och erhålla
-\begin{equation*}
-    \sum_{d\mid n} \mu(n/d) f(d) = \mu(n)g(n).
-\end{equation*}
-Detta använde sig Viggo Brun av för att modifiera (\ref{inclusionexclusion}) och visa att för varje funktion $g$ som uppfyller $g(1)=1$, vilket implicerar $f(1)=1$, så gäller det att
-\begin{equation*}
-    \sum_{d \mid P(z)} \mu(d) g(d) \card\A_d = \S{A}{P}{z} + G(\A,\P,z),
-\end{equation*} % G = \sum_{d \mid P(z)} \sum_{\substack{p \mid P(z) \\ p<q(d)}} \mu(d) (g(d)-g(pd)) S(\A_{pd},\P^{(pd)},p).
-där $G$ är en funktion av $\A,\P$ och $z$, explicit definierad med hjälp av $g$.
-Därefter konstruerade Brun två funktioner $g_U$ och $g_L$ så att $G_U\geq 0$ och $G_L\leq 0$ alltid gäller. 
-Således kan en undre och övre begränsning till $\S{A}{P}{z}$ erhållas, nämligen
-\begin{equation}\label{brun.eq.gugl}
-    \sum_{d \mid P(z)} \mu(d) g_L(d) \card\A_d 
-    \leq \S{A}{P}{z} 
-    \leq \sum_{d \mid P(z)} \mu(d) g_U(d) \card\A_d.
-\end{equation}
-Enligt \cite{cojocarumurty} var detta Bruns innoverande idé.
-Genom att sedan skriva $\card\A_d=\frac{\omega(d)}{d}X + R_d$ kunde han, efter mycket möda, hitta en approximation och en felterm för begränsningarna i (\ref{brun.eq.gugl}) och på så vis formulera Bruns såll. Följande sats är hämtad ur \cite[Kap. 6.2]{cojocarumurty}.
-\end{comment}
 
 \begin{theorem}[Bruns såll] \label{brun.thm.brun}
 Med notation från avsnitt \ref{sallproblemet}, låt $b$ vara ett positivt heltal och låt $\lambda$ vara
@@ -117,7 +58,7 @@ Låt oss uttrycka en modifierad version av primtalstvillingsförmodan på följa
 
 \vspace{4pt}\noindent
 För valet $r=1$ erhålls exakt primtalstvillingsfömodan, vilken står obevisad.
-Däremot går det att med hjälp av Bruns såll bevisa påståendet för $r=7$, vi följer samma tillvägagångssätt som i \cite[Kap. 6.2]{cojocarumurty}.
+Däremot går det att med hjälp av Bruns såll bevisa påståendet för $r=7$, vi följer samma tillvägagångssätt som i \cite[Kap.6.2]{cojocarumurty}.
 Definiera mängden
 \begin{equation*}
     \mathcal{T} := \{\textit{$n\leq x$: $n$ och $n+2$ har som mest $7$ primtalsfaktorer}\}.
