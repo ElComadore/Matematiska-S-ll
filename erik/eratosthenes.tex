@@ -4,7 +4,7 @@
 
 \subsection{Legendres såll} \label{era.Legendres}
 
-Första steget för att utveckla Eratosthenes såll är att omformulera sållexemplet från introduktionen i de termer vi definierade i föregående avsnittet. I exemplet börjar vi med en lista av alla positiva heltal upp till en övre gräns, säg $x$, vilken vi kan skriva som $\A = \{n \in \mathbb{N} : n \leq x\}$. Låt alla primtal upp till $z$ redan vara inringade och mängderna vi kryssar över vara \(\A_p = \{a \in \A :  a \equiv 0 \pmod{p}\}\) --- mängden av multiplar av $p$ som är mindre än eller lika med $x$. Vi kan se att kardinaliteten av \(\A_d\) är \(\lfloor x/d \rfloor\) så att, om vi väljer $z = \sqrt{x}$ så blir, med hjälp av (\ref{inclusionexclusion}),
+Första steget för att utveckla Eratosthenes såll är att omformulera sållexemplet från inledningen i de termer vi definierade i föregående avsnittet. I exemplet börjar vi med en lista av alla positiva heltal upp till en övre gräns, säg $x$, vilken vi kan skriva som $\A = \{n \in \mathbb{N} : n \leq x\}$. Låt alla primtal upp till $z$ redan vara inringade och mängderna vi kryssar över vara \(\A_p = \{a \in \A :  a \equiv 0 \pmod{p}\}\) --- mängden av multiplar av $p$ som är mindre än eller lika med $x$. Vi kan se att kardinaliteten av \(\A_d\) är \(\lfloor x/d \rfloor\) och väljer vi $z = \sqrt{x}$ så med hjälp av (\ref{inclusionexclusion}),
 \begin{align*}
     \pi(x) - \pi(\sqrt{x}) + 1 = \sum_{d \divides P(\sqrt{x})} \mu(d) \left\lfloor \frac{x}{d} \right\rfloor  
 \end{align*}
@@ -16,19 +16,18 @@ Eftersom \(\A_p\), för varje $p$, är definierad som en restklass modulo $p$ s�
 \begin{align} \label{dimension}
     \sum_{p \divides P(z)} \frac{\omega(p) \log(p)}{p} \leq \kappa \log(z) + O(1).
 \end{align}
-Vi ser således att ett naturligt nästa steg är att generalisera Eratosthenes-Legendres såll för godtyckliga dimensioner. 
+Vi ser således att ett naturligt nästa steg är att generalisera Eratosthenes-Legendres såll för fler dimensioner. 
 
 \subsection{Eratosthenes generaliserade såll} \label{eratosthenes.gen.såll}
-% "Effektivt" kräver en förklaring, i kontrast mot exaktheten av Eratosthenes såll?
-Vi vill alltså härleda ett generellt verktyg från idéerna från föregående avsnittet vilket vi kommer göra genom att följa \cite[Kapitel 5.4]{cojocarumurty}. Om vi låter $\A_d$, $\P$, $P(z)$ och $\omega(d)$ vara definierade som i avsnitt \ref{sallproblemet} så kan vi, med utgångspunkt i Eratosthenes och Legendres grundtankar, skapa ett mer flexibelt och effektivt såll. Den stora skillnaden mot vad vi gjorde i föregående avsnitt är att vi här tillåter fler restklasser sållas bort per primtal $p$. 
+Vi vill alltså härleda ett generellt verktyg utifrån idéerna från föregående avsnitt vilket vi kommer göra genom att följa \cite[kap.5.4]{cojocarumurty}. Om vi låter $\A_d$, $\P$, $P(z)$ och $\omega(d)$ vara definierade som i avsnitt \ref{sallproblemet} så kan vi, med utgångspunkt i Eratosthenes och Legendres grundtankar, skapa ett mer flexibelt och effektivt såll. Den stora skillnaden mot vad vi gjorde i föregående avsnitt är att vi här tillåter fler restklasser sållas bort per primtal $p$. 
 
-Utöver vad som står i avsnitt \ref{sallproblemet} kommer vi göra antagandena att \(\card{\A_d} = 0\) för alla \(d\) större än något positivt $y$, att \(\abs{R_d} = O(\omega(d))\) samt att (\ref{dimension}) håller. Vi kan lätt övertyga oss om att dessa är rimliga antaganden i det klassiska Eratosthenes såll-fallet. Eftersom vi utgår från en ändlig mängd $\A$ så håller det första antagandet då \(\card{\A_p} = 0\) för \(p > X\) innebär att, väldigt grovt, \(y \leq P_{X}\). Att det andra antagandet gäller såg vi i föregående avsnitt ty \(\{x/d\} \leq \omega(p) = 1\). Sist så ser vi att (\ref{dimension}) håller genom att sätta in \(\omega(p) = 1\) och utnyttja att \begin{align} \label{Thm.1.4.4}
+Utöver vad som står i avsnitt \ref{sallproblemet} kommer vi göra antagandena att \(\card{\A_d} = 0\) för alla \(d\) större än något positivt $y$, att \(\abs{R_d} = O(\omega(d))\) samt att (\ref{dimension}) håller. Vi kan lätt övertyga oss om att dessa är rimliga antaganden i det klassiska Eratosthenes såll-fallet. Eftersom vi utgår från en ändlig mängd $\A$ så håller det första antagandet då \(\card{\A_p} = 0\) för \(p > X\) vilket innebär att, väldigt grovt, \(y \leq P(X)\). Att det andra antagandet gäller såg vi i föregående avsnitt ty \(\{x/d\} \leq \omega(d) = 1\). Sist så ser vi att (\ref{dimension}) håller genom att sätta in \(\omega(p) = 1\) och utnyttja att \begin{align} \label{Thm.1.4.4}
     \sum_{p\leq n}\frac{\log p}{p} = \log n + O(1).
 \end{align}
 
-Vi börjar återigen med Legendres grundidé, inklusion-exklusionsprincipen, men infogar det mer generella uttrycket för $\card{\A_d}$ i formeln,
+Vi börjar återigen med Legendres grundidé, inklusion-exklusionsprincipen, men infogar det mer generella uttrycket för $\card{\A_d}$ i formeln
 \begin{align*}
-    \S{A}{P}{z} = \sum_{d \divides P(z)} \mu(d) \card{\A_d} = X \sum_{\substack{d \divides P(z) \\ d \leq y}} \frac{\omega(d)}{d} \mu(d) + \sum_{\substack{d \divides P(z)  \\ d \leq y}} \mu(d) R_d 
+    \S{A}{P}{z} = \sum_{d \divides P(z)} \mu(d) \card{\A_d} = X \sum_{\substack{d \divides P(z) \\ d \leq y}} \frac{\omega(d)}{d} \mu(d) + \sum_{\substack{d \divides P(z)  \\ d \leq y}} \mu(d) R_d ,
 \end{align*}
 där trunkeringen av summan kommer av antagandet \(\card{\A_d} = 0, \forall d > y\). 
 
@@ -37,13 +36,13 @@ Studerar vi den första summan ovan ser vi att vi kan skriva om den som summan �
 %    \sum_{\substack{d \divides P(z) \\ d \leq y}} \frac{\omega(d)}{d} \mu(d) =
 %    \sum_{\substack{d \divides P(z)}} \frac{\omega(d)}{d} \mu(d) - \sum_{\substack{d \divides P(z) \\ d > y}} \frac{\omega(d)}{d} \mu(d) .
 %\end{align*}
-Med observationen att \(W(z) = \prod_{p \divides P(z)} (1 - \omega(p)/p) = \sum_{d \divides P(z)} \frac{\mu(d)}{d} \omega(d)\) då \(\frac{\omega(d)}{d}\) är multiplikativ kan vi således dela upp den siktade mängden i en huvudterm och en rest på följande vis
+Med \(W(z)\) på summaformen från avsnitt \ref{sallproblemet} kan vi således dela upp den siktade mängden i en huvudterm och en rest på följande vis
 \begin{align*}
     \S{A}{P}{z} = X W(z) + \Biggl(- X \sum_{\substack{d \divides P(z) \\ d > y}} \frac{\omega(d)}{d} \mu(d) + \sum_{\substack{d \divides P(z)  \\ d \leq y}} \mu(d) R_d \Biggr).
 \end{align*}
 
 De två summorna innanför parentesen i uttrycket ovan är vår felterm. Fokuserar vi på den andra summan så kan vi uppskatta dess storlek, först med hjälp av triangelolikheten och sedan med $\abs{\mu(x)} \leq 1$ och vårt antagande $\abs{R_d} = O(\omega(d))$ så att summanden \(\abs{ \mu(d) R_d} \leq O(\omega(d))\).
-Flyttar vi in summan innanför ordo-tecknet så kan vi förenkla den med Rankins trick som, enligt \cite[s.68]{cojocarumurty} säger att indikator funktionen, \(1_{n \leq x} \leq \frac{x}{n}\). Därav skriver vi 
+Flyttar vi in summan innanför ordo-tecknet så kan vi förenkla den med Rankins trick som, enligt \cite[s.68]{cojocarumurty} säger att indikatorfunktionen, \(1_{n \leq x} \leq \frac{x}{n}\). Därav skriver vi 
 \begin{align*}
     \sum_{\substack{d \divides P(z)  \\ d \leq y}} \omega(d) =
     \sum_{\substack{d \divides P(z)}} \omega(d) (1_{d \leq y})^{\delta} \leq
@@ -51,19 +50,19 @@ Flyttar vi in summan innanför ordo-tecknet så kan vi förenkla den med Rankins
     %  = \exp{\left( \delta \log(y) + \log \left(\sum_{d \divides P(z)} \frac{\omega(d)}{d^\delta}\right) \right)}
     % \exp{\left( \delta \log(y) + \prod_{p \divides P(z)} \log \left( 1 + \frac{\omega(p)}{p^\delta}\right) \right)}
 \end{align*}
-för alla \(\delta > 0\). Eftersom \(\omega(d) / d^\delta\) är multiplikativ så kan vi skriva summan som en produkt
+för alla \(\delta > 0\). Eftersom \(\omega(d) / d^\delta\) är multiplikativ kan vi skriva summan som en produkt
 \begin{align*}
     y^\delta \prod_{p \divides P(z)} \Big(1 + \frac{\omega(p)}{p^\delta} \Big) =
     \exp \Bigg(\delta \log y + \sum_{p \divides P(z)} \log\Big(1 + \frac{\omega(p)}{p^\delta} \Big) \Bigg) \leq 
     \exp \Bigg(\delta \log y + \sum_{p \divides P(z)} \frac{\omega(p)}{p^\delta} \Bigg)
 \end{align*}
-vari sista steget använder vi \(\log(1 + x) \leq x\). Väljer vi nu \(\delta = 1 - 1/\log z\) och utnyttjar olikheten \(e^x \leq 1 + x e^x\), som gäller för $x \geq 0$, och sist partiell summering av (\ref{dimension}) får vi att
+vari sista steget vi använder att \(\log(1 + x) \leq x\). Väljer vi nu \(\delta = 1 - 1/\log z\) och utnyttjar olikheten \(e^x \leq 1 + x e^x\), som gäller för $x \geq 0$, och sist partiell summering av (\ref{dimension}) får vi att
 \begin{align*}
     \sum_{\substack{d \divides P(z)  \\ d \leq y}} \omega(d) = O\left( \frac{y}{\log(z)} (\log(z))^{\kappa + 1} \exp{\left(- \frac{\log(y)}{\log(z)} \right)} \right).
 \end{align*}
 På ett liknande sätt omvandlar vi den första summan i feltermen med partiell summering av antagandet (\ref{dimension}) och sedan använder resultatet vi fick för den andra summan. 
 
-Sammanställt, huvud- och felterm, erhåller vi nästa sats, \cite[Sats 5.4.1]{cojocarumurty}:
+Sammanställt, huvud- och felterm, erhåller vi nästa sats, \cite[sats 5.4.1]{cojocarumurty}:
 
 \begin{theorem}[Eratosthenes generaliserade såll]\label{thm:EratosthenesSieve}
 Med notationen från avsnitt \ref{sallproblemet} och följande antaganden 
@@ -83,7 +82,7 @@ så gäller att
 
 \subsection{En högredimensionell tillämpning av Eratosthenes såll}\label{eratosthenes.tillämpning}
 
-Ett av målen med avsnitt \ref{eratosthenes.gen.såll} var att kunna använda Eratosthenes såll till att sålla bort flera kongruensklasser per primtal $p$. I det här avsnittet kommer vi utnyttja denna egenskap till att sålla fram primtalstvillinigar och sedan bevisa en variant av Bruns sats \cite[Korollarium 5.4.5]{cojocarumurty},
+Ett av målen med avsnitt \ref{eratosthenes.gen.såll} var att kunna använda Eratosthenes såll till att sålla bort flera kongruensklasser per primtal $p$. I det här avsnittet kommer vi utnyttja denna egenskap till att sålla fram primtalstvillinigar och sedan bevisa en variant av Bruns sats \cite[korollarium 5.4.5]{cojocarumurty},
 \begin{theorem}[Bruns sats] Summan av reciproker,
     \[\sum_{\substack{p \\ p + 2 \text{ prima}}} \frac{1}{p} < \infty .\]
 \end{theorem} 
@@ -97,7 +96,7 @@ Vi kan enkelt se att \(W(z)\) i huvudtermen är lika med
 \begin{align}
     \prod_{p < z}\left( 1 - \frac{\omega(p)}{p} \right) = \frac{1}{2} \exp \Bigg( \sum_{2 <p < z} \log \left( 1 - \frac{2}{p} \right) \Bigg) \asymp \exp \Bigg( - \sum_{2 <p < z} \frac{2}{p}  \Bigg) \label{era.app.mainAppr}
 \end{align}
-där sista steget följer av olikheten \(\log(1 + x) \leq x, \text{ om } x > -1\) i \(\ll\)--riktningen och andra riktningen visas i sats \ref{APDX:asympW} från appendix. Med en partiell summation av (\ref{Thm.1.4.4}) erhåller vi att \(\sum_{p \leq z} \frac{1}{p} = \log \log z + O(1)\) som, när vi sätter in i (\ref{era.app.mainAppr}), ger oss att
+där sista steget följer av olikheten \(\log(1 + x) \leq x, \text{ om } x > -1\) i \(\ll\)--riktningen och den andra riktningen visas i sats \ref{APDX:asympW} från appendix. Med en partiell summation av (\ref{Thm.1.4.4}) erhåller vi att \(\sum_{p \leq z} \frac{1}{p} = \log \log z + O(1)\) som, när vi sätter in i (\ref{era.app.mainAppr}), ger oss att
 \begin{align} \label{era.app.secondMainAppr} 
     W(z) \asymp \exp \Bigg( - 2 \sum_{2 <p < z} \frac{1}{p}  \Bigg) \asymp \exp \big( -2 \log \log z + O(1)  \big) \asymp (\log z)^{-2}.
 \end{align}
@@ -106,11 +105,11 @@ Slutligen får vi alltså att huvudtermen \(x W(z) \ll x (\log z)^{-2}\) och vä
     \card{\P_2(x)} \ll \frac{x (\log \log x)^2}{\log^2 x} .
 \end{align}
 
-Genom att partialsummera summan av de reciproka värdena, med \(c_n\) som indikatorfunktionen på \(\P_2\) och \(f(n) = 1 / n\), så får vi 
+Genom att partialsummera summan av de reciproka värdena, med \(c_n\) som indikatorfunktionen på \(\P_2\) och \(f(n) = 1 / n\) i notationen från sats \ref{APDX:parSum}, så får vi 
 \begin{align*}
     \sum_{\substack{p \leq x \\ p + 2 \text{ prima}}} \frac{1}{p} = \card{\P_2(x)} \cdot \frac{1}{x} + \int_2^x \card{\P_2(t)} \cdot \frac{1}{t^2} \text{d}t . 
 \end{align*}
-Med hjälp av (\ref{PrimTwinCard}) får vi att summan i Bruns sats är \(\ll \int_2^\infty \frac{(\log \log t)^2}{t \log^2 t} \text{d}t\) som är ändlig vilket medför att summan är begränsad. 
+Med hjälp av (\ref{PrimTwinCard}) får vi att summan i Bruns sats är \(\ll \int_2^\infty \frac{(\log \log t)^2}{t \log^2 t} \text{d}t\) som är ändlig, vilket medför att summan är begränsad. 
 
 Vad vi nu visat för summan över \(\P_2\) är i kontrast mot en annan identitet vi använde i ovanstående bevis, \(\sum_{p \leq n} \frac{1}{p} = \log \log n + O(1)\) vilken implicerar att samma summa över primtalen divergerar. Detta innebär inte att primtalstvillinigar är en ändlig delmängd av primtalen men det säger oss att andelen primtalstvillingar är relativt liten. I nästa del kommer vi se ett annat resultat tillskrivet Viggo Brun, Bruns såll, och med hjälp av detta visa ett resultat i motsatt riktning för en mängd snarlik mängden primtalstvillinigar. 
 
