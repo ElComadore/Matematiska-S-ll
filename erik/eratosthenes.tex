@@ -88,9 +88,9 @@ Ett av målen med avsnitt \ref{eratosthenes.gen.såll} var att kunna använda Er
 \end{theorem} 
 Satsen bevisades först av Brun 1919 i artikeln \textit{La série} \(1/5 + 1/7 + 1/11 + 1/13 + 1/17 + 1/19 + 1/29 + 1/31 + 1/41 + 1/43 + 1/59 + 1/61 \dots\) \textit{ou les dénominateurs sont \guillemotleft nombres premiers jumeaux \guillemotright est convergente ou finie} men vi kommer här följa ett annat bevis, ur \cite[s.72f]{cojocarumurty}, som använder sig av sats \ref{thm:EratosthenesSieve}.
 
-Primtalstvillingar i det här fallet är tal i mängden \(\P_2(x) := \{p < x : p + 2 \text{ är ett primtal}\}\). För att hitta dessa tal så vill vi utesluta alla multiplar av primtal samt alla tal två mindre än dessa multiplar. Med andra ord väljer vi kongruensklasserna $0$ och $-2$ modulo $p$ i sålldefinitionen så att \(\omega(2) = 1\) och \(\omega(p) = 2\) för alla primtal $p > 2$ samt att dimensionen \(\kappa = 2\). Vårt val av kongruensklasser ger att \(y = x + 2\) i det första antagandet av sats \ref{thm:EratosthenesSieve} som då säger att
+Primtalstvillingar i det här fallet är tal i mängden \(\P_2(x) := \{p < x : p + 2 \text{ är ett primtal}\}\). För att hitta dessa tal så vill vi utesluta alla multiplar av primtal samt alla tal två mindre än dessa multiplar. Med andra ord väljer vi kongruensklasserna $0$ och $-2$ modulo $p$ i sålldefinitionen så att \(\omega(2) = 1\) och \(\omega(p) = 2\) för alla primtal $p > 2$ samt att dimensionen \(\kappa = 2\). Det andra antagandet i sats \ref{thm:EratosthenesSieve} är en svagare variant av ett antagande i Bruns såll och verifieras i avsnitt \ref{brun.application}. Vårt val av kongruensklasser ger att \(y = x + 2\) i det första antagandet av sats \ref{thm:EratosthenesSieve} som då säger att
 \begin{align*}
-    \card{\P_2(x)} \leq \pi(z) + \S{A}{P}{z} \leq z + x W(z) + O\Big(x (\log x)^3 \exp \Big( - \frac{\log x}{\log z} \Big) \Big).
+    \card{\P_2(x)} \leq \pi(z) + \S{A}{P}{z} \leq z + x W(z) + O\Big(x (\log z)^3 \exp \Big( - \frac{\log x}{\log z} \Big) \Big).
 \end{align*}
 Vi kan enkelt se att \(W(z)\) i huvudtermen är lika med
 \begin{align}
@@ -100,7 +100,7 @@ där sista steget följer av olikheten \(\log(1 + x) \leq x, \text{ om } x > -1\
 \begin{align} \label{era.app.secondMainAppr} 
     W(z) \asymp \exp \Bigg( - 2 \sum_{2 <p < z} \frac{1}{p}  \Bigg) \asymp \exp \big( -2 \log \log z + O(1)  \big) \asymp (\log z)^{-2}.
 \end{align}
-Slutligen får vi alltså att huvudtermen \(x W(z) \ll x (\log z)^{-2}\) och väljer vi \(\log z = \log x / (6 \log \log x)\) så leder det oss till \cite[Sats 5.4.4]{cojocarumurty}, 
+Slutligen får vi alltså att huvudtermen \(x W(z) \ll x (\log z)^{-2}\) och väljer vi \(\log z = \log x / (6 \log \log x)\) så leder det oss till \cite[sats 5.4.4]{cojocarumurty} som säger 
 \begin{align} \label{PrimTwinCard}
     \card{\P_2(x)} \ll \frac{x (\log \log x)^2}{\log^2 x} .
 \end{align}
