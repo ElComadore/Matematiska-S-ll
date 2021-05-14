@@ -1,8 +1,8 @@
 % Skrivet av Erik
 
-I avsnitt \ref{partB.algoritmteori}, där vi går igenom en implementering av Eratosthenes såll, så gör vi bruk av en \textit{diofantisk approximation}, \cite[Algoritm 4]{HaraldSieve}. För att förstå det här steget krävs först lite förkunskaper om kedjebråk. 
+I avsnitt \ref{partB.algoritmteori}, där vi går igenom en implementering av Eratosthenes såll, så gör vi bruk av en \textit{diofantisk approximation}, \cite[algoritm 4]{HaraldSieve}. För att förstå det här steget krävs först lite förkunskaper om kedjebråk. 
 
-Ett \textit{ändligt kedjebråk} definieras i \cite[Definition 20.1]{Lindahl} som
+Ett \textit{ändligt kedjebråk} definieras i \cite[definition 20.1]{Lindahl} som
 \begin{align*}
     \langle a_0, a_1, ..., a_n \rangle := a_0 + \cfrac{1}{a_1 + \cfrac{1}{a_2 + \cfrac{1}{\ddots \raisebox{-3mm}{$a_{n-2}+\cfrac{1}{a_{n-1} + \cfrac{1}{a_n}}$}}}}
 \end{align*}
@@ -25,10 +25,37 @@ och deras kvot, \(c_n := p_n / q_n\), \(n \geq 0\). Observera att definitionen g
     Vi följer här beviset från \cite{Lindahl}.
     
     (i): För att visa det första påståendet använder vi ett induktionsargument. 
-    
     Vi ser att påståendet håller för $n = 0$ ty \(\langle a_0 \rangle = a_0\) och \(c_0 = p_0 / q_0 = (a_0 \cdot 1 + 0) / 1 = a_0\).
     
-    Antag nu att påståendet gäller för kedjebråk med $n$ element. Vi ska visa att detta medför att \(\langle a_0, a_1, ..., a_n, a_{n+1} \rangle = c_{n+1}\). 
+    Antag nu att påståendet gäller för kedjebråk med $n$ element. Vi ska visa att detta medför att \(\langle a_0, a_1, ..., a_n, a_{n+1} \rangle = c_{n+1}\). Vi gör detta genom skriva om det sista elementet i kedjebråket så att vi får samma kedjebråk fast med $n$ element,
+    \begin{align} \label{APDX:conv.ind}
+        \langle a_0, a_1, ..., a_n, a_{n+1} \rangle = \langle a_0, a_1, ..., a_n + 1 / a_{n+1} \rangle .
+    \end{align}
+    Låt $a_n'$ beteckna det nya kedjebråkets $n$:te element. Det nya kedjebråket har då samma konvergenter upp till $n$. Vi skriver den sista konvergenten som $c_n' = p_n'/q_n'$. Alltså, per induktionsantagandet, har vi
+    \begin{align*}
+        c_{n}' &= \frac{p_n'}{q_n'} = \frac{\left( a_{n} + 1/a_{n+1} \right) p_{n-1} + p_{n-2}}{\left( a_{n} + 1/a_{n+1} \right) q_{n-1} + q_{n-2}} \\
+        %&= \frac{\left( a_{n+1} a_{n} + 1 \right) p_{n-1} + a_{n+1} p_{n-2}}{\left( a_{n+1} a_{n} + 1 \right) q_{n-1} + a_{n+1} q_{n-2}} \\
+        &= \frac{ a_{n+1} \left( a_{n} p_{n-1} + p_{n-2} \right) + p_{n-1}}{a_{n+1} \left( a_{n} q_{n-1} + q_{n-2} \right) + q_{n-1}}\\
+        &= \frac{ a_{n+1} p_n + p_{n-1}}{a_{n+1} q_n + q_{n-1}} 
+    \end{align*}
+    vilket är definitionen av \(c_{n+1} = p_{n+1}/q_{n+1}\). Därav ger (\ref{APDX:conv.ind}) att
+    \begin{align*}
+        \langle a_0, a_1, ..., a_n, a_{n+1} \rangle = c_{n+1}
+    \end{align*}
+    
+    Det följer nu av induktion att \(\langle a_0, a_1, ..., a_n \rangle = c_n\) för alla \(n \geq 0\).
+    
+    (ii): För det andra påståendet gör vi ett till induktionsbevis. Vi börjar den här gången med att kolla basfallet $n = -1$,
+    \begin{align*}
+        p_{-1} q_{-2} - p_{-2} q_{-1} = 1 \cdot 1 - 0 \cdot 0 = (-1)^{-2} 
+    \end{align*}
+    vilket stämmer med påståendet vi vill visa. 
+    
+    Härnäst antar vi att \(z_n := p_n q_{n-1} - p_{n-1} q_n = (-1)^{n-1}\) för något $n$ och vill visa att \(z_{n+1} = (-1)^{n}\). Detta är lätt att se med hjälp av den rekursiva definitionen av konvergenterna:
+    \begin{align*}
+        z_{n+1} = p_{n+1} q_{n} - p_{n} q_{n+1} = (a_n p_n + p_{n-1}) q_n - p_{n} (a_n q_n + q_{n-1}) = p_{n-1} q_n - p_n q_{n-1} = - z_n.
+    \end{align*}
+    Således ger induktionsantagandet att \(z_{n+1} = (-1) \cdot (-1)^{n-1}\) vilket skulle visas och påståendet följer av induktion. 
 \end{proof}
 
 \todo{Koppla samman med sats 20.9}

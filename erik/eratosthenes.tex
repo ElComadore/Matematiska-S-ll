@@ -42,8 +42,8 @@ Med observationen att \(W(z) = \prod_{p \divides P(z)} (1 - \omega(p)/p) = \sum_
     \S{A}{P}{z} = X W(z) + \Biggl(- X \sum_{\substack{d \divides P(z) \\ d > y}} \frac{\omega(d)}{d} \mu(d) + \sum_{\substack{d \divides P(z)  \\ d \leq y}} \mu(d) R_d \Biggr).
 \end{align*}
 
-De två summorna innanför parentesen i uttrycket ovan är vår felterm. Fokuserar vi på den andra summan så kan vi uppskatta dess storlek, först med hjälp av triangelolikheten och sedan med $\abs{\mu(x)} \leq 1$ och vårt antagande $\abs{R_d} = O(\omega(d))$ så att summanden \(\abs{ \mu(d) R_d} \leq O(\omega(d))\)
-Summan innanför Ordo-tecknet kan vi förenkla med Rankins trick som, enligt \cite[s.68]{cojocarumurty}, säger att indikator funktionen, \(1_{n \leq x} \leq \frac{x}{n}\). Därav skriver vi 
+De två summorna innanför parentesen i uttrycket ovan är vår felterm. Fokuserar vi på den andra summan så kan vi uppskatta dess storlek, först med hjälp av triangelolikheten och sedan med $\abs{\mu(x)} \leq 1$ och vårt antagande $\abs{R_d} = O(\omega(d))$ så att summanden \(\abs{ \mu(d) R_d} \leq O(\omega(d))\).
+Flyttar vi in summan innanför ordo-tecknet så kan vi förenkla den med Rankins trick som, enligt \cite[s.68]{cojocarumurty} säger att indikator funktionen, \(1_{n \leq x} \leq \frac{x}{n}\). Därav skriver vi 
 \begin{align*}
     \sum_{\substack{d \divides P(z)  \\ d \leq y}} \omega(d) =
     \sum_{\substack{d \divides P(z)}} \omega(d) (1_{d \leq y})^{\delta} \leq
