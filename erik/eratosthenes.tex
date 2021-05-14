@@ -96,7 +96,7 @@ Vi kan enkelt se att \(W(z)\) i huvudtermen är lika med
 \begin{align}
     \prod_{p < z}\left( 1 - \frac{\omega(p)}{p} \right) = \frac{1}{2} \exp \Bigg( \sum_{2 <p < z} \log \left( 1 - \frac{2}{p} \right) \Bigg) \asymp \exp \Bigg( - \sum_{2 <p < z} \frac{2}{p}  \Bigg) \label{era.app.mainAppr}
 \end{align}
-där sista steget följer av olikheten \(\log(1 + x) \leq x, \text{ om } x > -1\) i \(\ll\)--riktningen och den andra riktningen visas i sats \ref{APDX:asympW} från appendix. Med en partiell summation av (\ref{Thm.1.4.4}) erhåller vi att \(\sum_{p \leq z} \frac{1}{p} = \log \log z + O(1)\) som, när vi sätter in i (\ref{era.app.mainAppr}), ger oss att
+där sista steget följer av olikheten \(\log(1 + x) \leq x, \text{ om } x > -1\) i \(\ll\)--riktningen och den andra riktningen visas i sats \ref{APDX:asympW} från appendix. Med en partiell summation av (\ref{Thm.1.4.4}) (se sats \ref{APDX:THM1.4.4}) erhåller vi att \(\sum_{p \leq z} \frac{1}{p} = \log \log z + O(1)\) som, när vi sätter in i (\ref{era.app.mainAppr}), ger oss att
 \begin{align} \label{era.app.secondMainAppr} 
     W(z) \asymp \exp \Bigg( - 2 \sum_{2 <p < z} \frac{1}{p}  \Bigg) \asymp \exp \big( -2 \log \log z + O(1)  \big) \asymp (\log z)^{-2}.
 \end{align}
