@@ -21,15 +21,15 @@ då är
 \end{equation}
 Vi nu använder att
 \begin{equation}
-    d' = \frac{d'}{d}d = \frac{d'}{d}\frac{d}{n}n = kln\nonumber
+    n\divides d \implies \exists l\in\mathbb{N}:nl = d\nonumber
 \end{equation}
-med \(k = d'/d\) och \(l = d/n\) för att skriva om föregående summa på följande sätt.
+och likadant för \textit{d} och \(d'\). Vi får att summan kan då skrivas på formen
 \begin{equation}
     \sum_{\substack{nl = d\\d\in \mathcal{D}}}\mu(l)\sum_{\substack{dk= d'\\d'\in \mathcal{D}}}g(d') = \sum_{\substack{n \divides d'\\d'\in \mathcal{D}}}g(d')\sum_{k\divides \frac{d'}{n}}\mu(k).\label{APDX:dualMob.proof.div}
 \end{equation}
-Enligt den första egenskapen som redovisas i \ref{Mobius}, så är inre summan i \eqref{APDX:dualMob.proof.div} antingen 1 eller 0 beroende på om \(d'/n = 1\) eller inte. Detta medför att
+där vi nu summerar över \textit{l} på yttersta summan i vänsterled. Enligt den första egenskapen som redovisas i \ref{Mobius}, så är inre summan i \eqref{APDX:dualMob.proof.div} antingen 1 eller 0 beroende på om \(d'/n = 1\) eller inte. Detta medför att
 \begin{equation}
-    \eqref{APDX:dualMob.proof.div} = g(n)\nonumber
+     \sum_{\substack{n\divides d\\d\in \mathcal{D}}}\mu\bigg(\frac{d}{n}\bigg)f(d) = g(n)\nonumber
 \end{equation}
-eftersom \(n \in \mathcal{D}\) på grund av att \(n \divides d'\).
+eftersom \(n \in \mathcal{D}\) på grund av att \(\mathcal{D}\) är en sluten delare mängd.
 \end{proof}

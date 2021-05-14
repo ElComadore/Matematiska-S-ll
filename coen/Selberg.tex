@@ -1,6 +1,6 @@
-Ett annat perspektiv på sållmetoder gavs av yttligare en norsk matematiker, Atle Selberg (1917-2007), under 1940 talet. 
+Ett ytterligare perspektiv på sållmetoder gavs av en annan norsk matematiker, Atle Selberg (1917-2007), under 1940 talet. 
 Hans metod var av en kombinatorisk stil som liknade de tidigare.
-Dock så använde sig av en ny typ av vikt och en uppskattning av en summa av Möbiusfunktioner för att uppskatta kardinaliteten av \(\A\).
+Dock använde han sig av en ny typ av vikt och en uppskattning av en summa av Möbiusfunktioner för att uppskatta kardinaliteten av \(\A\).
 Denna metod kallas för Selbergs såll och är ett exempel på ett viktat såll. I detta avsnitt så ges en beskrivning av sållets uppbyggnad följt av en tillämpning av sållet för att uppskatta antalet primtal i en aritmetisk talföljd.
 
 \subsection{Beskrivning av sållet}
@@ -10,26 +10,25 @@ Selbergs nya vikter, vilka motsvarar \(\delta_d\) i \eqref{deltaX}, består av
 \end{equation}
 där \(f(n)\) och \(f_1(d)\) är multiplikativa funktioner och \(f_1(d)\) är entydigt bestämd med hjälp av Möbius inverteringsformel. Det krävs också att \(f(p) > 1\) för alla \(p\in\P\).
 Till exempel, om vi vill sålla bort alla tal i mängden \(\A_d = \{n\leq x:n \equiv 0 \pmod{d}\}\), där \(x>0\), då blir \(\#\A_d = x/d + O(1)\) och dessutom \(f(d) = d\).
-Föregående exempel är relativt enkelt dock i mer komplexa fall kan en sådan mer allmän vikt ge sållteorin möjligheten att uppskatta nya typer av mängder som tidigare hade inte varit möjligt att uttrycka med endast restklasser modulo primtal. 
+Föregående exempel är relativt enkelt men i mer komplexa fall kan en sådan mer allmän vikt ge sållteorin möjligheten att uppskatta nya typer av mängder som tidigare hade inte varit möjligt att uttrycka med endast restklasser modulo primtal. 
 
 Enligt \cite[s. 114]{cojocarumurty}, bestod grundläggande uppskattningen av Selbergs såll huvudsakligen av att för en given reell talföljd, \((\lambda_d)\), med \(\lambda_1 = 1\), har vi att 
 \begin{equation}
     \sum_{d\divides n}\mu(d) \leq \bigg(\sum_{d\divides n}\lambda_d\bigg)^2.\nonumber
 \end{equation}
-För att förstå varför denna uppskattning av Möbiusfunktionens summa fungerar, kom ihåg den första egenskapen som redovisas i \ref{Mobius}. 
-Summan av Möbiusfunktioner är antingen 1 eller 0 beroende på om \textit{n} är lika med ett eller inte.
-Högerledet är exakt ett då \textit{n} är 1 eller minimalt noll då \textit{n} är skild ifrån ett, eftersom det är ett reellt tal i kvadrat.
+För att förstå varför denna uppskattning av Möbiusfunktionens summa fungerar, erinrar vi den första egenskapen som redovisas i \ref{Mobius}. 
+Om \(n=1\) är både höger- och vänsterledet ovan lika med 1, medan \(n=0\) ger att vänsterledet är 0 och högerledet är ickenegativt ty detta är en kvadrat.
 Slutmålet med sållets härledning blir att konstruera talföljden \((\lambda_d)\) så att uppskattningen minimeras, vilket kommer göras senare.
 Med hjälp av talföljden \((\lambda_d)\) kan vi nu uppskatta \(\S{A}{P}{z}\) eftersom
 \begin{equation}
 \S{A}{P}{z} = \sum_{\substack{a\in \mathcal{A}\\a\not\in\mathcal{A}_p,\forall p\divides P(z)}} 1 = \sum_{d\divides P(z)} \mu(d) \sum_{a\in\mathcal{A}_d}1 = \sum_{a\in \A} \Bigg(\sum_{\substack{d\divides P(z)\\a\in \A_d}}\mu(d)\Bigg)\leq \sum_{a\in \A}\bigg(\sum_{\substack{d\divides P(z)\\a\in \A_d}}\lambda_d\bigg)^2.\label{sel.sieve.ineq1}
 \end{equation}
-Låt oss nu antar att \(\lambda_d = 0\) för alla \(d > z\). Med antagandet kan vi nu skriva om kvadraten av summan som en summa över två olika \textit{d} och omvandla \eqref{sel.sieve.ineq1} till
+Låt oss nu anta att \(\lambda_d = 0\) för alla \(d > z\). Med antagandet kan vi nu skriva om kvadraten av summan som en summa över två olika \textit{d} och omvandla \eqref{sel.sieve.ineq1} till
 \begin{equation}
     \S{A}{P}{z} \leq \sum_{a\in \A}\Bigg(\sum_{\substack{d_1\divides P(z)\\a\in \A_{d_1}}}\lambda_{d_1}\sum_{\substack{d_2\divides P(z)\\a\in \A_{d_2}}}\lambda_{d_2}\Bigg)  =  \sum_{a\in \A}\sum_{\substack{d_1,d_2\divides P(z)\\a\in \A_{[d_1,d_2]}}}\lambda_{d_1}\lambda_{d_2} = \sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}\lambda_{d_1}\lambda_{d_2}\#\A_{[d_1, d_2]}\nonumber
 \end{equation}
 där \([a, b]\) betecknar den minsta gemensamma multipeln av \textit{a} och \textit{b}. 
-Vi kombinerar summorna av \(\lambda_{d_1}\) och \(\lambda_{d_2}\) ovan genom att inse om \(a\in\A_{d_1}\) och \(a\in\A_{d_2}\) då måste den vara ett element i \(\A_{[d_1,d_2]}\) på grund av definitionen av \(\A\).
+Vi kombinerar summorna av \(\lambda_{d_1}\) och \(\lambda_{d_2}\) ovan genom att inse att om \(a\in\A_{d_1}\) och \(a\in\A_{d_2}\) måste den vara ett element i \(\A_{[d_1,d_2]}\) på grund av definitionen av \(\A\).
 Med infogande av \(\delta_d = 1/f(d)\) i \eqref{deltaX} får vi uppskattningen som är grundläggande för Selbergs såll;
 \begin{equation}
     \S{A}{P}{z} \leq X\sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}\frac{\lambda_{d_1}\lambda_{d_2}}{f([d_1,d_2])} + O\Bigg(\sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}|\lambda_{d_1}||\lambda_{d_2}||R_{[d_1, d_2]}|\Bigg)\label{sel.sieve.main}.
@@ -38,13 +37,14 @@ Med infogande av \(\delta_d = 1/f(d)\) i \eqref{deltaX} får vi uppskattningen s
 Vi kommer att fokusera vår härledning på huvudtermen av sållet eftersom den kräver att vi visar hur vi bestämmer talföjlden \((\lambda_d)\) vilket är avgörande för sållets konstruktion.
 %Genom att använda multiplikativiteten av \(f(d)\) går det att skriva om huvudtermen till en kvadratisk form och sedan hitta dess minimum. 
 %Vid detta minimumvärde blir \(|\lambda_d|\leq 1\) vilket då också ger oss en uppskattning av feltermen. Med alla dessa omskrivningar härleder vi följande sats.
- Med \cite[s. 120]{cojocarumurty} som utgångspunkt, börjar vi med att använda oss av ett lemma som låter oss skriva om multiplikativa funktioner av minsta gemensamma multipler, se Appendix \ref{APDX:multFunk}.
+ Med \cite[s. 120]{cojocarumurty} som utgångspunkt, börjar vi med att använda
+ oss av ett lemma som låter oss skriva om multiplikativa funktioner av minsta gemensamma multipler, se Appendix \ref{APDX:multFunk}.
 Lemmat tillsammans med definitionen av \textit{f} tillåter följande omskrivning:
 \begin{equation}
     \sum_{\substack{d_1,d_2\leq z\\d_1,d_2|P(z)}}\frac{\lambda_{d_1}\lambda_{d_2}}{f([d_1,d_2])} = \sum_{\substack{d_1,d_2\leq z\\d_1,d_2|P(z)}}\frac{\lambda_{d_1}\lambda_{d_2}}{f(d_1)f(d_2)}f((d_1,d_2)) = \sum_{\substack{d_1,d_2\leq z\\d_1,d_2|P(z)}}\frac{\lambda_{d_1}\lambda_{d_2}}{f(d_1)f(d_2)}\sum_{\delta|(d_1,d_2)}f_1(\delta).\label{sel.sieve.exchange}
 \end{equation}
 Nu byter vi summationsordningen i \eqref{sel.sieve.exchange}, genom att inse att om \(\delta|(d_1,d_2)\) då är \(\delta \leq z\) och \(\delta | P(z)\).
-Med detta, har vi också att inre summans \(d_1\) och \(d_2\) måste vara delbart med \(\delta\). Därför kan vi skriva om \eqref{sel.sieve.exchange} till
+Med detta, har vi också att \(d_1\) och \(d_2\) måste vara delbara med \(\delta\). Därför kan vi skriva om \eqref{sel.sieve.exchange} till
 \begin{equation}
     \sum_{\substack{\delta \leq z\\ \delta | P(z)}}f_1(\delta) \sum_{\substack{d_1,d_2\leq z\\d_1,d_2|P(z)\\\delta|(d_1,d_2)}}\frac{\lambda_{d_1}\lambda_{d_2}}{f(d_1)f(d_2)} = \sum_{\substack{\delta \leq z\\ \delta | P(z)}}f_1(\delta)\Bigg(\sum_{\substack{d\leq z\\d|P(z)\\\delta|d}}\frac{\lambda_d}{f(d)}\Bigg)^2.\nonumber
 \end{equation}
@@ -59,33 +59,33 @@ Vi kan nu tillämpa en variant på Möbius inverteringsformel, se Appendix \ref{
 
 Eftersom vi har diagonaliserat huvudtermen i \eqref{sel.sieve.uuu} kan vi enkelt bestämma ett värde på \(u_\delta\) sådant att summan antar sitt minimivärde genom att använda kvadratkomplettering. 
 Vi gör detta med hjälp av \eqref{sel.sieve.one} och införandet av en ny funktion \(V(z) = \sum_{d\leq z,\; d\divides P(z)}\frac{\mu^2(d)}{f_1(d)}\), vilket direkt underlätter kvadratkompletteringen av summans termer. 
-Det är också värt att påpeka att \(V(z)\) är strikt positivt eftersom \(f_1(d)\) är alltid större än noll. 
+Det är också värt att påpeka att \(V(z)\) är strikt positivt eftersom \(f_1(d)\) alltid är större än noll. 
 Detta gäller eftersom för varje primtal är \(f_1(p) = \sum_{d|p}\mu(d)f({p}/{d}) = \mu(1)f(p) + \mu(p)f(1) = f(p) - 1 > 0\).
-Dessutom har vi att \(f_1\) är multiplikativ och att \textit{d} är kvadratfri vilket tillsammans med föregående resonemanget medför att \(f_1 > 0\) för alla \textit{d} i summan. 
-Därför blir \(V(z)\) en summa av strikt positiva tal och därmed strikt positivt själv.
+Dessutom har vi att \(f_1\) är multiplikativ och att \textit{d} är kvadratfri vilket tillsammans med föregående resonemang medför att \(f_1 > 0\) för alla \textit{d} i summan. 
+Därför blir \(V(z)\) en summa av strikt positiva tal och därmed strikt positiv själv.
 Om vi sätter \(\delta = 1\) i \eqref{sel.sieve.one} då får vi att
 \begin{equation}
     1 = \frac{\lambda_1}{f(1)} = \sum_{\substack{d\leq z\\ d|P(z)}}\mu(d)u_d.\nonumber
 \end{equation}
-vilket vi kan nu använda för att hitta en minimum på följande sätt:
+vilket vi kan använda för att hitta en minimum på följande sätt:
 \begin{align}
     \sum_{\substack{\delta \leq z\\ \delta | P(z)}}f_1(\delta) u_\delta^2 &= \sum_{\substack{\delta\leq z\\\delta|P(z)}} f_1(\delta)u_\delta^2 + \frac{V(z)}{V(z)^2} - \frac{2}{V(z)} + \frac{1}{V(z)}\nonumber\\
     &= \sum_{\substack{\delta\leq z\\\delta|P(z)}} f_1(\delta)u_\delta^2 + \sum_{\substack{\delta\leq z\\ \delta|P(z)}}\frac{\mu^2(\delta)}{f_1(\delta)V^2(z)} - \sum_{\substack{\delta\leq z\\\delta |P(z)}}\frac{2\mu(\delta)u_\delta}{V(z)} + \frac{1}{V(z)}.\label{sel.sieve.VVV}
 \end{align}
-Vi kan samla alla summor i \eqref{sel.sieve.VVV} in till en och då vi kvadratkompletterar summans termer har vi att
+Vi kan samla alla summor i \eqref{sel.sieve.VVV} till en och då vi kvadratkompletterar summans termer har vi att
 \begin{equation}
     \sum_{\substack{\delta \leq z\\ \delta | P(z)}}f_1(\delta) u_\delta^2 = \sum_{\substack{\delta\leq z\\\delta|P(z)}}f_1(\delta)\Bigg(u_\delta - \frac{\mu(\delta)}{f_1(\delta)V(z)}\Bigg)^2 + \frac{1}{V(z)}.\nonumber
 \end{equation}
-Uppenbarligen blir ovanstående summa noll då vi väljer \(u_\delta = \frac{\mu(\delta)}{f_1(\delta)V(z)}\), vilket måste vara en minimivärde eftersom \(f_1(\delta\) är strikt positivt.
-Det går också att bevisa att med detta val av \(u_\delta\) blir \(|\lambda_d||V(z)| \leq |V(z)|\) \cite[s. 122-123]{cojocarumurty} och därför härleder följande sats.
+Givetvis blir ovanstående summa noll då vi väljer \(u_\delta = \frac{\mu(\delta)}{f_1(\delta)V(z)}\), vilket måste vara en minimivärde eftersom \(f_1(\delta\) är strikt positiv.
+Det går också att bevisa att med detta val av \(u_\delta\) blir \(|\lambda_d||V(z)| \leq |V(z)|\) \cite[s. 122-123]{cojocarumurty} och därför härleder vi följande sats.
 \begin{theorem}[Selbergs såll]\label{sel.sieve.thm}
-Behåll notationen från tidigare i avsnittet och rapporten. Då har vi att
+Behåll notationen från tidigare i detta avsnitt och avsnitt \ref{forberedelser}. Då har vi att
 \begin{equation}
     \S{A}{P}{z} \leq \frac{X}{V(z)} + O\Bigg(\sum_{\substack{d_1,d_2\leq z\\d_1,d_2\divides P(z)}}|R_{[d_1, d_2]}|\Bigg).\nonumber
 \end{equation}
 \end{theorem}
 Ovanstående formulering är hur satsen redovisas i \cite[sats 7.2.1]{cojocarumurty}.
-Notera att i Selbergs såll så har vi färre paratmetrar att bestämma än i de tidigare sållen, vilket hjälper en del med dess tillämpning. 
+Notera att i Selbergs såll har vi färre paratmetrar att bestämma än i de tidigare sållen, vilket hjälper en del med dess tillämpning. 
 Ett exempel på hur sållet kan tillämpas redovisas i nästa avsnitt.
 
 \subsection{Selbergs såll och primtal i aritmetiska talföljder}\label{sel.apl}
@@ -93,7 +93,7 @@ Ett exempel på hur sållet kan tillämpas redovisas i nästa avsnitt.
 Med hjälp av Selbergs såll kan vi uppskatta antalet primtal som finns i en aritmetisk talföjld, det vill säga antalet primtal på formen \(p = a + tk\) där \textit{a}, \textit{k} är valda konstanter och \textit{t} är godtyckligt. 
 Det finns också ett krav på \textit{a} och \textit{k}, nämligen att de är relativt prima, utan det kravet så skulle maximalt ett primtal finnas i talföjlden. 
 Slutligen antar vi att \textit{k} är kvadratfritt, vilket kommer underlätta beräkningar senare.
-Om vi vill uppskatta antalet primtal på ovanstående form mindre än något \textit{x}, då är det samma som att uppskatta storleken av följande kardinalitet;
+Om vi vill uppskatta antalet primtal på ovanstående form mindre än något \textit{x}, då är det samma som att uppskatta;
 \begin{equation}
     \pi(x;k,a) = \#\{p\leq x: p \equiv a \pmod{k}\}.\label{sel.apl.arithPrimes}
 \end{equation}
@@ -134,7 +134,7 @@ Eftersom de enda primtal som inte är i \(\P\) är de som delar \textit{k} har v
 \begin{equation}
     kV(z) \geq \phi(k) \sum_{\delta \leq z}\frac{1}{\delta} = \phi(k)(\log z + O(1)) \iff \frac{1}{V(z)} \leq \frac{k}{\phi(k)(\log z + O(1))}\label{sel.apl.vAppr}
 \end{equation}
-där vi har använt oss av partiell summering vid likhetstecknet. 
+där vi har använt oss av partiell summation vid likhetstecknet. 
 Med hjälp av \eqref{sel.apl.vAppr} har vi nu att
 \begin{equation}
      \pi(x;k,a) \leq z + \frac{x}{\phi(k)(\log z + O(1))} + O(z^2) = \frac{x}{\phi(k)(\log z + O(1))} + O(z^2)\nonumber
