@@ -1,6 +1,6 @@
 % Skrivet av Erik
 
-I avsnitt \ref{partB.algoritmteori}, där vi går igenom en implementering av Eratosthenes såll, så gör vi bruk av en \textit{diofantisk approximation}, \cite[algoritm 4]{HaraldSieve}. För att förstå det här steget krävs först lite förkunskaper om kedjebråk. 
+I avsnitt \ref{partB.algoritmteori} går vi igenom en implementering av Eratosthenes såll och gör då bruk av en \textit{diofantisk approximation}, \cite[algoritm 4]{HaraldSieve}. För att förstå det här steget krävs först lite förkunskaper om kedjebråk. 
 
 Ett \textit{ändligt kedjebråk} definieras i \cite[definition 20.1]{Lindahl} som
 \begin{align*}
@@ -27,11 +27,11 @@ och deras kvot, \(c_n := p_n / q_n\), \(n \geq 0\). Observera att definitionen g
     (i): För att visa det första påståendet använder vi ett induktionsargument. 
     Vi ser att påståendet håller för $n = 0$ ty \(\langle a_0 \rangle = a_0\) och \(c_0 = p_0 / q_0 = (a_0 \cdot 1 + 0) / 1 = a_0\).
     
-    Antag nu att påståendet gäller för kedjebråk med $n$ element. Vi ska visa att detta medför att \(\langle a_0, a_1, ..., a_n, a_{n+1} \rangle = c_{n+1}\). Vi gör detta genom skriva om det sista elementet i kedjebråket så att vi får samma kedjebråk fast med $n$ element,
+    Antag nu att påståendet gäller för kedjebråk, \(\langle a_0, a_1, ..., a_n \rangle\), med $n + 1$ stycken element. Vi ska visa att detta medför att \(\langle a_0, a_1, ..., a_n, a_{n+1} \rangle = c_{n+1}\). Vi gör detta genom att skriva om det sista elementet i kedjebråket så att vi får samma kedjebråk fast med $n + 1$ stycken element,
     \begin{align} \label{APDX:conv.ind}
         \langle a_0, a_1, ..., a_n, a_{n+1} \rangle = \langle a_0, a_1, ..., a_n + 1 / a_{n+1} \rangle .
     \end{align}
-    Låt $a_n'$ beteckna det nya kedjebråkets $n$:te element. Det nya kedjebråket har då samma konvergenter upp till $n$. Vi skriver den sista konvergenten som $c_n' = p_n'/q_n'$. Alltså, per induktionsantagandet, har vi
+    Låt $a_n'$ beteckna det nya kedjebråkets $(n+1)$:te element. Det nya kedjebråket har då samma konvergenter upp till index $n$. Vi skriver den sista konvergenten som $c_n' = p_n'/q_n'$. Alltså, per induktionsantagandet, har vi
     \begin{align*}
         c_{n}' &= \frac{p_n'}{q_n'} = \frac{\left( a_{n} + 1/a_{n+1} \right) p_{n-1} + p_{n-2}}{\left( a_{n} + 1/a_{n+1} \right) q_{n-1} + q_{n-2}} \\
         %&= \frac{\left( a_{n+1} a_{n} + 1 \right) p_{n-1} + a_{n+1} p_{n-2}}{\left( a_{n+1} a_{n} + 1 \right) q_{n-1} + a_{n+1} q_{n-2}} \\
