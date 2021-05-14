@@ -1,10 +1,10 @@
 
-Avsnitt \ref{era.Legendres} introducerar dimensionen av ett såll, \(\kappa\), som ska uppfylla (\ref{dimension}). Vi visar här ett resultat tillskrivet Tjebysjov, hämtat ur \cite[Sats 1.4.3]{cojocarumurty}, som hjälper med att kontrollera detta.
+Avsnitt \ref{era.Legendres} introducerar dimensionen av ett såll, \(\kappa\), som ska uppfylla (\ref{dimension}). Vi visar här ett resultat tillskrivet Tjebysjov, hämtat ur \cite[Sats 1.4.3]{cojocarumurty}, som hjälper till vid kontroll av detta.
 \begin{theorem} \label{APDX:THM1.4.3}
     \[\sum_{p \leq n} \frac{\log p}{p} = \log n + O(1). \]
 \end{theorem}
 \begin{proof}
-Nyckeln till beviset av ovanstående sats i \cite{cojocarumurty} är två observationer om fakultetfunktionen, \(n! = 1 \cdot 2 \cdot ... \cdot n\). Först vill vi omformulera \(n!\) som en produkt av primtalspotenser. Eftersom det finns \(\lfloor n / p^\alpha \rfloor\) multiplar av \(p^\alpha\) mindre än eller lika med $n$ och inga sådana multiplar av \(p^\alpha\) för \(\alpha > \log n / \log p\) så ser vi att den bidragande faktorn för varje $p \leq n$ kan skrivas som 
+Nyckeln till beviset av ovanstående sats i \cite{cojocarumurty} är två observationer om fakultetfunktionen, \(n! = 1 \cdot 2 \cdot ... \cdot n\). Först vill vi omformulera \(n!\) som en produkt av primtalspotenser. Eftersom det finns \(\lfloor n / p^\alpha \rfloor\) multiplar av \(p^\alpha\) som är mindre än eller lika med $n$ och inga sådana multiplar av \(p^\alpha\) för \(\alpha > \log n / \log p\), ser vi att den bidragande faktorn för varje $p \leq n$ kan skrivas som 
 \begin{align*}
     \prod_{\substack{p^\alpha \pdiv k \\ k \leq n}} p^\alpha = \prod_{p^\alpha \leq n} p^{\lfloor n/p^{\alpha} \rfloor} = p^{\lfloor n/p \rfloor + \lfloor n/p^2 \rfloor + ... + \lfloor n / p^{\lfloor \log n / \log p \rfloor} \rfloor}
 \end{align*}
@@ -34,7 +34,7 @@ och att \(\lfloor t \rfloor = t + O(1)\) ger att detta är lika med
     (n + O(1)) \log n - \int_1^n \frac{t}{t} \text{d} t + O(1) \int_1^n \frac{1}{t} \text{d} t  = n \log n - n + O(\log n).
 \end{align}
 
-Sätter vi samman observationerna, (\ref{APDX:obser1Thm1.4.3}) och (\ref{APDX:obser2Thm1.4.3}), så får vi 
+Sätter vi samman observationerna, (\ref{APDX:obser1Thm1.4.3}) och (\ref{APDX:obser2Thm1.4.3}) får vi 
 \begin{align*}
     n \sum_{p \leq n} \frac{\log p}{p} + O(n) &= n \log n - n + O(\log n) \\
     n \sum_{p \leq n} \frac{\log p}{p} &= n \log n + O(n)
