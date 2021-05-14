@@ -68,7 +68,29 @@ Sats \ref{app.konvergenter} säger oss något om hur konvergenter och kedjebråk
     \end{enumerate}
 \end{theorem}
 \begin{proof}
+    (i): Vi börjar med att se att (ii) i sats \ref{app.konvergenter} ger oss, för $n \geq 1$,
+    \begin{align}
+        p_n q_{n-1} - p_{n-1} q_{n} &= (-1)^{n-1} \nonumber \\
+        \frac{p_n}{q_n} - \frac{p_{n-1}}{q_{n-1}} &= \frac{(-1)^{n-1}}{q_{n-1} q_n} \label{app.konvint}
+    \end{align}
+    där sista vänsterledet är lika med \(c_{n} - c_{n-1}\). Då \(q_{n-1} q_n\) är en produkt av två positiva tal så innebär detta att \(c_{2n} < c_{2n-1}\) för \(n \geq 1\). Vidare, för $n \geq 2$, får vi
+    \begin{align*}
+        (c_n - c_{n-1}) + (c_{n-1} - c_{n-2}) &= \frac{(-1)^{n-1}}{q_{n-1} q_n} + \frac{(-1)^{n-2}}{q_{n-2} q_{n-1}}  \\
+        c_n - c_{n-2} =& (-1)^n \frac{q_n - q_{n - 1}}{q_{n-2}q_{n-1}q} = (-1)^{n} A_n 
+    \end{align*}
+    där $A_n$ är en positiv konstant eftersom $(q_n)_{n=0}^N$ är en strikt växande följd av positiva tal. Alltså har vi att delföljden \((c_{2n})_{n = 0}^{\lfloor N/2 \rfloor}\) är strikt växande och delföljden av udda index, \((c_{2n + 1})_{n = 0}^{\lfloor (N - 1)/2 \rfloor}\), är strikt avtagande. 
     
+    Sammantaget ger detta oss att
+    \begin{align*}
+        c_0 < c_2 < c_4 < ... < c_N = \xi < ... < c_5 < c_3 < c_1
+    \end{align*}
+    vilket bevisar (i).
+    
+    (ii): Från första delen har vi att \(\xi \in [c_{n+1}, c_n]\) så att
+    \begin{align*}
+        \abs{\xi - c_n} \leq \abs{c_{n+1} - c_n} 
+    \end{align*}
+    och högerledet är enligt (\ref{app.konvint}) lika med \(1 / (q_n q_{n+1})\). 
 \end{proof}
 
 %Definitionen av ett \textit{oändligt kedjebråk} (\cite[Definition 20.3]{Lindahl}) följer naturligt av föregående definition som
