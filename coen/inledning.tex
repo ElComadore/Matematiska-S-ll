@@ -13,20 +13,21 @@ Idén bakom denna process, att hitta primtal i en lista av naturliga tal, har fu
 När algoritmen är avslutad så har varje primtal i listan blivit inringat och alla andra tal har strukits. 
 Eratosthenes algoritm lade grunden för ämnet sållteori; ett område inom matematiken som försöker uppskatta storkleken på så kallade \textit{siktade mängder}. 
 
-En siktad mängd är en mängd där alla element är heltal och har någon gemensam egenskap till exempel en mängd som består av endast primtal eller mängden av alla tal i en aritmetisk talföjld.
+En siktad mängd är en mängd där alla element är heltal och har någon gemensam egenskap som till exempel en mängd som består av endast primtal eller mängden av alla tal i en aritmetisk talföjld.
 De största fördelar med den grundläggande sållteorin är att metoderna är relativt elementära och flexibla, speciellt jämfört med andra metoder inom analytisk talteori. 
 Det krävs inga idéer från komplex analys som till exempel Dirichlets L-funktioner eller serier för att ha användning av de enklare sållen och om man kan formulera mängderna på ett korrekt sätt, går det att effektivt tillämpa metoderna på ett stort antal mängder. 
 Effektiviteten innebär att trots sin enkla konstruktion, kan dessa matematiska såll fortfarande ge starka resultat, även om bättre resultat kan hittas genom att använda mer raffinerade analytiska metoder.
 Ett sådant resultat vilket sållteori kan nästan nå är att antalet primtal mindre än \textit{x} har det asymptotiska beteendet av \(x/\log(x)\) vilket ges i primtalssatsen. 
-Detta icke triviala resultat kan nästan bevisas utan arbete med zeta-funktionereller då man använder Selbergs såll, dock så får man bara en övre gräns av \(x/\log(x)\) istället för det asymptotiska beteendet. 
+Detta icke triviala resultat kan nästan bevisas utan arbete med zeta-funktioner eller då man använder Selbergs såll, dock så får man bara en övre gräns av \(x/\log(x)\) istället för det asymptotiska beteendet. 
 Mer avancerade sållmetoder har givit svar på frågor närliggande till primtalstvillingsförmodan i \cite{chen2Prime}, och att det finns oändligt många par av primtal med maximalt 600 tal emellan sig \cite{mayBound}.
 
 Vår rapport fokuserar på små såll av både kombinatorisk och viktad form. 
-Först, att ett såll är små innebär det att de fokuserar på att uppskatta storleken på mängder som kan beskrivas som ett litet antal restklasser modulo primtal.
+Först, att sållen+ är små innebär det att deras sållning använder ett få antal restklasser modulo primtal.
  Näst, att ett såll är kombinatoriskt innebär att den använder sig av inklusion-exklusionsprincipen för att uppskatta mängdens storlek på ett lämpligt sätt. 
 Slutligen, att ett såll är viktat innebär att någon viktfunktion används för att uppskatta storleken. 
-Bland dessa typer av såll håller vi oss till Eratosthenes generaliserade såll, Bruns såll, och Selbergs såll. 
-För varje såll ger vi en kortfattad härledning till dess formulering, där vi lyfter fram de centrala idéerna för dess konstruktion, och en förklaring till hur sållet används med exempel. 
+Sållen vi håller oss till är Eratosthenes generaliserade såll, Bruns såll, och Selbergs såll. 
+För varje såll ger vi en kortfattad härledning till dess formulering, där vi lyfter fram de centrala idéerna för dess konstruktion, och en förklaring till hur sållet används med exempel.
+En diskussion angående de sållens feletermerna följer sista teoretiska tillämpningen.
 Efteråt redovisar och analyserar vi en implementering i kod av Eratosthenes ursprungliga algoritm, vilket följer metoden som beskrivs i \cite{HaraldSieve}.
 Med hjälp av de primtalen som genereras av algoritmen undersökar vi slutligen vissa egenskaper hos primtalen såsom deras fördelning, fördelningen av primtalstvillingar, och frekvensen av olika stora avstånd mellan på varandra följande primtal (primtalsgap).
 Dock, innan vi börjar redovisa något av sållen vill vi gå igenom några förberedelser och förklara det allmänna sållproblemet.
