@@ -3,7 +3,7 @@
 %Algoritmen genererar alla primtal (till kvadraten av det sista primtalet vi sållar med) och kan enkelt utföras med papper och penna, men hur kan algoritmen förbättras för dagens datororienterade algoritmer? 
 
 
-När Eratosthenes först formulerade sitt såll var det, som vi såg i inledningen, på formen av en algoritm. Det är med utgångspunkt i Eratosthenes ursprungliga idé som \cite{HaraldSieve} utvecklar algoritmen för att optimera processen till en effektiv kod som kan leta efter primtal i ett intervall, $[n - \Delta, n + \Delta] \subset \mathbb{R}_+$. Delvis gör \cite{HaraldSieve} detta med algoritmen \textsc{SimpleSiev}, vilken är nära en direkt översättning av Eratosthenes klassiska såll, för att erhålla en lista av alla primtal upp till ett givet tal $N$. Denna metoden fungerar väl för små $N$ men vill vi hitta primtal i ett intervall $[n - \Delta, n + \Delta]$ för något stort $n$ och relativt litet $\Delta$ så ger algoritmen oss betydligt mer information än vad vi behöver och kräver mer tid och minnesutrymme. 
+När Eratosthenes först formulerade sitt såll var det, som vi såg i inledningen, på formen av en algoritm. Det är med utgångspunkt i Eratosthenes ursprungliga idé som \cite{HaraldSieve} utvecklar algoritmen för att optimera processen till en effektiv kod som kan leta efter primtal i ett intervall, $[n - \Delta, n + \Delta] \subset \mathbb{R}_+$. Delvis gör \cite{HaraldSieve} detta med algoritmen \textsc{SimpleSiev}, vilken är nära en direkt översättning av Eratosthenes klassiska såll. Vi ser i Algorithm 1 exakt hur sållet implementerats i pseudokod. Algoritmen startar med att sålla bort alla jämna tal från en lista och går sedan igenom resterande tal, kontrollerar om de sållats bort och om inte så tas alla multiplar av talet bort från listan. Resultatet blir en lista av alla primtal upp till ett givet tal $N$. Denna metoden fungerar väl för små $N$ men vill vi hitta primtal i ett intervall $[n - \Delta, n + \Delta]$ för något stort $n$ och relativt litet $\Delta$ så ger algoritmen oss betydligt mer information än vad vi behöver och kräver mer tid och minnesutrymme. 
 
 \input{erik/pseudokod}
 
@@ -19,7 +19,7 @@ Givetvis hade vi kunnat sålla intervallet med \(p \leq K \Delta\) utan att segm
     \centering
     %\includegraphics[width = \textwidth]{erik/Images/flowchart_v2.1.png}
     \input{nils/tikz_flow}
-    \caption{Ett övergripande flödesschema för algoritmen \textsc{NewSegSiev}. Observera att det finns två huvudloopar i algoritmen, en där kriterium A är uppfyllt då intervallet \([n - \Delta, n + \Delta]\) sållats med alla primtal \(p \leq K \Delta\) och den andra där kriterium B' är uppfyllt då algoritmen sållat för resterande tal upp till \(\sqrt{n + \Delta}\). Slutligen är kriterium B i koden identiskt med B' men illustrerar i flödesschemat möjligheten för programmet att aldrig gå in i den andra loopen då \(\Delta > \sqrt{n + \Delta}/K\).}
+    \caption{Ett övergripande flödesschema för algoritmen \textsc{NewSegSiev}. Observera att det finns två huvudloopar i algoritmen, en där kriterium A är uppfyllt när intervallet \([n - \Delta, n + \Delta]\) sållats med alla primtal \(p \leq K \Delta\) och den andra där kriterium B' är uppfyllt då algoritmen sållat för resterande tal upp till \(\sqrt{n + \Delta}\). Slutligen är kriterium B i koden identiskt med B' men illustrerar i flödesschemat möjligheten för programmet att aldrig gå in i den andra loopen då \(\Delta > \sqrt{n + \Delta}/K\).}
     \label{fig:flowchart}
 \end{figure}
 
