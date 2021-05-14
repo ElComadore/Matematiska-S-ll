@@ -15,7 +15,7 @@ Vi börjar med att jämföra antalet primtal hittat med \textsc{NewSegSiev} emot
 \end{equation}
 För att skapa följande figur använder vi vår implementering av Helfgotts kod och en enkel räknefunktion.
 
-\begin{figure}[H]
+\begin{figure}[h] %[H]
     \centering
     \includegraphics[width = \textwidth]{coen/Images/Primes.pdf}
     \caption{I figuren till vänster redovisas antalet primtal som förväntas enligt primtalssatsen, \textit{orange}, och antalet primtal som hittades enligt \textsc{NewSegSiev}, \textit{blå}, då \(n = 10^{19}\), \(\Delta = 1.25\cdot10^{9}\), och \(K = 2.5\). 
@@ -46,7 +46,7 @@ Med hjälp av de primtal vi hittade i \ref{app.primes.title}, vänder vi oss nu 
 \end{equation}
 där \(\text{C}_2 = 0.66016...\) är primtalstvillingskonstanten \cite{TwinPrimeConstant}. Jämför vi den hypotetiska fördelningen emot antalet primtalstvillingar vi har genererat, så får vi nästa figur.
 
-\begin{figure}[H]
+\begin{figure}[h]
     \centering
     \includegraphics[width = \textwidth]{coen/Images/TwinPrimesNoKapp.pdf}
     \caption{I grafen till vänster redovisas antalet primtalstvillingar som förväntas enligt den hypotetiska fördelningen, \textit{orange}, och de primtalstvillingar som hittades enligt \textsc{NewSegSiev}, \textit{blå}, då \(n = 10^{19}\), \(\Delta = 1.25\times10^9\), och \(\text{C}_2\) har avrundats till 0.66. Notera återigen att kurvorna ligger nästan på varandra. I graferna till höger så redovisas inzoomade versioner av grafen till vänster. 
